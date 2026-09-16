@@ -10,6 +10,8 @@ http.createServer((req,res)=>{
   if (!file.startsWith(path.join(__dirname,'public'))) { res.writeHead(403); return res.end('Forbidden'); }
   fs.readFile(file,(err,data)=>{
     if(err){res.writeHead(404,{'Content-Type':'text/plain; charset=utf-8'});return res.end('404');}
-    res.writeHead(200,{'Content-Type':types[path.extname(file)]||'application/octet-stream'});res.end(data);
+    let output=data;
+    if(urlPath==='/index.html') output=Buffer.from(data.toString('utf8').replace('</body>','<script src="/pricing.js"></script></body>'));
+    res.writeHead(200,{'Content-Type':types[path.extname(file)]||'application/octet-stream'});res.end(output);
   });
 }).listen(port,'0.0.0.0',()=>console.log(`DAWKOZ website listening on ${port}`));
