@@ -26,13 +26,12 @@ header nav{margin-left:auto!important}
 @media(max-width:1050px){header .brand-logo{width:245px!important;min-width:245px!important;flex-basis:245px!important}header nav{gap:20px!important}}
 @media(max-width:760px){header .brand-logo{width:210px!important;min-width:210px!important;flex-basis:210px!important;height:50px!important}header nav{display:none!important}}
 header .brand-logo {
-    width: 190px !important;
-    min-width: 190px !important;
-    flex: 0 0 190px !important;
-    height: 52px !important;
+    width: 215px !important;
+    min-width: 215px !important;
+    flex: 0 0 215px !important;
+    height: 56px !important;
     overflow: visible !important;
 }
-
 header .brand-logo img {
     width: 100% !important;
     height: 100% !important;
