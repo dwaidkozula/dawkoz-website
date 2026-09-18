@@ -10,3 +10,10 @@ header .brand-logo{display:flex;align-items:center;width:190px;min-width:190px;h
 header .brand-logo img{display:block;width:100%;height:auto;max-height:48px;object-fit:contain;object-position:left center}
 @media(max-width:900px){header .brand-logo{width:160px;min-width:160px;height:48px}header .brand-logo img{max-height:42px}}
 @media(max-width:560px){header .brand-logo{width:138px;min-width:138px;height:44px}header .brand-logo img{max-height:38px}}
+
+/* logo visibility fix */
+header{overflow:visible!important}
+header .brand-logo{width:240px!important;min-width:240px!important;height:58px!important;overflow:visible!important;flex-shrink:0!important}
+header .brand-logo img{width:240px!important;height:58px!important;max-height:none!important;object-fit:contain!important;object-position:left center!important}
+@media(max-width:900px){header .brand-logo{width:190px!important;min-width:190px!important;height:50px!important}header .brand-logo img{width:190px!important;height:50px!important}}
+@media(max-width:560px){header .brand-logo{width:165px!important;min-width:165px!important;height:46px!important}header .brand-logo img{width:165px!important;height:46px!important}}
