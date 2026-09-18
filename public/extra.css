@@ -17,3 +17,11 @@ header .brand-logo{width:240px!important;min-width:240px!important;height:58px!i
 header .brand-logo img{width:240px!important;height:58px!important;max-height:none!important;object-fit:contain!important;object-position:left center!important}
 @media(max-width:900px){header .brand-logo{width:190px!important;min-width:190px!important;height:50px!important}header .brand-logo img{width:190px!important;height:50px!important}}
 @media(max-width:560px){header .brand-logo{width:165px!important;min-width:165px!important;height:46px!important}header .brand-logo img{width:165px!important;height:46px!important}}
+
+/* definitive header logo layout */
+header{display:flex!important;align-items:center!important;gap:28px!important}
+header .brand-logo{display:block!important;width:300px!important;min-width:300px!important;height:58px!important;overflow:visible!important;flex:0 0 300px!important}
+header .brand-logo img{display:block!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:contain!important;object-position:left center!important;transform:none!important}
+header nav{margin-left:auto!important}
+@media(max-width:1050px){header .brand-logo{width:245px!important;min-width:245px!important;flex-basis:245px!important}header nav{gap:20px!important}}
+@media(max-width:760px){header .brand-logo{width:210px!important;min-width:210px!important;flex-basis:210px!important;height:50px!important}header nav{display:none!important}}
