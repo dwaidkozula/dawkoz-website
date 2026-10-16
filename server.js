@@ -1,6 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const { renderPage, resolveLocale } = require('./i18n');
 const port = process.env.PORT || 3000;
 const publicRoot = path.join(__dirname, 'public');
 const production = process.env.NODE_ENV === 'production' || Boolean(process.env.RAILWAY_ENVIRONMENT_ID);
@@ -12,6 +13,7 @@ const types = {
   '.png': 'image/png',
   '.webp': 'image/webp',
   '.mp4': 'video/mp4',
+  '.vtt': 'text/vtt; charset=utf-8',
 };
 const contentSecurityPolicy = [
   "default-src 'self'",
@@ -124,7 +126,10 @@ const server = http.createServer(async (req, res) => {
       return;
     }
     const data = await fs.promises.readFile(realFile);
-    send(200, data, type);
+    if (path.extname(realFile) === '.html') {
+      const locale = resolveLocale(new URLSearchParams(req.url.split('?')[1] || '').get('lang'));
+      send(200, renderPage(data.toString('utf8'), locale, path.basename(realFile)), type);
+    } else send(200, data, type);
   } catch {
     send(404, '404');
   }

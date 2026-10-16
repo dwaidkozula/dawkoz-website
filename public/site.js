@@ -1,5 +1,7 @@
 (() => {
   'use strict';
+  const labels = JSON.parse(document.documentElement.dataset.ui || '{}');
+  const label = (key, fallback) => labels[key] || fallback;
 
   const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
   const header = document.querySelector('.site-header');
@@ -15,9 +17,9 @@
   function updateMotionButton() {
     document.documentElement.classList.toggle('motion-paused', motionPaused);
     motionButton.setAttribute('aria-pressed', String(motionPaused));
-    motionButton.textContent = motionPaused ? 'Włącz animacje' : 'Wyłącz animacje';
+    motionButton.textContent = motionPaused ? label('motionOn', 'Włącz animacje') : label('motionOff', 'Wyłącz animacje');
     motionButton.disabled = motionPreference.matches;
-    if (motionPreference.matches) motionButton.textContent = 'Animacje wyłączone';
+    if (motionPreference.matches) motionButton.textContent = label('motionReduced', 'Animacje wyłączone');
   }
   updateMotionButton();
   motionButton.addEventListener('click', () => {
@@ -29,7 +31,7 @@
   function closeMenu({ restoreFocus = false } = {}) {
     nav.classList.remove('is-open');
     menuButton.setAttribute('aria-expanded', 'false');
-    menuButton.setAttribute('aria-label', 'Otwórz menu');
+    menuButton.setAttribute('aria-label', label('menuOpen', 'Otwórz menu'));
     document.body.classList.remove('menu-open');
     if (restoreFocus) menuButton.focus();
   }
@@ -39,7 +41,7 @@
     if (!open) return closeMenu();
     nav.classList.add('is-open');
     menuButton.setAttribute('aria-expanded', 'true');
-    menuButton.setAttribute('aria-label', 'Zamknij menu');
+    menuButton.setAttribute('aria-label', label('menuClose', 'Zamknij menu'));
     document.body.classList.add('menu-open');
   });
   header.addEventListener('click', event => {
@@ -75,6 +77,7 @@
     if (!header.contains(event.target)) closeMenu();
   });
   mobileLayout.addEventListener('change', () => closeMenu());
+  document.addEventListener('dawkoz:language-open', () => closeMenu());
 
   let framePending = false;
   function updateScroll() {
@@ -143,10 +146,10 @@
     try {
       if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
       await navigator.clipboard.writeText('kontakt@dawkoz.com');
-      copyStatus.textContent = 'Adres e-mail skopiowany.';
+      copyStatus.textContent = label('copyDone', 'Adres e-mail skopiowany.');
     } catch {
       // Keep the original contact link functional when browser permissions deny copying.
-      copyStatus.textContent = 'Adres do skopiowania: kontakt@dawkoz.com';
+      copyStatus.textContent = label('copyFallback', 'Adres do skopiowania: kontakt@dawkoz.com');
     }
   });
 })();

@@ -2,11 +2,21 @@
 
 Strona firmowa obsługiwana przez serwer statyczny Node.js. Wymagany Node.js 20 lub nowszy; brak zależności npm i kroku budowania.
 
+## Wersje językowe
+
+Przełącznik z flagami jest dostępny na stronie głównej i trzech podstronach dokumentów. Języki są uporządkowane alfabetycznie według polskich nazw: angielski, francuski, hiszpański, niemiecki, norweski, polski, portugalski, rosyjski, szwedzki, ukraiński i włoski.
+
+Adres `/?lang=en` otwiera wersję angielską; pozostałe kody to `fr`, `es`, `de`, `no`, `pl`, `pt`, `ru`, `sv`, `uk` i `it`. Domyślny język to polski. Tłumaczenia są renderowane przez serwer, więc odnośniki językowe działają także bez JavaScriptu. Skrypt zapamiętuje wybór w localStorage (`dawkoz-language`), przywraca go podczas kolejnej wizyty i zachowuje bieżącą sekcję przy zmianie języka. Niedostępność localStorage nie blokuje przełączania. Kwoty pozostają w PLN.
+
+`i18n.js` łączy polskie teksty HTML z katalogami `locales/*.json`. Przy zmianie treści należy uaktualnić odpowiadający jej wpis w `pl.json` i pozostałych katalogach, zachowując istniejące klucze. `ui.json` zawiera etykiety funkcji interaktywnych. Dokumenty zachowują status projektu i `noindex` we wszystkich językach. Flagi SVG pochodzą z `country-flag-icons` 1.6.20, na licencji MIT zachowanej w `public/flags/LICENSE.txt`; nie wymagają zależności ani zewnętrznych żądań.
+
 ## Film demonstracyjny
 
 Sekcja „Wdrożenie” zawiera 25-sekundową animację przykładowego zgłoszenia: połączenie, rozmowa z AI, zebranie danych i przekazanie sprawy zespołowi. Film ma napisy, nie zawiera ścieżki dźwiękowej i uruchamia się po kliknięciu. Odtwarzacz początkowo pobiera tylko miniaturę.
 
 Gotowe pliki znajdują się w `public/media/` (MP4 H.264, 1920 × 1080, 30 kl./s oraz miniatura WebP). Samodzielne, edytowalne źródło animacji jest w `design/dawkoz-demo.html`; można je otworzyć w przeglądarce. Wdrożenie korzysta z gotowego MP4 i nie wymaga renderowania filmu ani dodatkowych zależności. Serwer obsługuje zakresy bajtów do odtwarzania i przewijania wideo.
+
+Film zachowuje polskie napisy w obrazie. Dodatkowe ścieżki WebVTT w `public/media/subtitles/` opisują pięć etapów w każdym obsługiwanym języku; w obcych wersjach strony odpowiednia ścieżka jest domyślnie włączona. Opis pod filmem również jest przetłumaczony.
 
 ## Uruchomienie i testy
 

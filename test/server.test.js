@@ -17,7 +17,11 @@ before(async () => {
   await fs.mkdir(path.join(fixture, 'public'));
   await fs.mkdir(path.join(fixture, 'public-private'));
   await fs.copyFile(path.join(__dirname, '..', 'server.js'), path.join(fixture, 'server.js'));
+  await fs.copyFile(path.join(__dirname, '..', 'i18n.js'), path.join(fixture, 'i18n.js'));
+  await fs.cp(path.join(__dirname, '..', 'locales'), path.join(fixture, 'locales'), { recursive: true });
   await fs.writeFile(path.join(fixture, 'public', 'index.html'), home);
+  await fs.copyFile(path.join(__dirname, '..', 'public', 'index.html'), path.join(fixture, 'public', 'localized.html'));
+  await fs.writeFile(path.join(fixture, 'public', 'captions.vtt'), 'WEBVTT\n\n00:00.000 --> 00:01.000\nHello\n');
   await fs.writeFile(path.join(fixture, 'public', 'demo.mp4'), '0123456789abcdef');
   await fs.writeFile(path.join(fixture, 'public', 'hello world.txt'), 'public file');
   await fs.writeFile(path.join(fixture, 'public', '.env'), 'private fixture');
@@ -86,6 +90,27 @@ test('HEAD returns headers without a response body', async () => {
   assert.equal(response.status, 200);
   assert.equal(Number(response.headers['content-length']), Buffer.byteLength(home));
   assert.equal(response.body, '');
+});
+
+test('serves a language selected by query and computes the translated UTF-8 content length', async () => {
+  const response = await request('/localized.html?lang=uk');
+  assert.equal(response.status, 200);
+  assert.ok(response.body.includes('<html lang="uk"'));
+  assert.ok(response.body.includes('працюють за вас.'));
+  assert.equal(Number(response.headers['content-length']), Buffer.byteLength(response.body));
+  const head = await request('/localized.html?lang=uk', { method: 'HEAD' });
+  assert.equal(head.headers['content-length'], response.headers['content-length']);
+  assert.equal(head.body, '');
+  const invalid = await request('/localized.html?lang=__proto__');
+  assert.equal(invalid.status, 200);
+  assert.ok(invalid.body.includes('<html lang="pl"'));
+});
+
+test('serves subtitles using the WebVTT media type', async () => {
+  const response = await request('/captions.vtt');
+  assert.equal(response.status, 200);
+  assert.equal(response.headers['content-type'], 'text/vtt; charset=utf-8');
+  assert.ok(response.body.startsWith('WEBVTT'));
 });
 
 test('serves MP4 with its media type and supports metadata HEAD requests', async () => {
