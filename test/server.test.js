@@ -18,6 +18,7 @@ before(async () => {
   await fs.mkdir(path.join(fixture, 'public-private'));
   await fs.copyFile(path.join(__dirname, '..', 'server.js'), path.join(fixture, 'server.js'));
   await fs.writeFile(path.join(fixture, 'public', 'index.html'), home);
+  await fs.writeFile(path.join(fixture, 'public', 'demo.mp4'), '0123456789abcdef');
   await fs.writeFile(path.join(fixture, 'public', 'hello world.txt'), 'public file');
   await fs.writeFile(path.join(fixture, 'public', '.env'), 'private fixture');
   await fs.writeFile(path.join(fixture, 'public-private', 'secret.html'), 'outside public');
@@ -85,6 +86,42 @@ test('HEAD returns headers without a response body', async () => {
   assert.equal(response.status, 200);
   assert.equal(Number(response.headers['content-length']), Buffer.byteLength(home));
   assert.equal(response.body, '');
+});
+
+test('serves MP4 with its media type and supports metadata HEAD requests', async () => {
+  const response = await request('/demo.mp4');
+  assert.equal(response.status, 200);
+  assert.equal(response.headers['content-type'], 'video/mp4');
+  assert.equal(response.headers['accept-ranges'], 'bytes');
+  assert.equal(response.body, '0123456789abcdef');
+  const head = await request('/demo.mp4', { method: 'HEAD', headers: { range: 'bytes=0-3' } });
+  assert.equal(head.status, 200);
+  assert.equal(head.headers['content-length'], '16');
+  assert.equal(head.body, '');
+});
+
+test('supports bounded, open-ended and suffix video ranges for playback and seeking', async () => {
+  for (const [range, body, contentRange] of [
+    ['bytes=2-5', '2345', 'bytes 2-5/16'],
+    ['bytes=12-', 'cdef', 'bytes 12-15/16'],
+    ['bytes=-4', 'cdef', 'bytes 12-15/16'],
+    ['bytes=13-100', 'def', 'bytes 13-15/16'],
+  ]) {
+    const response = await request('/demo.mp4', { headers: { range } });
+    assert.equal(response.status, 206, range);
+    assert.equal(response.headers['content-range'], contentRange);
+    assert.equal(Number(response.headers['content-length']), body.length);
+    assert.equal(response.body, body);
+  }
+});
+
+test('rejects invalid or unsatisfiable video ranges without terminating the server', async () => {
+  for (const range of ['bytes=99-', 'bytes=5-2', 'bytes=-0', 'bytes=-', 'bytes=foo', 'bytes=0-1,4-5', 'bytes=999999999999999999999-']) {
+    const response = await request('/demo.mp4', { headers: { range } });
+    assert.equal(response.status, 416, range);
+    assert.equal(response.headers['content-range'], 'bytes */16');
+  }
+  assert.equal((await request('/')).status, 200);
 });
 
 test('blocks traversal, encoded traversal, hidden files and escaping symlinks', async () => {

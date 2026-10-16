@@ -10,6 +10,8 @@ const types = {
   '.js': 'text/javascript; charset=utf-8',
   '.svg': 'image/svg+xml',
   '.png': 'image/png',
+  '.webp': 'image/webp',
+  '.mp4': 'video/mp4',
 };
 const contentSecurityPolicy = [
   "default-src 'self'",
@@ -17,6 +19,7 @@ const contentSecurityPolicy = [
   // The animation script and the no-JavaScript layout use inline styles.
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data:",
+  "media-src 'self'",
   "font-src 'self'",
   "connect-src 'none'",
   "object-src 'none'",
@@ -83,9 +86,45 @@ const server = http.createServer(async (req, res) => {
   try {
     const realFile = await fs.promises.realpath(file);
     if (!insidePublic(realFile)) return send(403, 'Forbidden');
-    if (!(await fs.promises.stat(realFile)).isFile()) return send(404, '404');
+    const stat = await fs.promises.stat(realFile);
+    if (!stat.isFile()) return send(404, '404');
+    const type = types[path.extname(realFile)] || 'application/octet-stream';
+    if (type === 'video/mp4') {
+      res.setHeader('Accept-Ranges', 'bytes');
+      let start = 0;
+      let end = stat.size - 1;
+      let status = 200;
+      if (req.method === 'GET' && req.headers.range) {
+        const range = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range.trim());
+        if (range && (range[1] || range[2])) {
+          if (range[1]) {
+            start = Number(range[1]);
+            end = range[2] ? Number(range[2]) : end;
+          } else {
+            const suffix = Number(range[2]);
+            start = Number.isSafeInteger(suffix) && suffix > 0 ? Math.max(0, stat.size - suffix) : -1;
+          }
+        } else {
+          start = -1;
+        }
+        if (!Number.isSafeInteger(start) || !Number.isSafeInteger(end) || start < 0 || start >= stat.size || end < start) {
+          res.setHeader('Content-Range', `bytes */${stat.size}`);
+          return send(416, 'Range Not Satisfiable');
+        }
+        end = Math.min(end, stat.size - 1);
+        status = 206;
+        res.setHeader('Content-Range', `bytes ${start}-${end}/${stat.size}`);
+      }
+      res.writeHead(status, { 'Content-Type': type, 'Content-Length': Math.max(0, end - start + 1) });
+      if (req.method === 'HEAD' || stat.size === 0) return res.end();
+      const stream = fs.createReadStream(realFile, { start, end });
+      stream.on('error', () => res.destroy());
+      res.on('close', () => stream.destroy());
+      stream.pipe(res);
+      return;
+    }
     const data = await fs.promises.readFile(realFile);
-    send(200, data, types[path.extname(realFile)] || 'application/octet-stream');
+    send(200, data, type);
   } catch {
     send(404, '404');
   }

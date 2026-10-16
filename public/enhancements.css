@@ -37,6 +37,17 @@ html.motion-paused [data-reveal] { opacity: 1; transform: none; transition: none
 .dash-points span { color: #a0a0a8; }
 .case-console li > b, .steps article > b, .who-list b { color: #789bd2; }
 .offer::before { display: none; }
+.case-video { grid-column: 1 / -1; min-width: 0; margin: 55px 0 0; }
+.case-video-heading { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; margin-bottom: 20px; }
+.case-video-heading h3 { margin: 0; color: #f0f0f4; font-size: clamp(21px, 3vw, 28px); font-weight: 500; letter-spacing: -.7px; }
+.case-video-heading > span { color: #a0a0ad; font-size: 12px; }
+.case-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border: 1px solid #303642; border-radius: 18px; background: #050609; }
+.case-video figcaption { max-width: 850px; margin: 16px 0 0; color: #a0a0ad; font-size: 13px; line-height: 1.85; }
+@media (max-width: 560px) {
+  .case-video { margin-top: 35px; }
+  .case-video video { border-radius: 12px; }
+  .case-video figcaption { font-size: 12px; }
+}
 .price-top b { color: #9ca4b0; }
 .proof-stat small { color: #647185; }
 .pv-route { color: #526277; }
