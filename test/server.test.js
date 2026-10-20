@@ -17,6 +17,7 @@ before(async () => {
   await fs.mkdir(path.join(fixture, 'public'));
   await fs.mkdir(path.join(fixture, 'public-private'));
   await fs.copyFile(path.join(__dirname, '..', 'server.js'), path.join(fixture, 'server.js'));
+  await fs.copyFile(path.join(__dirname, '..', 'panel-server.js'), path.join(fixture, 'panel-server.js'));
   await fs.copyFile(path.join(__dirname, '..', 'i18n.js'), path.join(fixture, 'i18n.js'));
   await fs.cp(path.join(__dirname, '..', 'locales'), path.join(fixture, 'locales'), { recursive: true });
   await fs.writeFile(path.join(fixture, 'public', 'index.html'), home);

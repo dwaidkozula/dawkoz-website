@@ -1,0 +1,20 @@
+DAWKOZ — WZORY DOKUMENTÓW
+
+12 polskich wzorów B2B w formatach PDF, DOCX i Markdown.
+Uzupełnij pola w nawiasach przed podpisaniem. Kwota 899 zł nie określa automatycznie statusu VAT, limitów ani czasów reakcji.
+Potwierdź wykonawcę i model współpracy z Kozbud. Wzory nie zostały sprawdzone przez prawnika dla konkretnej transakcji.
+Wariant podstawowej umowy przewiduje licencję. Przeniesienie praw wymaga skoordynowania osobnego wzoru, łańcucha praw i formy podpisu.
+Nie wpisuj haseł lub kluczy API do dokumentów.
+
+01. Oferta wdrożenia — oferta
+02. Umowa wdrożeniowa B2B — umowa-wdrozeniowa
+03. Załącznik: zakres i harmonogram — zakres-prac
+04. Protokół odbioru — protokol-odbioru
+05. Umowa utrzymania i opieki — opieka
+06. Umowa powierzenia danych — powierzenie
+07. Umowa o poufności — NDA — poufnosc
+08. Instrukcja i protokół przekazania — przekazanie
+09. Brief klienta — brief
+10. Informacja dla rozmówców bota AI — informacja-ai
+11. Porozumienie o przeniesieniu praw — przeniesienie-praw
+12. Karta współpracy DAWKOZ–Kozbud — kozbud

@@ -5,6 +5,7 @@ const { renderPage, resolveLocale } = require('./i18n');
 const port = process.env.PORT || 3000;
 const publicRoot = path.join(__dirname, 'public');
 const production = process.env.NODE_ENV === 'production' || Boolean(process.env.RAILWAY_ENVIRONMENT_ID);
+const handlePanel = require('./panel-server')({ production });
 const types = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -58,7 +59,7 @@ const server = http.createServer(async (req, res) => {
     res.end(req.method === 'HEAD' ? undefined : body);
   }
 
-  if (req.method !== 'GET' && req.method !== 'HEAD') {
+  if (!['GET', 'HEAD', 'POST'].includes(req.method)) {
     res.setHeader('Allow', 'GET, HEAD');
     req.resume();
     return send(405, 'Method Not Allowed');
@@ -83,6 +84,13 @@ const server = http.createServer(async (req, res) => {
     // Use the site's known hostname rather than a user-supplied Host header.
     res.setHeader('Location', `https://dawkoz.com${req.url}`);
     return send(308, 'Redirecting to HTTPS');
+  }
+
+  if (urlPath === '/app' || urlPath.startsWith('/app/')) return handlePanel(req, res, urlPath, send);
+  if (req.method === 'POST') {
+    req.resume();
+    res.setHeader('Allow', 'GET, HEAD');
+    return send(405, 'Method Not Allowed');
   }
 
   try {

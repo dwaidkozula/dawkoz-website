@@ -1,6 +1,6 @@
 # DAWKOZ
 
-Strona firmowa obsługiwana przez serwer statyczny Node.js. Wymagany Node.js 20 lub nowszy; brak zależności npm i kroku budowania.
+Strona firmowa z prywatnym panelem dokumentów, obsługiwana przez serwer Node.js. Wymagany Node.js 20 lub nowszy; brak zależności npm i kroku budowania.
 
 ## Wersje językowe
 
@@ -9,6 +9,24 @@ Przełącznik z flagami jest dostępny na stronie głównej i trzech podstronach
 Adres `/?lang=en` otwiera wersję angielską; pozostałe kody to `fr`, `es`, `de`, `no`, `pl`, `pt`, `ru`, `sv`, `uk` i `it`. Domyślny język to polski. Tłumaczenia są renderowane przez serwer, więc odnośniki językowe działają także bez JavaScriptu. Skrypt zapamiętuje wybór w localStorage (`dawkoz-language`), przywraca go podczas kolejnej wizyty i zachowuje bieżącą sekcję przy zmianie języka. Niedostępność localStorage nie blokuje przełączania. Kwoty pozostają w PLN.
 
 `i18n.js` łączy polskie teksty HTML z katalogami `locales/*.json`. Przy zmianie treści należy uaktualnić odpowiadający jej wpis w `pl.json` i pozostałych katalogach, zachowując istniejące klucze. `ui.json` zawiera etykiety funkcji interaktywnych. Dokumenty zachowują status projektu i `noindex` we wszystkich językach. Flagi SVG pochodzą z `country-flag-icons` 1.6.20, na licencji MIT zachowanej w `public/flags/LICENSE.txt`; nie wymagają zależności ani zewnętrznych żądań.
+
+## Prywatny panel dokumentów
+
+Panel jest dostępny pod `/app` (biblioteka po zalogowaniu: `/app/documents`). Zawiera 12 polskich wzorów B2B: ofertę, umowę wdrożeniową, zakres prac, protokół odbioru, umowę opieki, powierzenie danych, NDA, przekazanie systemu, brief, informację dla rozmówców AI, przeniesienie praw i kartę DAWKOZ–Kozbud. Wzory są projektami do dostosowania; nie potwierdzają danych firmy, limitów ani zgody właściciela Kozbud.
+
+### Aktywacja w Railway
+
+W zmiennych **usługi Railway**, która uruchamia tę stronę, ustaw `DAWKOZ_PANEL_PASSWORD` na własne, silne hasło o długości od 16 do 256 znaków i wdroż zmianę. Nie zapisuj hasła w repozytorium ani w dokumentach i nie wysyłaj go w rozmowie. To zmienna aplikacji, nie klucz wysyłany do zewnętrznego dostawcy. Bez niej lub z hasłem krótszym niż 16 znaków logowanie pozostaje wyłączone; dokumenty i API są niedostępne. Publiczna strona działa niezależnie. Zmiana hasła wymaga restartu procesu i unieważnia dotychczasowe sesje.
+
+Panel obsługuje jednego operatora. Sesje są losowe, przechowywane w pamięci procesu, ważne 8 godzin; cookie jest HttpOnly, SameSite=Strict i w produkcji Secure. Wylogowanie unieważnia sesję. Wiele replik wymaga wspólnego magazynu sesji lub przywiązania sesji do instancji. Ograniczanie prób logowania korzysta z adresu połączenia, bez ufania nagłówkom klienta; za proxy może obejmować wspólny adres. Nie należy udostępniać tego hasła klientom jako konta wieloużytkownikowego.
+
+### Korzystanie
+
+Wybierz wzór, uzupełnij pola i pobierz prawdziwy plik DOCX. Przycisk „Drukuj / zapisz PDF” otwiera drukowanie przeglądarki z samym dokumentem, bez panelu. Puste PDF/DOCX oraz ZIP są przygotowane z góry i dostępne po logowaniu. „Zapisz projekt” pobiera JSON; „Wczytaj projekt” przywraca go w panelu. Pola pozostają w pamięci karty, bez automatycznego zapisu w localStorage i bez wysyłania danych klientów na serwer. Pobrane pliki zawierające dane klienta należy chronić na urządzeniu użytkownika.
+
+Źródłem treści jest `documents/catalog.json`. Pliki `documents/generated/` oraz kod i HTML panelu leżą poza `public`; serwer udostępnia je wyłącznie przez wskazane trasy `/app`. Udostępniany bez logowania arkusz CSS nie zawiera dokumentów. API nie przyjmuje danych projektów. Dla publicznej witryny zachowano odrębną politykę CSP i blokadę metod zapisu.
+
+Do odtworzenia pustych PDF/DOCX na maszynie deweloperskiej użyj `python scripts/export-documents.py` (potrzebne `reportlab`, `python-docx` i fonty DejaVu Sans). Gotowe pliki są w repozytorium; aplikacja Node.js nadal nie wymaga zależności npm ani generowania PDF podczas wdrożenia. Po zmianie wzorów odtwórz pliki i sprawdź ich zgodność. Testy obejmują logowanie, zamknięcie dostępu bez konfiguracji, ciasteczka sesji, CSRF, ograniczenie prób, wylogowanie, prywatne pobieranie, integralność katalogu i eksport OOXML.
 
 ## Film demonstracyjny
 

@@ -1,0 +1,1717 @@
+{
+  "version": "1.0",
+  "language": "pl",
+  "notice": "Wzory B2B do uzupełnienia i dostosowania przed podpisaniem. Potwierdź model współpracy z Kozbud, dane stron, ceny i limity. Dokumenty nie zostały zweryfikowane dla konkretnej transakcji przez prawnika.",
+  "fields": {
+    "place": {
+      "id": "place",
+      "label": "Miejscowość podpisania",
+      "group": "Strony",
+      "type": "text",
+      "default": ""
+    },
+    "date": {
+      "id": "date",
+      "label": "Data dokumentu",
+      "group": "Strony",
+      "type": "date",
+      "default": ""
+    },
+    "seller_name": {
+      "id": "seller_name",
+      "label": "Pełna nazwa prawna wykonawcy",
+      "group": "Strony",
+      "type": "text",
+      "default": ""
+    },
+    "seller_address": {
+      "id": "seller_address",
+      "label": "Adres wykonawcy",
+      "group": "Strony",
+      "type": "text",
+      "default": ""
+    },
+    "seller_nip": {
+      "id": "seller_nip",
+      "label": "NIP wykonawcy — potwierdź podmiot",
+      "group": "Strony",
+      "type": "text",
+      "default": "6272742701"
+    },
+    "seller_rep": {
+      "id": "seller_rep",
+      "label": "Osoba reprezentująca wykonawcę i podstawa umocowania",
+      "group": "Strony",
+      "type": "text",
+      "default": ""
+    },
+    "seller_email": {
+      "id": "seller_email",
+      "label": "E-mail wykonawcy",
+      "group": "Strony",
+      "type": "email",
+      "default": "kontakt@dawkoz.com"
+    },
+    "coordinator": {
+      "id": "coordinator",
+      "label": "Koordynator techniczny",
+      "group": "Strony",
+      "type": "text",
+      "default": "Dawid Kozula"
+    },
+    "client_name": {
+      "id": "client_name",
+      "label": "Pełna nazwa zamawiającego",
+      "group": "Strony",
+      "type": "text",
+      "default": ""
+    },
+    "client_address": {
+      "id": "client_address",
+      "label": "Adres zamawiającego",
+      "group": "Strony",
+      "type": "text",
+      "default": ""
+    },
+    "client_nip": {
+      "id": "client_nip",
+      "label": "NIP zamawiającego",
+      "group": "Strony",
+      "type": "text",
+      "default": ""
+    },
+    "client_rep": {
+      "id": "client_rep",
+      "label": "Reprezentant zamawiającego",
+      "group": "Strony",
+      "type": "text",
+      "default": ""
+    },
+    "client_email": {
+      "id": "client_email",
+      "label": "E-mail zamawiającego",
+      "group": "Strony",
+      "type": "email",
+      "default": ""
+    },
+    "reference": {
+      "id": "reference",
+      "label": "Numer projektu / umowy",
+      "group": "Projekt",
+      "type": "text",
+      "default": ""
+    },
+    "project_name": {
+      "id": "project_name",
+      "label": "Nazwa projektu",
+      "group": "Projekt",
+      "type": "text",
+      "default": ""
+    },
+    "scope": {
+      "id": "scope",
+      "label": "Zakres rozwiązania",
+      "group": "Projekt",
+      "type": "textarea",
+      "default": ""
+    },
+    "deliverables": {
+      "id": "deliverables",
+      "label": "Lista rezultatów i plików",
+      "group": "Projekt",
+      "type": "textarea",
+      "default": ""
+    },
+    "exclusions": {
+      "id": "exclusions",
+      "label": "Elementy poza zakresem",
+      "group": "Projekt",
+      "type": "textarea",
+      "default": ""
+    },
+    "integrations": {
+      "id": "integrations",
+      "label": "Integracje i ich zakres",
+      "group": "Projekt",
+      "type": "textarea",
+      "default": ""
+    },
+    "client_materials": {
+      "id": "client_materials",
+      "label": "Materiały, dane i dostępy od klienta",
+      "group": "Projekt",
+      "type": "textarea",
+      "default": ""
+    },
+    "criteria": {
+      "id": "criteria",
+      "label": "Scenariusze i kryteria odbioru",
+      "group": "Projekt",
+      "type": "textarea",
+      "default": ""
+    },
+    "schedule": {
+      "id": "schedule",
+      "label": "Etapy, terminy i zależności",
+      "group": "Projekt",
+      "type": "textarea",
+      "default": ""
+    },
+    "launch": {
+      "id": "launch",
+      "label": "Data / warunki uruchomienia",
+      "group": "Projekt",
+      "type": "textarea",
+      "default": ""
+    },
+    "client_deadline": {
+      "id": "client_deadline",
+      "label": "Termin dostarczenia materiałów",
+      "group": "Projekt",
+      "type": "text",
+      "default": ""
+    },
+    "review_days": {
+      "id": "review_days",
+      "label": "Liczba dni roboczych na testy odbiorowe",
+      "group": "Projekt",
+      "type": "text",
+      "default": ""
+    },
+    "fix_days": {
+      "id": "fix_days",
+      "label": "Termin uzgodnionych poprawek",
+      "group": "Projekt",
+      "type": "text",
+      "default": ""
+    },
+    "channels": {
+      "id": "channels",
+      "label": "Kanały i osoby do uzgodnień",
+      "group": "Projekt",
+      "type": "textarea",
+      "default": ""
+    },
+    "valid_until": {
+      "id": "valid_until",
+      "label": "Ważność oferty do",
+      "group": "Projekt",
+      "type": "date",
+      "default": ""
+    },
+    "business_problem": {
+      "id": "business_problem",
+      "label": "Problem i cel biznesowy",
+      "group": "Projekt",
+      "type": "textarea",
+      "default": ""
+    },
+    "success": {
+      "id": "success",
+      "label": "Sposób oceny efektu",
+      "group": "Projekt",
+      "type": "textarea",
+      "default": ""
+    },
+    "setup_fee": {
+      "id": "setup_fee",
+      "label": "Cena wdrożenia (kwota i waluta)",
+      "group": "Rozliczenia",
+      "type": "text",
+      "default": ""
+    },
+    "price_basis": {
+      "id": "price_basis",
+      "label": "Sposób podania cen",
+      "group": "Rozliczenia",
+      "type": "select",
+      "default": "",
+      "options": [
+        "brutto",
+        "netto; VAT doliczany zgodnie z obowiązującymi przepisami"
+      ]
+    },
+    "vat_clause": {
+      "id": "vat_clause",
+      "label": "Status VAT i sposób fakturowania",
+      "group": "Rozliczenia",
+      "type": "textarea",
+      "default": ""
+    },
+    "deposit": {
+      "id": "deposit",
+      "label": "Kwota zaliczki i termin",
+      "group": "Rozliczenia",
+      "type": "text",
+      "default": ""
+    },
+    "payment_stages": {
+      "id": "payment_stages",
+      "label": "Płatności etapowe i warunki",
+      "group": "Rozliczenia",
+      "type": "textarea",
+      "default": ""
+    },
+    "payment_days": {
+      "id": "payment_days",
+      "label": "Termin zapłaty faktury (dni)",
+      "group": "Rozliczenia",
+      "type": "text",
+      "default": ""
+    },
+    "bank_account": {
+      "id": "bank_account",
+      "label": "Rachunek płatności",
+      "group": "Rozliczenia",
+      "type": "text",
+      "default": ""
+    },
+    "monthly_fee": {
+      "id": "monthly_fee",
+      "label": "Miesięczny abonament (kwota i waluta)",
+      "group": "Opieka",
+      "type": "text",
+      "default": "899,00 zł"
+    },
+    "billing_start": {
+      "id": "billing_start",
+      "label": "Początek naliczania abonamentu",
+      "group": "Opieka",
+      "type": "text",
+      "default": ""
+    },
+    "care_scope": {
+      "id": "care_scope",
+      "label": "Zakres utrzymania i opieki",
+      "group": "Opieka",
+      "type": "textarea",
+      "default": ""
+    },
+    "support_hours": {
+      "id": "support_hours",
+      "label": "Godziny i dni wsparcia",
+      "group": "Opieka",
+      "type": "text",
+      "default": ""
+    },
+    "support_channel": {
+      "id": "support_channel",
+      "label": "Kanał zgłoszeń",
+      "group": "Opieka",
+      "type": "text",
+      "default": "kontakt@dawkoz.com"
+    },
+    "response": {
+      "id": "response",
+      "label": "Czasy reakcji według kategorii zgłoszeń",
+      "group": "Opieka",
+      "type": "textarea",
+      "default": ""
+    },
+    "change_hours": {
+      "id": "change_hours",
+      "label": "Limit drobnych zmian w miesiącu",
+      "group": "Opieka",
+      "type": "text",
+      "default": ""
+    },
+    "minute_limit": {
+      "id": "minute_limit",
+      "label": "Miesięczny limit minut rozmów",
+      "group": "Opieka",
+      "type": "text",
+      "default": ""
+    },
+    "sms_limit": {
+      "id": "sms_limit",
+      "label": "Limit rozliczeniowych części SMS",
+      "group": "Opieka",
+      "type": "text",
+      "default": ""
+    },
+    "usage_alert": {
+      "id": "usage_alert",
+      "label": "Próg powiadomienia o zużyciu",
+      "group": "Opieka",
+      "type": "text",
+      "default": ""
+    },
+    "limit_policy": {
+      "id": "limit_policy",
+      "label": "Działanie po wyczerpaniu pakietu",
+      "group": "Opieka",
+      "type": "textarea",
+      "default": ""
+    },
+    "extra_minute": {
+      "id": "extra_minute",
+      "label": "Stawka za minutę ponad pakiet",
+      "group": "Opieka",
+      "type": "text",
+      "default": ""
+    },
+    "extra_sms": {
+      "id": "extra_sms",
+      "label": "Stawka za część SMS ponad pakiet",
+      "group": "Opieka",
+      "type": "text",
+      "default": ""
+    },
+    "extra_budget": {
+      "id": "extra_budget",
+      "label": "Zatwierdzony budżet dodatkowego zużycia",
+      "group": "Opieka",
+      "type": "text",
+      "default": ""
+    },
+    "maintenance": {
+      "id": "maintenance",
+      "label": "Okna i zasady planowanych prac",
+      "group": "Opieka",
+      "type": "textarea",
+      "default": ""
+    },
+    "notice_period": {
+      "id": "notice_period",
+      "label": "Okres i zasady wypowiedzenia",
+      "group": "Opieka",
+      "type": "textarea",
+      "default": ""
+    },
+    "third_party": {
+      "id": "third_party",
+      "label": "Zewnętrzne usługi, licencje i ich płatnik",
+      "group": "Projekt",
+      "type": "textarea",
+      "default": ""
+    },
+    "acceptance_date": {
+      "id": "acceptance_date",
+      "label": "Data odbioru",
+      "group": "Odbiór",
+      "type": "date",
+      "default": ""
+    },
+    "acceptance_result": {
+      "id": "acceptance_result",
+      "label": "Wynik odbioru",
+      "group": "Odbiór",
+      "type": "select",
+      "default": "",
+      "options": [
+        "Odbiór bez zastrzeżeń",
+        "Odbiór z uzgodnionymi uwagami",
+        "Odmowa odbioru z powodu wskazanych niezgodności"
+      ]
+    },
+    "findings": {
+      "id": "findings",
+      "label": "Wyniki testów i uwagi",
+      "group": "Odbiór",
+      "type": "textarea",
+      "default": ""
+    },
+    "remaining": {
+      "id": "remaining",
+      "label": "Pozostałe działania, odpowiedzialni i terminy",
+      "group": "Odbiór",
+      "type": "textarea",
+      "default": ""
+    },
+    "handover": {
+      "id": "handover",
+      "label": "Przekazane pliki, instrukcje i uprawnienia",
+      "group": "Odbiór",
+      "type": "textarea",
+      "default": ""
+    },
+    "service_start": {
+      "id": "service_start",
+      "label": "Początek opieki po odbiorze",
+      "group": "Odbiór",
+      "type": "text",
+      "default": ""
+    },
+    "accounts": {
+      "id": "accounts",
+      "label": "Wykaz kont, właścicieli i uprawnień — bez haseł",
+      "group": "Przekazanie",
+      "type": "textarea",
+      "default": ""
+    },
+    "access_method": {
+      "id": "access_method",
+      "label": "Bezpieczny sposób przekazania dostępów",
+      "group": "Przekazanie",
+      "type": "textarea",
+      "default": ""
+    },
+    "backup": {
+      "id": "backup",
+      "label": "Kopie zapasowe, retencja i wynik testu odtworzenia",
+      "group": "Przekazanie",
+      "type": "textarea",
+      "default": ""
+    },
+    "runbook": {
+      "id": "runbook",
+      "label": "Instrukcja codziennej obsługi i procedura awaryjna",
+      "group": "Przekazanie",
+      "type": "textarea",
+      "default": ""
+    },
+    "repositories": {
+      "id": "repositories",
+      "label": "Repozytoria, wersje i miejsca przechowywania",
+      "group": "Przekazanie",
+      "type": "textarea",
+      "default": ""
+    },
+    "data_purpose": {
+      "id": "data_purpose",
+      "label": "Cel, charakter i zakres przetwarzania",
+      "group": "Dane osobowe",
+      "type": "textarea",
+      "default": ""
+    },
+    "data_types": {
+      "id": "data_types",
+      "label": "Rodzaje danych osobowych",
+      "group": "Dane osobowe",
+      "type": "textarea",
+      "default": ""
+    },
+    "data_subjects": {
+      "id": "data_subjects",
+      "label": "Kategorie osób",
+      "group": "Dane osobowe",
+      "type": "textarea",
+      "default": ""
+    },
+    "data_duration": {
+      "id": "data_duration",
+      "label": "Czas przetwarzania",
+      "group": "Dane osobowe",
+      "type": "text",
+      "default": ""
+    },
+    "data_regions": {
+      "id": "data_regions",
+      "label": "Lokalizacje i regiony przetwarzania",
+      "group": "Dane osobowe",
+      "type": "textarea",
+      "default": ""
+    },
+    "subprocessors": {
+      "id": "subprocessors",
+      "label": "Podwykonawcy: nazwa, zadanie, kraj i zakres dostępu",
+      "group": "Dane osobowe",
+      "type": "textarea",
+      "default": ""
+    },
+    "transfers": {
+      "id": "transfers",
+      "label": "Transfery poza EOG i zastosowane mechanizmy",
+      "group": "Dane osobowe",
+      "type": "textarea",
+      "default": ""
+    },
+    "security": {
+      "id": "security",
+      "label": "Konkretne środki ochrony danych",
+      "group": "Dane osobowe",
+      "type": "textarea",
+      "default": ""
+    },
+    "breach_contact": {
+      "id": "breach_contact",
+      "label": "Kontakt do zgłoszeń naruszeń",
+      "group": "Dane osobowe",
+      "type": "text",
+      "default": ""
+    },
+    "breach_hours": {
+      "id": "breach_hours",
+      "label": "Maksymalny czas zgłoszenia naruszenia administratorowi (godziny)",
+      "group": "Dane osobowe",
+      "type": "text",
+      "default": ""
+    },
+    "sub_notice": {
+      "id": "sub_notice",
+      "label": "Wyprzedzenie powiadomienia o nowym podwykonawcy (dni)",
+      "group": "Dane osobowe",
+      "type": "text",
+      "default": ""
+    },
+    "data_exit": {
+      "id": "data_exit",
+      "label": "Zwrot / usunięcie danych i kopii po zakończeniu",
+      "group": "Dane osobowe",
+      "type": "textarea",
+      "default": ""
+    },
+    "privacy_url": {
+      "id": "privacy_url",
+      "label": "Adres pełnej informacji o danych",
+      "group": "Dane osobowe",
+      "type": "text",
+      "default": ""
+    },
+    "legal_basis": {
+      "id": "legal_basis",
+      "label": "Podstawa prawna przetwarzania i uzasadnienie",
+      "group": "Dane osobowe",
+      "type": "textarea",
+      "default": ""
+    },
+    "retention": {
+      "id": "retention",
+      "label": "Okresy przechowywania danych i nagrań",
+      "group": "Dane osobowe",
+      "type": "textarea",
+      "default": ""
+    },
+    "recording": {
+      "id": "recording",
+      "label": "Czy rozmowy są nagrywane / transkrybowane?",
+      "group": "Dane osobowe",
+      "type": "select",
+      "default": "",
+      "options": [
+        "Bez nagrywania i zapisu transkrypcji",
+        "Nagrywanie lub zapis transkrypcji według poniższych zasad"
+      ]
+    },
+    "recording_rules": {
+      "id": "recording_rules",
+      "label": "Cel, podstawa i zasady nagrywania / transkrypcji",
+      "group": "Dane osobowe",
+      "type": "textarea",
+      "default": ""
+    },
+    "human_contact": {
+      "id": "human_contact",
+      "label": "Możliwość kontaktu z człowiekiem",
+      "group": "Dane osobowe",
+      "type": "text",
+      "default": ""
+    },
+    "dpo": {
+      "id": "dpo",
+      "label": "Kontakt w sprawach danych / inspektor, jeśli wyznaczony",
+      "group": "Dane osobowe",
+      "type": "text",
+      "default": ""
+    },
+    "nda_purpose": {
+      "id": "nda_purpose",
+      "label": "Cel ujawnienia informacji",
+      "group": "Poufność",
+      "type": "textarea",
+      "default": ""
+    },
+    "nda_duration": {
+      "id": "nda_duration",
+      "label": "Czas zobowiązania do poufności",
+      "group": "Poufność",
+      "type": "text",
+      "default": ""
+    },
+    "nda_exceptions": {
+      "id": "nda_exceptions",
+      "label": "Osoby / podmioty uprawnione do otrzymania informacji",
+      "group": "Poufność",
+      "type": "textarea",
+      "default": ""
+    },
+    "works": {
+      "id": "works",
+      "label": "Dokładne utwory, wersje i autorzy",
+      "group": "Prawa autorskie",
+      "type": "textarea",
+      "default": ""
+    },
+    "rights_payment": {
+      "id": "rights_payment",
+      "label": "Wynagrodzenie za przeniesienie praw",
+      "group": "Prawa autorskie",
+      "type": "text",
+      "default": ""
+    },
+    "rights_moment": {
+      "id": "rights_moment",
+      "label": "Moment skutecznego przeniesienia praw",
+      "group": "Prawa autorskie",
+      "type": "text",
+      "default": ""
+    },
+    "rights_exclusions": {
+      "id": "rights_exclusions",
+      "label": "Wcześniejsze komponenty i licencje osób trzecich",
+      "group": "Prawa autorskie",
+      "type": "textarea",
+      "default": ""
+    },
+    "rights_chain": {
+      "id": "rights_chain",
+      "label": "Podstawa nabycia praw od rzeczywistych autorów",
+      "group": "Prawa autorskie",
+      "type": "textarea",
+      "default": ""
+    },
+    "current_process": {
+      "id": "current_process",
+      "label": "Obecny przebieg pracy",
+      "group": "Brief",
+      "type": "textarea",
+      "default": ""
+    },
+    "volume": {
+      "id": "volume",
+      "label": "Liczba rozmów / zgłoszeń i sezonowość",
+      "group": "Brief",
+      "type": "textarea",
+      "default": ""
+    },
+    "budget": {
+      "id": "budget",
+      "label": "Budżet i oczekiwany termin",
+      "group": "Brief",
+      "type": "text",
+      "default": ""
+    },
+    "risks": {
+      "id": "risks",
+      "label": "Ograniczenia, sytuacje awaryjne i eskalacja",
+      "group": "Brief",
+      "type": "textarea",
+      "default": ""
+    },
+    "internal_basis": {
+      "id": "internal_basis",
+      "label": "Podstawa współpracy Dawida z Kozbud",
+      "group": "Współpraca wewnętrzna",
+      "type": "textarea",
+      "default": ""
+    },
+    "internal_pay": {
+      "id": "internal_pay",
+      "label": "Wynagrodzenie Dawida i sposób rozliczenia",
+      "group": "Współpraca wewnętrzna",
+      "type": "textarea",
+      "default": ""
+    },
+    "internal_approval": {
+      "id": "internal_approval",
+      "label": "Osoba zatwierdzająca oferty i uprawnienia Dawida",
+      "group": "Współpraca wewnętrzna",
+      "type": "textarea",
+      "default": ""
+    }
+  },
+  "templates": [
+    {
+      "id": "oferta",
+      "title": "Oferta wdrożenia",
+      "category": "Sprzedaż",
+      "description": "Oferta dla konkretnego klienta z osobną ceną wdrożenia, abonamentem i limitami.",
+      "version": "1.0",
+      "status": "Projekt do uzgodnienia",
+      "notes": "Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami.",
+      "fields": [
+        "reference",
+        "client_name",
+        "client_address",
+        "client_nip",
+        "seller_name",
+        "seller_address",
+        "seller_nip",
+        "seller_email",
+        "date",
+        "valid_until",
+        "project_name",
+        "business_problem",
+        "success",
+        "scope",
+        "deliverables",
+        "integrations",
+        "exclusions",
+        "schedule",
+        "client_materials",
+        "client_deadline",
+        "launch",
+        "setup_fee",
+        "price_basis",
+        "vat_clause",
+        "deposit",
+        "payment_stages",
+        "payment_days",
+        "monthly_fee",
+        "billing_start",
+        "care_scope",
+        "minute_limit",
+        "sms_limit",
+        "change_hours",
+        "extra_minute",
+        "extra_sms",
+        "limit_policy",
+        "extra_budget",
+        "third_party",
+        "criteria",
+        "channels"
+      ],
+      "sections": [
+        {
+          "title": "Oferta nr {{reference}}",
+          "paragraphs": [
+            "Dla: {{client_name}}, {{client_address}}, NIP {{client_nip}}. Przygotował: {{seller_name}}, {{seller_address}}, NIP {{seller_nip}}, kontakt {{seller_email}}. Data: {{date}}. Oferta ważna do {{valid_until}}."
+          ]
+        },
+        {
+          "title": "Cel projektu",
+          "paragraphs": [
+            "Projekt: {{project_name}}. Problem i cel biznesowy: {{business_problem}}. Oczekiwany efekt i sposób jego oceny: {{success}}. Wskazane efekty są celami projektu; gwarancje mierzalnych wyników wymagają wyraźnego, odrębnego uzgodnienia."
+          ]
+        },
+        {
+          "title": "Proponowane rozwiązanie",
+          "paragraphs": [
+            "Zakres: {{scope}}. Rezultaty: {{deliverables}}. Integracje: {{integrations}}. Poza zakresem: {{exclusions}}."
+          ]
+        },
+        {
+          "title": "Harmonogram i udział klienta",
+          "paragraphs": [
+            "Etapy i terminy: {{schedule}}. Materiały oraz dostępy klienta: {{client_materials}}, termin ich dostarczenia: {{client_deadline}}. Warunki uruchomienia: {{launch}}."
+          ]
+        },
+        {
+          "title": "Wdrożenie i rozliczenie",
+          "paragraphs": [
+            "Wynagrodzenie za wdrożenie: {{setup_fee}}; sposób podania cen: {{price_basis}}. Status VAT i fakturowanie: {{vat_clause}}. Zaliczka: {{deposit}}. Kolejne płatności: {{payment_stages}}. Termin zapłaty faktur: {{payment_days}} dni."
+          ]
+        },
+        {
+          "title": "Abonament i zużycie",
+          "paragraphs": [
+            "Proponowany abonament: {{monthly_fee}} miesięcznie, ceny {{price_basis}}, naliczany od {{billing_start}}. Zakres opieki: {{care_scope}}. Pakiet obejmuje {{minute_limit}} minut rozmów oraz {{sms_limit}} rozliczeniowych części SMS miesięcznie. Koszty AI i telefonii w uzgodnionym scenariuszu mieszczą się w pakiecie. Limity drobnych zmian: {{change_hours}}.",
+            "Stawki ponad pakiet: minuta {{extra_minute}}, część SMS {{extra_sms}}. Zasady po wyczerpaniu limitów: {{limit_policy}}. Zatwierdzony dodatkowy budżet: {{extra_budget}}. Pozostałe usługi i ich płatnik: {{third_party}}. Wdrożenie i większe rozbudowy rozlicza się osobno."
+          ]
+        },
+        {
+          "title": "Dalszy krok",
+          "paragraphs": [
+            "Przed rozpoczęciem prac strony uzgadniają umowę, zakres i zasady odbioru: {{criteria}}. Osoby kontaktowe i kanały: {{channels}}. Oferta nie zastępuje tych ustaleń."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "umowa-wdrozeniowa",
+      "title": "Umowa wdrożeniowa B2B",
+      "category": "Realizacja",
+      "description": "Bazowa umowa na stronę, bota lub automatyzację; szczegóły w załączniku zakresu.",
+      "version": "1.0",
+      "status": "Projekt do uzgodnienia",
+      "notes": "Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami. Wariant podstawowy przewiduje licencję niewyłączną. Do przeniesienia praw użyj osobnego wzoru i zapewnij łańcuch praw od autorów.",
+      "fields": [
+        "place",
+        "date",
+        "seller_name",
+        "seller_address",
+        "seller_nip",
+        "seller_rep",
+        "seller_email",
+        "client_name",
+        "client_address",
+        "client_nip",
+        "client_rep",
+        "client_email",
+        "reference",
+        "project_name",
+        "coordinator",
+        "channels",
+        "scope",
+        "deliverables",
+        "integrations",
+        "exclusions",
+        "schedule",
+        "client_materials",
+        "client_deadline",
+        "launch",
+        "setup_fee",
+        "price_basis",
+        "vat_clause",
+        "deposit",
+        "payment_stages",
+        "payment_days",
+        "bank_account",
+        "third_party",
+        "criteria",
+        "review_days",
+        "fix_days",
+        "notice_period"
+      ],
+      "sections": [
+        {
+          "title": "§ 1. Strony i projekt",
+          "paragraphs": [
+            "Zawarto w {{place}} dnia {{date}} pomiędzy: {{seller_name}}, adres: {{seller_address}}, NIP: {{seller_nip}}, reprezentacja: {{seller_rep}}, e-mail: {{seller_email}}, dalej „Wykonawca”, a {{client_name}}, adres: {{client_address}}, NIP: {{client_nip}}, reprezentacja: {{client_rep}}, e-mail: {{client_email}}, dalej „Zamawiający”.",
+            "Numer umowy: {{reference}}. Projekt: {{project_name}}. Koordynator techniczny: {{coordinator}}. Osoby i kanały uzgodnień: {{channels}}. Koordynacja techniczna nie oznacza sama w sobie prawa do zaciągania zobowiązań w imieniu strony."
+          ]
+        },
+        {
+          "title": "§ 2. Przedmiot i dokumentacja",
+          "paragraphs": [
+            "Wykonawca zobowiązuje się wykonać rozwiązanie opisane w załączniku zakresu, a Zamawiający współdziałać i zapłacić wynagrodzenie. Zakres: {{scope}}. Rezultaty: {{deliverables}}. Integracje: {{integrations}}. Poza zakresem: {{exclusions}}.",
+            "Załącznik zakresu, harmonogram oraz kryteria odbioru są integralną częścią umowy. Uzgodnione zmiany powinny wskazywać zmieniony punkt oraz wpływ na cenę i termin. W razie rozbieżności strony wyjaśniają ją przed wykonaniem spornych prac."
+          ]
+        },
+        {
+          "title": "§ 3. Terminy i współdziałanie",
+          "paragraphs": [
+            "Harmonogram: {{schedule}}. Zamawiający dostarcza {{client_materials}} do {{client_deadline}} oraz zapewnia legalne uprawnienia do przekazanych materiałów i danych. Wykonawca zgłasza braki i przeszkody bez zbędnej zwłoki.",
+            "Wpływ opóźnień, braków materiałów lub zmian na harmonogram strony uzgadniają i dokumentują. Nie uprawnia to do nieuzgodnionego zwiększenia ceny. Warunki uruchomienia produkcyjnego: {{launch}}."
+          ]
+        },
+        {
+          "title": "§ 4. Wynagrodzenie",
+          "paragraphs": [
+            "Wynagrodzenie: {{setup_fee}}, ceny {{price_basis}}. Status VAT i fakturowanie: {{vat_clause}}. Zaliczka: {{deposit}}. Płatności etapowe: {{payment_stages}}. Termin zapłaty: {{payment_days}} dni od prawidłowego udostępnienia faktury, na rachunek {{bank_account}}.",
+            "Usługi zewnętrzne, licencje i ich płatnik: {{third_party}}. Prace poza zakresem wymagają uprzedniego uzgodnienia zakresu, ceny i terminu. Miesięczna opieka wymaga osobnego ustalenia zgodnie z umową utrzymania."
+          ]
+        },
+        {
+          "title": "§ 5. Testy i odbiór",
+          "paragraphs": [
+            "Scenariusze i kryteria odbioru: {{criteria}}. Po przekazaniu do testów Zamawiający ma {{review_days}} dni roboczych na ich sprawdzenie i przekazanie wyników. Uwagi powinny wskazywać konkretną niezgodność z uzgodnionym zakresem.",
+            "Termin uzgodnionych poprawek: {{fix_days}}. Po poprawkach strony potwierdzają wynik testów i podpisują protokół lub składają inne wyraźne potwierdzenie odbioru w uzgodnionym kanale. Sam brak odpowiedzi nie jest odbiorem. Prace dodatkowe odróżnia się od usuwania niezgodności."
+          ]
+        },
+        {
+          "title": "§ 6. Prawa do rezultatów",
+          "paragraphs": [
+            "Po zapłacie wynagrodzenia Wykonawca udziela Zamawiającemu niewyłącznej licencji do rezultatów, do których posiada uprawnienia, bez ograniczeń terytorialnych i na czas nieoznaczony: do utrwalania i zwielokrotniania w pamięci urządzeń, uruchamiania, wyświetlania, udostępniania przez sieć oraz modyfikacji na potrzeby działalności Zamawiającego. Zamawiający może zlecić obsługę i modyfikacje swoim wykonawcom w tym celu, z zachowaniem poufności.",
+            "Wykonawca przekazuje rezultaty i pliki zgodnie z załącznikiem; wcześniejsze komponenty i usługi osób trzecich podlegają wskazanym licencjom. Umowa nie przenosi automatycznie autorskich praw majątkowych. Jeżeli strony chcą przeniesienia, zawierają osobny dokument obejmujący konkretne utwory, pola eksploatacji, wynagrodzenie i wymaganą formę."
+          ]
+        },
+        {
+          "title": "§ 7. Dane, bezpieczeństwo i poufność",
+          "paragraphs": [
+            "Strony ograniczają dostęp do informacji do osób potrzebnych przy realizacji. Informacje niepubliczne wykorzystują wyłącznie do umowy i zabezpieczają przed nieuprawnionym ujawnieniem. Obowiązek nie obejmuje informacji publicznych zgodnie z prawem, pozyskanych legalnie z innego źródła lub niezależnie opracowanych.",
+            "Przed dostępem do danych osobowych strony ustalają role, instrukcje i środki bezpieczeństwa oraz zawierają wymaganą umowę powierzenia. Nagrywanie, transkrypcja i użycie AI wymagają ustalenia rzeczywistych funkcji i informacji dla rozmówców. Haseł i kluczy nie wpisuje się do umowy ani protokołu."
+          ]
+        },
+        {
+          "title": "§ 8. Odpowiedzialność i zakończenie",
+          "paragraphs": [
+            "Strony odpowiadają za niewykonanie lub nienależyte wykonanie zobowiązań na zasadach właściwych przepisów. Nie wyłącza się odpowiedzialności, której ograniczyć nie można. Wykonawca powinien sygnalizować ryzyka usług zewnętrznych i ograniczenia AI; korzystanie z tych narzędzi nie znosi automatycznie jego obowiązków umownych.",
+            "Zasady i okres wypowiedzenia oraz rozliczenia rozpoczętych prac: {{notice_period}}. Przy zakończeniu strony dokumentują faktycznie wykonany zakres, płatności, przekazanie rezultatów oraz zwrot lub usunięcie danych. Zaliczkę rozlicza się względem należnego wynagrodzenia i zasad wynikających z umowy i prawa."
+          ]
+        },
+        {
+          "title": "§ 9. Postanowienia końcowe",
+          "paragraphs": [
+            "Zmiany wymagają co najmniej utrwalenia uzgodnienia w uzgodnionym kanale; czynności wymagające ustawowo szczególnej formy zachowują tę formę. Stosuje się prawo polskie. Spory strony najpierw próbują wyjaśnić polubownie, a następnie kierują do sądu właściwego według przepisów. Postanowienia nie ograniczają bezwzględnie obowiązujących praw Zamawiającego."
+          ]
+        },
+        {
+          "title": "Podpisy",
+          "paragraphs": [
+            "Wykonawca: ____________________     Zamawiający: ____________________"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zakres-prac",
+      "title": "Załącznik: zakres i harmonogram",
+      "category": "Realizacja",
+      "description": "Scenariusze, integracje, materiały, granice zakresu i kryteria odbioru.",
+      "version": "1.0",
+      "status": "Projekt do uzgodnienia",
+      "notes": "",
+      "fields": [
+        "reference",
+        "project_name",
+        "seller_name",
+        "client_name",
+        "date",
+        "business_problem",
+        "scope",
+        "success",
+        "deliverables",
+        "integrations",
+        "repositories",
+        "third_party",
+        "exclusions",
+        "client_materials",
+        "client_deadline",
+        "schedule",
+        "launch",
+        "criteria",
+        "review_days",
+        "fix_days",
+        "data_types",
+        "security",
+        "risks",
+        "channels"
+      ],
+      "sections": [
+        {
+          "title": "Identyfikacja",
+          "paragraphs": [
+            "Załącznik do umowy / oferty {{reference}}. Projekt: {{project_name}}. Wykonawca: {{seller_name}}. Zamawiający: {{client_name}}. Data wersji: {{date}}."
+          ]
+        },
+        {
+          "title": "Cel i zakres",
+          "paragraphs": [
+            "Cel: {{business_problem}}. Funkcje i przebieg działania: {{scope}}. Sposób oceny efektu: {{success}}."
+          ]
+        },
+        {
+          "title": "Rezultaty i integracje",
+          "paragraphs": [
+            "Przekazywane rezultaty: {{deliverables}}. Integracje, kierunki danych i zakres uprawnień: {{integrations}}. Repozytoria / wersje / formaty plików: {{repositories}}. Usługi zewnętrzne, licencje i ich płatnik: {{third_party}}."
+          ]
+        },
+        {
+          "title": "Poza zakresem",
+          "paragraphs": [
+            "Nieobjęte ceną i wymagające osobnego uzgodnienia: {{exclusions}}. Nowe scenariusze, integracje i funkcje są zmianą zakresu, jeżeli nie zostały tu opisane."
+          ]
+        },
+        {
+          "title": "Materiały i terminy",
+          "paragraphs": [
+            "Zamawiający zapewnia {{client_materials}} do {{client_deadline}}. Etapy, osoby odpowiedzialne i terminy: {{schedule}}. Warunki uruchomienia: {{launch}}."
+          ]
+        },
+        {
+          "title": "Odbiór",
+          "paragraphs": [
+            "Scenariusze testowe, dane testowe oraz mierzalne kryteria: {{criteria}}. Czas testów: {{review_days}} dni roboczych. Termin poprawek: {{fix_days}}. Odbiór potwierdza się protokołem lub wyraźnym uzgodnieniem."
+          ]
+        },
+        {
+          "title": "Dane i sytuacje awaryjne",
+          "paragraphs": [
+            "Rodzaje danych: {{data_types}}. Dostępy i zabezpieczenia: {{security}}. Ograniczenia, eskalacja do człowieka i scenariusze awaryjne: {{risks}}. Dane produkcyjne stosuje się w testach tylko przy odpowiednich ustaleniach."
+          ]
+        },
+        {
+          "title": "Zatwierdzenie",
+          "paragraphs": [
+            "Kanały akceptacji i osoby uprawnione: {{channels}}. Wykonawca: ____________________     Zamawiający: ____________________"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "protokol-odbioru",
+      "title": "Protokół odbioru",
+      "category": "Realizacja",
+      "description": "Potwierdzenie testów, usterek, przekazanych elementów i wyniku odbioru.",
+      "version": "1.0",
+      "status": "Projekt do uzgodnienia",
+      "notes": "",
+      "fields": [
+        "reference",
+        "project_name",
+        "seller_name",
+        "client_name",
+        "acceptance_date",
+        "deliverables",
+        "criteria",
+        "findings",
+        "acceptance_result",
+        "remaining",
+        "handover",
+        "access_method",
+        "service_start",
+        "payment_stages"
+      ],
+      "sections": [
+        {
+          "title": "Dane",
+          "paragraphs": [
+            "Umowa / projekt {{reference}}: {{project_name}}. Wykonawca: {{seller_name}}. Zamawiający: {{client_name}}. Data odbioru: {{acceptance_date}}."
+          ]
+        },
+        {
+          "title": "Przedmiot i testy",
+          "paragraphs": [
+            "Odbierane rezultaty: {{deliverables}}. Uzgodnione kryteria: {{criteria}}. Wyniki testów i stwierdzone niezgodności: {{findings}}."
+          ]
+        },
+        {
+          "title": "Wynik odbioru",
+          "paragraphs": [
+            "Decyzja: {{acceptance_result}}. Pozostałe działania, odpowiedzialni i terminy: {{remaining}}. Uwagi wskazane w protokole nie oznaczają rezygnacji z roszczeń wynikających z umowy lub przepisów."
+          ]
+        },
+        {
+          "title": "Przekazanie i obsługa",
+          "paragraphs": [
+            "Przekazane pliki, instrukcje i uprawnienia: {{handover}}. Bezpieczny sposób przekazania dostępów: {{access_method}}. Początek opieki, jeśli uzgodniono: {{service_start}}. Nie zamieszczaj haseł ani kluczy w tym protokole."
+          ]
+        },
+        {
+          "title": "Rozliczenie",
+          "paragraphs": [
+            "Płatności powiązane z wynikiem odbioru: {{payment_stages}}. Protokół nie zmienia samodzielnie ceny ani zakresu umowy, jeżeli strony wyraźnie tego nie uzgodnią."
+          ]
+        },
+        {
+          "title": "Potwierdzenie",
+          "paragraphs": [
+            "Wykonawca: ____________________     Zamawiający: ____________________"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "opieka",
+      "title": "Umowa utrzymania i opieki",
+      "category": "Opieka",
+      "description": "Abonament 899 zł: usługa, opieka, AI, telefonia i SMS w określonym pakiecie.",
+      "version": "1.0",
+      "status": "Projekt do uzgodnienia",
+      "notes": "Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami. Uzupełnij wszystkie limity, czasy reakcji i zasady przekroczeń; sama kwota 899 zł nie określa tych parametrów.",
+      "fields": [
+        "place",
+        "date",
+        "seller_name",
+        "seller_address",
+        "seller_nip",
+        "seller_rep",
+        "seller_email",
+        "client_name",
+        "client_address",
+        "client_nip",
+        "client_rep",
+        "client_email",
+        "reference",
+        "project_name",
+        "billing_start",
+        "coordinator",
+        "channels",
+        "care_scope",
+        "change_hours",
+        "monthly_fee",
+        "price_basis",
+        "vat_clause",
+        "payment_days",
+        "bank_account",
+        "minute_limit",
+        "sms_limit",
+        "scope",
+        "integrations",
+        "limit_policy",
+        "usage_alert",
+        "extra_minute",
+        "extra_sms",
+        "extra_budget",
+        "third_party",
+        "support_channel",
+        "support_hours",
+        "response",
+        "maintenance",
+        "risks",
+        "backup",
+        "accounts",
+        "notice_period",
+        "data_exit",
+        "handover"
+      ],
+      "sections": [
+        {
+          "title": "§ 1. Strony i system",
+          "paragraphs": [
+            "Zawarto w {{place}} dnia {{date}} pomiędzy: {{seller_name}}, adres: {{seller_address}}, NIP: {{seller_nip}}, reprezentacja: {{seller_rep}}, e-mail: {{seller_email}}, dalej „Wykonawca”, a {{client_name}}, adres: {{client_address}}, NIP: {{client_nip}}, reprezentacja: {{client_rep}}, e-mail: {{client_email}}, dalej „Zamawiający”.",
+            "Umowa / system {{reference}}: {{project_name}}. Rozpoczęcie opieki: {{billing_start}}. Koordynator techniczny: {{coordinator}}. Osoby i kanały uzgodnień: {{channels}}. Koordynacja techniczna nie oznacza sama w sobie prawa do zaciągania zobowiązań w imieniu strony."
+          ]
+        },
+        {
+          "title": "§ 2. Zakres abonamentu",
+          "paragraphs": [
+            "Abonament obejmuje korzystanie z systemu, utrzymanie oraz opiekę techniczną w zakresie: {{care_scope}}. Limit drobnych zmian w miesiącu: {{change_hours}}. Nowe funkcje, rozbudowy i integracje poza tym zakresem wycenia się i zatwierdza odrębnie."
+          ]
+        },
+        {
+          "title": "§ 3. Cena i płatność",
+          "paragraphs": [
+            "Miesięczna opłata wynosi {{monthly_fee}}, ceny {{price_basis}}. Status VAT i fakturowanie: {{vat_clause}}. Termin zapłaty faktury: {{payment_days}} dni. Rachunek płatności: {{bank_account}}. Pierwszy i ostatni okres oraz początek naliczania: {{billing_start}}. Jednorazowe wdrożenie nie jest objęte abonamentem."
+          ]
+        },
+        {
+          "title": "§ 4. Pakiet rozmów, AI i SMS",
+          "paragraphs": [
+            "W abonamencie zawarto {{minute_limit}} minut rozmów oraz {{sms_limit}} rozliczeniowych części SMS na miesiąc rozliczeniowy. Koszty AI i telefonii dla uzgodnionego scenariusza mieszczą się w tym pakiecie. Szczegóły scenariusza i integracji: {{scope}}; {{integrations}}.",
+            "Wiadomości długie lub zawierające określone znaki mogą składać się z kilku płatnych części. Pomiar zużycia opiera się na zestawieniach systemu i dostawców, z możliwością wyjaśnienia rozbieżności. Zasady przenoszenia niewykorzystanego pakietu i działania po jego wyczerpaniu: {{limit_policy}}."
+          ]
+        },
+        {
+          "title": "§ 5. Powiadomienia i dodatkowe koszty",
+          "paragraphs": [
+            "Powiadomienie o zbliżaniu się do limitu następuje przy: {{usage_alert}}. Stawki dodatkowego zużycia: minuta {{extra_minute}}, część SMS {{extra_sms}}. Dodatkowe obciążenia wymagają uzgodnionego upoważnienia i mieszczą się w zatwierdzonym budżecie: {{extra_budget}}.",
+            "Pozostałe usługi zewnętrzne i ich płatnik: {{third_party}}. Zmiany ceny, limitów i zakresu wymagają uzgodnienia stron; nie wprowadza się nieuzgodnionych dopłat pod nazwą opieki lub zużycia."
+          ]
+        },
+        {
+          "title": "§ 6. Wsparcie i awarie",
+          "paragraphs": [
+            "Zgłoszenia: {{support_channel}}. Dni i godziny obsługi: {{support_hours}}. Kategorie i czasy reakcji: {{response}}. Czas reakcji oznacza rozpoczęcie obsługi zgłoszenia; termin przywrócenia działania zależy od przyczyny i jest ustalany oraz komunikowany osobno.",
+            "Planowane prace i powiadomienia: {{maintenance}}. Scenariusze awaryjne i przekierowania: {{risks}}. Wyższa dostępność lub obsługa całodobowa wymaga wyraźnego uzgodnienia. Kopie zapasowe, retencja i testy odtworzenia: {{backup}}."
+          ]
+        },
+        {
+          "title": "§ 7. Dostępy i dane",
+          "paragraphs": [
+            "Wykaz kont i uprawnień: {{accounts}}. Role w przetwarzaniu danych oraz niezbędne umowy i upoważnienia ustala się przed dostępem do danych. Zmiana dostawcy lub regionu wymagająca akceptacji nie następuje bez odpowiedniej procedury. Dane nie są wykorzystywane do innych celów bez właściwej podstawy."
+          ]
+        },
+        {
+          "title": "§ 8. Zakończenie i odpowiedzialność",
+          "paragraphs": [
+            "Okres i zasady wypowiedzenia: {{notice_period}}. Zwrot lub usunięcie danych i kopii: {{data_exit}}. Przekazanie kont i dokumentacji: {{handover}}. Strony rozliczają należne opłaty oraz zatwierdzone koszty do dnia zakończenia. Odpowiedzialność wynika z umowy i właściwych przepisów; nie wyłącza się przypadków, których ograniczyć nie można."
+          ]
+        },
+        {
+          "title": "Podpisy",
+          "paragraphs": [
+            "Wykonawca: ____________________     Zamawiający: ____________________"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "powierzenie",
+      "title": "Umowa powierzenia danych",
+      "category": "Ochrona danych",
+      "description": "Wzór z zakresem przetwarzania, dostawcami, incydentami, audytem i usuwaniem.",
+      "version": "1.0",
+      "status": "Projekt do uzgodnienia",
+      "notes": "Stosuj tylko wtedy, gdy faktycznie zachodzi powierzenie. Uzupełnij rzeczywistych podwykonawców i regiony; nie wpisuj automatycznie wszystkich narzędzi z oferty.",
+      "fields": [
+        "place",
+        "date",
+        "client_name",
+        "client_address",
+        "client_nip",
+        "client_rep",
+        "client_email",
+        "seller_name",
+        "seller_address",
+        "seller_nip",
+        "seller_rep",
+        "seller_email",
+        "project_name",
+        "reference",
+        "data_purpose",
+        "data_duration",
+        "data_types",
+        "data_subjects",
+        "data_regions",
+        "security",
+        "subprocessors",
+        "sub_notice",
+        "transfers",
+        "breach_hours",
+        "breach_contact",
+        "data_exit"
+      ],
+      "sections": [
+        {
+          "title": "§ 1. Strony i związek z usługą",
+          "paragraphs": [
+            "Zawarto w {{place}} dnia {{date}}. Administrator: {{client_name}}, {{client_address}}, NIP {{client_nip}}, reprezentacja {{client_rep}}, kontakt {{client_email}}. Podmiot przetwarzający: {{seller_name}}, {{seller_address}}, NIP {{seller_nip}}, reprezentacja {{seller_rep}}, kontakt {{seller_email}}. Umowa dotyczy systemu {{project_name}} i umowy głównej {{reference}}."
+          ]
+        },
+        {
+          "title": "§ 2. Przedmiot, czas i kategorie",
+          "paragraphs": [
+            "Cel, przedmiot, charakter i operacje: {{data_purpose}}. Czas przetwarzania: {{data_duration}}. Rodzaje danych: {{data_types}}. Kategorie osób: {{data_subjects}}. Lokalizacje i regiony: {{data_regions}}. Administrator określa cele i podstawy prawne oraz przekazuje zgodne z prawem instrukcje."
+          ]
+        },
+        {
+          "title": "§ 3. Instrukcje i poufność",
+          "paragraphs": [
+            "Procesor przetwarza dane wyłącznie na udokumentowane polecenie Administratora, w tym co do transferów do państw trzecich, chyba że wymaga tego prawo UE lub państwa członkowskiego. W takim przypadku informuje o obowiązku przed przetwarzaniem, o ile prawo tego nie zabrania.",
+            "Procesor zapewnia, że osoby upoważnione zobowiązano do poufności lub podlegają ustawowemu obowiązkowi. Ogranicza dostępy i informuje niezwłocznie, jeżeli uważa, że instrukcja narusza RODO lub inne przepisy ochrony danych."
+          ]
+        },
+        {
+          "title": "§ 4. Bezpieczeństwo i wsparcie",
+          "paragraphs": [
+            "Procesor wdraża środki wymagane przez art. 32 RODO, odpowiednie do ryzyka: {{security}}. Środki powinny określać kontrolę dostępu, ochronę transmisji i przechowywania, kopie i odtworzenie, logowanie oraz regularne sprawdzanie skuteczności, adekwatnie do faktycznego systemu.",
+            "Uwzględniając charakter przetwarzania i dostępne informacje, pomaga Administratorowi realizować prawa osób oraz obowiązki z art. 32–36 RODO, w tym ocenę skutków, konsultacje, ocenę i zgłaszanie naruszeń. Zapytania osób przekazuje Administratorowi, chyba że otrzyma inne zgodne z prawem instrukcje."
+          ]
+        },
+        {
+          "title": "§ 5. Podwykonawcy i transfery",
+          "paragraphs": [
+            "Administrator udziela ogólnego pisemnego upoważnienia do korzystania z podmiotów wskazanych na liście: {{subprocessors}}. Procesor informuje o planowanym dodaniu lub zastąpieniu podmiotu co najmniej {{sub_notice}} dni wcześniej, umożliwiając Administratorowi sprzeciw. Do czasu rozstrzygnięcia sprzeciwu nie powierza spornemu podmiotowi danych objętych sprzeciwem.",
+            "Na dalszego procesora nakłada te same obowiązki ochrony danych zgodnie z art. 28 RODO. Pozostaje odpowiedzialny wobec Administratora za wykonanie obowiązków przez dalszego procesora. Transfery poza EOG i stosowane podstawy: {{transfers}}. Umowa nie stanowi sama w sobie podstawy transferu do państwa trzeciego."
+          ]
+        },
+        {
+          "title": "§ 6. Incydenty",
+          "paragraphs": [
+            "Procesor powiadamia Administratora bez zbędnej zwłoki po stwierdzeniu naruszenia, nie później niż w ciągu {{breach_hours}} godzin, na {{breach_contact}}. Przekazuje znane okoliczności, kategorie i przybliżoną liczbę osób oraz wpisów, konsekwencje, środki zaradcze i kontakt do osoby obsługującej incydent.",
+            "Brak wszystkich informacji nie opóźnia pierwszego powiadomienia; informacje są uzupełniane. Procesor zabezpiecza dowody i współpracuje przy ograniczaniu skutków. Administrator dokonuje własnej oceny obowiązku zawiadomienia organu i osób."
+          ]
+        },
+        {
+          "title": "§ 7. Weryfikacja i zakończenie",
+          "paragraphs": [
+            "Procesor udostępnia informacje niezbędne do wykazania zgodności i umożliwia audyty, w tym inspekcje, prowadzone przez Administratora lub upoważnionego audytora, oraz współpracuje przy nich. Uzgodnienia organizacyjne audytu nie mogą pozbawiać Administratora tego prawa.",
+            "Po zakończeniu świadczenia usług Procesor, według wyboru Administratora, usuwa lub zwraca dane oraz usuwa istniejące kopie, chyba że prawo wymaga ich przechowywania. Szczegółowe terminy, kopie zapasowe i potwierdzenie wykonania: {{data_exit}}. Zachowana ustawowo część podlega ochronie i ograniczeniu celów."
+          ]
+        },
+        {
+          "title": "§ 8. Postanowienia końcowe",
+          "paragraphs": [
+            "Prawa i obowiązki Administratora obejmują zgodne z prawem instrukcje, uzgodnienie zakresu oraz kontrolę. W zakresie przetwarzania niniejsza umowa ma pierwszeństwo przed sprzecznymi ustaleniami operacyjnymi. Nie ogranicza uprawnień osób ani obowiązków z RODO. Zmiany dokumentuje się na piśmie, również elektronicznie zgodnie z art. 28 ust. 9 RODO."
+          ]
+        },
+        {
+          "title": "Podpisy",
+          "paragraphs": [
+            "Administrator: ____________________     Procesor: ____________________"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "poufnosc",
+      "title": "Umowa o poufności — NDA",
+      "category": "Ochrona danych",
+      "description": "Dwustronna poufność informacji handlowych, technicznych i projektowych.",
+      "version": "1.0",
+      "status": "Projekt do uzgodnienia",
+      "notes": "Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami.",
+      "fields": [
+        "place",
+        "date",
+        "seller_name",
+        "seller_address",
+        "seller_nip",
+        "seller_rep",
+        "seller_email",
+        "client_name",
+        "client_address",
+        "client_nip",
+        "client_rep",
+        "client_email",
+        "nda_purpose",
+        "reference",
+        "nda_exceptions",
+        "nda_duration"
+      ],
+      "sections": [
+        {
+          "title": "§ 1. Strony",
+          "paragraphs": [
+            "Zawarto w {{place}} dnia {{date}} pomiędzy: {{seller_name}}, adres: {{seller_address}}, NIP: {{seller_nip}}, reprezentacja: {{seller_rep}}, e-mail: {{seller_email}}, dalej „Wykonawca”, a {{client_name}}, adres: {{client_address}}, NIP: {{client_nip}}, reprezentacja: {{client_rep}}, e-mail: {{client_email}}, dalej „Zamawiający”.",
+            "Cel ujawnienia i współpracy: {{nda_purpose}}. Projekt / numer: {{reference}}."
+          ]
+        },
+        {
+          "title": "§ 2. Informacje poufne",
+          "paragraphs": [
+            "Poufne są niepubliczne informacje przekazane w związku z celem umowy, których poufny charakter oznaczono lub wynika z ich treści i okoliczności, w szczególności dokumentacja, kod, scenariusze, ceny, procesy i dane dostępowe. Każda strona może być ujawniającą i otrzymującą."
+          ]
+        },
+        {
+          "title": "§ 3. Obowiązki",
+          "paragraphs": [
+            "Otrzymujący wykorzystuje informacje wyłącznie do celu umowy, chroni je z należytą starannością i udostępnia tylko osobom potrzebującym dostępu, objętym odpowiednim obowiązkiem poufności. Uzgodnione osoby i podmioty: {{nda_exceptions}}. Nie ujawnia informacji innym bez zgody ujawniającego."
+          ]
+        },
+        {
+          "title": "§ 4. Wyjątki i wymagane ujawnienie",
+          "paragraphs": [
+            "Poufność nie obejmuje informacji publicznych bez naruszenia obowiązku, legalnie znanych wcześniej, legalnie uzyskanych bez ograniczeń od osoby trzeciej lub niezależnie opracowanych. Otrzymujący powinien móc wykazać zastosowanie wyjątku.",
+            "Jeśli ujawnienia wymaga prawo lub uprawniony organ, strona ujawnia tylko wymagany zakres i, o ile prawo pozwala, wcześniej informuje drugą stronę."
+          ]
+        },
+        {
+          "title": "§ 5. Incydent i zakończenie",
+          "paragraphs": [
+            "O nieuprawnionym ujawnieniu strona zawiadamia drugą bez zbędnej zwłoki i współpracuje przy ograniczaniu skutków. Na żądanie zwraca lub usuwa informacje, z uwzględnieniem obowiązków ustawowych i koniecznego zabezpieczenia roszczeń; zachowana część pozostaje chroniona."
+          ]
+        },
+        {
+          "title": "§ 6. Czas i odpowiedzialność",
+          "paragraphs": [
+            "Czas obowiązywania poufności: {{nda_duration}}. Ochrona tajemnicy przedsiębiorstwa i danych osobowych wynikająca z przepisów obowiązuje niezależnie. Odpowiedzialność następuje na zasadach prawa; wzór nie wprowadza automatycznej kary umownej ani przeniesienia praw do informacji. Umowa o poufności nie zastępuje powierzenia danych."
+          ]
+        },
+        {
+          "title": "Podpisy",
+          "paragraphs": [
+            "Wykonawca: ____________________     Zamawiający: ____________________"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "przekazanie",
+      "title": "Instrukcja i protokół przekazania",
+      "category": "Realizacja",
+      "description": "Kontrola kont, repozytoriów, kopii, instrukcji i bezpiecznego przekazania.",
+      "version": "1.0",
+      "status": "Projekt do uzgodnienia",
+      "notes": "",
+      "fields": [
+        "project_name",
+        "reference",
+        "date",
+        "seller_name",
+        "coordinator",
+        "client_name",
+        "handover",
+        "repositories",
+        "third_party",
+        "accounts",
+        "access_method",
+        "runbook",
+        "risks",
+        "support_channel",
+        "care_scope",
+        "backup",
+        "data_exit",
+        "findings",
+        "remaining"
+      ],
+      "sections": [
+        {
+          "title": "Identyfikacja",
+          "paragraphs": [
+            "Projekt {{project_name}}, numer {{reference}}, data {{date}}. Przekazuje: {{seller_name}}, koordynator {{coordinator}}. Odbiera: {{client_name}}."
+          ]
+        },
+        {
+          "title": "Rezultaty i wersje",
+          "paragraphs": [
+            "Przekazywane elementy: {{handover}}. Repozytoria, wersje, pliki i miejsca przechowywania: {{repositories}}. Zależności i licencje: {{third_party}}."
+          ]
+        },
+        {
+          "title": "Konta i dostęp",
+          "paragraphs": [
+            "Wykaz kont, właścicieli i uprawnień: {{accounts}}. Sposób bezpiecznego przekazania: {{access_method}}. Potwierdź działanie dostępu po stronie klienta, 2FA, kody odzyskiwania i odebranie niepotrzebnych uprawnień. Nie zapisuj w dokumencie haseł, tokenów, kluczy API ani kodów odzyskiwania."
+          ]
+        },
+        {
+          "title": "Obsługa i awarie",
+          "paragraphs": [
+            "Instrukcja codzienna, aktualizacje, kontrola zgłoszeń i postępowanie awaryjne: {{runbook}}. Ryzyka i eskalacja do człowieka: {{risks}}. Kontakt i zakres wsparcia: {{support_channel}}; {{care_scope}}."
+          ]
+        },
+        {
+          "title": "Kopie i dane",
+          "paragraphs": [
+            "Kopie, retencja i udokumentowany wynik testu odtworzenia: {{backup}}. Postępowanie z danymi i kopiami po przekazaniu: {{data_exit}}. Potwierdź, które dostępy pozostają do opieki i na jakiej podstawie."
+          ]
+        },
+        {
+          "title": "Potwierdzenie i zaległe działania",
+          "paragraphs": [
+            "Uwagi i wynik sprawdzenia: {{findings}}. Pozostałe zadania, odpowiedzialni i terminy: {{remaining}}. Przekazujący: ____________________     Odbierający: ____________________"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "brief",
+      "title": "Brief klienta",
+      "category": "Sprzedaż",
+      "description": "Pytania przed wyceną: proces, narzędzia, wolumen, dane i oczekiwany efekt.",
+      "version": "1.0",
+      "status": "Projekt do uzgodnienia",
+      "notes": "",
+      "fields": [
+        "client_name",
+        "client_nip",
+        "client_rep",
+        "client_email",
+        "project_name",
+        "date",
+        "business_problem",
+        "current_process",
+        "success",
+        "volume",
+        "integrations",
+        "client_materials",
+        "scope",
+        "exclusions",
+        "risks",
+        "data_types",
+        "data_subjects",
+        "recording",
+        "support_hours",
+        "dpo",
+        "budget",
+        "channels"
+      ],
+      "sections": [
+        {
+          "title": "Klient i kontakt",
+          "paragraphs": [
+            "Firma: {{client_name}}, NIP {{client_nip}}. Osoba kontaktowa: {{client_rep}}, e-mail {{client_email}}. Projekt: {{project_name}}. Data: {{date}}."
+          ]
+        },
+        {
+          "title": "Co chcesz usprawnić?",
+          "paragraphs": [
+            "Problem i cel: {{business_problem}}. Obecny przebieg pracy, osoby i przekazywanie informacji: {{current_process}}. Oczekiwany efekt i sposób oceny: {{success}}."
+          ]
+        },
+        {
+          "title": "Skala i narzędzia",
+          "paragraphs": [
+            "Miesięczna liczba rozmów, minut i zgłoszeń, długość rozmów oraz sezonowość: {{volume}}. Obecne narzędzia i oczekiwane integracje: {{integrations}}. Dostępne materiały i dostępy: {{client_materials}}."
+          ]
+        },
+        {
+          "title": "Wymagania i ograniczenia",
+          "paragraphs": [
+            "Oczekiwane funkcje: {{scope}}. Elementy poza projektem: {{exclusions}}. Sytuacje awaryjne, niedozwolone działania automatyczne i eskalacja do człowieka: {{risks}}."
+          ]
+        },
+        {
+          "title": "Dane i obsługa",
+          "paragraphs": [
+            "Rodzaje danych: {{data_types}}. Kategorie osób: {{data_subjects}}. Nagrywanie i transkrypcja: {{recording}}. Oczekiwane godziny wsparcia: {{support_hours}}. Kontakt w sprawach danych: {{dpo}}."
+          ]
+        },
+        {
+          "title": "Budżet i terminy",
+          "paragraphs": [
+            "Budżet, waluta i termin: {{budget}}. Osoby decyzyjne i kanały uzgodnień: {{channels}}. Brief nie jest zamówieniem ani zgodą na dostęp do danych lub systemów."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "informacja-ai",
+      "title": "Informacja dla rozmówców bota AI",
+      "category": "Ochrona danych",
+      "description": "Roboczy komunikat AI i informacja o danych do dostosowania przez administratora.",
+      "version": "1.0",
+      "status": "Projekt do uzgodnienia",
+      "notes": "Wzór dla administratora danych rozmówców, a nie automatycznie dla DAWKOZ. Wymaga dopasowania do działania systemu, zwłaszcza nagrywania, podstaw prawnych i faktycznych odbiorców.",
+      "fields": [
+        "client_name",
+        "client_address",
+        "client_email",
+        "dpo",
+        "project_name",
+        "date",
+        "data_purpose",
+        "human_contact",
+        "privacy_url",
+        "recording",
+        "recording_rules",
+        "data_types",
+        "data_subjects",
+        "legal_basis",
+        "subprocessors",
+        "data_regions",
+        "transfers",
+        "retention",
+        "risks"
+      ],
+      "sections": [
+        {
+          "title": "Dane administratora",
+          "paragraphs": [
+            "Administrator: {{client_name}}, {{client_address}}, kontakt {{client_email}}. Kontakt dotyczący danych / inspektor, jeśli wyznaczony: {{dpo}}. System: {{project_name}}. Data wersji {{date}}."
+          ]
+        },
+        {
+          "title": "Przykładowy początek rozmowy",
+          "paragraphs": [
+            "Dzień dobry. Rozmawiasz z automatycznym asystentem AI firmy {{client_name}}. Pomagam w: {{data_purpose}}. Kontakt z człowiekiem: {{human_contact}}. Informacje o danych są dostępne pod adresem {{privacy_url}}."
+          ]
+        },
+        {
+          "title": "Nagrywanie i transkrypcja",
+          "paragraphs": [
+            "Ustalony wariant: {{recording}}. Faktyczny cel, podstawa, zakres i sposób informowania przed zapisem: {{recording_rules}}. Komunikat o nagrywaniu lub zapisie transkrypcji trzeba dostosować do tego wariantu i przekazać przed rozpoczęciem objętego nim przetwarzania. Sama informacja o AI nie zastępuje informacji o nagrywaniu."
+          ]
+        },
+        {
+          "title": "Cel, zakres i podstawa prawna",
+          "paragraphs": [
+            "Cel i charakter: {{data_purpose}}. Dane: {{data_types}}. Kategorie osób: {{data_subjects}}. Podstawa prawna i uzasadnienie: {{legal_basis}}. Nie zakłada się automatycznie zgody jako podstawy; administrator dobiera ją do faktycznego celu."
+          ]
+        },
+        {
+          "title": "Odbiorcy, transfery i retencja",
+          "paragraphs": [
+            "Rzeczywiści dostawcy i ich role: {{subprocessors}}. Lokalizacje: {{data_regions}}. Ewentualne transfery poza EOG i zabezpieczenia: {{transfers}}. Okresy przechowywania: {{retention}}."
+          ]
+        },
+        {
+          "title": "Prawa i kontakt",
+          "paragraphs": [
+            "Na zasadach właściwych przepisów przysługują prawa dostępu, sprostowania, usunięcia, ograniczenia, a w odpowiednich przypadkach przenoszenia i sprzeciwu. Gdy podstawą jest zgoda, można ją wycofać bez wpływu na wcześniejszą legalność. Można złożyć skargę do Prezesa UODO. Żądania: {{dpo}}.",
+            "Pełna informacja powinna także określać, czy podanie danych jest wymagane i skutki odmowy oraz czy występuje zautomatyzowane podejmowanie decyzji o istotnych skutkach, wraz z wymaganym wyjaśnieniem. Faktyczny proces i eskalacja: {{risks}}. Pełna informacja: {{privacy_url}}."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "przeniesienie-praw",
+      "title": "Porozumienie o przeniesieniu praw",
+      "category": "Formalności",
+      "description": "Opcjonalny załącznik: konkretne utwory, prawa, wynagrodzenie i forma podpisu.",
+      "version": "1.0",
+      "status": "Projekt do uzgodnienia",
+      "notes": "Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami. Przed użyciem potwierdź łańcuch praw i zgodność wykazu z faktycznymi rezultatami. Jest to alternatywa wymagająca skoordynowania z licencją w umowie głównej.",
+      "fields": [
+        "place",
+        "date",
+        "seller_name",
+        "seller_address",
+        "seller_nip",
+        "seller_rep",
+        "seller_email",
+        "client_name",
+        "client_address",
+        "client_nip",
+        "client_rep",
+        "client_email",
+        "reference",
+        "project_name",
+        "works",
+        "rights_chain",
+        "rights_exclusions",
+        "deliverables",
+        "handover",
+        "rights_payment",
+        "price_basis",
+        "rights_moment",
+        "payment_stages"
+      ],
+      "sections": [
+        {
+          "title": "§ 1. Strony i utwory",
+          "paragraphs": [
+            "Zawarto w {{place}} dnia {{date}} pomiędzy: {{seller_name}}, adres: {{seller_address}}, NIP: {{seller_nip}}, reprezentacja: {{seller_rep}}, e-mail: {{seller_email}}, dalej „Wykonawca”, a {{client_name}}, adres: {{client_address}}, NIP: {{client_nip}}, reprezentacja: {{client_rep}}, e-mail: {{client_email}}, dalej „Zamawiający”.",
+            "Dotyczy umowy {{reference}}, projekt {{project_name}}. Dokładny wykaz utworów, wersji i autorów: {{works}}. Dokumentowana podstawa nabycia praw od autorów: {{rights_chain}}."
+          ]
+        },
+        {
+          "title": "§ 2. Oświadczenia i wyłączenia",
+          "paragraphs": [
+            "Wykonawca przenosi wyłącznie prawa, które mu przysługują i które może przenieść. Wyłączone wcześniejsze komponenty, materiały i prawa osób trzecich wraz z licencjami: {{rights_exclusions}}. Zapłata lub wystawienie faktury bez odpowiedniego rozporządzenia prawami nie wystarcza do ich przeniesienia."
+          ]
+        },
+        {
+          "title": "§ 3. Pola eksploatacji",
+          "paragraphs": [
+            "Dla programów komputerowych przeniesienie obejmuje: trwałe lub czasowe zwielokrotnianie w całości lub części dowolnymi środkami i w dowolnej formie, w tym niezbędne do wprowadzania, wyświetlania, stosowania, przekazywania i przechowywania; tłumaczenie, przystosowywanie, zmiany układu i inne modyfikacje; rozpowszechnianie programu lub jego kopii, w tym użyczenie lub najem.",
+            "Dla innych utworów objętych wykazem obejmuje: utrwalanie i zwielokrotnianie techniką cyfrową, drukarską i reprograficzną; wprowadzanie do pamięci urządzeń; obrót oryginałem lub egzemplarzami, w tym wprowadzanie do obrotu, użyczenie i najem; publiczne wyświetlanie i udostępnianie w sieci w miejscu i czasie wybranym przez odbiorcę. Zakres jest bez ograniczeń terytorialnych i czasowych w granicach okresu ochrony."
+          ]
+        },
+        {
+          "title": "§ 4. Opracowania i materiały",
+          "paragraphs": [
+            "W zakresie posiadanych uprawnień Wykonawca zezwala na wykonywanie i korzystanie z opracowań oraz na rozporządzanie nimi na wskazanych polach, z prawem udzielania dalszych zezwoleń. Autorskie prawa osobiste pozostają przy autorach. Podstawa zgód autorów i zakres materiałów źródłowych muszą wynikać z wykazu i łańcucha praw.",
+            "Pliki, źródła i dokumentacja do przekazania: {{deliverables}}. Sposób przekazania: {{handover}}."
+          ]
+        },
+        {
+          "title": "§ 5. Wynagrodzenie i moment",
+          "paragraphs": [
+            "Wynagrodzenie za opisane przeniesienie: {{rights_payment}}, ceny {{price_basis}}. Moment skutecznego przejścia praw: {{rights_moment}}. Pozostałe rozliczenia: {{payment_stages}}."
+          ]
+        },
+        {
+          "title": "§ 6. Forma",
+          "paragraphs": [
+            "Przeniesienie autorskich praw majątkowych wymaga formy pisemnej pod rygorem nieważności. Strony podpisują dokument własnoręcznie albo kwalifikowanymi podpisami elektronicznymi. Zwykły e-mail, skan podpisu lub zwykły podpis elektroniczny nie zastępuje tej formy. Każda strona zachowuje odpowiedni oryginał lub dokument z kwalifikowanymi podpisami."
+          ]
+        },
+        {
+          "title": "Podpisy",
+          "paragraphs": [
+            "Wykonawca: ____________________     Zamawiający: ____________________"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kozbud",
+      "title": "Karta współpracy DAWKOZ–Kozbud",
+      "category": "Formalności",
+      "description": "Wewnętrzna karta decyzji o stronach umów, fakturach i wynagrodzeniu Dawida.",
+      "version": "1.0",
+      "status": "Projekt do uzgodnienia",
+      "notes": "Nie zakłada zgody właściciela ani pełnych danych firmy. Uzupełnij je zgodnie z rzeczywistymi ustaleniami; ta karta porządkuje decyzje i nie zastępuje właściwych umów.",
+      "fields": [
+        "seller_name",
+        "seller_address",
+        "seller_nip",
+        "seller_rep",
+        "coordinator",
+        "date",
+        "internal_approval",
+        "internal_basis",
+        "internal_pay",
+        "third_party",
+        "rights_chain",
+        "security",
+        "accounts",
+        "care_scope",
+        "notice_period",
+        "handover",
+        "vat_clause"
+      ],
+      "sections": [
+        {
+          "title": "Status i dane",
+          "paragraphs": [
+            "Projekt do uzgodnienia z właścicielem Kozbud i księgowością. Firma: {{seller_name}}, {{seller_address}}, NIP {{seller_nip}}, reprezentacja {{seller_rep}}. Realizator techniczny: {{coordinator}}. Data rozmowy: {{date}}."
+          ]
+        },
+        {
+          "title": "Proponowany model",
+          "paragraphs": [
+            "Jeżeli Kozbud ma być sprzedawcą wskazanym na fakturze, proponowany model przewiduje, że to ten podmiot zawiera umowę, otrzymuje zapłatę i odpowiada wobec klienta, a Dawid wykonuje prace na odrębnie ustalonej podstawie. Zgoda i zakres umocowania: {{internal_approval}}. Samo wystawianie faktur nie określa podstawy pracy ani wynagrodzenia Dawida."
+          ]
+        },
+        {
+          "title": "Praca i rozliczenia",
+          "paragraphs": [
+            "Podstawa współpracy: {{internal_basis}}. Wynagrodzenie Dawida, moment nabycia prawa do wypłaty, termin oraz ryzyko braku zapłaty klienta: {{internal_pay}}. Budżety i płatnik usług: {{third_party}}."
+          ]
+        },
+        {
+          "title": "Prawa, dane i odpowiedzialność",
+          "paragraphs": [
+            "Łańcuch praw do kodu i materiałów: {{rights_chain}}. Zasady dostępu do danych i kont: {{security}}; {{accounts}}. Zakres prac i obsługi reklamacji: {{care_scope}}. Zakończenie oraz przekazanie trwających projektów: {{notice_period}}; {{handover}}."
+          ]
+        },
+        {
+          "title": "Do potwierdzenia z księgowością",
+          "paragraphs": [
+            "Potwierdź właściwą podstawę pracy, dokumentację wypłat, podatki i składki, ewentualny status osoby współpracującej przy pomocy w firmie rodzica oraz wpływ wspólnego gospodarstwa domowego. Zweryfikuj dane rejestrowe, zakres usług i status VAT: {{vat_clause}}. Karta nie jest umową o pracę, zleceniem ani inną podstawą wypłat."
+          ]
+        },
+        {
+          "title": "Potwierdzenie kierunku",
+          "paragraphs": [
+            "Dawid: ____________________     Właściciel / reprezentant Kozbud: ____________________"
+          ]
+        }
+      ]
+    }
+  ]
+}
