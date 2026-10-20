@@ -149,7 +149,7 @@
   "h147": "MODELO SENCILLO",
   "h148": "implementación + suscripción",
   "h149": "Solicitar presupuesto",
-  "h150": "Los importes son precios iniciales. El presupuesto final se acuerda individualmente antes de comenzar.",
+  "h150": "Los importes «desde» son precios iniciales. El alcance, los límites y la facturación del uso adicional se acuerdan en la oferta antes del trabajo.",
   "h151": "Webs, automatizaciones y soluciones a medida",
   "h152": "Web empresarial",
   "h153": "Presencia profesional en internet y presentación clara de tus servicios.",
@@ -351,5 +351,11 @@
   "d022": "Kozbud puede recibir los datos necesarios para facturar. Acceder al sistema exige acordar por separado finalidad, alcance y función.",
   "d023": "La identidad completa de Kozbud y las funciones contractuales y de tratamiento reales de Kozbud y Dawid Kozula siguen pendientes.",
   "d024": "6. Alcance del documento",
-  "d025": "Este texto describe acuerdos necesarios. No es un contrato de encargo ni sustituye documentación del sistema o información a las personas afectadas."
+  "d025": "Este texto describe acuerdos necesarios. No es un contrato de encargo ni sustituye documentación del sistema o información a las personas afectadas.",
+  "pricing.combo_price": "899 PLN",
+  "pricing.care_included": "Soporte técnico incluido en la suscripción",
+  "pricing.usage_included": "IA, telefonía y SMS dentro de los límites acordados",
+  "pricing.other_care": "El soporte desde 400 PLN/mes se aplica a webs, automatizaciones y otras implementaciones a medida. Ya está incluido en la suscripción Bot + centralita.",
+  "pricing.bundle_faq_question": "¿Qué incluye la suscripción de 899 PLN al mes?",
+  "pricing.bundle_faq_answer": "La suscripción Bot + centralita incluye el uso del sistema, mantenimiento y soporte técnico, además de costes de IA, telefonía y SMS dentro de los límites acordados. Los límites de llamadas y SMS, el soporte y las tarifas por uso adicional se especifican en la oferta antes del lanzamiento. La implementación inicial y las ampliaciones importantes se facturan por separado."
 }

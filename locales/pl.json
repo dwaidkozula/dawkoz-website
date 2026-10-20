@@ -149,7 +149,7 @@
   "h147": "PROSTY MODEL",
   "h148": "wdrożenie + abonament",
   "h149": "Poproś o wycenę",
-  "h150": "Podane kwoty są cenami początkowymi. Ostateczna wycena jest ustalana indywidualnie przed rozpoczęciem realizacji.",
+  "h150": "Kwoty „od” są cenami początkowymi. Zakres, limity oraz zasady rozliczania dodatkowego zużycia ustalamy w ofercie przed rozpoczęciem realizacji.",
   "h151": "Strony, automatyzacje i indywidualne rozwiązania",
   "h152": "Strona firmowa",
   "h153": "Profesjonalna obecność w internecie i czytelna prezentacja oferty.",
@@ -351,5 +351,11 @@
   "d022": "Kozbud może otrzymać dane rozliczeniowe niezbędne do wystawienia faktury. Ewentualny dostęp do danych w systemie wymaga osobnego ustalenia celu, zakresu i właściwej roli tej firmy.",
   "d023": "Pełna nazwa i adres Kozbud oraz rzeczywiste role Dawida Kozuli i Kozbud w umowie i przetwarzaniu danych pozostają do potwierdzenia.",
   "d024": "6. Zakres tego dokumentu",
-  "d025": "Ta informacja opisuje, co trzeba uzgodnić przy wdrożeniu. Nie jest umową powierzenia i nie zastępuje dokumentacji konkretnego systemu ani informacji przekazywanych osobom, których dane będą przetwarzane."
+  "d025": "Ta informacja opisuje, co trzeba uzgodnić przy wdrożeniu. Nie jest umową powierzenia i nie zastępuje dokumentacji konkretnego systemu ani informacji przekazywanych osobom, których dane będą przetwarzane.",
+  "pricing.combo_price": "899 zł",
+  "pricing.care_included": "Opieka techniczna w abonamencie",
+  "pricing.usage_included": "AI, telefonia i SMS w uzgodnionych limitach",
+  "pricing.other_care": "Opieka od 400 zł/mies. dotyczy stron, automatyzacji i innych indywidualnych wdrożeń. W pakiecie Bot + centrala opieka jest już w abonamencie.",
+  "pricing.bundle_faq_question": "Co obejmuje abonament 899 zł miesięcznie?",
+  "pricing.bundle_faq_answer": "Abonament Bot + centrala obejmuje korzystanie z systemu, utrzymanie i opiekę techniczną oraz koszty AI, telefonii i SMS w uzgodnionych limitach. Limity rozmów i SMS, zakres opieki oraz stawki za dodatkowe zużycie określamy w ofercie przed uruchomieniem. Jednorazowe wdrożenie i większe rozbudowy rozliczamy osobno."
 }

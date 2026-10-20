@@ -149,7 +149,7 @@
   "h147": "A SIMPLE MODEL",
   "h148": "deployment + subscription",
   "h149": "Request a quote",
-  "h150": "These are starting prices. The final quote is agreed individually before work begins.",
+  "h150": "Amounts marked “from” are starting prices. Scope, limits and additional usage billing terms are agreed in the offer before work begins.",
   "h151": "Websites, automations and custom solutions",
   "h152": "Business website",
   "h153": "A professional online presence and a clear presentation of your services.",
@@ -351,5 +351,11 @@
   "d022": "Kozbud may receive billing data necessary for invoices. Any system data access requires separate agreement on its purpose, scope and the company's role.",
   "d023": "Kozbud's full name and address and Dawid Kozula's and Kozbud's actual contractual and data processing roles remain to be confirmed.",
   "d024": "6. Scope of this document",
-  "d025": "This information outlines deployment arrangements. It is not a data processing agreement and does not replace system-specific documentation or notices to people whose data will be processed."
+  "d025": "This information outlines deployment arrangements. It is not a data processing agreement and does not replace system-specific documentation or notices to people whose data will be processed.",
+  "pricing.combo_price": "899 PLN",
+  "pricing.care_included": "Technical support included in the subscription",
+  "pricing.usage_included": "AI, telephony and SMS within agreed limits",
+  "pricing.other_care": "Support from 400 PLN/month applies to websites, automations and other bespoke deployments. Support is already included in the Bot + phone system subscription.",
+  "pricing.bundle_faq_question": "What does the 899 PLN monthly subscription include?",
+  "pricing.bundle_faq_answer": "The Bot + phone system subscription includes system use, maintenance and technical support, plus AI, telephony and SMS costs within agreed limits. Call and SMS allowances, support scope and additional usage rates are specified in the offer before launch. One-off deployment and major extensions are billed separately."
 }

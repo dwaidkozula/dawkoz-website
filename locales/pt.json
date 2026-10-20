@@ -149,7 +149,7 @@
   "h147": "MODELO SIMPLES",
   "h148": "implementação + subscrição",
   "h149": "Pedir orçamento",
-  "h150": "Os valores são preços iniciais. O orçamento final é acordado individualmente antes dos trabalhos.",
+  "h150": "Os valores «a partir de» são preços iniciais. O âmbito, os limites e a faturação de utilização adicional são acordados na proposta antes dos trabalhos.",
   "h151": "Sites, automatizações e soluções à medida",
   "h152": "Site empresarial",
   "h153": "Presença profissional online e apresentação clara dos seus serviços.",
@@ -351,5 +351,11 @@
   "d022": "A Kozbud pode receber dados de faturação necessários. Acesso ao sistema exige acordo separado sobre finalidade, âmbito e função.",
   "d023": "A identidade completa da Kozbud e funções contratuais e de tratamento reais de Kozbud e Dawid Kozula continuam por confirmar.",
   "d024": "6. Âmbito do documento",
-  "d025": "Este texto descreve acordos necessários. Não é contrato de subcontratação nem substitui documentação do sistema ou informação às pessoas afetadas."
+  "d025": "Este texto descreve acordos necessários. Não é contrato de subcontratação nem substitui documentação do sistema ou informação às pessoas afetadas.",
+  "pricing.combo_price": "899 PLN",
+  "pricing.care_included": "Suporte técnico incluído na subscrição",
+  "pricing.usage_included": "IA, telefonia e SMS dentro dos limites acordados",
+  "pricing.other_care": "O acompanhamento a partir de 400 PLN/mês aplica-se a sites, automatizações e outras implementações à medida. Já está incluído na subscrição Bot + central.",
+  "pricing.bundle_faq_question": "O que inclui a subscrição de 899 PLN por mês?",
+  "pricing.bundle_faq_answer": "A subscrição Bot + central inclui utilização do sistema, manutenção e suporte técnico, além dos custos de IA, telefonia e SMS dentro dos limites acordados. Os limites de chamadas e SMS, o acompanhamento e os preços de utilização adicional constam da proposta antes do lançamento. A implementação inicial e as grandes ampliações são faturadas separadamente."
 }

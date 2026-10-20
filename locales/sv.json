@@ -149,7 +149,7 @@
   "h147": "ENKEL MODELL",
   "h148": "implementering + abonnemang",
   "h149": "Begär offert",
-  "h150": "Beloppen är startpriser. Slutpriset avtalas individuellt innan arbetet börjar.",
+  "h150": "Frånpriser är startpriser. Omfattning, gränser och debitering av extra användning avtalas i offerten innan arbetet börjar.",
   "h151": "Webbplatser, automatisering och skräddarsydda lösningar",
   "h152": "Företagswebbplats",
   "h153": "Professionell närvaro på nätet och tydlig presentation av tjänsterna.",
@@ -351,5 +351,11 @@
   "d022": "Kozbud kan få nödvändiga fakturauppgifter. Systemåtkomst kräver separat syfte, omfattning och roll.",
   "d023": "Kozbuds fullständiga identitet och faktiska avtals- och behandlingsroller för Kozbud och Dawid Kozula återstår att bekräfta.",
   "d024": "6. Dokumentets omfattning",
-  "d025": "Texten beskriver nödvändiga överenskommelser. Den är inget biträdesavtal och ersätter inte systemdokumentation eller information till berörda personer."
+  "d025": "Texten beskriver nödvändiga överenskommelser. Den är inget biträdesavtal och ersätter inte systemdokumentation eller information till berörda personer.",
+  "pricing.combo_price": "899 PLN",
+  "pricing.care_included": "Teknisk support ingår i abonnemanget",
+  "pricing.usage_included": "AI, telefoni och SMS inom avtalade gränser",
+  "pricing.other_care": "Support från 400 PLN/månad gäller webbplatser, automatiseringar och andra anpassade lösningar. Support ingår redan i abonnemanget Bot + växel.",
+  "pricing.bundle_faq_question": "Vad ingår i abonnemanget för 899 PLN per månad?",
+  "pricing.bundle_faq_answer": "Abonnemanget Bot + växel omfattar systemanvändning, underhåll och teknisk support samt kostnader för AI, telefoni och SMS inom avtalade gränser. Samtals- och SMS-kvoter, supportomfattning och priser för extra användning anges i offerten före start. Engångsimplementering och större utbyggnader faktureras separat."
 }

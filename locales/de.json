@@ -149,7 +149,7 @@
   "h147": "EINFACHES MODELL",
   "h148": "Einrichtung + Abonnement",
   "h149": "Angebot anfordern",
-  "h150": "Dies sind Einstiegspreise. Der endgültige Preis wird vor Arbeitsbeginn individuell vereinbart.",
+  "h150": "Ab-Preise sind Einstiegspreise. Umfang, Limits und die Abrechnung zusätzlicher Nutzung werden vor Arbeitsbeginn im Angebot vereinbart.",
   "h151": "Websites, Automatisierungen und individuelle Lösungen",
   "h152": "Unternehmenswebsite",
   "h153": "Professioneller Internetauftritt und verständliche Darstellung Ihres Angebots.",
@@ -351,5 +351,11 @@
   "d022": "Kozbud kann nötige Rechnungsdaten erhalten. Systemzugriff erfordert gesonderte Festlegung von Zweck, Umfang und Rolle.",
   "d023": "Kozbuds vollständige Identität und die tatsächlichen Vertrags- und Datenschutzrollen von Kozbud und Dawid Kozula sind noch zu bestätigen.",
   "d024": "6. Geltungsbereich",
-  "d025": "Diese Information beschreibt notwendige Absprachen. Sie ist kein Auftragsverarbeitungsvertrag und ersetzt weder Systemdokumentation noch Informationen an betroffene Personen."
+  "d025": "Diese Information beschreibt notwendige Absprachen. Sie ist kein Auftragsverarbeitungsvertrag und ersetzt weder Systemdokumentation noch Informationen an betroffene Personen.",
+  "pricing.combo_price": "899 PLN",
+  "pricing.care_included": "Technische Betreuung im Abonnement enthalten",
+  "pricing.usage_included": "KI, Telefonie und SMS innerhalb vereinbarter Limits",
+  "pricing.other_care": "Die Betreuung ab 400 PLN/Monat gilt für Websites, Automatisierungen und andere individuelle Umsetzungen. Beim Abonnement Bot + Telefonanlage ist sie bereits enthalten.",
+  "pricing.bundle_faq_question": "Was beinhaltet das Abonnement für 899 PLN monatlich?",
+  "pricing.bundle_faq_answer": "Das Abonnement Bot + Telefonanlage umfasst Systemnutzung, Wartung und technische Betreuung sowie KI-, Telefonie- und SMS-Kosten innerhalb vereinbarter Limits. Gesprächs- und SMS-Kontingente, Betreuungsumfang und Mehrverbrauchspreise werden vor dem Start im Angebot festgelegt. Einmalige Einrichtung und größere Erweiterungen werden separat berechnet."
 }

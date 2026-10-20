@@ -149,7 +149,7 @@
   "h147": "MODÈLE SIMPLE",
   "h148": "déploiement + abonnement",
   "h149": "Demander un devis",
-  "h150": "Les montants indiqués sont des prix de départ. Le devis final est convenu individuellement avant les travaux.",
+  "h150": "Les montants « à partir de » sont des prix de départ. Le périmètre, les limites et la facturation des dépassements sont convenus dans l’offre avant les travaux.",
   "h151": "Sites web, automatisations et solutions sur mesure",
   "h152": "Site d'entreprise",
   "h153": "Une présence professionnelle en ligne et une présentation claire de votre offre.",
@@ -351,5 +351,11 @@
   "d022": "Kozbud peut recevoir les données nécessaires à la facture. Tout accès au système exige un accord distinct sur sa finalité, son étendue et son rôle.",
   "d023": "L'identité complète de Kozbud et les rôles contractuels et de traitement effectifs de Kozbud et Dawid Kozula restent à confirmer.",
   "d024": "6. Portée du document",
-  "d025": "Ce texte décrit les accords à prévoir. Il ne constitue pas un contrat de sous-traitance et ne remplace ni la documentation du système ni l'information des personnes concernées."
+  "d025": "Ce texte décrit les accords à prévoir. Il ne constitue pas un contrat de sous-traitance et ne remplace ni la documentation du système ni l'information des personnes concernées.",
+  "pricing.combo_price": "899 PLN",
+  "pricing.care_included": "Assistance technique incluse dans l’abonnement",
+  "pricing.usage_included": "IA, téléphonie et SMS dans les limites convenues",
+  "pricing.other_care": "Le suivi à partir de 400 PLN/mois concerne les sites, automatisations et autres déploiements sur mesure. Il est déjà inclus dans l’abonnement Bot + standard.",
+  "pricing.bundle_faq_question": "Que comprend l’abonnement à 899 PLN par mois ?",
+  "pricing.bundle_faq_answer": "L’abonnement Bot + standard comprend l’utilisation du système, la maintenance, l’assistance technique et les coûts d’IA, de téléphonie et de SMS dans les limites convenues. Les volumes d’appels et de SMS, le suivi et les tarifs de dépassement sont précisés dans l’offre avant le lancement. Le déploiement initial et les évolutions importantes sont facturés séparément."
 }

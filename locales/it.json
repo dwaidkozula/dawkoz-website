@@ -149,7 +149,7 @@
   "h147": "MODELLO SEMPLICE",
   "h148": "implementazione + abbonamento",
   "h149": "Richiedi un preventivo",
-  "h150": "Gli importi sono prezzi iniziali. Il preventivo finale viene concordato individualmente prima dei lavori.",
+  "h150": "Gli importi «a partire da» sono prezzi iniziali. Ambito, limiti e fatturazione dei consumi aggiuntivi sono concordati nell’offerta prima dei lavori.",
   "h151": "Siti, automazioni e soluzioni su misura",
   "h152": "Sito aziendale",
   "h153": "Presenza professionale online e presentazione chiara dei servizi.",
@@ -351,5 +351,11 @@
   "d022": "Kozbud può ricevere dati necessari alla fattura. L'accesso al sistema richiede separata definizione di finalità, ambito e ruolo.",
   "d023": "L'identità completa di Kozbud e i ruoli contrattuali e di trattamento effettivi di Kozbud e Dawid Kozula restano da confermare.",
   "d024": "6. Ambito del documento",
-  "d025": "Il testo descrive accordi necessari. Non è un accordo di trattamento e non sostituisce documentazione del sistema o informazioni agli interessati."
+  "d025": "Il testo descrive accordi necessari. Non è un accordo di trattamento e non sostituisce documentazione del sistema o informazioni agli interessati.",
+  "pricing.combo_price": "899 PLN",
+  "pricing.care_included": "Assistenza tecnica inclusa nell’abbonamento",
+  "pricing.usage_included": "IA, telefonia e SMS entro i limiti concordati",
+  "pricing.other_care": "L’assistenza da 400 PLN/mese riguarda siti, automazioni e altre implementazioni su misura. È già inclusa nell’abbonamento Bot + centralino.",
+  "pricing.bundle_faq_question": "Cosa include l’abbonamento da 899 PLN al mese?",
+  "pricing.bundle_faq_answer": "L’abbonamento Bot + centralino comprende uso del sistema, manutenzione e assistenza tecnica, oltre ai costi di IA, telefonia e SMS entro i limiti concordati. I limiti di chiamate e SMS, l’assistenza e le tariffe per consumi aggiuntivi sono indicati nell’offerta prima dell’avvio. Implementazione iniziale e ampliamenti importanti si fatturano separatamente."
 }

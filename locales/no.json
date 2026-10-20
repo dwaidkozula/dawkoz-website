@@ -149,7 +149,7 @@
   "h147": "ENKEL MODELL",
   "h148": "leveranse + abonnement",
   "h149": "Be om et pristilbud",
-  "h150": "Beløpene er startpriser. Endelig pris avtales individuelt før arbeidet starter.",
+  "h150": "Fra-priser er startpriser. Omfang, grenser og fakturering av ekstra bruk avtales i tilbudet før arbeidet begynner.",
   "h151": "Nettsider, automatisering og tilpassede løsninger",
   "h152": "Bedriftsnettside",
   "h153": "Profesjonell tilstedeværelse på nett og tydelig presentasjon av tilbudet.",
@@ -351,5 +351,11 @@
   "d022": "Kozbud kan få nødvendige fakturadata. Systemtilgang krever egen avklaring av formål, omfang og rolle.",
   "d023": "Kozbuds fulle identitet og faktiske avtale- og behandlingsroller for Kozbud og Dawid Kozula må fortsatt bekreftes.",
   "d024": "6. Dokumentets omfang",
-  "d025": "Dette beskriver nødvendige avklaringer. Det er ingen databehandleravtale og erstatter ikke systemdokumentasjon eller informasjon til berørte personer."
+  "d025": "Dette beskriver nødvendige avklaringer. Det er ingen databehandleravtale og erstatter ikke systemdokumentasjon eller informasjon til berørte personer.",
+  "pricing.combo_price": "899 PLN",
+  "pricing.care_included": "Teknisk oppfølging inkludert i abonnementet",
+  "pricing.usage_included": "KI, telefoni og SMS innen avtalte grenser",
+  "pricing.other_care": "Oppfølging fra 400 PLN/måned gjelder nettsider, automatiseringer og andre tilpassede leveranser. Oppfølging er allerede inkludert i abonnementet Bot + sentralbord.",
+  "pricing.bundle_faq_question": "Hva inkluderer abonnementet på 899 PLN i måneden?",
+  "pricing.bundle_faq_answer": "Abonnementet Bot + sentralbord inkluderer systembruk, vedlikehold og teknisk oppfølging samt KI-, telefoni- og SMS-kostnader innen avtalte grenser. Samtale- og SMS-kvoter, oppfølging og priser for ekstra bruk angis i tilbudet før oppstart. Engangsleveranse og større utvidelser faktureres separat."
 }
