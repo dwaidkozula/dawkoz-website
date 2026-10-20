@@ -357,5 +357,7 @@
   "pricing.usage_included": "AI, telefonia i SMS w uzgodnionych limitach",
   "pricing.other_care": "Opieka od 400 zł/mies. dotyczy stron, automatyzacji i innych indywidualnych wdrożeń. W pakiecie Bot + centrala opieka jest już w abonamencie.",
   "pricing.bundle_faq_question": "Co obejmuje abonament 899 zł miesięcznie?",
-  "pricing.bundle_faq_answer": "Abonament Bot + centrala obejmuje korzystanie z systemu, utrzymanie i opiekę techniczną oraz koszty AI, telefonii i SMS w uzgodnionych limitach. Limity rozmów i SMS, zakres opieki oraz stawki za dodatkowe zużycie określamy w ofercie przed uruchomieniem. Jednorazowe wdrożenie i większe rozbudowy rozliczamy osobno."
+  "pricing.bundle_faq_answer": "Abonament Bot + centrala obejmuje korzystanie z systemu, utrzymanie i opiekę techniczną oraz koszty AI, telefonii i SMS w uzgodnionych limitach. Limity rozmów i SMS, zakres opieki oraz stawki za dodatkowe zużycie określamy w ofercie przed uruchomieniem. Jednorazowe wdrożenie i większe rozbudowy rozliczamy osobno.",
+  "panel.navigation": "Panel DAWKOZ",
+  "panel.documents": "Dokumenty i umowy"
 }

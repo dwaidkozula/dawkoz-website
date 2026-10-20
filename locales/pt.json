@@ -357,5 +357,7 @@
   "pricing.usage_included": "IA, telefonia e SMS dentro dos limites acordados",
   "pricing.other_care": "O acompanhamento a partir de 400 PLN/mês aplica-se a sites, automatizações e outras implementações à medida. Já está incluído na subscrição Bot + central.",
   "pricing.bundle_faq_question": "O que inclui a subscrição de 899 PLN por mês?",
-  "pricing.bundle_faq_answer": "A subscrição Bot + central inclui utilização do sistema, manutenção e suporte técnico, além dos custos de IA, telefonia e SMS dentro dos limites acordados. Os limites de chamadas e SMS, o acompanhamento e os preços de utilização adicional constam da proposta antes do lançamento. A implementação inicial e as grandes ampliações são faturadas separadamente."
+  "pricing.bundle_faq_answer": "A subscrição Bot + central inclui utilização do sistema, manutenção e suporte técnico, além dos custos de IA, telefonia e SMS dentro dos limites acordados. Os limites de chamadas e SMS, o acompanhamento e os preços de utilização adicional constam da proposta antes do lançamento. A implementação inicial e as grandes ampliações são faturadas separadamente.",
+  "panel.navigation": "Painel DAWKOZ",
+  "panel.documents": "Documentos e contratos"
 }

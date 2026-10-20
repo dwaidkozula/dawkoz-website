@@ -12,6 +12,8 @@ Adres `/?lang=en` otwiera wersję angielską; pozostałe kody to `fr`, `es`, `de
 
 ## Prywatny panel dokumentów
 
+Wejście do panelu znajduje się w menu strony jako „Panel DAWKOZ” (na telefonie po rozwinięciu menu), a także w stopce jako „Dokumenty i umowy”. Oba odnośniki prowadzą przez logowanie; dokumenty pozostają prywatne.
+
 Panel jest dostępny pod `/app` (biblioteka po zalogowaniu: `/app/documents`). Zawiera 12 polskich wzorów B2B: ofertę, umowę wdrożeniową, zakres prac, protokół odbioru, umowę opieki, powierzenie danych, NDA, przekazanie systemu, brief, informację dla rozmówców AI, przeniesienie praw i kartę DAWKOZ–Kozbud. Wzory są projektami do dostosowania; nie potwierdzają danych firmy, limitów ani zgody właściciela Kozbud.
 
 ### Aktywacja w Railway

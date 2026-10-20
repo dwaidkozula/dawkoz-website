@@ -357,5 +357,7 @@
   "pricing.usage_included": "IA, telefonía y SMS dentro de los límites acordados",
   "pricing.other_care": "El soporte desde 400 PLN/mes se aplica a webs, automatizaciones y otras implementaciones a medida. Ya está incluido en la suscripción Bot + centralita.",
   "pricing.bundle_faq_question": "¿Qué incluye la suscripción de 899 PLN al mes?",
-  "pricing.bundle_faq_answer": "La suscripción Bot + centralita incluye el uso del sistema, mantenimiento y soporte técnico, además de costes de IA, telefonía y SMS dentro de los límites acordados. Los límites de llamadas y SMS, el soporte y las tarifas por uso adicional se especifican en la oferta antes del lanzamiento. La implementación inicial y las ampliaciones importantes se facturan por separado."
+  "pricing.bundle_faq_answer": "La suscripción Bot + centralita incluye el uso del sistema, mantenimiento y soporte técnico, además de costes de IA, telefonía y SMS dentro de los límites acordados. Los límites de llamadas y SMS, el soporte y las tarifas por uso adicional se especifican en la oferta antes del lanzamiento. La implementación inicial y las ampliaciones importantes se facturan por separado.",
+  "panel.navigation": "Panel DAWKOZ",
+  "panel.documents": "Documentos y contratos"
 }

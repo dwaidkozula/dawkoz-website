@@ -21,7 +21,7 @@
 .legal-main { overflow-wrap: anywhere; }
 .legal-main h1 { hyphens: auto; }
 @media (max-width: 1050px) and (min-width: 901px) {
-  .site-header nav a { padding: 9px 10px !important; font-size: 11px !important; }
+  .site-header nav a { padding: 9px 7px !important; font-size: 11px !important; }
   .site-header .brand-logo { width: 140px !important; min-width: 140px !important; }
 }
 @media (max-width: 900px) {

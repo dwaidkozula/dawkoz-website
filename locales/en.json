@@ -357,5 +357,7 @@
   "pricing.usage_included": "AI, telephony and SMS within agreed limits",
   "pricing.other_care": "Support from 400 PLN/month applies to websites, automations and other bespoke deployments. Support is already included in the Bot + phone system subscription.",
   "pricing.bundle_faq_question": "What does the 899 PLN monthly subscription include?",
-  "pricing.bundle_faq_answer": "The Bot + phone system subscription includes system use, maintenance and technical support, plus AI, telephony and SMS costs within agreed limits. Call and SMS allowances, support scope and additional usage rates are specified in the offer before launch. One-off deployment and major extensions are billed separately."
+  "pricing.bundle_faq_answer": "The Bot + phone system subscription includes system use, maintenance and technical support, plus AI, telephony and SMS costs within agreed limits. Call and SMS allowances, support scope and additional usage rates are specified in the offer before launch. One-off deployment and major extensions are billed separately.",
+  "panel.navigation": "DAWKOZ panel",
+  "panel.documents": "Documents and contracts"
 }

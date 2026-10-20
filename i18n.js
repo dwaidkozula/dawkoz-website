@@ -65,7 +65,7 @@ function renderPage(html, locale, page) {
   html = html.replace('<html lang="pl"', `<html lang="${locale}" data-ui="${escape(JSON.stringify(ui[locale]))}"`);
   const base = `https://dawkoz.com${page === 'index.html' ? '/' : `/${page}`}`;
   const canonical = locale === 'pl' ? base : `${base}?lang=${locale}`;
-  const extras = `<link rel="stylesheet" href="/language.css?v=20261016"><script src="/language.js?v=20261016" defer></script><link rel="canonical" href="${canonical}">${languages.map(language => `<link rel="alternate" hreflang="${language.code}" href="${language.code === 'pl' ? base : `${base}?lang=${language.code}`}">`).join('')}<link rel="alternate" hreflang="x-default" href="${base}">`;
+  const extras = `<link rel="stylesheet" href="/language.css?v=20261020"><script src="/language.js?v=20261016" defer></script><link rel="canonical" href="${canonical}">${languages.map(language => `<link rel="alternate" hreflang="${language.code}" href="${language.code === 'pl' ? base : `${base}?lang=${language.code}`}">`).join('')}<link rel="alternate" hreflang="x-default" href="${base}">`;
   html = html.replace('</head>', `${extras}</head>`);
   const control = picker(locale, page);
   if (html.includes('class="site-header"')) html = html.replace('<button class="menu-toggle"', `${control}<button class="menu-toggle"`);

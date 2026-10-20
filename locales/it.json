@@ -357,5 +357,7 @@
   "pricing.usage_included": "IA, telefonia e SMS entro i limiti concordati",
   "pricing.other_care": "L’assistenza da 400 PLN/mese riguarda siti, automazioni e altre implementazioni su misura. È già inclusa nell’abbonamento Bot + centralino.",
   "pricing.bundle_faq_question": "Cosa include l’abbonamento da 899 PLN al mese?",
-  "pricing.bundle_faq_answer": "L’abbonamento Bot + centralino comprende uso del sistema, manutenzione e assistenza tecnica, oltre ai costi di IA, telefonia e SMS entro i limiti concordati. I limiti di chiamate e SMS, l’assistenza e le tariffe per consumi aggiuntivi sono indicati nell’offerta prima dell’avvio. Implementazione iniziale e ampliamenti importanti si fatturano separatamente."
+  "pricing.bundle_faq_answer": "L’abbonamento Bot + centralino comprende uso del sistema, manutenzione e assistenza tecnica, oltre ai costi di IA, telefonia e SMS entro i limiti concordati. I limiti di chiamate e SMS, l’assistenza e le tariffe per consumi aggiuntivi sono indicati nell’offerta prima dell’avvio. Implementazione iniziale e ampliamenti importanti si fatturano separatamente.",
+  "panel.navigation": "Pannello DAWKOZ",
+  "panel.documents": "Documenti e contratti"
 }

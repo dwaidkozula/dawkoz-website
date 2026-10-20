@@ -357,5 +357,7 @@
   "pricing.usage_included": "KI, Telefonie und SMS innerhalb vereinbarter Limits",
   "pricing.other_care": "Die Betreuung ab 400 PLN/Monat gilt für Websites, Automatisierungen und andere individuelle Umsetzungen. Beim Abonnement Bot + Telefonanlage ist sie bereits enthalten.",
   "pricing.bundle_faq_question": "Was beinhaltet das Abonnement für 899 PLN monatlich?",
-  "pricing.bundle_faq_answer": "Das Abonnement Bot + Telefonanlage umfasst Systemnutzung, Wartung und technische Betreuung sowie KI-, Telefonie- und SMS-Kosten innerhalb vereinbarter Limits. Gesprächs- und SMS-Kontingente, Betreuungsumfang und Mehrverbrauchspreise werden vor dem Start im Angebot festgelegt. Einmalige Einrichtung und größere Erweiterungen werden separat berechnet."
+  "pricing.bundle_faq_answer": "Das Abonnement Bot + Telefonanlage umfasst Systemnutzung, Wartung und technische Betreuung sowie KI-, Telefonie- und SMS-Kosten innerhalb vereinbarter Limits. Gesprächs- und SMS-Kontingente, Betreuungsumfang und Mehrverbrauchspreise werden vor dem Start im Angebot festgelegt. Einmalige Einrichtung und größere Erweiterungen werden separat berechnet.",
+  "panel.navigation": "DAWKOZ-Panel",
+  "panel.documents": "Dokumente und Verträge"
 }

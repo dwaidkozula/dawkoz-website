@@ -357,5 +357,7 @@
   "pricing.usage_included": "AI, telefoni och SMS inom avtalade gränser",
   "pricing.other_care": "Support från 400 PLN/månad gäller webbplatser, automatiseringar och andra anpassade lösningar. Support ingår redan i abonnemanget Bot + växel.",
   "pricing.bundle_faq_question": "Vad ingår i abonnemanget för 899 PLN per månad?",
-  "pricing.bundle_faq_answer": "Abonnemanget Bot + växel omfattar systemanvändning, underhåll och teknisk support samt kostnader för AI, telefoni och SMS inom avtalade gränser. Samtals- och SMS-kvoter, supportomfattning och priser för extra användning anges i offerten före start. Engångsimplementering och större utbyggnader faktureras separat."
+  "pricing.bundle_faq_answer": "Abonnemanget Bot + växel omfattar systemanvändning, underhåll och teknisk support samt kostnader för AI, telefoni och SMS inom avtalade gränser. Samtals- och SMS-kvoter, supportomfattning och priser för extra användning anges i offerten före start. Engångsimplementering och större utbyggnader faktureras separat.",
+  "panel.navigation": "DAWKOZ-panel",
+  "panel.documents": "Dokument och avtal"
 }

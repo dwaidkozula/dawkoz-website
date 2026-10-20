@@ -357,5 +357,7 @@
   "pricing.usage_included": "KI, telefoni og SMS innen avtalte grenser",
   "pricing.other_care": "Oppfølging fra 400 PLN/måned gjelder nettsider, automatiseringer og andre tilpassede leveranser. Oppfølging er allerede inkludert i abonnementet Bot + sentralbord.",
   "pricing.bundle_faq_question": "Hva inkluderer abonnementet på 899 PLN i måneden?",
-  "pricing.bundle_faq_answer": "Abonnementet Bot + sentralbord inkluderer systembruk, vedlikehold og teknisk oppfølging samt KI-, telefoni- og SMS-kostnader innen avtalte grenser. Samtale- og SMS-kvoter, oppfølging og priser for ekstra bruk angis i tilbudet før oppstart. Engangsleveranse og større utvidelser faktureres separat."
+  "pricing.bundle_faq_answer": "Abonnementet Bot + sentralbord inkluderer systembruk, vedlikehold og teknisk oppfølging samt KI-, telefoni- og SMS-kostnader innen avtalte grenser. Samtale- og SMS-kvoter, oppfølging og priser for ekstra bruk angis i tilbudet før oppstart. Engangsleveranse og større utvidelser faktureres separat.",
+  "panel.navigation": "DAWKOZ-panel",
+  "panel.documents": "Dokumenter og avtaler"
 }
