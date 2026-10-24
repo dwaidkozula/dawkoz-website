@@ -1,6 +1,6 @@
 # Porozumienie o przeniesieniu praw
 
-Projekt do uzgodnienia • wzór B2B • wersja 1.0
+Projekt do uzgodnienia • wzór B2B • wersja 1.1
 
 Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami. Przed użyciem potwierdź łańcuch praw i zgodność wykazu z faktycznymi rezultatami. Jest to alternatywa wymagająca skoordynowania z licencją w umowie głównej.
 
@@ -28,7 +28,7 @@ Pliki, źródła i dokumentacja do przekazania: [Lista rezultatów i plików]. S
 
 ## § 5. Wynagrodzenie i moment
 
-Wynagrodzenie za opisane przeniesienie: [Wynagrodzenie za przeniesienie praw], ceny [Sposób podania cen]. Moment skutecznego przejścia praw: [Moment skutecznego przeniesienia praw]. Pozostałe rozliczenia: [Płatności etapowe i warunki].
+Wynagrodzenie za opisane przeniesienie: [Wynagrodzenie za przeniesienie praw], ceny brutto. Moment skutecznego przejścia praw: [Moment skutecznego przeniesienia praw]. Pozostałe rozliczenia: [Płatności etapowe i warunki].
 
 ## § 6. Forma
 

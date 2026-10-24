@@ -62,7 +62,7 @@ test('private library and assets require login and are unavailable through publi
     assert.ok(!response.text.includes('Umowa wdrożeniowa'));
   }
   for (const target of ['/app/api/templates', '/app/templates/package.zip', '/app/templates/oferta.pdf', '/app/templates/opieka.docx']) assert.equal((await request(enabled, target)).status, 401, target);
-  for (const target of ['/documents/catalog.json', '/documents/generated/oferta.pdf', '/panel/documents.html', '/panel-server.js']) assert.equal((await request(enabled, target)).status, 404, target);
+  for (const target of ['/documents/catalog.json', '/documents/generated/oferta.pdf', '/panel/documents.html', '/panel-server.js', '/commercial/offer.json', '/commercial/costs.js']) assert.equal((await request(enabled, target)).status, 404, target);
   assert.equal((await request(enabled, '/app/%2e%2e/documents/catalog.json')).status, 403);
 });
 
@@ -163,7 +163,7 @@ test('every document has declared fields and real blank PDF, DOCX and text files
   }
   const care = catalog.templates.find(item => item.id === 'opieka');
   for (const field of ['monthly_fee', 'price_basis', 'minute_limit', 'sms_limit', 'limit_policy', 'extra_budget', 'response']) assert.ok(care.fields.includes(field));
-  assert.equal(catalog.fields.monthly_fee.default, '899,00 zł');
+  assert.equal(catalog.fields.monthly_fee.default, '');
 });
 
 test('Word export produces a real OOXML ZIP and escapes supplied content', () => {

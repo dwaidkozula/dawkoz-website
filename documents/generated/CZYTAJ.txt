@@ -1,8 +1,9 @@
 DAWKOZ — WZORY DOKUMENTÓW
 
 12 polskich wzorów B2B w formatach PDF, DOCX i Markdown.
-Uzupełnij pola w nawiasach przed podpisaniem. Kwota 899 zł nie określa automatycznie statusu VAT, limitów ani czasów reakcji.
-Potwierdź wykonawcę i model współpracy z Kozbud. Wzory nie zostały sprawdzone przez prawnika dla konkretnej transakcji.
+Uzupełnij pola w nawiasach przed podpisaniem. W panelu wybierz pakiet, aby uzupełnić ceny, zakres i limity.
+Ceny pakietów są kwotami końcowymi do zapłaty. Faktyczny status i stawkę VAT oraz wykonawcę należy potwierdzić w dokumentach.
+Model współpracy z Kozbud wymaga rzeczywistego uzgodnienia. Wzory nie zostały sprawdzone przez prawnika dla konkretnej transakcji.
 Wariant podstawowej umowy przewiduje licencję. Przeniesienie praw wymaga skoordynowania osobnego wzoru, łańcucha praw i formy podpisu.
 Nie wpisuj haseł lub kluczy API do dokumentów.
 

@@ -6,3 +6,12 @@
 
 .mobile-logout{display:none}@media(max-width:700px){.mobile-logout{display:block}}
 @media print{.mobile-logout{display:none!important}}
+
+.preset-picker { margin: 0 0 20px; padding: 18px; border: 1px solid #dce4ee; border-radius: 12px; background: #f3f7fc; }
+.preset-picker > label { display: block; margin-bottom: 9px; color: #15273d; font-weight: 650; font-size: 13px; }
+.preset-picker > div { display: flex; flex-wrap: wrap; gap: 10px; }
+.preset-picker select { flex: 1; min-width: 0; width: 100%; padding: 10px; border: 1px solid #cbd6e4; border-radius: 8px; background: white; color: #15273d; font: inherit; font-size: 13px; }
+.preset-picker p { margin: 10px 0 0; line-height: 1.6; }
+.preset-picker .button:disabled { opacity: .5; cursor: default; }
+@media (max-width: 560px) { .preset-picker > div { flex-direction: column; } .preset-picker select { flex: auto; } }
+@media print { .preset-picker { display: none !important; } }

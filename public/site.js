@@ -120,7 +120,7 @@
       const container = event.target.closest('[data-reveal]');
       if (container) container.classList.add('show');
     });
-    const sections = [...nav.querySelectorAll('a')].map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+    const sections = [...nav.querySelectorAll('a[href^="#"]')].map(link => document.getElementById(link.getAttribute('href').slice(1))).filter(Boolean);
     const sectionObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;

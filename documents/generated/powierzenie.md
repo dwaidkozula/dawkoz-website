@@ -1,6 +1,6 @@
 # Umowa powierzenia danych
 
-Projekt do uzgodnienia • wzór B2B • wersja 1.0
+Projekt do uzgodnienia • wzór B2B • wersja 1.1
 
 Stosuj tylko wtedy, gdy faktycznie zachodzi powierzenie. Uzupełnij rzeczywistych podwykonawców i regiony; nie wpisuj automatycznie wszystkich narzędzi z oferty.
 

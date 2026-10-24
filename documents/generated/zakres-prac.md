@@ -1,6 +1,6 @@
 # Załącznik: zakres i harmonogram
 
-Projekt do uzgodnienia • wzór B2B • wersja 1.0
+Projekt do uzgodnienia • wzór B2B • wersja 1.1
 
 Wzory B2B do uzupełnienia i dostosowania przed podpisaniem. Potwierdź model współpracy z Kozbud, dane stron, ceny i limity. Dokumenty nie zostały zweryfikowane dla konkretnej transakcji przez prawnika.
 

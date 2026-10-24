@@ -150,3 +150,12 @@ footer.site-footer { display: block; width: calc(100% - 40px); height: auto; pad
   .footer-bottom { align-items: flex-start; flex-direction: column; gap: 14px; padding-bottom: 24px; }
   .footer-options a, .footer-options button { min-height: 32px; }
 }
+
+.plan-terms { margin: 20px 0 30px; border: 1px solid #303036; border-radius: 14px; background: #0b0b0e; }
+.plan-terms > summary { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 24px; font-size: 14px; color: #e8e8ee; cursor: pointer; list-style: none; }
+.plan-terms > summary::-webkit-details-marker { display: none; }
+.plan-terms > summary > span { font-size: 20px; }
+.plan-terms[open] > summary > span { transform: rotate(45deg); }
+.plan-terms > div { padding: 0 24px 14px; }
+.plan-terms p { color: #a8a8b3; font-size: 13px; line-height: 1.8; max-width: 100%; overflow-wrap: anywhere; }
+.plan-terms > summary:focus-visible { outline: 2px solid #7294c7; outline-offset: 3px; border-radius: 14px; }

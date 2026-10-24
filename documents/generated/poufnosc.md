@@ -1,6 +1,6 @@
 # Umowa o poufności — NDA
 
-Projekt do uzgodnienia • wzór B2B • wersja 1.0
+Projekt do uzgodnienia • wzór B2B • wersja 1.1
 
 Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami.
 

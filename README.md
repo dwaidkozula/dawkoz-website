@@ -2,6 +2,35 @@
 
 Strona firmowa z prywatnym panelem dokumentów, obsługiwana przez serwer Node.js. Wymagany Node.js 20 lub nowszy; brak zależności npm i kroku budowania.
 
+## Oferta startowa
+
+Warunki w `commercial/offer.json` są decyzją cenową DAWKOZ, nie zestawieniem stawek konkurencji. Kwoty są cenami końcowymi do zapłaty, z VAT w cenie, jeżeli jest należny. Faktyczny status VAT sprzedawcy nadal wymaga potwierdzenia w umowie i na fakturze.
+
+| Pakiet | Wdrożenie od | Abonament | Minuty / części SMS | Drobne zmiany |
+| --- | ---: | ---: | --- | --- |
+| IVR Start | 990 zł | 249 zł/mies. | 100 / 0 | 15 min/mies. |
+| Bot telefoniczny AI | 2990 zł | 699 zł/mies. | 150 / 50 | 30 min/mies. |
+| Bot + centrala | 3990 zł | 899 zł/mies. | 250 / 100 | 60 min/mies. |
+
+Warunki startowe dotyczą trzech nowych wdrożeń AI, z dostępnością potwierdzaną w indywidualnej ofercie. Nie ma automatycznego licznika miejsc. Po ich wykorzystaniu należy zmienić ofertę dla nowych klientów; podpisane umowy nie zmieniają ceny automatycznie. Zakres podstawowy AI: jeden proces i jedna standardowa integracja biznesowa. Strona od 1990 zł: jedna strona do sześciu sekcji i jeden język. Automatyzacja od 990 zł: jeden proces do dwóch aplikacji. Opcjonalna opieka WWW od 149 zł/mies. i automatyzacji od 399 zł/mies.; domeny, hosting WWW i licencje klienta osobno.
+
+Zużycie ponad pakiet wymaga akceptacji: domyślny dodatkowy budżet 0 zł, IVR 1,49 zł/min, AI 2,49 zł/min, SMS 0,69 zł/część. Prace dodatkowe 160 zł/godz. po akceptacji wyceny. Minuty liczone osobno i zaokrąglane w górę na każdym płatnym odcinku; dłuższe SMS i kodowanie mogą zwiększać liczbę części. Maksymalny czas rozmowy: 5 min AI, 15 min przekierowania IVR. Ostatnia przyjęta rozmowa kończy się w tym limicie bez nieuzgodnionej dopłaty. Limity i czas zmian nie przechodzą na kolejny miesiąc. Wsparcie pon.–pt. 9–17 czasu polskiego poza świętami; reakcja krytyczna do 8 godzin roboczych, pozostała do 2 dni roboczych. Nie jest to gwarantowany termin naprawy.
+
+**Ważny zakres implementacji:** ta zmiana publikuje ofertę i przygotowuje dokumenty. Repozytorium nie zawiera silnika bota, integracji Twilio/OpenAI/SMSAPI, liczników rozmów, alertów ani blokady wydatków dostawcy. Ich konfiguracja i test są warunkiem aktywacji klienta. Uzgodnienie w dokumencie nie jest zabezpieczeniem technicznym.
+
+`commercial/costs.js` liczy scenariusze w groszach. Założenia kosztu 0,60 zł/min IVR, 1,20 zł/min AI z telefonią, 0,30 zł/część SMS, koszt pracy 100 zł/godz. i budżet infrastruktury są **niezweryfikowanymi progami planowania**, nie taryfami dostawców. Model uwzględnia VAT 23%, pracę i rezerwę; nadwyżka jest przed PIT/CIT, ZUS i innymi kosztami ogólnymi. Faktyczne koszty, dostępność numeru i mechanizmy limitów należy potwierdzić przed podpisaniem oferty. Przy przekroczeniu progu zmienić technologię lub ofertę przed zawarciem umowy.
+
+Po zmianie konfiguracji zaktualizuj materiały:
+
+```sh
+node scripts/sync-offer.cjs
+python scripts/export-documents.py
+python scripts/export-commercial.py
+npm test
+```
+
+Pierwsze polecenie aktualizuje statyczną stronę, jedenaście katalogów językowych i pakiety w bibliotece. `commercial/copy.json` zawiera teksty handlowe we wszystkich językach. `export-commercial.py` wymaga deweloperskich bibliotek `reportlab`, `python-docx` i `openpyxl`; zapisuje ofertę, plan wewnętrzny, Excel/CSV i trzy projekty JSON do `/workspace/exports/dawkoz-oferta-startowa`, a obok tworzy ZIP. Przy innym checkoutcie katalog docelowy można podać jako pierwszy argument. Uruchomienie strony nie wymaga tych bibliotek.
+
 ## Wersje językowe
 
 Przełącznik z flagami jest dostępny na stronie głównej i trzech podstronach dokumentów. Języki są uporządkowane alfabetycznie według polskich nazw: angielski, francuski, hiszpański, niemiecki, norweski, polski, portugalski, rosyjski, szwedzki, ukraiński i włoski.
@@ -25,6 +54,8 @@ Panel obsługuje jednego operatora. Sesje są losowe, przechowywane w pamięci p
 ### Korzystanie
 
 Wybierz wzór, uzupełnij pola i pobierz prawdziwy plik DOCX. Przycisk „Drukuj / zapisz PDF” otwiera drukowanie przeglądarki z samym dokumentem, bez panelu. Puste PDF/DOCX oraz ZIP są przygotowane z góry i dostępne po logowaniu. „Zapisz projekt” pobiera JSON; „Wczytaj projekt” przywraca go w panelu. Pola pozostają w pamięci karty, bez automatycznego zapisu w localStorage i bez wysyłania danych klientów na serwer. Pobrane pliki zawierające dane klienta należy chronić na urządzeniu użytkownika.
+
+W ofercie, umowie wdrożeniowej, załączniku zakresu i umowie opieki można wybrać pakiet IVR / AI / Bot + centrala i jawnie zastosować warunki. Ceny i limity są uzupełniane dopiero po naciśnięciu „Ustaw warunki”; sama zmiana wyboru niczego nie nadpisuje. Dane stron, konto i wpisany status VAT pozostają bez zmian. Przy zastępowaniu wcześniej zmienionych warunków jest potwierdzenie. Kwota abonamentu w nowym pustym wzorze nie jest domyślnie przypisana do każdego rodzaju projektu. Gotowe pliki `projekt-*.json` z pakietu handlowego można wczytać jako punkt startowy oferty. Nie wpisują tożsamości klienta ani wykonawcy i nie potwierdzają statusu podatkowego. Dokumenty są wersją 1.1.
 
 Źródłem treści jest `documents/catalog.json`. Pliki `documents/generated/` oraz kod i HTML panelu leżą poza `public`; serwer udostępnia je wyłącznie przez wskazane trasy `/app`. Udostępniany bez logowania arkusz CSS nie zawiera dokumentów. API nie przyjmuje danych projektów. Dla publicznej witryny zachowano odrębną politykę CSP i blokadę metod zapisu.
 

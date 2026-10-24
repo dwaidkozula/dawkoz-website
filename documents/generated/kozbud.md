@@ -1,6 +1,6 @@
 # Karta współpracy DAWKOZ–Kozbud
 
-Projekt do uzgodnienia • wzór B2B • wersja 1.0
+Projekt do uzgodnienia • wzór B2B • wersja 1.1
 
 Nie zakłada zgody właściciela ani pełnych danych firmy. Uzupełnij je zgodnie z rzeczywistymi ustaleniami; ta karta porządkuje decyzje i nie zastępuje właściwych umów.
 

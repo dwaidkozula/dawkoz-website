@@ -70,6 +70,7 @@
     $('#editor-category').textContent = selected.category.toLocaleUpperCase('pl');
     $('#editor-title').textContent = selected.title; $('#editor-description').textContent = selected.description;
     $('#blank-pdf').href = `/app/templates/${selected.id}.pdf`;
+    $('#preset-picker').hidden = !['oferta', 'umowa-wdrozeniowa', 'zakres-prac', 'opieka'].includes(selected.id);
     fields(); preview(); document.title = `${selected.title} — DAWKOZ`;
     $('#editor-title').tabIndex = -1; $('#editor-title').focus({ preventScroll: true }); window.scrollTo(0, 0);
   }
@@ -115,6 +116,18 @@
     if (response.status === 401) { location.replace('/app/login'); return; }
     if (!response.ok) throw new Error('Nie udało się wczytać biblioteki. Odśwież stronę lub zaloguj się ponownie.');
     catalog = await response.json(); values = defaults();
+    const presetSelect = $('#offer-preset'), presetButton = $('#apply-offer-preset');
+    for (const preset of catalog.presets || []) {
+      const option = element('option', '', preset.label); option.value = preset.id; presetSelect.append(option);
+    }
+    presetSelect.addEventListener('change', () => { presetButton.disabled = !presetSelect.value; });
+    presetButton.addEventListener('click', () => {
+      const preset = catalog.presets?.find(item => item.id === presetSelect.value); if (!preset) return;
+      const overwritten = Object.entries(preset.values).some(([id, value]) => Object.hasOwn(catalog.fields, id) && values[id]?.trim() && values[id] !== value && values[id] !== catalog.fields[id].default);
+      if (overwritten && !confirm('Zastąpić dotychczasowe ceny, zakres i warunki wybranym pakietem? Dane stron pozostaną bez zmian.')) return;
+      for (const [id, value] of Object.entries(preset.values)) if (Object.hasOwn(catalog.fields, id)) values[id] = value;
+      dirty = true; fields(); preview(); notify('Uzupełniono warunki pakietu. Sprawdź wykonawcę, VAT i dane klienta przed wysłaniem.');
+    });
     $('#document-fields').addEventListener('submit', event => event.preventDefault());
     $('#template-count').textContent = catalog.templates.length;
     const counts = new Map(); for (const template of catalog.templates) counts.set(template.category, (counts.get(template.category) || 0) + 1);

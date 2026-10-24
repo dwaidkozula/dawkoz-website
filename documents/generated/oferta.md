@@ -1,6 +1,6 @@
 # Oferta wdrożenia
 
-Projekt do uzgodnienia • wzór B2B • wersja 1.0
+Projekt do uzgodnienia • wzór B2B • wersja 1.1
 
 Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami.
 
@@ -22,13 +22,15 @@ Etapy i terminy: [Etapy, terminy i zależności]. Materiały oraz dostępy klien
 
 ## Wdrożenie i rozliczenie
 
-Wynagrodzenie za wdrożenie: [Cena wdrożenia (kwota i waluta)]; sposób podania cen: [Sposób podania cen]. Status VAT i fakturowanie: [Status VAT i sposób fakturowania]. Zaliczka: [Kwota zaliczki i termin]. Kolejne płatności: [Płatności etapowe i warunki]. Termin zapłaty faktur: [Termin zapłaty faktury (dni)] dni.
+Wynagrodzenie za wdrożenie: [Cena wdrożenia (kwota i waluta)]; sposób podania cen: brutto. Status VAT i fakturowanie: [Status VAT i sposób fakturowania]. Zaliczka: [Kwota zaliczki i termin]. Kolejne płatności: [Płatności etapowe i warunki]. Termin zapłaty faktur: [Termin zapłaty faktury (dni)] dni.
 
 ## Abonament i zużycie
 
-Proponowany abonament: 899,00 zł miesięcznie, ceny [Sposób podania cen], naliczany od [Początek naliczania abonamentu]. Zakres opieki: [Zakres utrzymania i opieki]. Pakiet obejmuje [Miesięczny limit minut rozmów] minut rozmów oraz [Limit rozliczeniowych części SMS] rozliczeniowych części SMS miesięcznie. Koszty AI i telefonii w uzgodnionym scenariuszu mieszczą się w pakiecie. Limity drobnych zmian: [Limit drobnych zmian w miesiącu].
+Proponowany abonament: [Miesięczny abonament (kwota i waluta)] miesięcznie, ceny brutto, naliczany od [Początek naliczania abonamentu]. Zakres opieki: [Zakres utrzymania i opieki]. Pakiet obejmuje [Miesięczny limit minut rozmów] minut rozmów oraz [Limit rozliczeniowych części SMS] rozliczeniowych części SMS miesięcznie. Koszty AI i telefonii w uzgodnionym scenariuszu mieszczą się w pakiecie. Limity drobnych zmian: [Limit drobnych zmian w miesiącu].
 
 Stawki ponad pakiet: minuta [Stawka za minutę ponad pakiet], część SMS [Stawka za część SMS ponad pakiet]. Zasady po wyczerpaniu limitów: [Działanie po wyczerpaniu pakietu]. Zatwierdzony dodatkowy budżet: [Zatwierdzony budżet dodatkowego zużycia]. Pozostałe usługi i ich płatnik: [Zewnętrzne usługi, licencje i ich płatnik]. Wdrożenie i większe rozbudowy rozlicza się osobno.
+
+Sposób pomiaru i rozliczania: [Sposób liczenia minut i SMS].
 
 ## Dalszy krok
 

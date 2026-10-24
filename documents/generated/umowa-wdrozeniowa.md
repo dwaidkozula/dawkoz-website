@@ -1,6 +1,6 @@
 # Umowa wdrożeniowa B2B
 
-Projekt do uzgodnienia • wzór B2B • wersja 1.0
+Projekt do uzgodnienia • wzór B2B • wersja 1.1
 
 Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami. Wariant podstawowy przewiduje licencję niewyłączną. Do przeniesienia praw użyj osobnego wzoru i zapewnij łańcuch praw od autorów.
 
@@ -24,7 +24,7 @@ Wpływ opóźnień, braków materiałów lub zmian na harmonogram strony uzgadni
 
 ## § 4. Wynagrodzenie
 
-Wynagrodzenie: [Cena wdrożenia (kwota i waluta)], ceny [Sposób podania cen]. Status VAT i fakturowanie: [Status VAT i sposób fakturowania]. Zaliczka: [Kwota zaliczki i termin]. Płatności etapowe: [Płatności etapowe i warunki]. Termin zapłaty: [Termin zapłaty faktury (dni)] dni od prawidłowego udostępnienia faktury, na rachunek [Rachunek płatności].
+Wynagrodzenie: [Cena wdrożenia (kwota i waluta)], ceny brutto. Status VAT i fakturowanie: [Status VAT i sposób fakturowania]. Zaliczka: [Kwota zaliczki i termin]. Płatności etapowe: [Płatności etapowe i warunki]. Termin zapłaty: [Termin zapłaty faktury (dni)] dni od prawidłowego udostępnienia faktury, na rachunek [Rachunek płatności].
 
 Usługi zewnętrzne, licencje i ich płatnik: [Zewnętrzne usługi, licencje i ich płatnik]. Prace poza zakresem wymagają uprzedniego uzgodnienia zakresu, ceny i terminu. Miesięczna opieka wymaga osobnego ustalenia zgodnie z umową utrzymania.
 

@@ -225,7 +225,7 @@
       "label": "Sposób podania cen",
       "group": "Rozliczenia",
       "type": "select",
-      "default": "",
+      "default": "brutto",
       "options": [
         "brutto",
         "netto; VAT doliczany zgodnie z obowiązującymi przepisami"
@@ -271,7 +271,7 @@
       "label": "Miesięczny abonament (kwota i waluta)",
       "group": "Opieka",
       "type": "text",
-      "default": "899,00 zł"
+      "default": ""
     },
     "billing_start": {
       "id": "billing_start",
@@ -708,6 +708,13 @@
       "group": "Współpraca wewnętrzna",
       "type": "textarea",
       "default": ""
+    },
+    "usage_metering": {
+      "id": "usage_metering",
+      "label": "Sposób liczenia minut i SMS",
+      "group": "Opieka",
+      "type": "textarea",
+      "default": ""
     }
   },
   "templates": [
@@ -716,7 +723,7 @@
       "title": "Oferta wdrożenia",
       "category": "Sprzedaż",
       "description": "Oferta dla konkretnego klienta z osobną ceną wdrożenia, abonamentem i limitami.",
-      "version": "1.0",
+      "version": "1.1",
       "status": "Projekt do uzgodnienia",
       "notes": "Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami.",
       "fields": [
@@ -758,6 +765,7 @@
         "limit_policy",
         "extra_budget",
         "third_party",
+        "usage_metering",
         "criteria",
         "channels"
       ],
@@ -796,7 +804,8 @@
           "title": "Abonament i zużycie",
           "paragraphs": [
             "Proponowany abonament: {{monthly_fee}} miesięcznie, ceny {{price_basis}}, naliczany od {{billing_start}}. Zakres opieki: {{care_scope}}. Pakiet obejmuje {{minute_limit}} minut rozmów oraz {{sms_limit}} rozliczeniowych części SMS miesięcznie. Koszty AI i telefonii w uzgodnionym scenariuszu mieszczą się w pakiecie. Limity drobnych zmian: {{change_hours}}.",
-            "Stawki ponad pakiet: minuta {{extra_minute}}, część SMS {{extra_sms}}. Zasady po wyczerpaniu limitów: {{limit_policy}}. Zatwierdzony dodatkowy budżet: {{extra_budget}}. Pozostałe usługi i ich płatnik: {{third_party}}. Wdrożenie i większe rozbudowy rozlicza się osobno."
+            "Stawki ponad pakiet: minuta {{extra_minute}}, część SMS {{extra_sms}}. Zasady po wyczerpaniu limitów: {{limit_policy}}. Zatwierdzony dodatkowy budżet: {{extra_budget}}. Pozostałe usługi i ich płatnik: {{third_party}}. Wdrożenie i większe rozbudowy rozlicza się osobno.",
+            "Sposób pomiaru i rozliczania: {{usage_metering}}."
           ]
         },
         {
@@ -812,7 +821,7 @@
       "title": "Umowa wdrożeniowa B2B",
       "category": "Realizacja",
       "description": "Bazowa umowa na stronę, bota lub automatyzację; szczegóły w załączniku zakresu.",
-      "version": "1.0",
+      "version": "1.1",
       "status": "Projekt do uzgodnienia",
       "notes": "Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami. Wariant podstawowy przewiduje licencję niewyłączną. Do przeniesienia praw użyj osobnego wzoru i zapewnij łańcuch praw od autorów.",
       "fields": [
@@ -929,7 +938,7 @@
       "title": "Załącznik: zakres i harmonogram",
       "category": "Realizacja",
       "description": "Scenariusze, integracje, materiały, granice zakresu i kryteria odbioru.",
-      "version": "1.0",
+      "version": "1.1",
       "status": "Projekt do uzgodnienia",
       "notes": "",
       "fields": [
@@ -1014,7 +1023,7 @@
       "title": "Protokół odbioru",
       "category": "Realizacja",
       "description": "Potwierdzenie testów, usterek, przekazanych elementów i wyniku odbioru.",
-      "version": "1.0",
+      "version": "1.1",
       "status": "Projekt do uzgodnienia",
       "notes": "",
       "fields": [
@@ -1077,7 +1086,7 @@
       "title": "Umowa utrzymania i opieki",
       "category": "Opieka",
       "description": "Abonament 899 zł: usługa, opieka, AI, telefonia i SMS w określonym pakiecie.",
-      "version": "1.0",
+      "version": "1.1",
       "status": "Projekt do uzgodnienia",
       "notes": "Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami. Uzupełnij wszystkie limity, czasy reakcji i zasady przekroczeń; sama kwota 899 zł nie określa tych parametrów.",
       "fields": [
@@ -1110,6 +1119,7 @@
         "scope",
         "integrations",
         "limit_policy",
+        "usage_metering",
         "usage_alert",
         "extra_minute",
         "extra_sms",
@@ -1150,7 +1160,8 @@
           "title": "§ 4. Pakiet rozmów, AI i SMS",
           "paragraphs": [
             "W abonamencie zawarto {{minute_limit}} minut rozmów oraz {{sms_limit}} rozliczeniowych części SMS na miesiąc rozliczeniowy. Koszty AI i telefonii dla uzgodnionego scenariusza mieszczą się w tym pakiecie. Szczegóły scenariusza i integracji: {{scope}}; {{integrations}}.",
-            "Wiadomości długie lub zawierające określone znaki mogą składać się z kilku płatnych części. Pomiar zużycia opiera się na zestawieniach systemu i dostawców, z możliwością wyjaśnienia rozbieżności. Zasady przenoszenia niewykorzystanego pakietu i działania po jego wyczerpaniu: {{limit_policy}}."
+            "Wiadomości długie lub zawierające określone znaki mogą składać się z kilku płatnych części. Pomiar zużycia opiera się na zestawieniach systemu i dostawców, z możliwością wyjaśnienia rozbieżności. Zasady przenoszenia niewykorzystanego pakietu i działania po jego wyczerpaniu: {{limit_policy}}.",
+            "Sposób pomiaru i rozliczania: {{usage_metering}}."
           ]
         },
         {
@@ -1192,7 +1203,7 @@
       "title": "Umowa powierzenia danych",
       "category": "Ochrona danych",
       "description": "Wzór z zakresem przetwarzania, dostawcami, incydentami, audytem i usuwaniem.",
-      "version": "1.0",
+      "version": "1.1",
       "status": "Projekt do uzgodnienia",
       "notes": "Stosuj tylko wtedy, gdy faktycznie zachodzi powierzenie. Uzupełnij rzeczywistych podwykonawców i regiony; nie wpisuj automatycznie wszystkich narzędzi z oferty.",
       "fields": [
@@ -1290,7 +1301,7 @@
       "title": "Umowa o poufności — NDA",
       "category": "Ochrona danych",
       "description": "Dwustronna poufność informacji handlowych, technicznych i projektowych.",
-      "version": "1.0",
+      "version": "1.1",
       "status": "Projekt do uzgodnienia",
       "notes": "Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami.",
       "fields": [
@@ -1363,7 +1374,7 @@
       "title": "Instrukcja i protokół przekazania",
       "category": "Realizacja",
       "description": "Kontrola kont, repozytoriów, kopii, instrukcji i bezpiecznego przekazania.",
-      "version": "1.0",
+      "version": "1.1",
       "status": "Projekt do uzgodnienia",
       "notes": "",
       "fields": [
@@ -1431,7 +1442,7 @@
       "title": "Brief klienta",
       "category": "Sprzedaż",
       "description": "Pytania przed wyceną: proces, narzędzia, wolumen, dane i oczekiwany efekt.",
-      "version": "1.0",
+      "version": "1.1",
       "status": "Projekt do uzgodnienia",
       "notes": "",
       "fields": [
@@ -1502,7 +1513,7 @@
       "title": "Informacja dla rozmówców bota AI",
       "category": "Ochrona danych",
       "description": "Roboczy komunikat AI i informacja o danych do dostosowania przez administratora.",
-      "version": "1.0",
+      "version": "1.1",
       "status": "Projekt do uzgodnienia",
       "notes": "Wzór dla administratora danych rozmówców, a nie automatycznie dla DAWKOZ. Wymaga dopasowania do działania systemu, zwłaszcza nagrywania, podstaw prawnych i faktycznych odbiorców.",
       "fields": [
@@ -1571,7 +1582,7 @@
       "title": "Porozumienie o przeniesieniu praw",
       "category": "Formalności",
       "description": "Opcjonalny załącznik: konkretne utwory, prawa, wynagrodzenie i forma podpisu.",
-      "version": "1.0",
+      "version": "1.1",
       "status": "Projekt do uzgodnienia",
       "notes": "Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami. Przed użyciem potwierdź łańcuch praw i zgodność wykazu z faktycznymi rezultatami. Jest to alternatywa wymagająca skoordynowania z licencją w umowie głównej.",
       "fields": [
@@ -1652,7 +1663,7 @@
       "title": "Karta współpracy DAWKOZ–Kozbud",
       "category": "Formalności",
       "description": "Wewnętrzna karta decyzji o stronach umów, fakturach i wynagrodzeniu Dawida.",
-      "version": "1.0",
+      "version": "1.1",
       "status": "Projekt do uzgodnienia",
       "notes": "Nie zakłada zgody właściciela ani pełnych danych firmy. Uzupełnij je zgodnie z rzeczywistymi ustaleniami; ta karta porządkuje decyzje i nie zastępuje właściwych umów.",
       "fields": [
@@ -1712,6 +1723,131 @@
           ]
         }
       ]
+    }
+  ],
+  "presets": [
+    {
+      "id": "ivr",
+      "label": "IVR Start — 990,00 zł + 249,00 zł/mies.",
+      "values": {
+        "project_name": "IVR Start",
+        "scope": "Pakiet IVR Start: 1 polski numer, menu IVR do 3 opcji, przyjmowanie połączeń krajowych i przekazywanie zgłoszeń zgodnie z zatwierdzonym zakresem. Limit przekierowania IVR: 15 minut.",
+        "deliverables": "Konfiguracja, uzgodniony scenariusz lub menu, testy odbiorowe, instrukcja obsługi, lista kont i protokół przekazania. Dwie rundy uwag do scenariusza lub menu; usunięcie niezgodności z zakresem nie jest ograniczone liczbą rund.",
+        "integrations": "Przekierowania krajowe zgodnie z zatwierdzonym menu; brak zewnętrznych integracji w pakiecie podstawowym.",
+        "exclusions": "Dodatkowe numery, nowe scenariusze, niestandardowe integracje, kampanie wychodzące, numery premium i połączenia międzynarodowe. Każda rozbudowa wymaga wcześniejszej wyceny i akceptacji. Przeniesienie praw autorskich wymaga osobnego uzgodnienia.",
+        "setup_fee": "990,00 zł",
+        "price_basis": "brutto",
+        "deposit": "495,00 zł — 50% ceny przed rozpoczęciem prac, po zawarciu umowy",
+        "payment_stages": "Pozostałe 495,00 zł po wyraźnym odbiorze wdrożenia.",
+        "payment_days": "7",
+        "monthly_fee": "249,00 zł",
+        "billing_start": "Od odbioru i aktywacji systemu. Kolejne miesięczne okresy liczone od dnia aktywacji, płatne z góry. Ostatni okres kończy się zgodnie z zasadami wypowiedzenia.",
+        "care_scope": "Utrzymanie uzgodnionej konfiguracji, monitorowanie dostępności i błędów, kopie konfiguracji, obsługa usterek oraz drobne zmiany w limicie. Nowe funkcje i integracje wymagają odrębnego zamówienia. Usuwanie niezgodności z odebranym zakresem nie pomniejsza czasu drobnych zmian.",
+        "support_hours": "Poniedziałek–piątek 9:00–17:00, Europe/Warsaw, z wyłączeniem polskich świąt.",
+        "support_channel": "kontakt@dawkoz.com; temat: nazwa klienta, nazwa systemu i opis problemu.",
+        "response": "Awaria krytyczna uniemożliwiająca podstawowe działanie: rozpoczęcie obsługi do 8 godzin roboczych. Pozostałe zgłoszenia: do 2 dni roboczych. To czas reakcji, nie gwarantowany termin naprawy. Termin i postęp naprawy komunikowane odrębnie.",
+        "change_hours": "15 minut miesięcznie, bez przenoszenia na następny okres; prace ponad limit 160,00 zł/godz. wyłącznie po akceptacji wyceny.",
+        "minute_limit": "100",
+        "sms_limit": "0",
+        "usage_alert": "80% i 100% miesięcznego limitu; e-mail do osoby wskazanej przez klienta.",
+        "usage_metering": "Każde połączenie i każdy płatny odcinek przekierowania zaokrąglane osobno w górę do pełnej minuty. Przekierowanie może zużywać dwa odcinki równocześnie. SMS liczone w częściach według kodowania i długości, a nie liczby wiadomości. Dokończenie ostatniej przyjętej rozmowy do limitu 5 minut AI / 15 minut przekierowania IVR nie powoduje nieuzgodnionej dopłaty.",
+        "limit_policy": "Niewykorzystane minuty, części SMS i czas drobnych zmian nie przechodzą na kolejny okres. Po wyczerpaniu limitu nowe płatne rozmowy i SMS są wstrzymywane do pisemnej akceptacji dodatkowego budżetu. Nie uruchamia się nieuzgodnionych płatnych przekierowań. Raport zużycia dostępny dla klienta. Limity i powiadomienia muszą być skonfigurowane oraz przetestowane przed uruchomieniem.",
+        "extra_minute": "1,49 zł",
+        "extra_sms": "0,69 zł",
+        "extra_budget": "0,00 zł; zwiększenie wymaga wyraźnej akceptacji kwoty i stawek przed naliczeniem dodatkowego zużycia.",
+        "maintenance": "Planowane prace po wcześniejszym powiadomieniu, co do zasady co najmniej 2 dni robocze wcześniej. Pilne działania bezpieczeństwa komunikowane bez zbędnej zwłoki.",
+        "notice_period": "Umowa utrzymania na czas nieoznaczony, wypowiedzenie z 30-dniowym wyprzedzeniem ze skutkiem na koniec miesięcznego okresu rozliczeniowego. Cena uzgodniona z klientem nie wzrasta automatycznie po zakończeniu oferty startowej; zmiana wymaga uzgodnienia stron. Przy umowie wdrożeniowej rozlicza się faktycznie wykonany, uzgodniony zakres i zaliczkę według umowy.",
+        "third_party": "Koszt numeru, AI, telefonii i SMS w limitach ponosi Wykonawca w abonamencie. Rzeczywiste nazwy dostawców, regiony przetwarzania, konta i licencje należy wskazać przed podpisaniem dokumentów. Narzędzia i licencje klienta poza pakietem wymagają odrębnego uzgodnienia kosztów.",
+        "schedule": "Cel organizacyjny: do 5 dni roboczych od otrzymania zaliczki, kompletnych materiałów i dostępów. Termin potwierdzany w ofercie: analiza, konfiguracja, testy klienta i uruchomienie. Opóźnienia po stronie dostawców lub materiałów wymagają uzgodnienia nowej daty.",
+        "review_days": "5",
+        "fix_days": "Termin potwierdzany po ocenie uwag; plan poprawek przekazywany do 2 dni roboczych od kompletnego zgłoszenia.",
+        "launch": "Wyraźny odbiór, zapłata zgodnie z umową, ustalone role i zasady przetwarzania danych oraz informacja dla rozmówców. Przed aktywacją: weryfikacja kosztów dostawców, test scenariusza, powiadomień 80%/100%, blokady nowego zużycia, raportu i odtworzenia konfiguracji. Nowe płatne funkcje uruchamiane wyłącznie po akceptacji.",
+        "criteria": "Poprawne wykonanie zatwierdzonych scenariuszy, przekazanie zgłoszenia do ustalonego odbiorcy, bezpieczna obsługa braku danych i błędu integracji, czytelny raport zużycia oraz potwierdzony test limitów. Odbiór wymaga wyraźnego potwierdzenia, nie samego braku uwag.",
+        "backup": "Codzienna kopia konfiguracji, retencja 7 dni; test odtworzenia przed uruchomieniem i po istotnych zmianach. Retencja danych rozmówców i nagrań wymaga osobnych ustaleń zgodnych z rzeczywistym przetwarzaniem.",
+        "channels": "Ustalenia handlowe i odbiór: wskazani przedstawiciele stron przez uzgodnione adresy e-mail. Kontakt techniczny: Dawid Kozula, kontakt@dawkoz.com."
+      }
+    },
+    {
+      "id": "bot",
+      "label": "Bot telefoniczny AI — 2990,00 zł + 699,00 zł/mies.",
+      "values": {
+        "project_name": "Bot telefoniczny AI",
+        "scope": "Pakiet Bot telefoniczny AI: 1 polski numer, 1 proces obsługi i 1 scenariusz rozmowy AI, przyjmowanie połączeń krajowych i przekazywanie zgłoszeń zgodnie z zatwierdzonym zakresem. Limit rozmowy AI: 5 minut. ",
+        "deliverables": "Konfiguracja, uzgodniony scenariusz lub menu, testy odbiorowe, instrukcja obsługi, lista kont i protokół przekazania. Dwie rundy uwag do scenariusza lub menu; usunięcie niezgodności z zakresem nie jest ograniczone liczbą rund.",
+        "integrations": "1 standardowa integracja, np. przekazanie zgłoszenia do e-mail, Telegrama lub arkusza. Konkretny odbiorca, zakres danych i uprawnienia wymagają wskazania w załączniku. Nowe API lub niestandardowy konektor: osobna wycena.",
+        "exclusions": "Dodatkowe numery, nowe scenariusze, niestandardowe integracje, kampanie wychodzące, numery premium i połączenia międzynarodowe. Każda rozbudowa wymaga wcześniejszej wyceny i akceptacji. Przeniesienie praw autorskich wymaga osobnego uzgodnienia.",
+        "setup_fee": "2990,00 zł",
+        "price_basis": "brutto",
+        "deposit": "1495,00 zł — 50% ceny przed rozpoczęciem prac, po zawarciu umowy",
+        "payment_stages": "Pozostałe 1495,00 zł po wyraźnym odbiorze wdrożenia.",
+        "payment_days": "7",
+        "monthly_fee": "699,00 zł",
+        "billing_start": "Od odbioru i aktywacji systemu. Kolejne miesięczne okresy liczone od dnia aktywacji, płatne z góry. Ostatni okres kończy się zgodnie z zasadami wypowiedzenia.",
+        "care_scope": "Utrzymanie uzgodnionej konfiguracji, monitorowanie dostępności i błędów, kopie konfiguracji, obsługa usterek oraz drobne zmiany w limicie. Nowe funkcje i integracje wymagają odrębnego zamówienia. Usuwanie niezgodności z odebranym zakresem nie pomniejsza czasu drobnych zmian.",
+        "support_hours": "Poniedziałek–piątek 9:00–17:00, Europe/Warsaw, z wyłączeniem polskich świąt.",
+        "support_channel": "kontakt@dawkoz.com; temat: nazwa klienta, nazwa systemu i opis problemu.",
+        "response": "Awaria krytyczna uniemożliwiająca podstawowe działanie: rozpoczęcie obsługi do 8 godzin roboczych. Pozostałe zgłoszenia: do 2 dni roboczych. To czas reakcji, nie gwarantowany termin naprawy. Termin i postęp naprawy komunikowane odrębnie.",
+        "change_hours": "30 minut miesięcznie, bez przenoszenia na następny okres; prace ponad limit 160,00 zł/godz. wyłącznie po akceptacji wyceny.",
+        "minute_limit": "150",
+        "sms_limit": "50",
+        "usage_alert": "80% i 100% miesięcznego limitu; e-mail do osoby wskazanej przez klienta.",
+        "usage_metering": "Każde połączenie i każdy płatny odcinek przekierowania zaokrąglane osobno w górę do pełnej minuty. Przekierowanie może zużywać dwa odcinki równocześnie. SMS liczone w częściach według kodowania i długości, a nie liczby wiadomości. Dokończenie ostatniej przyjętej rozmowy do limitu 5 minut AI / 15 minut przekierowania IVR nie powoduje nieuzgodnionej dopłaty.",
+        "limit_policy": "Niewykorzystane minuty, części SMS i czas drobnych zmian nie przechodzą na kolejny okres. Po wyczerpaniu limitu nowe płatne rozmowy i SMS są wstrzymywane do pisemnej akceptacji dodatkowego budżetu. Nie uruchamia się nieuzgodnionych płatnych przekierowań. Raport zużycia dostępny dla klienta. Limity i powiadomienia muszą być skonfigurowane oraz przetestowane przed uruchomieniem.",
+        "extra_minute": "2,49 zł",
+        "extra_sms": "0,69 zł",
+        "extra_budget": "0,00 zł; zwiększenie wymaga wyraźnej akceptacji kwoty i stawek przed naliczeniem dodatkowego zużycia.",
+        "maintenance": "Planowane prace po wcześniejszym powiadomieniu, co do zasady co najmniej 2 dni robocze wcześniej. Pilne działania bezpieczeństwa komunikowane bez zbędnej zwłoki.",
+        "notice_period": "Umowa utrzymania na czas nieoznaczony, wypowiedzenie z 30-dniowym wyprzedzeniem ze skutkiem na koniec miesięcznego okresu rozliczeniowego. Cena uzgodniona z klientem nie wzrasta automatycznie po zakończeniu oferty startowej; zmiana wymaga uzgodnienia stron. Przy umowie wdrożeniowej rozlicza się faktycznie wykonany, uzgodniony zakres i zaliczkę według umowy.",
+        "third_party": "Koszt numeru, AI, telefonii i SMS w limitach ponosi Wykonawca w abonamencie. Rzeczywiste nazwy dostawców, regiony przetwarzania, konta i licencje należy wskazać przed podpisaniem dokumentów. Narzędzia i licencje klienta poza pakietem wymagają odrębnego uzgodnienia kosztów.",
+        "schedule": "Cel organizacyjny: do 10 dni roboczych od otrzymania zaliczki, kompletnych materiałów i dostępów. Termin potwierdzany w ofercie: analiza, konfiguracja, testy klienta i uruchomienie. Opóźnienia po stronie dostawców lub materiałów wymagają uzgodnienia nowej daty.",
+        "review_days": "5",
+        "fix_days": "Termin potwierdzany po ocenie uwag; plan poprawek przekazywany do 2 dni roboczych od kompletnego zgłoszenia.",
+        "launch": "Wyraźny odbiór, zapłata zgodnie z umową, ustalone role i zasady przetwarzania danych oraz informacja dla rozmówców. Przed aktywacją: weryfikacja kosztów dostawców, test scenariusza, powiadomień 80%/100%, blokady nowego zużycia, raportu i odtworzenia konfiguracji. Nowe płatne funkcje uruchamiane wyłącznie po akceptacji.",
+        "criteria": "Poprawne wykonanie zatwierdzonych scenariuszy, przekazanie zgłoszenia do ustalonego odbiorcy, bezpieczna obsługa braku danych i błędu integracji, czytelny raport zużycia oraz potwierdzony test limitów. Odbiór wymaga wyraźnego potwierdzenia, nie samego braku uwag.",
+        "backup": "Codzienna kopia konfiguracji, retencja 7 dni; test odtworzenia przed uruchomieniem i po istotnych zmianach. Retencja danych rozmówców i nagrań wymaga osobnych ustaleń zgodnych z rzeczywistym przetwarzaniem.",
+        "channels": "Ustalenia handlowe i odbiór: wskazani przedstawiciele stron przez uzgodnione adresy e-mail. Kontakt techniczny: Dawid Kozula, kontakt@dawkoz.com."
+      }
+    },
+    {
+      "id": "combo",
+      "label": "Bot + centrala — 3990,00 zł + 899,00 zł/mies.",
+      "values": {
+        "project_name": "Bot + centrala",
+        "scope": "Pakiet Bot + centrala: 1 polski numer, menu IVR do 3 opcji, 1 proces obsługi i 1 scenariusz rozmowy AI, przyjmowanie połączeń krajowych i przekazywanie zgłoszeń zgodnie z zatwierdzonym zakresem. Limit rozmowy AI: 5 minut. Limit przekierowania IVR: 15 minut.",
+        "deliverables": "Konfiguracja, uzgodniony scenariusz lub menu, testy odbiorowe, instrukcja obsługi, lista kont i protokół przekazania. Dwie rundy uwag do scenariusza lub menu; usunięcie niezgodności z zakresem nie jest ograniczone liczbą rund.",
+        "integrations": "1 standardowa integracja, np. przekazanie zgłoszenia do e-mail, Telegrama lub arkusza. Konkretny odbiorca, zakres danych i uprawnienia wymagają wskazania w załączniku. Nowe API lub niestandardowy konektor: osobna wycena.",
+        "exclusions": "Dodatkowe numery, nowe scenariusze, niestandardowe integracje, kampanie wychodzące, numery premium i połączenia międzynarodowe. Każda rozbudowa wymaga wcześniejszej wyceny i akceptacji. Przeniesienie praw autorskich wymaga osobnego uzgodnienia.",
+        "setup_fee": "3990,00 zł",
+        "price_basis": "brutto",
+        "deposit": "1995,00 zł — 50% ceny przed rozpoczęciem prac, po zawarciu umowy",
+        "payment_stages": "Pozostałe 1995,00 zł po wyraźnym odbiorze wdrożenia.",
+        "payment_days": "7",
+        "monthly_fee": "899,00 zł",
+        "billing_start": "Od odbioru i aktywacji systemu. Kolejne miesięczne okresy liczone od dnia aktywacji, płatne z góry. Ostatni okres kończy się zgodnie z zasadami wypowiedzenia.",
+        "care_scope": "Utrzymanie uzgodnionej konfiguracji, monitorowanie dostępności i błędów, kopie konfiguracji, obsługa usterek oraz drobne zmiany w limicie. Nowe funkcje i integracje wymagają odrębnego zamówienia. Usuwanie niezgodności z odebranym zakresem nie pomniejsza czasu drobnych zmian.",
+        "support_hours": "Poniedziałek–piątek 9:00–17:00, Europe/Warsaw, z wyłączeniem polskich świąt.",
+        "support_channel": "kontakt@dawkoz.com; temat: nazwa klienta, nazwa systemu i opis problemu.",
+        "response": "Awaria krytyczna uniemożliwiająca podstawowe działanie: rozpoczęcie obsługi do 8 godzin roboczych. Pozostałe zgłoszenia: do 2 dni roboczych. To czas reakcji, nie gwarantowany termin naprawy. Termin i postęp naprawy komunikowane odrębnie.",
+        "change_hours": "60 minut miesięcznie, bez przenoszenia na następny okres; prace ponad limit 160,00 zł/godz. wyłącznie po akceptacji wyceny.",
+        "minute_limit": "250",
+        "sms_limit": "100",
+        "usage_alert": "80% i 100% miesięcznego limitu; e-mail do osoby wskazanej przez klienta.",
+        "usage_metering": "Każde połączenie i każdy płatny odcinek przekierowania zaokrąglane osobno w górę do pełnej minuty. Przekierowanie może zużywać dwa odcinki równocześnie. SMS liczone w częściach według kodowania i długości, a nie liczby wiadomości. Dokończenie ostatniej przyjętej rozmowy do limitu 5 minut AI / 15 minut przekierowania IVR nie powoduje nieuzgodnionej dopłaty.",
+        "limit_policy": "Niewykorzystane minuty, części SMS i czas drobnych zmian nie przechodzą na kolejny okres. Po wyczerpaniu limitu nowe płatne rozmowy i SMS są wstrzymywane do pisemnej akceptacji dodatkowego budżetu. Nie uruchamia się nieuzgodnionych płatnych przekierowań. Raport zużycia dostępny dla klienta. Limity i powiadomienia muszą być skonfigurowane oraz przetestowane przed uruchomieniem.",
+        "extra_minute": "2,49 zł",
+        "extra_sms": "0,69 zł",
+        "extra_budget": "0,00 zł; zwiększenie wymaga wyraźnej akceptacji kwoty i stawek przed naliczeniem dodatkowego zużycia.",
+        "maintenance": "Planowane prace po wcześniejszym powiadomieniu, co do zasady co najmniej 2 dni robocze wcześniej. Pilne działania bezpieczeństwa komunikowane bez zbędnej zwłoki.",
+        "notice_period": "Umowa utrzymania na czas nieoznaczony, wypowiedzenie z 30-dniowym wyprzedzeniem ze skutkiem na koniec miesięcznego okresu rozliczeniowego. Cena uzgodniona z klientem nie wzrasta automatycznie po zakończeniu oferty startowej; zmiana wymaga uzgodnienia stron. Przy umowie wdrożeniowej rozlicza się faktycznie wykonany, uzgodniony zakres i zaliczkę według umowy.",
+        "third_party": "Koszt numeru, AI, telefonii i SMS w limitach ponosi Wykonawca w abonamencie. Rzeczywiste nazwy dostawców, regiony przetwarzania, konta i licencje należy wskazać przed podpisaniem dokumentów. Narzędzia i licencje klienta poza pakietem wymagają odrębnego uzgodnienia kosztów.",
+        "schedule": "Cel organizacyjny: do 15 dni roboczych od otrzymania zaliczki, kompletnych materiałów i dostępów. Termin potwierdzany w ofercie: analiza, konfiguracja, testy klienta i uruchomienie. Opóźnienia po stronie dostawców lub materiałów wymagają uzgodnienia nowej daty.",
+        "review_days": "5",
+        "fix_days": "Termin potwierdzany po ocenie uwag; plan poprawek przekazywany do 2 dni roboczych od kompletnego zgłoszenia.",
+        "launch": "Wyraźny odbiór, zapłata zgodnie z umową, ustalone role i zasady przetwarzania danych oraz informacja dla rozmówców. Przed aktywacją: weryfikacja kosztów dostawców, test scenariusza, powiadomień 80%/100%, blokady nowego zużycia, raportu i odtworzenia konfiguracji. Nowe płatne funkcje uruchamiane wyłącznie po akceptacji.",
+        "criteria": "Poprawne wykonanie zatwierdzonych scenariuszy, przekazanie zgłoszenia do ustalonego odbiorcy, bezpieczna obsługa braku danych i błędu integracji, czytelny raport zużycia oraz potwierdzony test limitów. Odbiór wymaga wyraźnego potwierdzenia, nie samego braku uwag.",
+        "backup": "Codzienna kopia konfiguracji, retencja 7 dni; test odtworzenia przed uruchomieniem i po istotnych zmianach. Retencja danych rozmówców i nagrań wymaga osobnych ustaleń zgodnych z rzeczywistym przetwarzaniem.",
+        "channels": "Ustalenia handlowe i odbiór: wskazani przedstawiciele stron przez uzgodnione adresy e-mail. Kontakt techniczny: Dawid Kozula, kontakt@dawkoz.com."
+      }
     }
   ]
 }

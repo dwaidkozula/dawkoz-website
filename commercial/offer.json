@@ -1,0 +1,128 @@
+{
+  "version": "1.0",
+  "currency": "PLN",
+  "amounts": "final_payable_including_vat_if_applicable",
+  "launch": {
+    "aiProjects": 3,
+    "availability": "confirmed_in_individual_offer",
+    "existingContracts": "unchanged_without_agreement"
+  },
+  "billing": {
+    "period": "monthly_from_activation",
+    "advancePercent": 50,
+    "paymentDays": 7,
+    "noticeDays": 30,
+    "carryOver": false,
+    "alertPercent": 80,
+    "defaultExtraBudgetCents": 0,
+    "ivrExtraMinuteCents": 149,
+    "aiExtraMinuteCents": 249,
+    "extraSmsPartCents": 69,
+    "extraWorkHourCents": 16000,
+    "maxCallMinutes": 5,
+    "metering": "each_billable_call_leg_rounded_up_to_full_minute",
+    "onExhaustion": "stop_new_paid_calls_and_sms_unless_budget_approved",
+    "lastAcceptedCall": "finish_within_max_call_duration_without_unapproved_surcharge",
+    "support": "Mon-Fri 09:00-17:00 Europe/Warsaw excluding Polish public holidays",
+    "criticalResponseWorkingHours": 8,
+    "normalResponseBusinessDays": 2,
+    "responseIsRepairGuarantee": false,
+    "maxForwardedCallMinutes": 15
+  },
+  "plans": {
+    "ivr": {
+      "name": "IVR Start",
+      "setupCents": 99000,
+      "monthlyCents": 24900,
+      "minutes": 100,
+      "smsParts": 0,
+      "numbers": 1,
+      "ivrOptions": 3,
+      "scenarios": 0,
+      "integrations": 0,
+      "changeMinutes": 15,
+      "deliveryBusinessDays": 5,
+      "launchOnly": false,
+      "assumedMinuteCostCents": 60,
+      "fixedMonthlyCostCents": 3500,
+      "monthlyLaborHours": 0.5,
+      "monthlyReserveCents": 2000,
+      "setupLaborHours": 4,
+      "setupExternalCostCents": 10000,
+      "setupReserveCents": 10000
+    },
+    "bot": {
+      "name": "Bot telefoniczny AI",
+      "setupCents": 299000,
+      "monthlyCents": 69900,
+      "minutes": 150,
+      "smsParts": 50,
+      "numbers": 1,
+      "ivrOptions": 0,
+      "scenarios": 1,
+      "integrations": 1,
+      "changeMinutes": 30,
+      "deliveryBusinessDays": 10,
+      "launchOnly": true,
+      "assumedMinuteCostCents": 120,
+      "fixedMonthlyCostCents": 5000,
+      "monthlyLaborHours": 0.75,
+      "monthlyReserveCents": 4000,
+      "setupLaborHours": 14,
+      "setupExternalCostCents": 15000,
+      "setupReserveCents": 25000
+    },
+    "combo": {
+      "name": "Bot + centrala",
+      "setupCents": 399000,
+      "monthlyCents": 89900,
+      "minutes": 250,
+      "smsParts": 100,
+      "numbers": 1,
+      "ivrOptions": 3,
+      "scenarios": 1,
+      "integrations": 1,
+      "changeMinutes": 60,
+      "deliveryBusinessDays": 15,
+      "launchOnly": true,
+      "assumedMinuteCostCents": 120,
+      "fixedMonthlyCostCents": 5000,
+      "monthlyLaborHours": 1.25,
+      "monthlyReserveCents": 5000,
+      "setupLaborHours": 18,
+      "setupExternalCostCents": 20000,
+      "setupReserveCents": 35000
+    }
+  },
+  "otherServices": {
+    "website": {
+      "setupCents": 199000,
+      "pages": 1,
+      "sections": 6,
+      "languages": 1,
+      "careMonthlyCents": 14900,
+      "changeMinutes": 15
+    },
+    "automation": {
+      "setupCents": 99000,
+      "workflows": 1,
+      "applications": 2,
+      "careMonthlyCents": 39900,
+      "changeMinutes": 30
+    }
+  },
+  "costAssumptions": {
+    "verifiedSupplierRates": false,
+    "description": "Internal planning ceilings, not verified provider tariffs or a profit guarantee. Confirm with paid test calls and invoices before accepting a client at these limits.",
+    "vatStressPercent": 23,
+    "smsPartCostCents": 30,
+    "laborHourCostCents": 10000,
+    "stressMultiplierPercent": 150,
+    "verificationGate": [
+      "Verify combined AI and telephony cost per billable minute, including routed call legs, taxes and currency conversion.",
+      "Verify SMS part cost, sender/number availability, and allocated hosting and number costs.",
+      "Test alerts, provider spending limits, usage reporting and stop behavior before activation.",
+      "If measured costs exceed these ceilings, adjust technology or make a different offer before signing. Do not change an agreed price unilaterally."
+    ]
+  }
+}

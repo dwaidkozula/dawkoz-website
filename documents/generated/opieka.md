@@ -1,6 +1,6 @@
 # Umowa utrzymania i opieki
 
-Projekt do uzgodnienia • wzór B2B • wersja 1.0
+Projekt do uzgodnienia • wzór B2B • wersja 1.1
 
 Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami. Uzupełnij wszystkie limity, czasy reakcji i zasady przekroczeń; sama kwota 899 zł nie określa tych parametrów.
 
@@ -16,13 +16,15 @@ Abonament obejmuje korzystanie z systemu, utrzymanie oraz opiekę techniczną w 
 
 ## § 3. Cena i płatność
 
-Miesięczna opłata wynosi 899,00 zł, ceny [Sposób podania cen]. Status VAT i fakturowanie: [Status VAT i sposób fakturowania]. Termin zapłaty faktury: [Termin zapłaty faktury (dni)] dni. Rachunek płatności: [Rachunek płatności]. Pierwszy i ostatni okres oraz początek naliczania: [Początek naliczania abonamentu]. Jednorazowe wdrożenie nie jest objęte abonamentem.
+Miesięczna opłata wynosi [Miesięczny abonament (kwota i waluta)], ceny brutto. Status VAT i fakturowanie: [Status VAT i sposób fakturowania]. Termin zapłaty faktury: [Termin zapłaty faktury (dni)] dni. Rachunek płatności: [Rachunek płatności]. Pierwszy i ostatni okres oraz początek naliczania: [Początek naliczania abonamentu]. Jednorazowe wdrożenie nie jest objęte abonamentem.
 
 ## § 4. Pakiet rozmów, AI i SMS
 
 W abonamencie zawarto [Miesięczny limit minut rozmów] minut rozmów oraz [Limit rozliczeniowych części SMS] rozliczeniowych części SMS na miesiąc rozliczeniowy. Koszty AI i telefonii dla uzgodnionego scenariusza mieszczą się w tym pakiecie. Szczegóły scenariusza i integracji: [Zakres rozwiązania]; [Integracje i ich zakres].
 
 Wiadomości długie lub zawierające określone znaki mogą składać się z kilku płatnych części. Pomiar zużycia opiera się na zestawieniach systemu i dostawców, z możliwością wyjaśnienia rozbieżności. Zasady przenoszenia niewykorzystanego pakietu i działania po jego wyczerpaniu: [Działanie po wyczerpaniu pakietu].
+
+Sposób pomiaru i rozliczania: [Sposób liczenia minut i SMS].
 
 ## § 5. Powiadomienia i dodatkowe koszty
 
