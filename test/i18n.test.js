@@ -53,15 +53,21 @@ test('renders translated content, accessible controls, prices and language links
   }
 });
 
-test('translates each legal document while preserving draft status, identity and language', () => {
+test('translates legal disclosures without inventing a seller identity or hiding known gaps', () => {
+  const statusKey = { 'polityka-prywatnosci.html': 'privacy_draft', 'warunki-swiadczenia-uslug.html': 'terms_draft', 'przetwarzanie-danych.html': 'data_draft' };
   for (const { code } of languages) {
     for (const page of legal) {
       const html = renderPage(read(page), code, page);
       assert.ok(html.includes(`<html lang="${code}"`), `${code}/${page}`);
       assert.ok(html.includes('name="robots" content="noindex'), `${code}/${page}`);
-      assert.ok(html.includes(escaped(catalogs[code].p003)), `${code}/${page}`);
+      assert.ok(html.includes(escaped(catalogs[code]['legal.v2.' + statusKey[page]])), `${code}/${page}`);
       assert.ok(html.includes('Dawid Kozula'), `${code}/${page}`);
-      assert.ok(html.includes('6272742701'), `${code}/${page}`);
+      assert.ok(!html.includes('6272742701'), `${code}/${page}`);
+      assert.ok(!html.includes('Wolności 123'), `${code}/${page}`);
+      if (page === 'polityka-prywatnosci.html') {
+        assert.ok(html.includes(escaped(catalogs[code]['legal.v2.session_cookie'])), code);
+        assert.ok(html.includes(escaped(catalogs[code]['legal.v2.demo'])), code);
+      }
       assert.ok(html.includes(`href="/${page}?lang=${code}"`), `${code}/${page}`);
       if (code !== 'pl') assert.ok(html.includes(`href="/?lang=${code}"`), `${code}/${page}`);
     }

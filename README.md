@@ -9,10 +9,14 @@ Warunki w `commercial/offer.json` są decyzją cenową DAWKOZ, nie zestawieniem 
 | Pakiet | Wdrożenie od | Abonament | Minuty / części SMS | Drobne zmiany |
 | --- | ---: | ---: | --- | --- |
 | IVR Start | 990 zł | 249 zł/mies. | 100 / 0 | 15 min/mies. |
-| Bot telefoniczny AI | 2990 zł | 699 zł/mies. | 150 / 50 | 30 min/mies. |
+| Bot telefoniczny AI | 2990 zł | 699 zł/mies. | 200 / 50 | 30 min/mies. |
 | Bot + centrala | 3990 zł | 899 zł/mies. | 250 / 100 | 60 min/mies. |
 
-Warunki startowe dotyczą trzech nowych wdrożeń AI, z dostępnością potwierdzaną w indywidualnej ofercie. Nie ma automatycznego licznika miejsc. Po ich wykorzystaniu należy zmienić ofertę dla nowych klientów; podpisane umowy nie zmieniają ceny automatycznie. Zakres podstawowy AI: jeden proces i jedna standardowa integracja biznesowa. Strona od 1990 zł: jedna strona do sześciu sekcji i jeden język. Automatyzacja od 990 zł: jeden proces do dwóch aplikacji. Opcjonalna opieka WWW od 149 zł/mies. i automatyzacji od 399 zł/mies.; domeny, hosting WWW i licencje klienta osobno.
+Warunki startowe dotyczą trzech nowych wdrożeń AI, z dostępnością potwierdzaną w indywidualnej ofercie. Nie ma automatycznego licznika miejsc. Po ich wykorzystaniu należy zmienić ofertę dla nowych klientów; podpisane umowy nie zmieniają ceny automatycznie. Zakres podstawowy AI: jeden proces z wariantami rozmowy, do 20 uzgodnionych odpowiedzi związanych z procesem na materiałach klienta, zebranie danych i podsumowanie przekazane do jednej standardowej integracji biznesowej. Telefonia, AI i SMS w limitach nie są kolejnymi integracjami. Testy z klientem, dwie rundy uwag i instrukcja są częścią wdrożenia; konto w panelu klienta osobno. Strona od 1990 zł: jedna strona do sześciu sekcji i jeden język. Automatyzacja od 990 zł: jeden proces do dwóch aplikacji. Opcjonalna opieka WWW od 149 zł/mies. i automatyzacji od 399 zł/mies.; domeny, hosting WWW i licencje klienta osobno.
+
+Przykłady automatyzacji mają określony zakres: zapytania od 990 zł (jedno źródło i jedno miejsce docelowe), przypomnienia od 1490 zł (jedno źródło, jeden kanał, jedna reguła) i faktury do weryfikacji od 1990 zł (jedna skrzynka, jeden uzgodniony typ tekstowego PDF, do pięciu pól, arkusz do sprawdzenia przez człowieka). OCR skanów, automatyczne księgowanie i KSeF nie są częścią tego zakresu. Kwoty i założenia pracy są w `commercial/offer.json`; teksty jedenastu wersji w `commercial/automation-copy.json`, a fragment w `commercial/automation.html`.
+
+Zwiększenie bota do 200 minut nie jest oparte na taryfie dostawcy: przy progu 1,20 zł/min, VAT 23%, pracy i rezerwie pozostaje 148,29 zł miesięcznej nadwyżki przed PIT/CIT/ZUS i kosztami ogólnymi; przy kosztach zmiennych wyższych o 50% tylko 20,79 zł. Zestaw 899 zł/250 minut pozostaje bez zwiększenia (175,89 zł / 10,89 zł). Nie oferować podwojenia limitów bez pomiaru kosztów. Szacunek czasu wdrożenia AI zwiększono do 16/20 godzin, uwzględniając ustalenie bazy odpowiedzi.
 
 Zużycie ponad pakiet wymaga akceptacji: domyślny dodatkowy budżet 0 zł, IVR 1,49 zł/min, AI 2,49 zł/min, SMS 0,69 zł/część. Prace dodatkowe 160 zł/godz. po akceptacji wyceny. Minuty liczone osobno i zaokrąglane w górę na każdym płatnym odcinku; dłuższe SMS i kodowanie mogą zwiększać liczbę części. Maksymalny czas rozmowy: 5 min AI, 15 min przekierowania IVR. Ostatnia przyjęta rozmowa kończy się w tym limicie bez nieuzgodnionej dopłaty. Limity i czas zmian nie przechodzą na kolejny miesiąc. Wsparcie pon.–pt. 9–17 czasu polskiego poza świętami; reakcja krytyczna do 8 godzin roboczych, pozostała do 2 dni roboczych. Nie jest to gwarantowany termin naprawy.
 
@@ -24,12 +28,23 @@ Po zmianie konfiguracji zaktualizuj materiały:
 
 ```sh
 node scripts/sync-offer.cjs
+node scripts/sync-automations.cjs
 python scripts/export-documents.py
 python scripts/export-commercial.py
 npm test
 ```
 
-Pierwsze polecenie aktualizuje statyczną stronę, jedenaście katalogów językowych i pakiety w bibliotece. `commercial/copy.json` zawiera teksty handlowe we wszystkich językach. `export-commercial.py` wymaga deweloperskich bibliotek `reportlab`, `python-docx` i `openpyxl`; zapisuje ofertę, plan wewnętrzny, Excel/CSV i trzy projekty JSON do `/workspace/exports/dawkoz-oferta-startowa`, a obok tworzy ZIP. Przy innym checkoutcie katalog docelowy można podać jako pierwszy argument. Uruchomienie strony nie wymaga tych bibliotek.
+Pierwsze dwa polecenia aktualizują statyczną stronę, jedenaście katalogów językowych, konkretne automatyzacje i pakiety w bibliotece. `commercial/copy.json` zawiera teksty handlowe, a `commercial/credibility-copy.json` etykiety demonstracji i zasad współpracy. Usunięto historyczne, nieużywane `pricing.js` i `trust.js` oraz niepotwierdzone statystyki opinii i adresów. `export-commercial.py` wymaga deweloperskich bibliotek `reportlab`, `python-docx` i `openpyxl`; zapisuje ofertę, plan wewnętrzny, Excel/CSV i trzy projekty JSON do `/workspace/exports/dawkoz-oferta-startowa`, a obok tworzy ZIP. Przy innym checkoutcie katalog docelowy można podać jako pierwszy argument. Uruchomienie strony nie wymaga tych bibliotek.
+
+## Demonstracja panelu klienta
+
+`/panel-klienta.html` to publiczny, polskojęzyczny demonstrator na fikcyjnych danych, oznaczony `noindex`. Zakładki zapytań, dokumentów i zużycia działają w przeglądarce: filtrowanie, szczegóły, statusy, oznaczenie dokumentu jako sprawdzonego i eksport widocznych spraw do CSV. Eksport chroni przed formułami arkusza. Stan jest wyłącznie w pamięci karty, resetuje się po przeładowaniu; brak kont, wysyłania, wczytywania plików klientów i localStorage. Nie są to dane z telefonii, OCR, KSeF ani księgowości. Przy braku JS strona podaje informację o potrzebnej obsłudze i kontakt.
+
+Realny panel dla firm wymaga osobnego zakresu: kont i odzyskiwania dostępu, izolacji klientów, trwałej bazy, uprawnień, kopii i odtworzenia, retencji, dziennika zmian i integracji z rzeczywistymi źródłami. Biblioteki operatora `/app` nie można użyć jako wspólnego konta klientów. Można wykorzystać działający serwer jako punkt startu i później dodać PWA, co unika osobnej aplikacji sklepowej; nie oznacza to darmowej infrastruktury ani gotowej aplikacji produkcyjnej. Demo nie uruchamia nowej płatnej usługi.
+
+## Audyt informacji prawnych
+
+Poprawiono trzy podstrony prawne i ich tłumaczenia, m.in. cookie sesji operatora, localStorage preferencji, kontakt e-mail, stan danych w edytorze i syntetyczne demo. Nie przypisuje się Kozbud odpowiedzialności ani wystawiania faktur bez ustalenia modelu współpracy. Pełna tożsamość administratora danych i rzeczywistego sprzedawcy, podstawa współpracy, dane rejestrowe, status VAT oraz dostawcy i retencja nadal wymagają potwierdzenia. To jawny brak, nie dowód kompletnej zgodności RODO. Szczegóły w `docs/audyt-prawny.md`.
 
 ## Wersje językowe
 
@@ -55,7 +70,7 @@ Panel obsługuje jednego operatora. Sesje są losowe, przechowywane w pamięci p
 
 Wybierz wzór, uzupełnij pola i pobierz prawdziwy plik DOCX. Przycisk „Drukuj / zapisz PDF” otwiera drukowanie przeglądarki z samym dokumentem, bez panelu. Puste PDF/DOCX oraz ZIP są przygotowane z góry i dostępne po logowaniu. „Zapisz projekt” pobiera JSON; „Wczytaj projekt” przywraca go w panelu. Pola pozostają w pamięci karty, bez automatycznego zapisu w localStorage i bez wysyłania danych klientów na serwer. Pobrane pliki zawierające dane klienta należy chronić na urządzeniu użytkownika.
 
-W ofercie, umowie wdrożeniowej, załączniku zakresu i umowie opieki można wybrać pakiet IVR / AI / Bot + centrala i jawnie zastosować warunki. Ceny i limity są uzupełniane dopiero po naciśnięciu „Ustaw warunki”; sama zmiana wyboru niczego nie nadpisuje. Dane stron, konto i wpisany status VAT pozostają bez zmian. Przy zastępowaniu wcześniej zmienionych warunków jest potwierdzenie. Kwota abonamentu w nowym pustym wzorze nie jest domyślnie przypisana do każdego rodzaju projektu. Gotowe pliki `projekt-*.json` z pakietu handlowego można wczytać jako punkt startowy oferty. Nie wpisują tożsamości klienta ani wykonawcy i nie potwierdzają statusu podatkowego. Dokumenty są wersją 1.1.
+W ofercie, umowie wdrożeniowej, załączniku zakresu i umowie opieki można wybrać pakiet IVR / AI / Bot + centrala i jawnie zastosować warunki. Ceny i limity są uzupełniane dopiero po naciśnięciu „Ustaw warunki”; sama zmiana wyboru niczego nie nadpisuje. Dane stron, konto i wpisany status VAT pozostają bez zmian. Przy zastępowaniu wcześniej zmienionych warunków jest potwierdzenie. Kwota abonamentu w nowym pustym wzorze nie jest domyślnie przypisana do każdego rodzaju projektu. Gotowe pliki `projekt-*.json` z pakietu handlowego można wczytać jako punkt startowy oferty. Nie wpisują tożsamości klienta ani wykonawcy i nie potwierdzają statusu podatkowego; pusty wzór nie wpisuje też domyślnie NIP Kozbud. Dokumenty są wersją 1.2.
 
 Źródłem treści jest `documents/catalog.json`. Pliki `documents/generated/` oraz kod i HTML panelu leżą poza `public`; serwer udostępnia je wyłącznie przez wskazane trasy `/app`. Udostępniany bez logowania arkusz CSS nie zawiera dokumentów. API nie przyjmuje danych projektów. Dla publicznej witryny zachowano odrębną politykę CSP i blokadę metod zapisu.
 

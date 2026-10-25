@@ -1,12 +1,12 @@
 # Oferta wdrożenia
 
-Projekt do uzgodnienia • wzór B2B • wersja 1.1
+Projekt do uzgodnienia • wzór B2B • wersja 1.2
 
 Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami.
 
 ## Oferta nr [Numer projektu / umowy]
 
-Dla: [Pełna nazwa zamawiającego], [Adres zamawiającego], NIP [NIP zamawiającego]. Przygotował: [Pełna nazwa prawna wykonawcy], [Adres wykonawcy], NIP 6272742701, kontakt kontakt@dawkoz.com. Data: [Data dokumentu]. Oferta ważna do [Ważność oferty do].
+Dla: [Pełna nazwa zamawiającego], [Adres zamawiającego], NIP [NIP zamawiającego]. Przygotował: [Pełna nazwa prawna wykonawcy], [Adres wykonawcy], NIP [NIP wykonawcy — potwierdź podmiot], kontakt kontakt@dawkoz.com. Data: [Data dokumentu]. Oferta ważna do [Ważność oferty do].
 
 ## Cel projektu
 

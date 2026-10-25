@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "currency": "PLN",
   "amounts": "final_payable_including_vat_if_applicable",
   "launch": {
@@ -55,12 +55,13 @@
       "name": "Bot telefoniczny AI",
       "setupCents": 299000,
       "monthlyCents": 69900,
-      "minutes": 150,
+      "minutes": 200,
       "smsParts": 50,
       "numbers": 1,
       "ivrOptions": 0,
       "scenarios": 1,
       "integrations": 1,
+      "faqAnswers": 20,
       "changeMinutes": 30,
       "deliveryBusinessDays": 10,
       "launchOnly": true,
@@ -68,7 +69,7 @@
       "fixedMonthlyCostCents": 5000,
       "monthlyLaborHours": 0.75,
       "monthlyReserveCents": 4000,
-      "setupLaborHours": 14,
+      "setupLaborHours": 16,
       "setupExternalCostCents": 15000,
       "setupReserveCents": 25000
     },
@@ -82,6 +83,7 @@
       "ivrOptions": 3,
       "scenarios": 1,
       "integrations": 1,
+      "faqAnswers": 20,
       "changeMinutes": 60,
       "deliveryBusinessDays": 15,
       "launchOnly": true,
@@ -89,7 +91,7 @@
       "fixedMonthlyCostCents": 5000,
       "monthlyLaborHours": 1.25,
       "monthlyReserveCents": 5000,
-      "setupLaborHours": 18,
+      "setupLaborHours": 20,
       "setupExternalCostCents": 20000,
       "setupReserveCents": 35000
     }
@@ -108,7 +110,27 @@
       "workflows": 1,
       "applications": 2,
       "careMonthlyCents": 39900,
-      "changeMinutes": 30
+      "changeMinutes": 30,
+      "examples": {
+        "inquiries": {
+          "setupCents": 99000,
+          "setupLaborHours": 4,
+          "externalCostCents": 5000,
+          "reserveCents": 10000
+        },
+        "reminders": {
+          "setupCents": 149000,
+          "setupLaborHours": 6,
+          "externalCostCents": 5000,
+          "reserveCents": 15000
+        },
+        "invoices": {
+          "setupCents": 199000,
+          "setupLaborHours": 10,
+          "externalCostCents": 10000,
+          "reserveCents": 20000
+        }
+      }
     }
   },
   "costAssumptions": {

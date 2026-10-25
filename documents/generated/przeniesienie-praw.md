@@ -1,12 +1,12 @@
 # Porozumienie o przeniesieniu praw
 
-Projekt do uzgodnienia • wzór B2B • wersja 1.1
+Projekt do uzgodnienia • wzór B2B • wersja 1.2
 
 Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami. Przed użyciem potwierdź łańcuch praw i zgodność wykazu z faktycznymi rezultatami. Jest to alternatywa wymagająca skoordynowania z licencją w umowie głównej.
 
 ## § 1. Strony i utwory
 
-Zawarto w [Miejscowość podpisania] dnia [Data dokumentu] pomiędzy: [Pełna nazwa prawna wykonawcy], adres: [Adres wykonawcy], NIP: 6272742701, reprezentacja: [Osoba reprezentująca wykonawcę i podstawa umocowania], e-mail: kontakt@dawkoz.com, dalej „Wykonawca”, a [Pełna nazwa zamawiającego], adres: [Adres zamawiającego], NIP: [NIP zamawiającego], reprezentacja: [Reprezentant zamawiającego], e-mail: [E-mail zamawiającego], dalej „Zamawiający”.
+Zawarto w [Miejscowość podpisania] dnia [Data dokumentu] pomiędzy: [Pełna nazwa prawna wykonawcy], adres: [Adres wykonawcy], NIP: [NIP wykonawcy — potwierdź podmiot], reprezentacja: [Osoba reprezentująca wykonawcę i podstawa umocowania], e-mail: kontakt@dawkoz.com, dalej „Wykonawca”, a [Pełna nazwa zamawiającego], adres: [Adres zamawiającego], NIP: [NIP zamawiającego], reprezentacja: [Reprezentant zamawiającego], e-mail: [E-mail zamawiającego], dalej „Zamawiający”.
 
 Dotyczy umowy [Numer projektu / umowy], projekt [Nazwa projektu]. Dokładny wykaz utworów, wersji i autorów: [Dokładne utwory, wersje i autorzy]. Dokumentowana podstawa nabycia praw od autorów: [Podstawa nabycia praw od rzeczywistych autorów].
 

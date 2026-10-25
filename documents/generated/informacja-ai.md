@@ -1,6 +1,6 @@
 # Informacja dla rozmówców bota AI
 
-Projekt do uzgodnienia • wzór B2B • wersja 1.1
+Projekt do uzgodnienia • wzór B2B • wersja 1.2
 
 Wzór dla administratora danych rozmówców, a nie automatycznie dla DAWKOZ. Wymaga dopasowania do działania systemu, zwłaszcza nagrywania, podstaw prawnych i faktycznych odbiorców.
 

@@ -29,6 +29,7 @@ test('planning distinguishes VAT, labor and reserve from real profit and preserv
 test('document presets carry commercial terms without inventing client, seller or tax identities', () => {
   assert.deepEqual(catalog.presets, presets());
   assert.equal(catalog.fields.monthly_fee.default, '');
+  assert.equal(catalog.fields.seller_nip.default, '');
   for (const preset of catalog.presets) {
     const plan = offer.plans[preset.id];
     assert.equal(preset.values.minute_limit, String(plan.minutes));
@@ -41,6 +42,29 @@ test('document presets carry commercial terms without inventing client, seller o
       assert.ok(value.length <= (field.type === 'textarea' ? 6000 : 500), `${preset.id}/${id}`);
       if (field.type === 'select') assert.ok(field.options.includes(value));
     }
+  }
+});
+
+test('new examples and bot deliverables are translated, scoped and consistent with the offer', () => {
+  for (const { code } of languages) {
+    const html = renderPage(home, code, 'index.html');
+    for (const key of ['conversationScope', 'integrationDetail', 'testingScope', 'trafficAdvice']) {
+      const value = catalogs[code]['offer.' + key].replaceAll('&', '&amp;').replaceAll("'", '&#39;');
+      assert.ok(html.includes(value), `${code}/${key}`);
+    }
+    for (const key of ['inquiriesPrice', 'remindersPrice', 'invoicesPrice', 'invoicesDetails', 'priceNote', 'panelNote']) {
+      const value = catalogs[code]['automation.v1.' + key].replaceAll('&', '&amp;').replaceAll("'", '&#39;');
+      assert.ok(html.includes(value), `${code}/${key}`);
+    }
+    assert.ok(html.includes(`/panel-klienta.html${code === 'pl' ? '' : '?lang=' + code}`));
+    assert.ok(!html.includes('{faqAnswers}'));
+  }
+  assert.equal(offer.plans.bot.minutes, 200);
+  assert.ok(!home.includes('POZYTYWNYCH OPINII'));
+  assert.ok(!home.includes('1500+'));
+  for (const p of Object.values(offer.otherServices.automation.examples)) {
+    const net = Math.round(p.setupCents / 1.23);
+    assert.ok(net > p.setupLaborHours * offer.costAssumptions.laborHourCostCents + p.externalCostCents + p.reserveCents);
   }
 });
 

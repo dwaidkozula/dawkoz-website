@@ -1,6 +1,6 @@
 # Protokół odbioru
 
-Projekt do uzgodnienia • wzór B2B • wersja 1.1
+Projekt do uzgodnienia • wzór B2B • wersja 1.2
 
 Wzory B2B do uzupełnienia i dostosowania przed podpisaniem. Potwierdź model współpracy z Kozbud, dane stron, ceny i limity. Dokumenty nie zostały zweryfikowane dla konkretnej transakcji przez prawnika.
 

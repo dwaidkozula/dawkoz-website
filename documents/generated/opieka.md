@@ -1,12 +1,12 @@
 # Umowa utrzymania i opieki
 
-Projekt do uzgodnienia • wzór B2B • wersja 1.1
+Projekt do uzgodnienia • wzór B2B • wersja 1.2
 
-Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami. Uzupełnij wszystkie limity, czasy reakcji i zasady przekroczeń; sama kwota 899 zł nie określa tych parametrów.
+Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami. Uzupełnij wszystkie limity, czasy reakcji i zasady przekroczeń; sama kwota abonamentu nie określa tych parametrów.
 
 ## § 1. Strony i system
 
-Zawarto w [Miejscowość podpisania] dnia [Data dokumentu] pomiędzy: [Pełna nazwa prawna wykonawcy], adres: [Adres wykonawcy], NIP: 6272742701, reprezentacja: [Osoba reprezentująca wykonawcę i podstawa umocowania], e-mail: kontakt@dawkoz.com, dalej „Wykonawca”, a [Pełna nazwa zamawiającego], adres: [Adres zamawiającego], NIP: [NIP zamawiającego], reprezentacja: [Reprezentant zamawiającego], e-mail: [E-mail zamawiającego], dalej „Zamawiający”.
+Zawarto w [Miejscowość podpisania] dnia [Data dokumentu] pomiędzy: [Pełna nazwa prawna wykonawcy], adres: [Adres wykonawcy], NIP: [NIP wykonawcy — potwierdź podmiot], reprezentacja: [Osoba reprezentująca wykonawcę i podstawa umocowania], e-mail: kontakt@dawkoz.com, dalej „Wykonawca”, a [Pełna nazwa zamawiającego], adres: [Adres zamawiającego], NIP: [NIP zamawiającego], reprezentacja: [Reprezentant zamawiającego], e-mail: [E-mail zamawiającego], dalej „Zamawiający”.
 
 Umowa / system [Numer projektu / umowy]: [Nazwa projektu]. Rozpoczęcie opieki: [Początek naliczania abonamentu]. Koordynator techniczny: Dawid Kozula. Osoby i kanały uzgodnień: [Kanały i osoby do uzgodnień]. Koordynacja techniczna nie oznacza sama w sobie prawa do zaciągania zobowiązań w imieniu strony.
 

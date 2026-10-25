@@ -25,3 +25,6 @@
   .legal-main { padding-top: 42px; padding-bottom: 55px; }
   .legal-main h1 { letter-spacing: -1px; }
 }
+.legal-main code { overflow-wrap: anywhere; font-size: .92em; color: #ddd; }
+.legal-main .legal-missing { border-left: 2px solid #6c5b41; padding-left: 14px; }
+.legal-header { flex-wrap: wrap; }

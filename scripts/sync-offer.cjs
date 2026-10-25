@@ -5,9 +5,16 @@ const path = require('node:path');
 const root = path.join(__dirname, '..');
 const offer = require('../commercial/offer.json');
 const copy = require('../commercial/copy.json');
+const credibility = require('../commercial/credibility-copy.json');
 const { presets } = require('../commercial/presets');
 const languages = Object.keys(copy.finalPrices);
 const catalogs = Object.fromEntries(languages.map(code => [code, JSON.parse(fs.readFileSync(path.join(root, 'locales', `${code}.json`), 'utf8'))]));
+for (const [key, versions] of Object.entries(credibility)) {
+  for (const code of languages) {
+    if (!versions[code]) throw new Error(`Missing credibility translation ${key}/${code}`);
+    catalogs[code][`credibility.${key}`] = versions[code];
+  }
+}
 const escape = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 const money = (cents, code = 'pl') => new Intl.NumberFormat(code === 'no' ? 'nb' : code, { maximumFractionDigits: 2, useGrouping: 'always' }).format(cents / 100).replace(/[\u00a0\u202f]/g, ' ') + (code === 'pl' ? ' zł' : ' PLN');
 function variables(code) {
@@ -23,6 +30,7 @@ function variables(code) {
     websiteCare: money(offer.otherServices.website.careMonthlyCents, code), automationCare: money(offer.otherServices.automation.careMonthlyCents, code),
     websiteChanges: offer.otherServices.website.changeMinutes, automationChanges: offer.otherServices.automation.changeMinutes,
     comboMinutes: offer.plans.combo.minutes, comboSms: offer.plans.combo.smsParts, comboChanges: offer.plans.combo.changeMinutes,
+    faqAnswers: offer.plans.bot.faqAnswers, botMinutes: offer.plans.bot.minutes,
   };
 }
 function text(key, planId) {
@@ -47,11 +55,11 @@ const start = html.indexOf('<div class="price-grid">'), end = html.indexOf('<div
 if (start < 0 || end < start) throw new Error('Pricing anchors missing');
 let count = 0;
 const plans = Object.entries(offer.plans);
-const grid = html.slice(start, end).replace(/<article\b[\s\S]*?<\/article>/g, card => {
+const grid = html.slice(start, end).replace(/<article class="package-card(?: featured)?"[\s\S]*?<\/article>/g, card => {
   const [id, p] = plans[count++];
   const features = id === 'ivr'
     ? [text('ivrScope'), text('minutes', id), text('changes', id), 'Wsparcie po uruchomieniu']
-    : [...(id === 'combo' ? [text('ivrScope')] : []), text('aiScope'), text('minutes', id), text('sms', id), text('changes', id), text('aiCosts')];
+    : [...(id === 'combo' ? [text('ivrScope')] : []), text('aiScope'), text('integrationScope'), text('faqAnswers'), text('minutes', id), text('sms', id), text('changes', id), text('aiCosts')];
   card = card.replace(/<ul>[\s\S]*?<\/ul>/, `<ul>\n${features.map(value => `<li>${escape(value)}</li>`).join('\n')}</ul>`);
   card = card.replace(/(<div class="dual-price">\s*<div><small>JEDNORAZOWE WDROŻENIE<\/small><strong>)[\s\S]*?(<\/strong>)/, `$1od ${money(p.setupCents)}$2`);
   card = card.replace(/(<small>ABONAMENT<\/small><strong>)[\s\S]*?(<em>)/, `$1${price(p.monthlyCents)} $2`);
@@ -59,6 +67,11 @@ const grid = html.slice(start, end).replace(/<article\b[\s\S]*?<\/article>/g, ca
 });
 if (count !== plans.length) throw new Error('Unexpected package count');
 html = html.slice(0, start) + grid + html.slice(end);
+const included = `<!-- BOT SCOPE START -->
+<div class="bot-included" aria-labelledby="bot-included-title"><h3 id="bot-included-title">${escape(text('includedTitle'))}</h3><div class="bot-included-grid">${[['conversationTitle', 'conversationScope'], ['handoffTitle', 'integrationDetail'], ['testingTitle', 'testingScope']].map(([heading, body]) => `<article><h4>${escape(text(heading))}</h4><p>${escape(text(body))}</p></article>`).join('')}</div><p class="price-note">${escape(text('trafficAdvice'))}</p></div>
+<!-- BOT SCOPE END -->`;
+if (html.includes('<!-- BOT SCOPE START -->')) html = html.replace(/<!-- BOT SCOPE START -->[\s\S]*?<!-- BOT SCOPE END -->/, included);
+else html = html.replace('<div class="pricing-explainer subscription">', included + '\n<div class="pricing-explainer subscription">');
 const terms = `<!-- COMMERCIAL TERMS START -->\n<p class="price-note">${escape(text('finalPrices'))}</p>\n<p class="price-note">${escape(text('launch'))}</p>\n<details class="plan-terms"><summary>${escape(text('terms'))}<span aria-hidden="true">+</span></summary><div>${['limits', 'meter', 'extras', 'support', 'payments'].map(key => `<p>${escape(text(key))}</p>`).join('\n')}</div></details>\n<!-- COMMERCIAL TERMS END -->`;
 if (html.includes('<!-- COMMERCIAL TERMS START -->')) html = html.replace(/<!-- COMMERCIAL TERMS START -->[\s\S]*?<!-- COMMERCIAL TERMS END -->/, terms);
 else html = html.replace(/<p class="price-note">Kwoty „od”[\s\S]*?<\/p>/, terms);
@@ -81,12 +94,18 @@ for (const code of languages) fs.writeFileSync(path.join(root, 'locales', `${cod
 const catalogPath = path.join(root, 'documents/catalog.json');
 const catalog = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
 catalog.presets = presets();
+catalog.version = '1.2';
 // Financial fields stay blank until an operator deliberately selects a package.
 catalog.fields.monthly_fee.default = '';
 catalog.fields.price_basis.default = 'brutto';
+catalog.fields.seller_nip.default = '';
 catalog.fields.usage_metering = { id: 'usage_metering', label: 'Sposób liczenia minut i SMS', group: 'Opieka', type: 'textarea', default: '' };
 for (const template of catalog.templates) {
-  template.version = '1.1';
+  template.version = '1.2';
+  if (template.id === 'opieka') {
+    template.description = 'Usługa, opieka i uzgodnione limity wybranego pakietu.';
+    template.notes = template.notes.replace('sama kwota 899 zł', 'sama kwota abonamentu');
+  }
   if (['oferta', 'opieka'].includes(template.id) && !JSON.stringify(template.sections).includes('{{usage_metering}}')) {
     const section = template.sections.find(s => s.title.includes(template.id === 'oferta' ? 'Abonament i zużycie' : 'Pakiet rozmów'));
     section.paragraphs.push('Sposób pomiaru i rozliczania: {{usage_metering}}.');

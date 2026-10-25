@@ -56,12 +56,13 @@ for id,p in O['plans'].items():
  offer_sections.append((p['name'],[
   f'Wdrożenie od {M(p["setupCents"])}. Abonament {M(p["monthlyCents"])}/mies. Pakiet: {p["minutes"]} minut, {p["smsParts"]} części SMS oraz {p["changeMinutes"]} minut drobnych zmian miesięcznie.',
   next(x for x in CAT['presets'] if x['id']==id)['values']['scope'],
+  next(x for x in CAT['presets'] if x['id']==id)['values']['deliverables'],
   f'Zakładany termin realizacji podstawowego zakresu: {p["deliveryBusinessDays"]} dni roboczych od otrzymania kompletnych materiałów, dostępów i zaliczki; termin potwierdzany w indywidualnej ofercie.'
  ]))
 offer_sections += [
  ('Zakres i ceny końcowe',[
   'Wszystkie kwoty są cenami końcowymi do zapłaty; VAT, jeżeli dotyczy, mieści się w cenie. Faktyczny wykonawca, jego status i stawka VAT muszą być wskazane w umowie i dokumentach rozliczeniowych.',
-  'Warunki startowe wdrożeń AI obejmują 3 nowe projekty. Dostępność potwierdzana indywidualnie. Podstawowy zakres to jeden proces i jedna standardowa integracja biznesowa, np. przekazanie zgłoszenia do Telegrama, e-mail lub arkusza. Telefonia, AI i SMS są elementami pakietu, a nie dodatkowymi integracjami biznesowymi.',
+  f'Warunki startowe wdrożeń AI obejmują 3 nowe projekty. Dostępność potwierdzana indywidualnie. Podstawowy zakres to jeden proces z wariantami rozmowy, baza do {O["plans"]["bot"]["faqAnswers"]} uzgodnionych odpowiedzi związanych z procesem na materiałach klienta i jedna standardowa integracja biznesowa, np. przekazanie podsumowania zgłoszenia do Telegrama, e-mail lub arkusza. Telefonia, AI i SMS są elementami pakietu, a nie dodatkowymi integracjami biznesowymi. Konto w panelu klienta wyceniane osobno.',
   'Dwie rundy uwag do scenariusza lub menu. Usuwanie niezgodności z zakresem nie jest ograniczone tymi rundami. Dodatkowe scenariusze, nowe API, numery premium, kampanie wychodzące i połączenia międzynarodowe wymagają osobnej wyceny.'
  ]),
  ('Zużycie, zgoda na dopłaty i pomiar',[
@@ -78,10 +79,22 @@ offer_sections += [
  ('Strony i automatyzacje',[
   'Strona firmowa od 1990,00 zł: jedna strona do 6 sekcji w jednym języku, z materiałów klienta. Automatyzacja od 990,00 zł: jeden proces łączący do 2 aplikacji. Dodatkowe podstrony, CMS, języki i płatne licencje wyceniane osobno.',
   'Opcjonalna opieka WWW od 149,00 zł/mies.: monitoring, kopia konfiguracji i 15 minut drobnych zmian. Opieka nad automatyzacją od 399,00 zł/mies.: monitoring uzgodnionego przepływu i 30 minut drobnych zmian. Domeny, hosting WWW i licencje klienta poza tymi abonamentami, rozliczane osobno. Opieka telefoniczna jest zawarta w pakietach telefonicznych.'
+ ]),
+ ('Konkretne wdrożenia automatyzacji',[
+  f'Zapytania bez przepisywania od {M(O["otherServices"]["automation"]["examples"]["inquiries"]["setupCents"])}: jedno źródło, jedno miejsce docelowe, jeden proces łączący do dwóch aplikacji, np. formularz do arkusza.',
+  f'Przypomnienia o terminach od {M(O["otherServices"]["automation"]["examples"]["reminders"]["setupCents"])}: jedno źródło terminów, jeden kanał e-mail albo SMS, jedna reguła wysyłki i uzgodniony szablon. Licencje i zużycie wiadomości osobno.',
+  f'Faktury do sprawdzenia od {M(O["otherServices"]["automation"]["examples"]["invoices"]["setupCents"])}: jedna skrzynka, jeden uzgodniony typ tekstowego PDF, do pięciu pól przekazanych do arkusza do weryfikacji przez człowieka. Bez automatycznego księgowania, KSeF i OCR skanów; rozbudowy wyceniane osobno.',
+  'Panel klienta: zakres i cena indywidualnie. Publiczne demo na dawkoz.com/panel-klienta.html pokazuje wyłącznie fikcyjne dane. Rzeczywiste konta, uprawnienia, baza, integracje i utrzymanie wymagają osobnego wdrożenia. Wersja przeglądarkowa unika potrzeby odrębnej aplikacji sklepowej; infrastruktura nadal ma koszt.'
  ])]
 write('01-oferta-startowa','DAWKOZ — oferta startowa','Warunki do indywidualnej oferty B2B. Przed zawarciem umowy potwierdź dane stron, dostępność pakietu, zakres, dostawców i rzeczywisty status VAT.',offer_sections)
 
 internal=[
+ ('Pozycjonowanie cenowe i porównanie ofert',[
+  'DAWKOZ nie powinien komunikować najniższej ceny. Publiczny cennik CallPage (https://www.callpage.pl/cennik) podaje podstawowego Agenta Głosowego AI za 399 zł netto miesięcznie przy subskrypcji rocznej, czyli 490,77 zł z VAT 23%. Strona https://www.callpage.pl/ai-agent deklaruje bezpłatne wdrożenie. Nie ustalono publicznego limitu minut AI i całego porównywalnego zakresu. Nie należy utożsamiać limitów callback z minutami bota.',
+  f'Podstawowy poziom CallPage daje 5889,24 zł brutto za 12 miesięcy przed dodatkami. DAWKOZ Bot z wdrożeniem kosztuje {M(O["plans"]["bot"]["setupCents"]+12*O["plans"]["bot"]["monthlyCents"])} w pierwszych 12 miesiącach. Są to różne warunki i niezweryfikowany porównywalny zakres, więc nie jest to ranking opłacalności. Cena DAWKOZ wymaga uzasadnienia indywidualnym procesem, integracją, zakresem opieki i okresem wypowiedzenia, nie samą obietnicą AI.',
+  'Datera (https://www.datera.pl/cennik/) publikuje 150/220/320/620 zł netto miesięcznie przy umowie na 24 miesiące. To pakiety centrali i komunikacji, a nie potwierdzony odpowiednik konwersacyjnego bota AI. Nie porównywać samych liczb minut bez funkcji, naliczania, wdrożenia i okresu umowy.',
+  'Zwiększono Bot AI ze 150 do 200 minut bez podwyżki abonamentu, pozostawiono zestaw 250 minut. Podwojenie zestawu do 500 minut przy progu kosztu 1,20 zł/min, SMS, VAT 23%, pracy i rezerwie dawałoby stratę 124,11 zł miesięcznie. Faktyczne taryfy operatorów nie zostały odczytane; próg kosztu trzeba zmierzyć.'
+ ]),
  ('Decyzja o rynku i pierwszej usłudze',[
   'Pierwszy kierunek: zarządcy nieruchomości. Wspólny scenariusz: przyjęcie zgłoszenia usterki, zebranie adresu i opisu, przekazanie sprawy do jednego narzędzia. Po pierwszych trzech wdrożeniach ocenić rozszerzenie na firmy serwisowe.',
   'Materiały sprzedażowe: nagranie 60–90 sekund rzeczywistej demonstracji, jednostronicowa oferta, opis zakresu i limitów, przykład raportu. Dane demonstracyjne oznaczać jako przykładowe. Publikować wyłącznie potwierdzone wyniki oraz materiały, do których jest uprawnienie.'
@@ -96,6 +109,11 @@ internal=[
   'Progi kosztu: minuta IVR do 0,60 zł, minuta AI z telefonią do 1,20 zł, część SMS do 0,30 zł — razem z opłatami operatora, podatkami i przeliczeniem walut. Miesięczny numer i hosting: budżet 35 zł IVR / 50 zł AI. Robocze koszty pracy i rezerwy są w arkuszu.',
   *[f'{p["name"]}: przychód po VAT {M(evaluate(p)[0])}, planowane koszty wraz z pracą i rezerwą {M(evaluate(p)[1])}, nadwyżka {M(evaluate(p)[2])}. Przy kosztach zmiennych wyższych o 50%: {M(evaluate(p,1.5)[2])} nadwyżki.' for p in O['plans'].values()],
   'Nadwyżka nie jest zyskiem do wypłaty: nie obejmuje PIT/CIT, ZUS, księgowości, pozyskania klienta i wszystkich kosztów ogólnych. Przekroczenie czasu pracy, stawek lub zakresu może odwrócić wynik.'
+ ]),
+ ('Panel i nowe automatyzacje',[
+  'Publiczne demo jest materiałem do pokazania rozwiązania, nie repozytorium klientów. Dane są przykładowe, bez wgrywania plików i bez serwerowego zapisu. Realny panel wymaga uwierzytelnienia, izolacji firm, trwałej bazy, kopii z testem odtworzenia, retencji i audytu działań.',
+  'Początek może korzystać z tego samego hostingu i interfejsu WWW; nie zamawiano nowych płatnych usług. Nie oznacza to bezkosztowego produkcyjnego przechowywania danych. PWA można dołożyć po ustaleniu funkcji i bezpieczeństwa. Biblioteka /app pozostaje osobnym narzędziem operatora.',
+  'Sprzedawać jeden konkretny proces, a nie ogólne „AI w księgowości”. Podstawowe faktury: tekstowy PDF uzgodnionego typu, do pięciu pól, ręczna weryfikacja. OCR dowolnych skanów, autoksięgowanie i KSeF wymagają innego zakresu i wyceny. Koszty licencji i zużycia oraz zasady obsługi błędów przed umową.'
  ]),
  ('Warunki przyjęcia pierwszego klienta',[
   'Przed podpisaniem oferty wykonać minimum 20 zróżnicowanych rozmów testowych na docelowym stosie: adres znany/nieznany, przerwanie rozmowy, brak danych, błąd integracji i przekazanie sprawy człowiekowi. Sprawdzić rzeczywiste koszty na zestawieniu dostawców, nie tylko oszacowanie modelu.',
@@ -146,6 +164,11 @@ for row,(id,p) in enumerate(O['plans'].items(),2):
 register=wb.create_sheet('Oferty startowe')
 register.append(['Miejsce','Numer oferty','Pakiet','Ważność oferty','Data podpisania','Zaliczka otrzymana','Status'])
 for slot in range(1,O['launch']['aiProjects']+1):register.append([slot,'','','','','',''])
+automations=wb.create_sheet('Automatyzacje')
+automations.append(['Zakres startowy','Cena końcowa od','Przychód po VAT','Godziny pracy','Koszt pracy','Koszty zewnętrzne','Rezerwa','Koszty razem','Nadwyżka'])
+names={'inquiries':'Zapytania do jednego narzędzia','reminders':'Przypomnienia: jeden kanał','invoices':'Tekstowy PDF do weryfikacji'}
+for row,(id,p) in enumerate(O['otherServices']['automation']['examples'].items(),2):
+ automations.append([names[id],p['setupCents']/100,f'=ROUND(B{row}/(1+\'Założenia\'!$B$4),2)',p['setupLaborHours'],f'=D{row}*\'Założenia\'!$B$5',p['externalCostCents']/100,p['reserveCents']/100,f'=SUM(E{row}:G{row})',f'=C{row}-H{row}'])
 for ws in wb:
  ws.freeze_panes='B2';ws.auto_filter.ref=ws.dimensions
  for c in ws[1]:c.fill=PatternFill('solid',fgColor='15273D');c.font=Font(color='FFFFFF',bold=True);c.alignment=Alignment(wrap_text=True,vertical='center')
@@ -179,7 +202,10 @@ for preset in CAT['presets']:
  sections=[(fill(s['title']),[fill(p) for p in s['paragraphs']]) for s in template['sections']]
  write('oferta-'+preset['id'],'Oferta — '+O['plans'][preset['id']]['name'],'Projekt do uzupełnienia: dane stron, status VAT, termin i konkretny odbiorca integracji wymagają potwierdzenia przed wysłaniem klientowi.',sections)
 
-(OUT/'CZYTAJ.txt').write_text('DAWKOZ — GOTOWA OFERTA STARTOWA\n\n01: warunki dla klientów. 02: plan wewnętrzny z progami kosztów, procesem i zadaniami. 03: edytowalny Excel i podsumowanie CSV.\nOferty IVR, bot i combo: PDF/DOCX/MD do uzupełnienia danymi stron. Pliki projekt-*.json można wczytać w panelu dokumentów dawkoz.com/app.\nNiebieskie pola Excela to założenia, zielone to formuły. Excel przelicza je po otwarciu. Stawki dostawców nie zostały zweryfikowane; to model planowania.\nPotwierdź rzeczywistego sprzedawcę, status VAT i koszty dostawców. Limity na stronie i w dokumentach nie są wdrożeniem ograniczeń w silniku bota.\n')
+for name in ['audyt-oferty.md','audyt-prawny.md']:
+ source=ROOT/'docs'/name
+ if source.exists():(OUT/name).write_text(source.read_text())
+(OUT/'CZYTAJ.txt').write_text('DAWKOZ — GOTOWA OFERTA STARTOWA\n\n01: warunki dla klientów. 02: plan wewnętrzny z progami kosztów, procesem i zadaniami. 03: edytowalny Excel i podsumowanie CSV. Audyty: ustalenia o ofercie i prawie.\nOferty IVR, bot i combo: PDF/DOCX/MD do uzupełnienia danymi stron. Pliki projekt-*.json można wczytać w panelu dokumentów dawkoz.com/app.\nNiebieskie pola Excela to założenia, zielone to formuły. Excel przelicza je po otwarciu. Stawki dostawców nie zostały zweryfikowane; to model planowania. Arkusz obejmuje też trzy konkretne automatyzacje.\nPotwierdź rzeczywistego sprzedawcę, status VAT i koszty dostawców. Polityka pozostaje projektem do uzupełnienia rzeczywistymi danymi. Limity na stronie i w dokumentach nie są wdrożeniem ograniczeń w silniku bota. Demo panelu nie jest kontem klienta.\n')
 archive=OUT.parent/'dawkoz-oferta-startowa.zip'
 with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED) as z:
  for file in sorted(OUT.iterdir()):

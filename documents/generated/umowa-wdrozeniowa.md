@@ -1,12 +1,12 @@
 # Umowa wdrożeniowa B2B
 
-Projekt do uzgodnienia • wzór B2B • wersja 1.1
+Projekt do uzgodnienia • wzór B2B • wersja 1.2
 
 Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami. Wariant podstawowy przewiduje licencję niewyłączną. Do przeniesienia praw użyj osobnego wzoru i zapewnij łańcuch praw od autorów.
 
 ## § 1. Strony i projekt
 
-Zawarto w [Miejscowość podpisania] dnia [Data dokumentu] pomiędzy: [Pełna nazwa prawna wykonawcy], adres: [Adres wykonawcy], NIP: 6272742701, reprezentacja: [Osoba reprezentująca wykonawcę i podstawa umocowania], e-mail: kontakt@dawkoz.com, dalej „Wykonawca”, a [Pełna nazwa zamawiającego], adres: [Adres zamawiającego], NIP: [NIP zamawiającego], reprezentacja: [Reprezentant zamawiającego], e-mail: [E-mail zamawiającego], dalej „Zamawiający”.
+Zawarto w [Miejscowość podpisania] dnia [Data dokumentu] pomiędzy: [Pełna nazwa prawna wykonawcy], adres: [Adres wykonawcy], NIP: [NIP wykonawcy — potwierdź podmiot], reprezentacja: [Osoba reprezentująca wykonawcę i podstawa umocowania], e-mail: kontakt@dawkoz.com, dalej „Wykonawca”, a [Pełna nazwa zamawiającego], adres: [Adres zamawiającego], NIP: [NIP zamawiającego], reprezentacja: [Reprezentant zamawiającego], e-mail: [E-mail zamawiającego], dalej „Zamawiający”.
 
 Numer umowy: [Numer projektu / umowy]. Projekt: [Nazwa projektu]. Koordynator techniczny: Dawid Kozula. Osoby i kanały uzgodnień: [Kanały i osoby do uzgodnień]. Koordynacja techniczna nie oznacza sama w sobie prawa do zaciągania zobowiązań w imieniu strony.
 

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Interaktywny podgląd panelu klienta DAWKOZ na danych przykładowych. Zapytania, dokumenty i zużycie usług w jednym miejscu.">
+  <meta name="theme-color" content="#08090c">
+  <title>Panel klienta — demo DAWKOZ</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/client-demo.css?v=1">
+  <script src="/client-demo.js?v=1" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Przejdź do treści</a>
+  <header class="demo-header">
+    <a class="demo-brand" href="/?lang=pl" aria-label="DAWKOZ — strona główna"><img src="/logo2.png" width="1536" height="512" alt="DAWKOZ"></a>
+    <span class="header-caption">Panel klienta <span>Podgląd możliwości</span></span>
+    <a class="back-link" href="/?lang=pl#contact">Omów taki panel <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 18 18 6 M6 6h12v12"/></svg></a>
+  </header>
+  <div class="demo-notice"><span class="demo-tag">DEMO</span><p><strong>Wszystkie dane są przykładowe.</strong> Możesz swobodnie testować widoki. Zmiany znikają po odświeżeniu. To podgląd, bez kont klientów i bez połączenia z usługami.</p></div>
+  <div class="workspace">
+    <aside class="sidebar" aria-label="Panel klienta">
+      <div class="workspace-name"><span class="workspace-symbol" aria-hidden="true">P</span><div><b>Firma przykładowa</b><span>Twoje miejsce pracy</span></div></div>
+      <p class="nav-heading">W TWOIM PANELU</p>
+      <div class="view-tabs" role="tablist" aria-label="Widoki panelu">
+        <button type="button" id="tab-requests" role="tab" aria-selected="true" aria-controls="view-requests" data-view="requests"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 5h16v14H4z M4 10h16 M9 5v14"/></svg><span>Zapytania</span><span class="nav-count" id="request-nav-count">7</span></button>
+        <button type="button" id="tab-documents" role="tab" aria-selected="false" aria-controls="view-documents" tabindex="-1" data-view="documents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 3h8l4 4v14H6z M14 3v5h4 M9 12h6 M9 16h6"/></svg><span>Dokumenty</span><span class="nav-count">3</span></button>
+        <button type="button" id="tab-usage" role="tab" aria-selected="false" aria-controls="view-usage" tabindex="-1" data-view="usage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 20V11 M12 20V4 M19 20v-6 M3 20h18"/></svg><span>Zużycie</span></button>
+      </div>
+      <div class="sidebar-bottom"><span class="small-label">OD ZGŁOSZENIA DO DZIAŁANIA</span><p>Przebieg procesu i jego status w jednym miejscu.</p><span class="synthetic-label"><i aria-hidden="true"></i> Środowisko demonstracyjne</span></div>
+    </aside>
+    <main id="main-content" tabindex="-1">
+      <noscript><p class="empty-state">Włącz JavaScript, aby przetestować filtrowanie, szczegóły i eksport danych przykładowych. <a href="/?lang=pl#contact">Możesz też omówić panel bezpośrednio z DAWKOZ.</a></p></noscript>
+      <section id="view-requests" class="view" role="tabpanel" aria-labelledby="tab-requests">
+        <div class="view-heading"><div><span class="small-label">PRZEGLĄD SPRAW</span><h1>Żadne zgłoszenie<br><span>nie ginie w rozmowie.</span></h1><p>Sprawdź, co zebrał bot i jaki jest następny krok.</p></div><button class="button secondary" type="button" id="export-requests"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3v12 M7 10l5 5 5-5 M4 16v5h16v-5"/></svg>Eksport CSV</button></div>
+        <div class="stat-grid">
+          <article class="stat-card"><span>Wszystkie zgłoszenia</span><strong id="stat-total">7</strong><small>Przykładowa historia</small></article>
+          <article class="stat-card"><span>Do obsługi</span><strong id="stat-new">3</strong><small><i class="status-dot new" aria-hidden="true"></i> Czekają na pierwszy krok</small></article>
+          <article class="stat-card"><span>W toku</span><strong id="stat-progress">2</strong><small>Przekazane zespołowi</small></article>
+          <article class="stat-card"><span>Zamknięte</span><strong id="stat-closed">2</strong><small>Sprawy zakończone</small></article>
+        </div>
+        <div class="data-card">
+          <div class="card-title"><div><h2>Ostatnie zapytania</h2><p>Otwórz sprawę, zobacz podsumowanie i zmień status.</p></div><span class="source-label">Dane demonstracyjne</span></div>
+          <div class="filter-bar"><div class="search-field"><label for="request-search">Szukaj zgłoszenia</label><input id="request-search" type="search" placeholder="Temat lub numer sprawy" autocomplete="off" maxlength="100"></div><div class="select-field"><label for="request-status">Status</label><select id="request-status"><option value="all">Wszystkie statusy</option><option value="new">Nowe</option><option value="progress">W toku</option><option value="closed">Zamknięte</option></select></div></div>
+          <div class="list-caption" aria-hidden="true"><span>SPRAWA</span><span>KANAŁ</span><span>STATUS</span><span>OSTATNIA AKTYWNOŚĆ</span><span></span></div>
+          <div id="request-list" class="request-list"></div>
+          <div class="list-footer"><p id="request-result-count" aria-live="polite">7 zgłoszeń</p><span>Bez prawdziwych danych klientów</span></div>
+        </div>
+      </section>
+      <section id="view-documents" class="view" role="tabpanel" aria-labelledby="tab-documents" hidden>
+        <div class="view-heading"><div><span class="small-label">PORZĄDEK W DOKUMENTACH</span><h1>Najpierw weryfikacja.<br><span>Potem kolejny krok.</span></h1><p>Przykład kolejki dokumentów przed przekazaniem do księgowości.</p></div></div>
+        <div class="flow-banner"><div><span class="flow-number">01</span><span>Wpływ dokumentu</span></div><b aria-hidden="true">→</b><div><span class="flow-number">02</span><span>Odczyt danych</span></div><b aria-hidden="true">→</b><div><span class="flow-number">03</span><span>Weryfikacja przez człowieka</span></div></div>
+        <div class="data-card"><div class="card-title"><div><h2>Do sprawdzenia</h2><p>Otwórz przykładowy dokument i sprawdź wskazane pola.</p></div><span class="source-label" id="document-count">2 oczekują</span></div><div class="document-list" id="document-list"></div></div>
+        <p class="context-note">Dokumenty w tym podglądzie są fikcyjne i nie służą do rozliczeń. Demo nie wystawia faktur, nie księguje i nie łączy się z KSeF. W rzeczywistym wdrożeniu uzgadniamy źródła, pola, uprawnienia i zasady weryfikacji. AI może popełniać błędy, dlatego odczyt wymaga sprawdzenia.</p>
+      </section>
+      <section id="view-usage" class="view" role="tabpanel" aria-labelledby="tab-usage" hidden>
+        <div class="view-heading"><div><span class="small-label">KONTROLA NAD USŁUGĄ</span><h1>Wiesz, co zużywasz.<br><span>Widzisz, co zostało.</span></h1><p>Tak może wyglądać podgląd rozliczenia Twojego pakietu.</p></div><span class="source-label">Przykładowy pakiet demonstracyjny</span></div>
+        <div class="usage-grid">
+          <article class="usage-card"><div class="usage-top"><span class="usage-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 18 18 6 M6 6h12v12"/></svg></span><span>Rozmowy</span></div><h2><b>84</b> / 200 min</h2><progress max="200" value="84" aria-label="Wykorzystano 84 z 200 przykładowych minut">42%</progress><div class="usage-bottom"><span>Wykorzystano 42%</span><strong>Pozostało 116 min</strong></div><p>Przykład rozliczania płatnych minut, po zaokrągleniu odcinków rozmów.</p></article>
+          <article class="usage-card"><div class="usage-top"><span class="usage-icon" aria-hidden="true">≡</span><span>Części SMS</span></div><h2><b>16</b> / 50 części</h2><progress max="50" value="16" aria-label="Wykorzystano 16 z 50 przykładowych części SMS">32%</progress><div class="usage-bottom"><span>Wykorzystano 32%</span><strong>Pozostało 34 części</strong></div><p>Długa wiadomość lub kodowanie mogą zwiększyć liczbę płatnych części.</p></article>
+        </div>
+        <div class="data-card budget-card"><div><span class="small-label">ZASADA KONTROLI BUDŻETU</span><h2>Bez zgody na dodatkowy wydatek.</h2><p>Przykład: dodatkowy budżet wynosi 0 zł. Po wyczerpaniu pakietu nowe płatne działania są wstrzymywane do uzgodnienia dalszej obsługi.</p></div><div class="budget-value"><strong>0 zł</strong><span>dodatkowego budżetu</span></div></div>
+        <p class="context-note">Liczby ilustrują interfejs i nie są aktualną ofertą ani odczytem z systemu. Limity w rzeczywistej usłudze wynikają z umowy. Panel rozliczeń wymaga podłączenia liczników i przetestowanej blokady wydatków u dostawców.</p>
+        <a class="button secondary offer-link" href="/?lang=pl#offer">Zobacz aktualne pakiety <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 18 18 6 M6 6h12v12"/></svg></a>
+      </section>
+      <section class="next-step" aria-label="Wdrożenie panelu"><div><span class="small-label">TWÓJ PROCES, TWOJE NARZĘDZIA</span><h2>Taki widok dla Twojej firmy?</h2><p>Zakres panelu, źródła danych, hosting i utrzymanie wyceniamy przed wdrożeniem. Prawdziwy panel wymaga osobnych kont, uprawnień, zabezpieczeń i kopii zapasowych.</p></div><a class="button primary" href="/?lang=pl#contact">Omów wdrożenie <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 18 18 6 M6 6h12v12"/></svg></a></section>
+      <footer class="demo-footer"><span>DAWKOZ / interaktywny podgląd</span><a href="/?lang=pl">Wróć na stronę główną</a></footer>
+    </main>
+  </div>
+  <dialog id="detail-dialog" aria-labelledby="detail-title">
+    <div class="dialog-head"><span class="small-label" id="detail-type">ZGŁOSZENIE</span><button type="button" class="close-dialog" id="close-detail" aria-label="Zamknij szczegóły">×</button></div>
+    <div id="detail-content"></div>
+  </dialog>
+  <p id="demo-announcement" class="sr-only" role="status" aria-live="polite"></p>
+</body>
+</html>

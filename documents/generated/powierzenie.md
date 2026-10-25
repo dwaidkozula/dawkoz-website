@@ -1,12 +1,12 @@
 # Umowa powierzenia danych
 
-Projekt do uzgodnienia • wzór B2B • wersja 1.1
+Projekt do uzgodnienia • wzór B2B • wersja 1.2
 
 Stosuj tylko wtedy, gdy faktycznie zachodzi powierzenie. Uzupełnij rzeczywistych podwykonawców i regiony; nie wpisuj automatycznie wszystkich narzędzi z oferty.
 
 ## § 1. Strony i związek z usługą
 
-Zawarto w [Miejscowość podpisania] dnia [Data dokumentu]. Administrator: [Pełna nazwa zamawiającego], [Adres zamawiającego], NIP [NIP zamawiającego], reprezentacja [Reprezentant zamawiającego], kontakt [E-mail zamawiającego]. Podmiot przetwarzający: [Pełna nazwa prawna wykonawcy], [Adres wykonawcy], NIP 6272742701, reprezentacja [Osoba reprezentująca wykonawcę i podstawa umocowania], kontakt kontakt@dawkoz.com. Umowa dotyczy systemu [Nazwa projektu] i umowy głównej [Numer projektu / umowy].
+Zawarto w [Miejscowość podpisania] dnia [Data dokumentu]. Administrator: [Pełna nazwa zamawiającego], [Adres zamawiającego], NIP [NIP zamawiającego], reprezentacja [Reprezentant zamawiającego], kontakt [E-mail zamawiającego]. Podmiot przetwarzający: [Pełna nazwa prawna wykonawcy], [Adres wykonawcy], NIP [NIP wykonawcy — potwierdź podmiot], reprezentacja [Osoba reprezentująca wykonawcę i podstawa umocowania], kontakt kontakt@dawkoz.com. Umowa dotyczy systemu [Nazwa projektu] i umowy głównej [Numer projektu / umowy].
 
 ## § 2. Przedmiot, czas i kategorie
 

@@ -1,12 +1,12 @@
 # Karta współpracy DAWKOZ–Kozbud
 
-Projekt do uzgodnienia • wzór B2B • wersja 1.1
+Projekt do uzgodnienia • wzór B2B • wersja 1.2
 
 Nie zakłada zgody właściciela ani pełnych danych firmy. Uzupełnij je zgodnie z rzeczywistymi ustaleniami; ta karta porządkuje decyzje i nie zastępuje właściwych umów.
 
 ## Status i dane
 
-Projekt do uzgodnienia z właścicielem Kozbud i księgowością. Firma: [Pełna nazwa prawna wykonawcy], [Adres wykonawcy], NIP 6272742701, reprezentacja [Osoba reprezentująca wykonawcę i podstawa umocowania]. Realizator techniczny: Dawid Kozula. Data rozmowy: [Data dokumentu].
+Projekt do uzgodnienia z właścicielem Kozbud i księgowością. Firma: [Pełna nazwa prawna wykonawcy], [Adres wykonawcy], NIP [NIP wykonawcy — potwierdź podmiot], reprezentacja [Osoba reprezentująca wykonawcę i podstawa umocowania]. Realizator techniczny: Dawid Kozula. Data rozmowy: [Data dokumentu].
 
 ## Proponowany model
 

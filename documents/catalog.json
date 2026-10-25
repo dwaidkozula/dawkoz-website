@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.2",
   "language": "pl",
   "notice": "Wzory B2B do uzupełnienia i dostosowania przed podpisaniem. Potwierdź model współpracy z Kozbud, dane stron, ceny i limity. Dokumenty nie zostały zweryfikowane dla konkretnej transakcji przez prawnika.",
   "fields": {
@@ -36,7 +36,7 @@
       "label": "NIP wykonawcy — potwierdź podmiot",
       "group": "Strony",
       "type": "text",
-      "default": "6272742701"
+      "default": ""
     },
     "seller_rep": {
       "id": "seller_rep",
@@ -723,7 +723,7 @@
       "title": "Oferta wdrożenia",
       "category": "Sprzedaż",
       "description": "Oferta dla konkretnego klienta z osobną ceną wdrożenia, abonamentem i limitami.",
-      "version": "1.1",
+      "version": "1.2",
       "status": "Projekt do uzgodnienia",
       "notes": "Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami.",
       "fields": [
@@ -821,7 +821,7 @@
       "title": "Umowa wdrożeniowa B2B",
       "category": "Realizacja",
       "description": "Bazowa umowa na stronę, bota lub automatyzację; szczegóły w załączniku zakresu.",
-      "version": "1.1",
+      "version": "1.2",
       "status": "Projekt do uzgodnienia",
       "notes": "Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami. Wariant podstawowy przewiduje licencję niewyłączną. Do przeniesienia praw użyj osobnego wzoru i zapewnij łańcuch praw od autorów.",
       "fields": [
@@ -938,7 +938,7 @@
       "title": "Załącznik: zakres i harmonogram",
       "category": "Realizacja",
       "description": "Scenariusze, integracje, materiały, granice zakresu i kryteria odbioru.",
-      "version": "1.1",
+      "version": "1.2",
       "status": "Projekt do uzgodnienia",
       "notes": "",
       "fields": [
@@ -1023,7 +1023,7 @@
       "title": "Protokół odbioru",
       "category": "Realizacja",
       "description": "Potwierdzenie testów, usterek, przekazanych elementów i wyniku odbioru.",
-      "version": "1.1",
+      "version": "1.2",
       "status": "Projekt do uzgodnienia",
       "notes": "",
       "fields": [
@@ -1085,10 +1085,10 @@
       "id": "opieka",
       "title": "Umowa utrzymania i opieki",
       "category": "Opieka",
-      "description": "Abonament 899 zł: usługa, opieka, AI, telefonia i SMS w określonym pakiecie.",
-      "version": "1.1",
+      "description": "Usługa, opieka i uzgodnione limity wybranego pakietu.",
+      "version": "1.2",
       "status": "Projekt do uzgodnienia",
-      "notes": "Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami. Uzupełnij wszystkie limity, czasy reakcji i zasady przekroczeń; sama kwota 899 zł nie określa tych parametrów.",
+      "notes": "Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami. Uzupełnij wszystkie limity, czasy reakcji i zasady przekroczeń; sama kwota abonamentu nie określa tych parametrów.",
       "fields": [
         "place",
         "date",
@@ -1203,7 +1203,7 @@
       "title": "Umowa powierzenia danych",
       "category": "Ochrona danych",
       "description": "Wzór z zakresem przetwarzania, dostawcami, incydentami, audytem i usuwaniem.",
-      "version": "1.1",
+      "version": "1.2",
       "status": "Projekt do uzgodnienia",
       "notes": "Stosuj tylko wtedy, gdy faktycznie zachodzi powierzenie. Uzupełnij rzeczywistych podwykonawców i regiony; nie wpisuj automatycznie wszystkich narzędzi z oferty.",
       "fields": [
@@ -1301,7 +1301,7 @@
       "title": "Umowa o poufności — NDA",
       "category": "Ochrona danych",
       "description": "Dwustronna poufność informacji handlowych, technicznych i projektowych.",
-      "version": "1.1",
+      "version": "1.2",
       "status": "Projekt do uzgodnienia",
       "notes": "Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami.",
       "fields": [
@@ -1374,7 +1374,7 @@
       "title": "Instrukcja i protokół przekazania",
       "category": "Realizacja",
       "description": "Kontrola kont, repozytoriów, kopii, instrukcji i bezpiecznego przekazania.",
-      "version": "1.1",
+      "version": "1.2",
       "status": "Projekt do uzgodnienia",
       "notes": "",
       "fields": [
@@ -1442,7 +1442,7 @@
       "title": "Brief klienta",
       "category": "Sprzedaż",
       "description": "Pytania przed wyceną: proces, narzędzia, wolumen, dane i oczekiwany efekt.",
-      "version": "1.1",
+      "version": "1.2",
       "status": "Projekt do uzgodnienia",
       "notes": "",
       "fields": [
@@ -1513,7 +1513,7 @@
       "title": "Informacja dla rozmówców bota AI",
       "category": "Ochrona danych",
       "description": "Roboczy komunikat AI i informacja o danych do dostosowania przez administratora.",
-      "version": "1.1",
+      "version": "1.2",
       "status": "Projekt do uzgodnienia",
       "notes": "Wzór dla administratora danych rozmówców, a nie automatycznie dla DAWKOZ. Wymaga dopasowania do działania systemu, zwłaszcza nagrywania, podstaw prawnych i faktycznych odbiorców.",
       "fields": [
@@ -1582,7 +1582,7 @@
       "title": "Porozumienie o przeniesieniu praw",
       "category": "Formalności",
       "description": "Opcjonalny załącznik: konkretne utwory, prawa, wynagrodzenie i forma podpisu.",
-      "version": "1.1",
+      "version": "1.2",
       "status": "Projekt do uzgodnienia",
       "notes": "Wzór dla relacji między przedsiębiorcami. Przed podpisaniem potwierdź rzeczywistego wykonawcę i jego reprezentację. Jeżeli klientowi przysługują uprawnienia konsumenckie, dokument wymaga odpowiedniego dostosowania. Wybór modelu Kozbud i rozliczenie pracy Dawida pozostają odrębnymi ustaleniami. Przed użyciem potwierdź łańcuch praw i zgodność wykazu z faktycznymi rezultatami. Jest to alternatywa wymagająca skoordynowania z licencją w umowie głównej.",
       "fields": [
@@ -1663,7 +1663,7 @@
       "title": "Karta współpracy DAWKOZ–Kozbud",
       "category": "Formalności",
       "description": "Wewnętrzna karta decyzji o stronach umów, fakturach i wynagrodzeniu Dawida.",
-      "version": "1.1",
+      "version": "1.2",
       "status": "Projekt do uzgodnienia",
       "notes": "Nie zakłada zgody właściciela ani pełnych danych firmy. Uzupełnij je zgodnie z rzeczywistymi ustaleniami; ta karta porządkuje decyzje i nie zastępuje właściwych umów.",
       "fields": [
@@ -1732,7 +1732,7 @@
       "values": {
         "project_name": "IVR Start",
         "scope": "Pakiet IVR Start: 1 polski numer, menu IVR do 3 opcji, przyjmowanie połączeń krajowych i przekazywanie zgłoszeń zgodnie z zatwierdzonym zakresem. Limit przekierowania IVR: 15 minut.",
-        "deliverables": "Konfiguracja, uzgodniony scenariusz lub menu, testy odbiorowe, instrukcja obsługi, lista kont i protokół przekazania. Dwie rundy uwag do scenariusza lub menu; usunięcie niezgodności z zakresem nie jest ograniczone liczbą rund.",
+        "deliverables": "Konfiguracja, uzgodniony proces rozmowy lub menu, testy odbiorowe z klientem, instrukcja obsługi, lista kont i protokół przekazania. Dwie rundy uwag do scenariusza lub menu; usunięcie niezgodności z zakresem nie jest ograniczone liczbą rund. Dla AI: zebranie uzgodnionych pól i przekazanie podsumowania zgłoszenia do jednego narzędzia. Raport miesięcznego zużycia udostępniany klientowi; panel z kontem klienta jest odrębnym zakresem.",
         "integrations": "Przekierowania krajowe zgodnie z zatwierdzonym menu; brak zewnętrznych integracji w pakiecie podstawowym.",
         "exclusions": "Dodatkowe numery, nowe scenariusze, niestandardowe integracje, kampanie wychodzące, numery premium i połączenia międzynarodowe. Każda rozbudowa wymaga wcześniejszej wyceny i akceptacji. Przeniesienie praw autorskich wymaga osobnego uzgodnienia.",
         "setup_fee": "990,00 zł",
@@ -1772,8 +1772,8 @@
       "label": "Bot telefoniczny AI — 2990,00 zł + 699,00 zł/mies.",
       "values": {
         "project_name": "Bot telefoniczny AI",
-        "scope": "Pakiet Bot telefoniczny AI: 1 polski numer, 1 proces obsługi i 1 scenariusz rozmowy AI, przyjmowanie połączeń krajowych i przekazywanie zgłoszeń zgodnie z zatwierdzonym zakresem. Limit rozmowy AI: 5 minut. ",
-        "deliverables": "Konfiguracja, uzgodniony scenariusz lub menu, testy odbiorowe, instrukcja obsługi, lista kont i protokół przekazania. Dwie rundy uwag do scenariusza lub menu; usunięcie niezgodności z zakresem nie jest ograniczone liczbą rund.",
+        "scope": "Pakiet Bot telefoniczny AI: 1 polski numer, 1 proces obsługi z wariantami rozmowy AI i bazą do 20 odpowiedzi związanych z tym procesem, na materiałach klienta, przyjmowanie połączeń krajowych i przekazywanie zgłoszeń zgodnie z zatwierdzonym zakresem. Scenariusz obejmuje pytania pomocnicze, uzupełnianie brakujących danych i przekazanie sprawy do człowieka w ustalonym narzędziu, bez obietnicy płatnego przełączenia telefonicznego poza pakietem. Limit rozmowy AI: 5 minut. ",
+        "deliverables": "Konfiguracja, uzgodniony proces rozmowy lub menu, testy odbiorowe z klientem, instrukcja obsługi, lista kont i protokół przekazania. Dwie rundy uwag do scenariusza lub menu; usunięcie niezgodności z zakresem nie jest ograniczone liczbą rund. Dla AI: zebranie uzgodnionych pól i przekazanie podsumowania zgłoszenia do jednego narzędzia. Raport miesięcznego zużycia udostępniany klientowi; panel z kontem klienta jest odrębnym zakresem.",
         "integrations": "1 standardowa integracja, np. przekazanie zgłoszenia do e-mail, Telegrama lub arkusza. Konkretny odbiorca, zakres danych i uprawnienia wymagają wskazania w załączniku. Nowe API lub niestandardowy konektor: osobna wycena.",
         "exclusions": "Dodatkowe numery, nowe scenariusze, niestandardowe integracje, kampanie wychodzące, numery premium i połączenia międzynarodowe. Każda rozbudowa wymaga wcześniejszej wyceny i akceptacji. Przeniesienie praw autorskich wymaga osobnego uzgodnienia.",
         "setup_fee": "2990,00 zł",
@@ -1788,7 +1788,7 @@
         "support_channel": "kontakt@dawkoz.com; temat: nazwa klienta, nazwa systemu i opis problemu.",
         "response": "Awaria krytyczna uniemożliwiająca podstawowe działanie: rozpoczęcie obsługi do 8 godzin roboczych. Pozostałe zgłoszenia: do 2 dni roboczych. To czas reakcji, nie gwarantowany termin naprawy. Termin i postęp naprawy komunikowane odrębnie.",
         "change_hours": "30 minut miesięcznie, bez przenoszenia na następny okres; prace ponad limit 160,00 zł/godz. wyłącznie po akceptacji wyceny.",
-        "minute_limit": "150",
+        "minute_limit": "200",
         "sms_limit": "50",
         "usage_alert": "80% i 100% miesięcznego limitu; e-mail do osoby wskazanej przez klienta.",
         "usage_metering": "Każde połączenie i każdy płatny odcinek przekierowania zaokrąglane osobno w górę do pełnej minuty. Przekierowanie może zużywać dwa odcinki równocześnie. SMS liczone w częściach według kodowania i długości, a nie liczby wiadomości. Dokończenie ostatniej przyjętej rozmowy do limitu 5 minut AI / 15 minut przekierowania IVR nie powoduje nieuzgodnionej dopłaty.",
@@ -1813,8 +1813,8 @@
       "label": "Bot + centrala — 3990,00 zł + 899,00 zł/mies.",
       "values": {
         "project_name": "Bot + centrala",
-        "scope": "Pakiet Bot + centrala: 1 polski numer, menu IVR do 3 opcji, 1 proces obsługi i 1 scenariusz rozmowy AI, przyjmowanie połączeń krajowych i przekazywanie zgłoszeń zgodnie z zatwierdzonym zakresem. Limit rozmowy AI: 5 minut. Limit przekierowania IVR: 15 minut.",
-        "deliverables": "Konfiguracja, uzgodniony scenariusz lub menu, testy odbiorowe, instrukcja obsługi, lista kont i protokół przekazania. Dwie rundy uwag do scenariusza lub menu; usunięcie niezgodności z zakresem nie jest ograniczone liczbą rund.",
+        "scope": "Pakiet Bot + centrala: 1 polski numer, menu IVR do 3 opcji, 1 proces obsługi z wariantami rozmowy AI i bazą do 20 odpowiedzi związanych z tym procesem, na materiałach klienta, przyjmowanie połączeń krajowych i przekazywanie zgłoszeń zgodnie z zatwierdzonym zakresem. Scenariusz obejmuje pytania pomocnicze, uzupełnianie brakujących danych i przekazanie sprawy do człowieka w ustalonym narzędziu, bez obietnicy płatnego przełączenia telefonicznego poza pakietem. Limit rozmowy AI: 5 minut. Limit przekierowania IVR: 15 minut.",
+        "deliverables": "Konfiguracja, uzgodniony proces rozmowy lub menu, testy odbiorowe z klientem, instrukcja obsługi, lista kont i protokół przekazania. Dwie rundy uwag do scenariusza lub menu; usunięcie niezgodności z zakresem nie jest ograniczone liczbą rund. Dla AI: zebranie uzgodnionych pól i przekazanie podsumowania zgłoszenia do jednego narzędzia. Raport miesięcznego zużycia udostępniany klientowi; panel z kontem klienta jest odrębnym zakresem.",
         "integrations": "1 standardowa integracja, np. przekazanie zgłoszenia do e-mail, Telegrama lub arkusza. Konkretny odbiorca, zakres danych i uprawnienia wymagają wskazania w załączniku. Nowe API lub niestandardowy konektor: osobna wycena.",
         "exclusions": "Dodatkowe numery, nowe scenariusze, niestandardowe integracje, kampanie wychodzące, numery premium i połączenia międzynarodowe. Każda rozbudowa wymaga wcześniejszej wyceny i akceptacji. Przeniesienie praw autorskich wymaga osobnego uzgodnienia.",
         "setup_fee": "3990,00 zł",

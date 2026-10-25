@@ -159,3 +159,12 @@ footer.site-footer { display: block; width: calc(100% - 40px); height: auto; pad
 .plan-terms > div { padding: 0 24px 14px; }
 .plan-terms p { color: #a8a8b3; font-size: 13px; line-height: 1.8; max-width: 100%; overflow-wrap: anywhere; }
 .plan-terms > summary:focus-visible { outline: 2px solid #7294c7; outline-offset: 3px; border-radius: 14px; }
+.bot-included{margin:28px 0 34px;padding:26px;border:1px solid #242a34;border-radius:18px;background:#0b0e13}
+.bot-included>h3{font-size:20px;margin:0 0 22px;color:#f3f5f8;line-height:1.4}
+.bot-included-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.bot-included-grid h4{font-size:15px;color:#f3f5f8;margin:0 0 10px;line-height:1.5}
+.bot-included-grid p{font-size:13px;line-height:1.8;color:#a7adb9;margin:0}
+.bot-included .price-note{margin-bottom:0}
+@media(max-width:800px){.bot-included-grid{grid-template-columns:1fr;gap:22px}.bot-included{padding:22px 18px}}
+.service-grid article{min-width:0;overflow-wrap:anywhere}
+@media(max-width:900px){.service-grid{grid-template-columns:minmax(0,1fr)}}
