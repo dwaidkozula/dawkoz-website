@@ -1,0 +1,158 @@
+{
+  "id": "client-panel",
+  "title": "Panel klienta — od demonstracji do osobnego wdrożenia",
+  "summary": "Jak pokazać działające demo, ustalić funkcje prawdziwego panelu i zorganizować projekt bez mylenia go z gotowym kontem klienta.",
+  "blocks": [
+    {
+      "type": "note",
+      "label": "Obecny stan",
+      "tone": "warning",
+      "text": "Publiczne /panel-klienta.html to demonstracja na fikcyjnych danych. Filtry, statusy, dokumenty, zużycie i eksport działają w pamięci karty, bez rzeczywistych kont oraz integracji. Zmiany znikają po odświeżeniu. Prywatny /app jest narzędziem jednego operatora DAWKOZ do dokumentów. Nie udostępniaj jego hasła firmom jako wspólnego panelu."
+    },
+    {
+      "type": "image",
+      "file": "client-demo.png",
+      "alt": "Podgląd demonstracyjnego panelu DAWKOZ z przykładowymi sprawami.",
+      "caption": "Publiczny podgląd panelu: 1 — Zapytania, 2 — Dokumenty, 3 — Zużycie. Widoczne dane są przykładowe; ekran nie potwierdza podłączenia systemów klienta."
+    },
+    {
+      "type": "heading",
+      "text": "Jak poprowadzić pierwszą rozmowę i prezentację"
+    },
+    {
+      "type": "steps",
+      "title": "Od pokazu do zaakceptowanego zakresu",
+      "items": [
+        {
+          "title": "Pokaż demo i nazwij je demonstracją",
+          "text": "Otwórz https://dawkoz.com/panel-klienta.html. W widoku „Zapytania” wpisz temat w „Szukaj zgłoszenia”, zmień „Status” i otwórz sprawę. Pokaż zmianę statusu i „Eksport CSV”. Następnie przejdź do „Dokumenty” i „Zużycie”. Nie wpisuj danych rzeczywistych osób. Wyjaśnij, że liczby i dokumenty są fikcyjne i nie pochodzą z telefonu lub księgowości.",
+          "check": "Klient rozumie możliwości interfejsu i wie, że nie ma jeszcze własnego konta."
+        },
+        {
+          "title": "Zapisz pierwszy proces i użytkowników",
+          "text": "Ustal, kto loguje się do panelu, jakie firmy lub oddziały obsługuje i co ma zobaczyć. Zapisz jedną podstawową drogę: źródło zgłoszenia → zapis w bazie → lista spraw → osoba odpowiedzialna → status. Oddziel uprawnienia administratora, pracownika i klienta. Nie zakładaj, że każdy użytkownik może pobrać wszystkie dokumenty.",
+          "check": "Masz listę widoków, ról i dozwolonych działań dla pierwszej wersji."
+        },
+        {
+          "title": "Wskaż rzeczywiste źródła i granice integracji",
+          "text": "Dla każdego pola zapisz źródło: bot, formularz, skrzynka, system fakturowy albo ręczny wpis. Ustal częstotliwość aktualizacji, reakcję na błąd i właściciela danych. Podgląd faktur nie oznacza ich wystawiania, księgowania ani KSeF. Licznik minut musi pochodzić z rozliczeń rzeczywistej telefonii, a nie z przypadkowej liczby w interfejsie.",
+          "check": "Każdy obiecany element ma wskazane źródło i sposób sprawdzenia zgodności."
+        },
+        {
+          "title": "Wyceń panel osobno",
+          "text": "Panel nie ma ustalonej ceny podstawowej i nie jest automatycznie częścią abonamentu bota. Przedstaw osobną ofertę: konta, role, widoki, źródła, baza, powiadomienia, eksport i testy. Osobno zapisz koszty hostingu, bazy, kopii, poczty i integracji, kto je pokrywa oraz zasady limitów. Nie obiecuj bezpłatnej infrastruktury dlatego, że strona już działa.",
+          "check": "Klient akceptuje konkretną cenę, zakres i stałe koszty zamiast samego hasła „panel w cenie”."
+        },
+        {
+          "title": "Przygotuj dokumenty przed budową",
+          "text": "W /app/documents użyj wzorów oferty, umowy wdrożeniowej i zakresu prac. Wpisz ręcznie indywidualne warunki panelu; nie zastosuj przez pomyłkę telefonicznego pakietu AI. Ustal rzeczywistego sprzedawcę, odbiór, 50% zaliczki i pozostałe 50% po odbiorze. Przy przetwarzaniu danych klienta ustal role i potrzebną umowę powierzenia. Dane dostawców i retencja muszą odpowiadać konfiguracji.",
+          "check": "Masz zaakceptowany zakres, podstawę dostępu do danych i warunki realizacji."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Co trzeba zbudować, zanim klient otrzyma konto"
+    },
+    {
+      "type": "steps",
+      "title": "Realizacja techniczna z ChatGPT",
+      "items": [
+        {
+          "title": "Zaprojektuj trwały zapis i uprawnienia",
+          "text": "Przekaż ChatGPT zakres i wymagania do osobnego projektu lub wydzielonego modułu. Potrzebne są konta, bezpieczne logowanie, odzyskiwanie dostępu, role i ograniczenie prób. Każde odczytanie oraz zmiana sprawy musi sprawdzać firmę i uprawnienia na serwerze. Ukrycie przycisku lub dopisanie identyfikatora firmy w przeglądarce nie zabezpiecza dostępu.",
+          "check": "Nieuprawniona osoba nie odczyta innej firmy także po ręcznej zmianie adresu lub identyfikatora."
+        },
+        {
+          "title": "Podłącz bazę, źródła i historię działań",
+          "text": "Użyj trwałej bazy zamiast pamięci karty. Zaplanuj identyfikatory spraw, obsługę duplikatów, historię zmian, awarie integracji i ponawianie. Rejestruj kto i kiedy zmienił status, bez zapisywania haseł i całej poufnej treści w logu. Przechowuj minimalne dane. Uzgodnij retencję, usuwanie, eksport i dostęp administracyjny.",
+          "check": "Restart aplikacji nie usuwa spraw, a ponowione zdarzenie nie tworzy duplikatu."
+        },
+        {
+          "title": "Przetestuj kopię i powrót po awarii",
+          "text": "Ustal harmonogram kopii, miejsce przechowywania i dostęp. Odtwórz bazę w bezpiecznym środowisku testowym i potwierdź wyniki. Dla aktualizacji wymagaj kopii oraz planu cofnięcia zmiany. Nie wykonuj testów destrukcyjnych na jedynej produkcyjnej bazie klienta.",
+          "check": "Masz zapisany wynik rzeczywistego odtworzenia i znasz procedurę przywrócenia działania."
+        },
+        {
+          "title": "Zacznij od przeglądarki",
+          "text": "Pierwsza wersja może działać pod podstroną lub subdomeną i korzystać z obecnego hostingu, jeśli zasoby oraz konfiguracja na to pozwalają. Baza, wolumeny, poczta i kopie nadal mogą kosztować. Dopiero później rozważ PWA, czyli instalowalny skrót aplikacji WWW. PWA nie tworzy automatycznie kont ani danych offline; sposób przechowywania i wylogowania wymaga osobnych testów.",
+          "check": "Pierwszy etap ma mierzalny zakres i budżet; nie zamówiono niepotrzebnej osobnej aplikacji sklepowej."
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        "Test przed uruchomieniem",
+        "Oczekiwany wynik"
+      ],
+      "rows": [
+        [
+          "Firma A próbuje otworzyć sprawę firmy B",
+          "Serwer odmawia; cudze dane nie trafiają do odpowiedzi."
+        ],
+        [
+          "Pracownik używa działania administratora",
+          "Odmowa zgodna z rolą, także przy ręcznym żądaniu API."
+        ],
+        [
+          "Wylogowanie i cofnięcie strony",
+          "Brak ponownego dostępu do chronionych danych bez sesji."
+        ],
+        [
+          "Reset dostępu",
+          "Jednorazowy, wygasający mechanizm nie ujawnia kont innym osobom."
+        ],
+        [
+          "Dwukrotne to samo zdarzenie",
+          "Jedna sprawa albo jawna aktualizacja, bez duplikatu."
+        ],
+        [
+          "Restart i odtworzenie kopii",
+          "Zapisane sprawy zachowane; odtworzenie zostało sprawdzone."
+        ],
+        [
+          "Eksport CSV i dokumentów",
+          "Tylko uprawnione rekordy; tekst nie uruchamia formuł arkusza."
+        ],
+        [
+          "Błąd źródła danych",
+          "Czytelny stan błędu; brak fałszywej informacji o świeżych danych."
+        ],
+        [
+          "Zużycie i limit",
+          "Wyniki zgodne z rzeczywistymi zdarzeniami; blokada kosztu działa u źródła."
+        ],
+        [
+          "Telefon i klawiatura",
+          "Dostępne widoki, formularze, fokus i zrozumiałe komunikaty."
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "text": "Po testach przeprowadź odbiór z klientem, przekaż instrukcję logowania i zgłaszania problemów, potwierdź właścicieli kont oraz osoby uprawnione do eksportu. Zapisz zakres dalszej opieki i czas reakcji w indywidualnej umowie. Najpierw uruchom małą grupę użytkowników; porównaj sprawy i koszty ze źródłami. Nowe role, widoki i integracje traktuj jako uzgodnione zmiany, a nie nieograniczony rozwój w dotychczasowej cenie."
+    },
+    {
+      "type": "code",
+      "text": "PROMPT DO ZAPLANOWANIA PRAWDZIWEGO PANELU\nNa podstawie briefu zaprojektuj pierwszą wersję panelu WWW klienta DAWKOZ. Obecny /panel-klienta.html jest wyłącznie demonstracją; nie przedstawiaj go jako połączonego systemu. Wskaż moduły do zbudowania: logowanie i reset dostępu, role, serwerowa izolacja firm, trwała baza, integracje, idempotencja, historia zmian, retencja, eksport i kopie z odtworzeniem. Przygotuj plan wdrożenia oraz testy odmowy dostępu między firmami. Oddziel moje działania na kontach od Twoich zmian w kodzie. Podaj niezbędne koszty infrastruktury do zweryfikowania, bez wymyślania taryf. Nie używaj wspólnego hasła /app jako loginu klientów, nie dodawaj automatycznej księgowości ani KSeF bez zamówienia. Najpierw pokaż plan i podgląd na danych fikcyjnych; rzeczywiste dane podłącz po uzgodnieniu uprawnień i zakresu."
+    },
+    {
+      "type": "links",
+      "items": [
+        {
+          "label": "Publiczne demo panelu DAWKOZ",
+          "url": "https://dawkoz.com/panel-klienta.html"
+        },
+        {
+          "label": "OWASP — podstawy kontroli dostępu",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+        },
+        {
+          "label": "MDN — czym jest PWA",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps"
+        }
+      ]
+    }
+  ]
+}

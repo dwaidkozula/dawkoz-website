@@ -1,0 +1,116 @@
+{
+  "id": "start",
+  "title": "Zacznij tutaj — jak korzystać z instrukcji",
+  "summary": "Praktyczny podręcznik Dawida: od zapytania klienta do przekazania systemu i obsługi abonamentu. Czytaj najpierw wspólny proces, potem rozdział wybranej usługi.",
+  "blocks": [
+    {
+      "type": "p",
+      "text": "To instrukcja organizacji i realizacji zamówień DAWKOZ według oferty z 25 października 2026 r. Każdy etap ma opis działania i sprawdzenie wyniku. Nie wykonuj wszystkich rozdziałów naraz: wybierz usługę, którą klient rzeczywiście zamawia. Przygotowanie oferty, konfiguracja narzędzi, testowanie i uruchomienie to odrębne etapy."
+    },
+    {
+      "type": "note",
+      "label": "Co jest już dostępne",
+      "tone": "info",
+      "text": "Działa strona z cennikiem, prywatna biblioteka 12 dokumentów, trzy zestawy warunków pakietów telefonicznych, ta instrukcja i publiczny pokaz panelu klienta. Repozytorium strony nie zawiera gotowego silnika rozmów AI, obsługi połączeń ani automatyzacji faktur i przypomnień. W rozdziałach technicznych wskazano prace do wykonania i sprawdzenia przed uruchomieniem klienta."
+    },
+    {
+      "type": "steps",
+      "title": "Twoja pierwsza ścieżka",
+      "items": [
+        {
+          "title": "Przeczytaj „Jeden proces zamówienia”.",
+          "text": "Zobacz, co musi wydarzyć się przed obietnicą ceny, podpisaniem umowy, zaliczką i publikacją. Przygotuj kartę zlecenia oraz folder na dokumenty.",
+          "check": "Potrafisz wskazać sprzedawcę, osobę kontaktową, cel zlecenia, uzgodniony zakres i następny krok."
+        },
+        {
+          "title": "Otwórz rozdział właściwej oferty.",
+          "text": "Dla bota z centralą wybierz rozdział „Bot + centrala”, a nie dwie niezależne umowy na pełne pakiety. Dla faktur wybierz ich rozdział zamiast ogólnej automatyzacji. Strona WWW i rzeczywisty panel klienta mają odrębny zakres.",
+          "check": "Masz jedną nazwę zamówienia i wiesz, które elementy są dodatkiem wymagającym wyceny."
+        },
+        {
+          "title": "Przygotuj dokumenty w panelu.",
+          "text": "W rozdziale o bibliotece znajdziesz dokładne nazwy przycisków i zrzuty ekranu. Dla telefonii zastosuj właściwy zestaw warunków. Dla WWW i automatyzacji wpisz uzgodnione warunki ręcznie; nie wybieraj pakietu telefonicznego.",
+          "check": "Oferta i zakres zawierają te same ceny, limity, wykonawcę i zasady odbioru."
+        },
+        {
+          "title": "Realizuj kroki i zbieraj dowody testów.",
+          "text": "Przy każdym kroku zachowaj wynik: wiadomość, konfigurację, identyfikator testu, log bez sekretów albo protokół. Gdy krok wymaga kodu, użyj promptu z właściwego rozdziału i pracuj z ChatGPT w repozytorium konkretnego projektu.",
+          "check": "Zaliczenie kroku wynika z działającego testu, a nie z samego opisu wygenerowanego przez AI."
+        },
+        {
+          "title": "Po odbiorze przejdź do miesięcznej obsługi.",
+          "text": "Zapisz dzień aktywacji, limity, osobę do zgłoszeń i sposób raportowania. Jeśli klient nie zamówił opieki WWW lub automatyzacji, nie dopisuj jej automatycznie do faktury.",
+          "check": "Klient wie, co otrzymał, jak zgłosić problem i jakie koszty mogą wystąpić później."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Słowa, które będą się powtarzać"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "Pojęcie",
+        "Co oznacza w tej instrukcji"
+      ],
+      "rows": [
+        [
+          "Brief",
+          "Krótki opis problemu, obecnego sposobu pracy, ruchu i oczekiwanego wyniku."
+        ],
+        [
+          "Zakres prac",
+          "Lista tego, co dostarczysz, oraz tego, czego cena nie obejmuje. Powinien mieć mierzalne kryteria odbioru."
+        ],
+        [
+          "Integracja biznesowa",
+          "Jedno uzgodnione narzędzie docelowe firmy, np. arkusz lub e-mail. Telefonia, AI i SMS w pakiecie nie są kolejnymi integracjami biznesowymi."
+        ],
+        [
+          "Scenariusz / proces",
+          "Jedno zadanie firmy z wariantami rozmowy i obsługą brakujących informacji. Nie jeden sztywny tekst i nie dowolna liczba niezależnych procesów."
+        ],
+        [
+          "Webhook",
+          "Adres HTTPS, pod który dostawca wysyła zdarzenie, np. nowe połączenie. Program musi sprawdzić nadawcę i obsłużyć ponowne wysłanie."
+        ],
+        [
+          "Środowisko testowe",
+          "Oddzielne miejsce do prób na danych przykładowych; nie zmienia pracy rzeczywistego klienta."
+        ],
+        [
+          "Odbiór",
+          "Wyraźne potwierdzenie wykonania uzgodnionego zakresu przez uprawnioną osobę. Milczenie klienta nie zastępuje odbioru."
+        ],
+        [
+          "Część SMS",
+          "Jednostka naliczania wiadomości zależna od długości i kodowania. Jedna długa wiadomość może zużyć kilka części."
+        ]
+      ]
+    },
+    {
+      "type": "note",
+      "label": "Ceny i zmiany interfejsów",
+      "tone": "info",
+      "text": "Kwoty w podręczniku są cenami końcowymi do zapłaty, z VAT w cenie, jeśli jest należny. „Od” oznacza konieczność potwierdzenia zakresu i końcowej ceny przed umową. Nazwy przycisków DAWKOZ sprawdzono w aplikacji. Panele zewnętrznych dostawców mogą się zmieniać; ich nazwy sekcji są wskazówką, a nie zdjęciem Twojego konta ani potwierdzeniem aktualnej taryfy."
+    },
+    {
+      "type": "image",
+      "file": "public-offers.png",
+      "caption": "Rzeczywisty widok oferty DAWKOZ: 1 — „Zobacz więcej ofert”, 2 — strzałka do następnych kart. Przesuwanie kart nie zmienia cen ani zakresu usług.",
+      "alt": "Oferta DAWKOZ z przyciskiem pokazującym więcej kart."
+    },
+    {
+      "type": "checklist",
+      "title": "Zanim przyjmiesz pierwsze zlecenie",
+      "items": [
+        "Ustal rzeczywistego sprzedawcę, administratora danych, dane adresowe, reprezentację i status VAT. Samo użycie marki DAWKOZ albo NIP Kozbud nie ustanawia tych ról.",
+        "Sprawdź docelową technologię, dostępność kont i numery, koszty, zgodność integracji i możliwość zakończenia współpracy.",
+        "Przygotuj oddzielny projekt i konta z uprawnieniami do danego klienta; sekrety trzymaj w menedżerze haseł lub zmiennych środowiskowych.",
+        "Do rozmowy z AI przesyłaj dane przykładowe i zanonimizowane logi. Hasła, klucze API i dokumenty klienta wymagają odpowiednich zasad dostępu i przetwarzania.",
+        "Wskaż osobę, która po stronie klienta zatwierdza treść, koszty, testy i odbiór."
+      ]
+    }
+  ]
+}

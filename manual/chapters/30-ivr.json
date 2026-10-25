@@ -1,0 +1,145 @@
+{
+  "id": "ivr",
+  "title": "IVR Start — centrala kierująca połączeniami",
+  "summary": "Od uzgodnionego menu do sprawdzonego przekierowania. Ten rozdział prowadzi przez konfigurację jednego polskiego numeru i maksymalnie trzech opcji.",
+  "blocks": [
+    {
+      "type": "note",
+      "label": "Co kupuje klient",
+      "text": "Wdrożenie od {{ivr.setup}}, abonament {{ivr.monthly}} miesięcznie. Pakiet: {{ivr.minutes}} minut i {{ivr.changeMinutes}} minut drobnych zmian, bez SMS. Cel organizacyjny: {{ivr.deliveryBusinessDays}} dni roboczych po materiałach, dostępach i zaliczce; konkretną datę potwierdzasz w ofercie.",
+      "tone": "info"
+    },
+    {
+      "type": "note",
+      "label": "Co trzeba dopiero wykonać",
+      "text": "Strona DAWKOZ i biblioteka dokumentów nie realizują połączeń. Potrzebujesz oddzielnej usługi telefonicznej, konfiguracji numeru, backendu obsługującego zdarzenia, licznika i testów. Poniższa ścieżka Twilio jest przykładem architektury; nazwy ekranów dostawcy mogą się zmienić.",
+      "tone": "warning"
+    },
+    {
+      "type": "steps",
+      "title": "Realizacja od pierwszej rozmowy",
+      "items": [
+        {
+          "title": "Zapisz zasady kierowania",
+          "text": "W briefie wpisz godziny pracy, strefę Europe/Warsaw, do trzech opcji oraz docelowy numer każdej osoby. Przykład: 1 — serwis, 2 — biuro, 3 — administracja. Ustal zachowanie poza godzinami, po błędnym wyborze i przy zajętej linii. Nie obiecuj nagrywania, AI ani kolejki, jeżeli nie są zamówione.",
+          "check": "Klient potwierdził tabelę: wybór, odbiorca, godziny, brak odpowiedzi."
+        },
+        {
+          "title": "Sprawdź numer i rachunek przed ofertą",
+          "text": "Dawid sprawdza u operatora dostępność polskiego numeru, wymagane prawdziwe dokumenty i koszt numeru oraz obu odcinków przekierowania. Numery docelowe muszą należeć do uprawnionych odbiorców i być osiągalne. Konto próbne może mieć ograniczenia; test nie potwierdza automatycznie możliwości produkcyjnej. Zapisz rzeczywiste stawki i walutę.",
+          "check": "Wiesz, czy możesz dostarczyć usługę za cenę oferty; nie używasz progów planowania jako taryfy."
+        },
+        {
+          "title": "Przygotuj dokumenty i zaliczkę",
+          "text": "W /app/documents wybierz ofertę przez „Użyj wzoru”, pakiet IVR i „Ustaw warunki”. Uzupełnij prawdziwego wykonawcę, klienta, VAT, odbiorców i harmonogram. Przygotuj umowę wdrożeniową, zakres i opiekę; powierzenie danych, jeśli role tego wymagają. Po zawarciu umowy rozlicz 50% zaliczki.",
+          "check": "Dokumenty są uzgodnione, model sprzedawcy potwierdzony, zaliczka otrzymana."
+        },
+        {
+          "title": "Utwórz oddzielną konfigurację klienta",
+          "text": "W koncie operatora użyj osobnego projektu lub subkonta, jeżeli wybrany model to obsługuje. Włącz 2FA i dostęp tylko uprawnionych osób. Ustal, kto jest właścicielem numeru i płatnikiem. Sekrety zapisuj w chronionych zmiennych środowiskowych, nie w umowie, repozytorium ani rozmowie z ChatGPT.",
+          "check": "Masz kartę dostępów bez wartości haseł i sposób bezpiecznego przekazania uprawnień."
+        },
+        {
+          "title": "Zleć i sprawdź backend IVR",
+          "text": "Z ChatGPT przygotuj osobny serwis HTTPS, który zwraca instrukcje połączenia, odbiera wybór klawisza oraz aktualizuje stan. W Twilio wybór tonowy można realizować przez TwiML Gather z wejściem DTMF, czyli cyfrą z klawiatury. Po braku wyboru menu może powtórzyć się najwyżej uzgodnioną liczbę razy, potem kończy połączenie lub stosuje uzgodnioną ścieżkę.",
+          "check": "Serwis działa na testowym numerze, a brak klawisza nie tworzy nieskończonej pętli."
+        },
+        {
+          "title": "Podłącz numer do poprawnego adresu",
+          "text": "Typowa ścieżka to Twilio Console → Phone Numbers → Manage → Active Numbers → wybrany numer → konfiguracja głosu. Wskaż poprawny publiczny adres HTTPS obsługi połączeń i właściwą metodę HTTP. Nie wpisuj samej strony dawkoz.com, ponieważ jej zwykłe trasy nie są silnikiem IVR. Zapisz poprzednią konfigurację.",
+          "check": "Testowe połączenie dochodzi do serwisu, a plan wycofania zmiany jest zapisany."
+        },
+        {
+          "title": "Włącz kontrolę żądań i zdarzeń",
+          "text": "Programista weryfikuje podpis webhooka dostawcy dla rzeczywistego publicznego URL, również za proxy. CallSid identyfikuje połączenie; osobny identyfikator odcinka rozróżnia przekierowania. Duplikat callbacka nie może ponownie naliczyć minut. Zapisuj czas odbioru zdarzenia na serwerze i nie pozwalaj starszemu callbackowi cofnąć końcowego statusu.",
+          "check": "Fałszywe żądanie jest odrzucone, ponowione zdarzenie nie dubluje rozliczenia."
+        },
+        {
+          "title": "Ustaw ograniczenia i licznik",
+          "text": "Ustaw maksymalnie 15 minut przekierowania oraz uzgodniony czas oczekiwania na odebranie, np. 20 sekund. Licz każdą płatną nogę osobno, zaokrąglając ją w górę do pełnej minuty. Okres zaczyna się od aktywacji, nie zawsze pierwszego dnia miesiąca. Domyślny budżet dopłat wynosi 0 zł.",
+          "check": "System potrafi policzyć także rozmowę mającą dwa równoczesne odcinki."
+        },
+        {
+          "title": "Przetestuj wyczerpanie pakietu",
+          "text": "Wywołaj testowe 80% i 100% limitu: klient ma dostać powiadomienie, a nowe płatne działania mają zostać wstrzymane bez zgody na dopłaty. Nie uruchamiaj wtedy płatnego przekierowania zastępczego. Ostatnią przyjętą rozmowę kończ zgodnie z umową, bez nieuzgodnionej dopłaty; koszt uwzględnij w rezerwie.",
+          "check": "Blokada istnieje w backendzie i konfiguracji dostawcy, nie tylko jako tekst umowy."
+        },
+        {
+          "title": "Wykonaj odbiór z klientem",
+          "text": "Przejdź testy z tabeli poniżej i zachowaj wyniki oraz identyfikatory testowych połączeń. Dwie rundy uwag dotyczą menu; błędy względem zakresu poprawiasz niezależnie od tych rund i limitu zmian. Daj klientowi pięć dni roboczych na uzgodnione testy, zgodnie z dokumentami.",
+          "check": "Masz wyraźne potwierdzenie odbioru i protokół, a nie sam brak odpowiedzi."
+        },
+        {
+          "title": "Uruchom i przekaż obsługę",
+          "text": "Po odbiorze rozlicz pozostałe 50%, ustal moment aktywacji abonamentu i przełącz ruch w uzgodnionym oknie. Przekaż menu, listę odbiorców, instrukcję zmiany numerów, kontakt wsparcia i procedurę awarii. Najpierw sprawdź nowe połączenie z telefonu spoza sieci testowej.",
+          "check": "Klient wie, gdzie zgłosić zmianę, a stary sposób obsługi można przywrócić."
+        },
+        {
+          "title": "Obsługuj usługę co miesiąc",
+          "text": "Porównuj raport dostawcy z własnym licznikiem. Wysyłaj raport zużycia, monitoruj błędy i wykonuj kopię konfiguracji. Drobne zmiany mieszczą się w {{ivr.changeMinutes}} minutach; nowa funkcja wymaga wyceny. Wsparcie działa pon.–pt. 9–17 poza polskimi świętami; reakcja krytyczna do 8 godzin roboczych nie oznacza naprawy w tym czasie.",
+          "check": "Raport, faktura i ewidencja czasu zmian zgadzają się ze stanem systemu."
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        "Test",
+        "Oczekiwany wynik"
+      ],
+      "rows": [
+        [
+          "Każdy klawisz 1–3",
+          "Trafia do zatwierdzonego odbiorcy; nie zamieniono działów."
+        ],
+        [
+          "Brak wyboru i błędna cyfra",
+          "Uzgodnione ponowienie lub zakończenie, bez zapętlenia."
+        ],
+        [
+          "Odbiorca zajęty / nie odbiera",
+          "Kończy się po ustalonym czasie; brak niezamówionej odpłatnej ścieżki."
+        ],
+        [
+          "Po godzinach i zmiana czasu",
+          "Obowiązuje poprawny komunikat według Europe/Warsaw."
+        ],
+        [
+          "80%, 100% i dwie rozmowy naraz",
+          "Powiadomienia i wspólna, odporna na równoczesne zdarzenia kontrola limitu."
+        ],
+        [
+          "Powtórzony callback / nieprawidłowy podpis",
+          "Brak podwójnego naliczenia; fałszywe żądanie odrzucone."
+        ],
+        [
+          "15 minut przekierowania",
+          "Połączenie kończy się zgodnie z limitem; koszt obu nóg uwzględniony."
+        ]
+      ]
+    },
+    {
+      "type": "note",
+      "label": "Najczęstszy problem: telefon milczy",
+      "text": "Sprawdź kolejno: status numeru i płatności, poprawny adres HTTPS i metodę, log błędu webhooka, osiągalność odbiorcy oraz ograniczenia konta próbnego. Nie wyłączaj sprawdzania podpisów jako „naprawy”. Gdy konfiguracja produkcyjna zawodzi, wróć do zapisanej poprzedniej wersji.",
+      "tone": "info"
+    },
+    {
+      "type": "code",
+      "text": "Przygotuj dla IVR Start osobny backend i plan wdrożenia: jeden numer, menu DTMF do 3 opcji, timeout, status callbacks, weryfikacja podpisów, idempotencja CallSid/odcinków, licznik okresów od aktywacji, alerty 80/100% i blokada nowych płatnych działań przy budżecie 0. Najpierw pokaż architekturę, zmienne bez sekretów, testy oraz wycofanie zmiany. Nie zmieniaj publicznej strony w gotowy silnik bez mojej konfiguracji kont."
+    },
+    {
+      "type": "links",
+      "items": [
+        {
+          "label": "Twilio: Gather — wybór klawiszy",
+          "url": "https://www.twilio.com/docs/voice/twiml/gather"
+        },
+        {
+          "label": "Twilio: bezpieczeństwo webhooków",
+          "url": "https://www.twilio.com/docs/usage/webhooks/webhooks-security"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "id": "bot",
+  "title": "Bot telefoniczny AI — od scenariusza do gotowego zgłoszenia",
+  "summary": "Przygotowanie jednego procesu rozmowy, zatwierdzonej wiedzy, przekazania danych i kontroli kosztów.",
+  "blocks": [
+    {
+      "type": "note",
+      "label": "Zakres pakietu",
+      "text": "Wdrożenie od {{bot.setup}}, abonament {{bot.monthly}} miesięcznie: {{bot.minutes}} minut, {{bot.smsParts}} części SMS i {{bot.changeMinutes}} minut drobnych zmian. Jeden proces z wariantami, jedna standardowa integracja i do 20 zatwierdzonych odpowiedzi. Termin organizacyjny {{bot.deliveryBusinessDays}} dni roboczych wymaga potwierdzenia po materiałach i zaliczce.",
+      "tone": "info"
+    },
+    {
+      "type": "note",
+      "label": "To projekt do zbudowania",
+      "text": "Panel DAWKOZ przygotuje dokumenty, ale nie podłącza sam telefonu i AI. Prawdziwy silnik rozmowy, integracja, trwała baza zdarzeń i blokada wydatków muszą powstać i przejść testy przed aktywacją. Osobne konto klienta w panelu jest dodatkowym zakresem.",
+      "tone": "warning"
+    },
+    {
+      "type": "steps",
+      "title": "Realizacja krok po kroku",
+      "items": [
+        {
+          "title": "Wybierz jeden wynik rozmowy",
+          "text": "Zapisz: „bot przyjmuje zgłoszenie usterki i przekazuje je do jednego narzędzia”. Ustal wymagane pola, np. oznaczenie obiektu, opis, kontakt i preferowany termin oddzwonienia. Osobno zapisz czego bot nie robi: nie potwierdza wolnego terminu, ceny ani wykonania naprawy bez odpowiedniego źródła i uprawnienia.",
+          "check": "Jedna kartka opisuje cel, dane i granice procesu."
+        },
+        {
+          "title": "Zbierz zatwierdzoną wiedzę",
+          "text": "Poproś klienta o maksymalnie 20 pytań i odpowiedzi związanych z procesem, poprawną nazwę firmy oraz reguły oddania sprawy człowiekowi. Dla nieznanej odpowiedzi bot ma powiedzieć, że nie ma potwierdzonej informacji, i zapisać pytanie. Zaznacz właściciela materiałów oraz datę wersji.",
+          "check": "Klient zatwierdził odpowiedzi i sposób postępowania przy braku wiedzy."
+        },
+        {
+          "title": "Wybierz jedną integrację i minimalne dane",
+          "text": "Ustal konkretny adres e-mail, prywatną grupę Telegram albo arkusz oraz osoby uprawnione. Wybierz wyłącznie pola potrzebne do zgłoszenia. Nie podawaj danych innego klienta na podstawie samego numeru telefonu lub podanego adresu. Potwierdzenie tożsamości wymaga odrębnych reguł.",
+          "check": "Masz miejsce docelowe, listę pól i testowego odbiorcę."
+        },
+        {
+          "title": "Zmierz koszty i ustal przetwarzanie",
+          "text": "Sprawdź dostępność numeru i płatności dostawców. Wybierz stos telefonia → rozpoznanie mowy → model → synteza mowy; Realtime to inny wariant wymagający osobnego testu kosztu. Progi z kalkulacji nie są taryfami. Ustal role danych, dostawców, retencję, informację o AI i ewentualne nagrywanie.",
+          "check": "Wiesz, czy usługa mieści się w kosztach; nagrywanie nie jest włączone domyślnie."
+        },
+        {
+          "title": "Zapisz ofertę i umowę",
+          "text": "W bibliotece DAWKOZ użyj wzoru oferty, wybierz pakiet bota i kliknij „Ustaw warunki”. Sprawdź ceny, {{bot.minutes}} minut, {{bot.smsParts}} części SMS, wykonawcę i VAT. Przygotuj zakres, umowę wdrożenia, opieki i wymagane powierzenie. Po zawarciu umowy rozlicz 50% zaliczki.",
+          "check": "Cena i jedno narzędzie są zaakceptowane, a dodatkowe funkcje opisane jako wyłączone."
+        },
+        {
+          "title": "Przygotuj konta i środowisko testowe",
+          "text": "Dawid zakłada lub uzyskuje właściwe dostępy do telefonii, AI i odbiorcy zgłoszeń. Włącz 2FA, oddziel konfigurację firmy i ustaw budżety dostawców. Klucze umieść w zmiennych środowiskowych usługi; do ChatGPT przekazuj nazwy zmiennych i zanonimizowane przykłady, nie wartości sekretów.",
+          "check": "Istnieje środowisko testowe bez prawdziwych zgłoszeń i bez niepotrzebnego dostępu do innych firm."
+        },
+        {
+          "title": "Zbuduj silnik z ChatGPT etapami",
+          "text": "Najpierw uruchom odebranie testowego połączenia i stały komunikat. Następnie dołóż transkrypcję, odpowiedź na jedno testowe pytanie i syntezę mowy. Potem logikę zbierania pól, potwierdzenie danych i przekazanie zgłoszenia. Na każdym etapie sprawdź log oraz koszt. Nie zaczynaj od kierowania całego ruchu klienta.",
+          "check": "Działają kolejno telefon, rozmowa i jedno kontrolowane przekazanie danych."
+        },
+        {
+          "title": "Ustaw reguły rozmowy i błędów",
+          "text": "Na początku bot informuje, że jest asystentem AI. Scenariusz pyta o brakujące informacje, pozwala poprawić adres, rozpoznaje prośbę o człowieka i kończy rozmowę po maksymalnie 5 minutach. Nieznane, niepewne lub sprzeczne dane oznacza do sprawdzenia. Brak integracji nie może skutkować komunikatem „wysłano”.",
+          "check": "Klient zatwierdził treść powitania, podsumowania i zakończenia przy błędzie."
+        },
+        {
+          "title": "Dodaj trwały zapis oraz bezpieczną wysyłkę",
+          "text": "Zapis zgłoszenia otrzymuje własny identyfikator, CallSid i status. Weryfikuj podpis webhooka, czas zdarzenia i dozwolone przejścia statusów. Duplikat zdarzenia nie tworzy drugiej sprawy. Błąd wysyłki trafia do kolejki ponowień z limitem prób i alarmem, zamiast znikać w pamięci procesu.",
+          "check": "Restart i ponowienie webhooka nie gubią sprawy i nie wysyłają jej dwukrotnie."
+        },
+        {
+          "title": "Skonfiguruj SMS i pełne zużycie",
+          "text": "SMS wysyłaj tylko w ustalonym celu i do uzgodnionego numeru. Zapisuj MessageSid, status doręczenia i liczbę rozliczeniowych części; nie traktuj pojedynczego tekstu jako zawsze jednej części. Dodaj limit minut i SMS, alerty 80/100%, atomową rezerwację przy równoczesnych połączeniach oraz budżet dopłat 0 zł.",
+          "check": "Wyczerpany SMS nie uruchamia bez zgody kolejnych płatnych wiadomości ani rozmów."
+        },
+        {
+          "title": "Wykonaj przynajmniej 20 rozmów testowych",
+          "text": "Skorzystaj z listy poniżej. Każdy test zapisz z oczekiwaniem, rzeczywistym wynikiem, CallSid i kosztem dostawców. Mierz opóźnienie i jakość, nie tylko to, czy bot mówi. Testuj limity także przy sztucznie zmniejszonym pakiecie oraz kończenie ostatniej przyjętej rozmowy bez dopłaty.",
+          "check": "Żaden krytyczny test nie pozostaje nieudany; koszty zgadzają się z przyjętą ofertą."
+        },
+        {
+          "title": "Odbierz, uruchom i monitoruj",
+          "text": "Zbierz dwie rundy uwag do procesu, popraw niezgodności i uzyskaj wyraźny protokół odbioru. Rozlicz drugie 50%, ustal aktywację abonamentu i przełącz ruch w kontrolowanym oknie. Przekaż instrukcję, kontakty i procedurę awarii. Codziennie kontroluj alarmy; miesięcznie raportuj zużycie i porównuj rachunki.",
+          "check": "Klient umie znaleźć zgłoszenie, zgłosić błąd i ocenić pozostały limit."
+        }
+      ]
+    },
+    {
+      "type": "checklist",
+      "title": "20 testów i oczekiwanych wyników",
+      "items": [
+        "1. Pełne zgłoszenie → wszystkie uzgodnione pola trafiają do odbiorcy.",
+        "2. Brak adresu → bot dopytuje, nie wymyśla.",
+        "3. Poprawka adresu → zapis zawiera potwierdzoną poprawkę.",
+        "4. Nieznany obiekt → sprawa jest oznaczona do weryfikacji.",
+        "5. Dwie usterki → rozdzielenie lub połączenie według ustalonej reguły.",
+        "6. Cisza → ograniczone ponowienie i poprawne zakończenie.",
+        "7. Hałas → prośba o powtórzenie lub oznaczenie niepewności.",
+        "8. Przerywanie botowi → brak utraty potwierdzonych danych.",
+        "9. Zatwierdzone FAQ → odpowiedź zgodna z wersją klienta.",
+        "10. Pytanie spoza wiedzy → brak wymyślonej odpowiedzi.",
+        "11. Prośba o człowieka → uzgodniona ścieżka bez płatnej niespodzianki.",
+        "12. Żądanie cudzych danych → brak ich ujawnienia.",
+        "13. Próba zmiany reguł poleceniem rozmówcy → zachowanie ograniczeń.",
+        "14. Rozłączenie → właściwy status sprawy, bez udawanego potwierdzenia.",
+        "15. Awaria integracji → trwała kolejka i alarm, nie „wysłano”.",
+        "16. Ponowiony webhook → jedna sprawa i jedno naliczenie.",
+        "17. Dwie rozmowy równocześnie → limit nie jest omijany.",
+        "18. Długi SMS z polskimi znakami → prawidłowe części i status.",
+        "19. 80% i 100% pakietu → alarm, blokada nowych płatnych działań.",
+        "20. Piąta minuta / błąd AI → kontrolowane zakończenie i poprawne rozliczenie."
+      ]
+    },
+    {
+      "type": "note",
+      "label": "Gdy bot mówi coś nieprawdziwego",
+      "text": "Zachowaj identyfikator i zanonimizowany przykład, sprawdź źródło odpowiedzi i wersję scenariusza. Wyłącz błędną funkcję albo przełącz uzgodniony tryb obsługi. Poprawianie samego polecenia nie zastępuje testów logiki, uprawnień i integracji. Nie wysyłaj całej bazy klientów do czatu.",
+      "tone": "info"
+    },
+    {
+      "type": "code",
+      "text": "Zbudujmy telefonicznego bota etapami. Pakiet:1 proces,20 zatwierdzonych odpowiedzi,1 integracja,5 min rozmowy. Najpierw przygotuj specyfikację pól i stanów, architekturę z trwałą bazą, dostawców do potwierdzenia, zmienne bez sekretów i testy. Potem implementuj osobno telefon, mowę, proces, kolejkę zgłoszeń, CallSid/MessageSid, podpisy webhooków, liczniki i budżet 0. Nie uznawaj systemu za gotowy przed testami awarii, kosztów i limitów."
+    },
+    {
+      "type": "links",
+      "items": [
+        {
+          "label": "OpenAI: dokumentacja API",
+          "url": "https://platform.openai.com/docs"
+        },
+        {
+          "label": "Twilio: Voice",
+          "url": "https://www.twilio.com/docs/voice"
+        },
+        {
+          "label": "Twilio: statusy wiadomości",
+          "url": "https://www.twilio.com/docs/messaging/guides/track-outbound-message-status"
+        }
+      ]
+    }
+  ]
+}

@@ -123,17 +123,27 @@ module.exports = function createPanelHandler({ production }) {
         return redirect('/app/login');
       }
       if (!authenticated(req)) {
-        if (urlPath.startsWith('/app/api/') || urlPath.startsWith('/app/templates/')) return send(401, 'Wymagane logowanie.');
+        if (urlPath.startsWith('/app/api/') || urlPath.startsWith('/app/templates/') || urlPath.startsWith('/app/guide/')) return send(401, 'Wymagane logowanie.');
         return redirect('/app/login');
       }
       if (!['GET', 'HEAD'].includes(req.method)) { req.resume(); res.setHeader('Allow', 'GET, HEAD'); return send(405, 'Method Not Allowed'); }
       const assets = {
         '/app/documents': ['panel/documents.html', 'text/html; charset=utf-8'],
+        '/app/guide': ['panel/guide.html', 'text/html; charset=utf-8'],
         '/app/assets/panel.js': ['panel/panel.js', 'text/javascript; charset=utf-8'],
         '/app/assets/docx.js': ['panel/docx.js', 'text/javascript; charset=utf-8'],
+        '/app/assets/guide.css': ['panel/guide.css', 'text/css; charset=utf-8'],
+        '/app/assets/guide.js': ['panel/guide.js', 'text/javascript; charset=utf-8'],
         '/app/api/templates': ['documents/catalog.json', 'application/json; charset=utf-8'],
       };
       if (assets[urlPath]) return await file(path.join(root, assets[urlPath][0]), assets[urlPath][1]);
+      if (urlPath === '/app/guide/manual.pdf') return await file(path.join(root, 'manual/generated/dawkoz-instrukcja-realizacji-zamowien.pdf'), 'application/pdf', 'dawkoz-instrukcja-realizacji-zamowien.pdf');
+      const guideImage = /^\/app\/guide\/images\/([a-z0-9-]+\.(png|webp))$/.exec(urlPath);
+      if (guideImage) {
+        const images = new Set(['panel-library.png', 'panel-preset.png', 'panel-fields.png', 'panel-export.png', 'public-offers.png', 'client-demo.png', 'guide-navigation.png']);
+        if (!images.has(guideImage[1])) return send(404, '404');
+        return await file(path.join(root, 'manual/assets', guideImage[1]), guideImage[2] === 'png' ? 'image/png' : 'image/webp');
+      }
       if (urlPath === '/app/templates/package.zip') return await file(path.join(root, 'documents/generated/dawkoz-wzory-dokumentow.zip'), 'application/zip', 'dawkoz-wzory-dokumentow.zip');
       const download = /^\/app\/templates\/([a-z-]+)\.(pdf|docx|md)$/.exec(urlPath);
       if (download) {
@@ -145,6 +155,7 @@ module.exports = function createPanelHandler({ production }) {
       }
       return send(404, '404');
     } catch (error) {
+      if (error.code === 'ENOENT') return send(404, '404');
       return send(error.message === 'too-large' ? 413 : 500, error.message === 'too-large' ? 'Żądanie jest zbyt duże.' : 'Nie udało się obsłużyć panelu.');
     }
   };

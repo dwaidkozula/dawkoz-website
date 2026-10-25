@@ -1,0 +1,199 @@
+{
+  "id": "website",
+  "title": "Strona firmowa — od materiałów do publikacji",
+  "summary": "Jak sprzedać i przygotować jedną stronę firmową, sprawdzić ją z klientem, podłączyć domenę i przekazać gotową realizację.",
+  "blocks": [
+    {
+      "type": "note",
+      "label": "Co obejmuje cena początkowa",
+      "tone": "info",
+      "text": "Wdrożenie od {{website.setup}} obejmuje jedną stronę do {{website.sections}} sekcji w jednym języku, na materiałach klienta. Przykład: nagłówek, o firmie, usługi, sposób współpracy, pytania i kontakt. Dodatkowe podstrony, CMS, sklep, rezerwacje, kolejne języki i płatne licencje wymagają osobnej wyceny. Cena „od” staje się konkretną ceną dopiero w zaakceptowanej ofercie."
+    },
+    {
+      "type": "heading",
+      "text": "Przygotowanie zlecenia i dokumentów"
+    },
+    {
+      "type": "steps",
+      "title": "Najpierw ustal zakres, potem zaczynaj budowę",
+      "items": [
+        {
+          "title": "Zapisz cel i jedną najważniejszą akcję klienta",
+          "text": "W rozmowie ustal: co firma sprzedaje, komu, w jakim obszarze oraz czy odwiedzający ma zadzwonić, napisać e-mail czy wysłać formularz. Poproś o dwa przykłady stron i wyjaśnienie, co w nich odpowiada klientowi. Zapisz odpowiedzi w briefie; nie zaczynaj od wyboru kolorów.",
+          "check": "Masz jednozdaniowy cel, np. „Odwiedzający poznaje ofertę serwisu i wysyła zapytanie e-mail”."
+        },
+        {
+          "title": "Zbierz materiały w jednym miejscu",
+          "text": "Poproś o logo, teksty, zdjęcia, ofertę, telefon, e-mail i rzeczywiste dane sprzedawcy oraz administratora danych. Ustal osobę zatwierdzającą. Klient potwierdza prawa do materiałów. Nie pobieraj zdjęć z wyszukiwarki jako gotowych do dowolnego wykorzystania. Zapisz, kto dostarczy brakujące treści i kiedy.",
+          "check": "Folder projektu ma komplet materiałów albo listę braków; żaden tekst zastępczy nie jest przedstawiany jako zaakceptowany."
+        },
+        {
+          "title": "Przygotuj ofertę i zakres w panelu DAWKOZ",
+          "text": "Wejdź do /app/documents. Odszukaj ofertę i kliknij „Użyj wzoru”. Uzupełnij strony, projekt, sekcje, język, cenę, daty, materiały i kryteria odbioru. Dla strony WWW nie wybieraj pakietu IVR lub AI w polu „Warunki pakietu”: obecne gotowe pakiety dotyczą telefonu. Cenę WWW i ewentualną opiekę wpisz ręcznie. Przygotuj także umowę wdrożeniową i zakres prac.",
+          "check": "Dokument wymienia maksymalnie uzgodnione sekcje i nie zawiera przypadkowych minut rozmów lub kosztów SMS."
+        },
+        {
+          "title": "Potwierdź cenę, płatność i termin",
+          "text": "Wskaż końcową cenę, rzeczywistego sprzedawcę i status podatkowy. Osobno pokaż domenę, hosting i licencje: kto je kupuje i odnawia. Zastosuj uzgodniony model 50% zaliczki po zawarciu umowy i 50% po wyraźnym odbiorze. Termin potwierdź po sprawdzeniu materiałów i dostępów; nie obiecuj nieuzgodnionej daty. Zapisz projekt JSON i pobierz dokumenty.",
+          "check": "Klient zaakceptował konkretny zakres, koszty zewnętrzne i termin; otrzymano uzgodnioną zaliczkę."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Budowa i pokazanie wersji roboczej"
+    },
+    {
+      "type": "steps",
+      "title": "Prace, które wykonujesz z pomocą ChatGPT",
+      "items": [
+        {
+          "title": "Przygotuj osobny projekt klienta",
+          "text": "Ustal właściciela repozytorium i hostingu. Klient może zaprosić Cię do współpracy zamiast wysyłać hasło. Włącz 2FA na swoich kontach. Z ChatGPT przygotuj osobne repozytorium strony klienta. Nie kopiuj do niego prywatnych umów, podręcznika, danych ani sekretów DAWKOZ. Zapisz adres repozytorium i sposób późniejszego przekazania dostępu.",
+          "check": "Projekt jest odrębny, a uprawnienia odpowiadają ustaleniom z klientem."
+        },
+        {
+          "title": "Zbuduj zaakceptowany układ",
+          "text": "Przekaż ChatGPT brief, listę sekcji i materiały bez haseł oraz niepotrzebnych danych osobowych. Poproś najpierw o działający podgląd telefonu i komputera. Sprawdź teksty, hierarchię nagłówków, kontakt, wersję mobilną, obrazy i klawiaturę. Nie dodawaj wymyślonych opinii, certyfikatów, partnerów lub wyników. Nową funkcję wykraczającą poza zakres najpierw wyceń.",
+          "check": "Podgląd przedstawia rzeczywistą ofertę klienta i mieści się w uzgodnionym zakresie."
+        },
+        {
+          "title": "Ustal prawdziwe działanie kontaktu",
+          "text": "Jeśli przycisk otwiera pocztę, opisz go jako kontakt e-mail. Jeśli klient zamówił formularz, potrzebne są działająca obsługa po stronie serwera, walidacja, ograniczenie nadużyć, potwierdzenie wyniku i rzeczywiste doręczenie wiadomości. Sam ładny formularz nie wysyła poczty. Ustal zakres zbieranych danych i informację o prywatności; nie dodawaj analityki lub reklam bez odrębnych ustaleń.",
+          "check": "Próba kontaktu z telefonu dochodzi do właściwego odbiorcy albo poprawnie otwiera wskazaną pocztę."
+        },
+        {
+          "title": "Pokaż wersję testową i zbierz jedną listę uwag",
+          "text": "Udostępnij uzgodniony adres testowy bez prawdziwych dokumentów klientów. Jeżeli treść jest poufna, zastosuj ochronę dostępu; samo noindex nie blokuje odczytu. Poproś osobę zatwierdzającą o listę: element, obecne zachowanie, oczekiwana zmiana. Oddziel błędy od nowego zakresu. Liczbę rund uwag dla WWW ustal w ofercie; nie przenoś automatycznie zasad pakietu telefonicznego.",
+          "check": "Masz zapisane uwagi i wiadomo, które poprawki mieszczą się w cenie."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Publikacja, domena i HTTPS"
+    },
+    {
+      "type": "note",
+      "label": "Zewnętrzne panele mogą się zmieniać",
+      "tone": "info",
+      "text": "Poniższe nazwy opisują typowe miejsca w GitHub, Railway i panelu DNS. To nie zrzuty aktualnie zweryfikowanych kont klienta. Używaj wartości pokazanych dla jego usługi i zapisuj poprzednią konfigurację przed zmianą."
+    },
+    {
+      "type": "steps",
+      "title": "Uruchomienie na przykładzie hostingu Railway",
+      "items": [
+        {
+          "title": "Wdróż wersję zaakceptowaną do testów",
+          "text": "W Railway wybierz projekt i usługę strony; źródło ma wskazywać właściwe repozytorium i gałąź GitHub. Sprawdź polecenie startowe przewidziane przez projekt. Aplikacja musi słuchać portu z PORT, a nie zgadywanego numeru. Obejrzyj stan wdrożenia i logi bez ujawniania sekretów. Najpierw sprawdź adres techniczny usługi.",
+          "check": "Adres techniczny pokazuje właściwą wersję, obrazy i przyciski działają, a logi nie wskazują błędu uruchomienia."
+        },
+        {
+          "title": "Podłącz dokładną nazwę domeny",
+          "text": "Typowe miejsce w Railway to Settings → Networking → Custom Domain. Dodaj nazwę klienta i wybierz rzeczywisty port aplikacji. W autorytatywnym panelu DNS wpisz dokładny typ, nazwę i cel wskazane przez Railway. Osobno obsłuż nazwę z www albo skonfiguruj jej poprawne przekierowanie HTTPS. Nie kopiuj dawnego losowego hosta Railway z projektu DAWKOZ.",
+          "check": "Każda używana nazwa ma zgodne DNS i status weryfikacji domeny."
+        },
+        {
+          "title": "Sprawdź certyfikat i pocztę po zmianie DNS",
+          "text": "Zachowaj rekordy poczty, w tym MX, SPF i DKIM; nie usuwaj ich przy podłączaniu strony. Poczekaj na wystawienie certyfikatu obejmującego dokładną domenę oraz www, jeśli używane. Przy proxy Cloudflare stosuj Full (strict) po poprawnym skonfigurowaniu HTTPS serwera. Nie używaj Flexible jako naprawy i nie obchodź ostrzeżenia przeglądarki. Sprawdź HTTPS i przekierowanie HTTP na telefonie oraz komputerze.",
+          "check": "Brak ostrzeżenia certyfikatu, poprawne przekierowania i działająca poczta klienta."
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        "Próba odbiorowa",
+        "Oczekiwany wynik"
+      ],
+      "rows": [
+        [
+          "Telefon 320–390 px i komputer",
+          "Treść mieści się na ekranie; menu i kontakt są czytelne."
+        ],
+        [
+          "Każdy odnośnik, numer i przycisk",
+          "Prowadzi do uzgodnionego celu; brak pustych odnośników."
+        ],
+        [
+          "Kontakt z urządzenia klienta",
+          "Wiadomość dociera albo otwiera się poprawny adres e-mail."
+        ],
+        [
+          "Klawiatura i powiększenie",
+          "Widoczny fokus, logiczna kolejność i dostępne działania."
+        ],
+        [
+          "Domena, www i HTTP",
+          "Poprawne HTTPS, certyfikat i uzgodnione przekierowanie."
+        ],
+        [
+          "Treści i dokumenty prawne",
+          "Brak tekstów zastępczych; klient potwierdził rzeczywiste dane."
+        ],
+        [
+          "Błąd nowego wdrożenia",
+          "Znasz poprzednią działającą wersję i potrafisz ją przywrócić."
+        ],
+        [
+          "Pliki i konfiguracja",
+          "Brak publicznych sekretów oraz cudzych prywatnych dokumentów."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Odbiór i dalsza obsługa"
+    },
+    {
+      "type": "p",
+      "text": "W panelu przygotuj protokół odbioru, zapisz wyniki testów i uzyskaj wyraźne potwierdzenie klienta. Następnie rozlicz pozostałe 50%, przekaż adres, instrukcję aktualizacji treści, właścicieli kont, terminy odnowień i kopię konfiguracji. Nie uznawaj samego milczenia za odbiór. Ustal, czy klient kupuje opcjonalną opiekę od {{website.care}} miesięcznie: monitoring, kopia konfiguracji i {{website.changeMinutes}} minut drobnych zmian. Hosting, domena i licencje są osobne. Zmiana tekstu może być drobną zmianą; sklep lub nowa podstrona wymagają wyceny."
+    },
+    {
+      "type": "table",
+      "headers": [
+        "Problem",
+        "Co sprawdzić najpierw"
+      ],
+      "rows": [
+        [
+          "Stara treść",
+          "Adres i wersja wdrożenia, gałąź publikacji, pamięć przeglądarki/CDN; sprawdź zmianę przed kolejną publikacją."
+        ],
+        [
+          "Ostrzeżenie HTTPS",
+          "Dokładna domena, DNS, status certyfikatu, www i data urządzenia; nie omijaj błędu."
+        ],
+        [
+          "Brak kontaktu",
+          "Czy to mailto czy formularz, odbiorca, log błędu, dostawca poczty i folder spam."
+        ],
+        [
+          "Strona nie działa",
+          "Stan usługi, ostatnie wdrożenie, PORT i logi; przywróć znaną wersję bez usuwania danych."
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "text": "PROMPT DO REALIZACJI Z CHATGPT\nPrzygotuj stronę klienta na podstawie załączonego briefu i zaakceptowanego zakresu: jedna strona do sześciu sekcji, jeden język, dostarczone materiały. Najpierw sprawdź repozytorium i przygotuj podgląd mobilny oraz komputerowy. Kontakt ma działać w sposób wskazany w briefie; nie udawaj wysyłki formularza. Nie dodawaj niezamówionego CMS, sklepu, analityki, opinii ani danych firmowych. Oddziel zadania w kodzie od moich kroków na kontach. Podaj testy odbiorowe, konfigurację PORT, domeny i HTTPS, plan przywrócenia poprzedniej wersji oraz instrukcję przekazania. Sekrety pozostają w ustawieniach hostingu. Zmiany zakresu wyceń przed ich wykonaniem."
+    },
+    {
+      "type": "links",
+      "items": [
+        {
+          "label": "Railway — dokumentacja domen",
+          "url": "https://docs.railway.com/guides/public-networking"
+        },
+        {
+          "label": "Cloudflare — tryby szyfrowania",
+          "url": "https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/"
+        },
+        {
+          "label": "GitHub — podstawy repozytoriów",
+          "url": "https://docs.github.com/en/repositories"
+        }
+      ]
+    }
+  ]
+}

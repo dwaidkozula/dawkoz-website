@@ -1,0 +1,171 @@
+{
+  "id": "documents",
+  "title": "Panel DAWKOZ: przygotowanie dokumentów krok po kroku",
+  "summary": "Tutaj przygotujesz ofertę, umowę, załącznik i odbiór tego samego zamówienia. Najpierw ustal rzeczywiste dane stron, potem wybierz wzór i dopiero na końcu pobierz dokument do wysłania.",
+  "blocks": [
+    {
+      "type": "note",
+      "label": "Co robi ten panel?",
+      "tone": "info",
+      "text": "To prywatne narzędzie operatora DAWKOZ do dokumentów. Nie jest kontem klienta, programem księgowym ani systemem uruchamiającym bota. Zastosowanie pakietu uzupełnia treść oferty; nie konfiguruje numeru telefonu, integracji ani limitów u dostawców. Zrzuty poniżej pokazują prawdziwy interfejs na lokalnej kopii i wyłącznie dane przykładowe. Kółka z numerami są oznaczeniami instruktażowymi."
+    },
+    {
+      "type": "heading",
+      "text": "1. Wejście i wybór właściwego wzoru"
+    },
+    {
+      "type": "steps",
+      "title": "Od logowania do warunków pakietu",
+      "items": [
+        {
+          "title": "Otwórz prywatny panel",
+          "text": "Wpisz w przeglądarce https://dawkoz.com/app albo wybierz „Panel DAWKOZ” w menu strony. Na ekranie logowania wpisz swoje hasło w „Hasło do panelu” i naciśnij „Otwórz panel”. Nie wysyłaj tego hasła klientowi ani do rozmowy z AI. Jeśli widzisz komunikat o oczekiwaniu na aktywację, hasło ustawia się w zmiennej DAWKOZ_PANEL_PASSWORD usługi Railway; minimum to 16 znaków. Nie znamy Twojego hasła produkcyjnego.",
+          "check": "Po zalogowaniu widzisz „Dokumenty do współpracy”. Instrukcję otworzysz odnośnikiem „Instrukcja realizacji” w nawigacji panelu."
+        },
+        {
+          "title": "Zacznij od oferty",
+          "text": "W bibliotece znajdź kartę „Oferta wdrożenia”. Możesz wpisać „oferta” w wyszukiwarce. Kliknij „Użyj wzoru” na tej karcie. Odnośnik „PDF ↓” pobiera pusty formularz; nie otwiera edytora. „Pobierz cały pakiet” pobiera wszystkie puste wzory, nie dokumenty Twojego klienta.",
+          "check": "Otwiera się edytor „Oferta wdrożenia”, z polami po lewej i podglądem po prawej."
+        },
+        {
+          "title": "Ustaw pakiet telefoniczny świadomie",
+          "text": "Jeżeli zamówienie dotyczy IVR, bota AI lub zestawu, w „Warunki pakietu” wybierz właściwy wariant i naciśnij „Ustaw warunki”. Samo wybranie pozycji niczego nie nadpisuje. Przy zmianie wcześniej wpisanych warunków panel może poprosić o potwierdzenie zastąpienia cen i zakresu. Dane stron i wpisany status VAT pozostają bez zmian.",
+          "check": "Podgląd i pola pokazują właściwą cenę, minuty, części SMS, czas zmian i dopłaty. Porównaj je z rozdziałem danej usługi i zaakceptowaną wyceną."
+        },
+        {
+          "title": "Dla strony WWW lub automatyzacji pomiń pakiet AI",
+          "text": "Gotowe zestawy warunków dotyczą trzech usług telefonicznych. Dla WWW, zapytań, przypomnień, faktur lub panelu klienta wpisz zakres i cenę ręcznie w odpowiednich grupach pól. Nie wybieraj bota tylko po to, żeby zapełnić formularz — wstawiłby nieodpowiednie minuty, SMS i opiekę. Wpisz jednoznacznie, czy dana pozycja nie dotyczy zamówienia, zamiast zostawiać mylący limit rozmów.",
+          "check": "Dokument opisuje wyłącznie zamówioną usługę i uzgodnione koszty, bez przypadkowo dodanego abonamentu telefonicznego."
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "file": "panel-library.png",
+      "caption": "Biblioteka dokumentów: 1 — wyszukiwarka, 2 — „Użyj wzoru” otwierające edytor oferty, 3 — pobranie całego pakietu pustych wzorów.",
+      "alt": "Prawdziwa biblioteka dokumentów DAWKOZ z zaznaczonym wyszukiwaniem i przyciskiem użycia wzoru."
+    },
+    {
+      "type": "image",
+      "file": "panel-preset.png",
+      "caption": "Warunki pakietu: 1 — wybierz wariant, 2 — naciśnij „Ustaw warunki”. To uzupełnia dokument, a nie uruchamia systemu klienta.",
+      "alt": "Edytor oferty DAWKOZ z zaznaczonym wyborem pakietu bota i przyciskiem ustawiania warunków."
+    },
+    {
+      "type": "heading",
+      "text": "2. Dane i zakres, które musisz sprawdzić"
+    },
+    {
+      "type": "steps",
+      "title": "Uzupełnienie projektu",
+      "items": [
+        {
+          "title": "Otwieraj grupy pól po lewej",
+          "text": "Klikaj nazwy grup, np. „Strony”, „Projekt” i „Rozliczenia”, aby rozwinąć odpowiednie pola. W „Strony” wpisz pełne prawne oznaczenie wykonawcy i zamawiającego, adresy, właściwe NIP oraz osoby uprawnione do reprezentacji. Wskazany koordynator techniczny nie staje się automatycznie sprzedawcą lub reprezentantem firmy.",
+          "check": "Dane zgadzają się z ustalonym modelem współpracy i dokumentami firmy. NIP Kozbud nie jest przypisany Dawidowi jako odrębnemu sprzedawcy."
+        },
+        {
+          "title": "Nadaj zamówieniu numer i opisz konkretny rezultat",
+          "text": "W „Projekt” wpisz numer, np. DAW-2026-001, nazwę i zakres. Zamień ogólne przykłady na rzeczywisty proces: jakie dane są zbierane, gdzie trafiają, kto je odbiera i czego system nie robi. Uzupełnij odbiorcę integracji, harmonogram, kryteria testów oraz wyłączenia. Na ilustracjach numer DEMO-001 i „Klient DEMO” służą jedynie prezentacji.",
+          "check": "Klient może przeczytać zakres i stwierdzić, kiedy praca jest wykonana. Nie ma obietnic dodatkowego CRM, rezerwacji czy KSeF poza wyceną."
+        },
+        {
+          "title": "Potwierdź cenę końcową i rozliczenia",
+          "text": "Wpisz zaakceptowaną kwotę, zaliczkę, pozostałą płatność, ewentualny abonament i jego początek. Ceny strony są kwotami końcowymi z VAT w cenie, jeśli jest należny. Domyślne „brutto” w panelu nie ustala statusu VAT wykonawcy; pole „Status VAT i sposób fakturowania” wymaga rzeczywistego potwierdzenia. Wskaż też płatne usługi zewnętrzne, jeżeli są poza pakietem.",
+          "check": "Cena, zaliczka i abonament są zgodne z ofertą; nie dopisano VAT ponad uzgodnioną cenę końcową. Rachunek należy do właściwego sprzedawcy."
+        },
+        {
+          "title": "Przeczytaj cały podgląd",
+          "text": "Po każdej zmianie podgląd aktualizuje się automatycznie. Żółte pola w nawiasach pokazują brakujące informacje. Licznik uzupełnionych pól pomaga znaleźć braki, lecz nie potwierdza poprawności prawnej ani zgodności z zakresem. Nie wysyłaj dokumentu z niepotrzebnymi domyślnymi zapisami lub niewyjaśnionymi nawiasami.",
+          "check": "Potwierdzono dane stron, termin, cenę, odbiór, odpowiedzialność i uprawnienia. Jeżeli model Kozbud pozostaje nieustalony, dokument nadal jest projektem do uzgodnienia."
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "file": "panel-fields.png",
+      "caption": "Wypełnianie: 1 — pola projektu w rozwijanej grupie, 2 — podgląd dokumentu. Puste oznaczenia sprzedawcy pozostają do potwierdzenia; dane demonstracyjne nie są wzorem do skopiowania.",
+      "alt": "Pola przykładowego projektu i podgląd oferty z niewypełnionymi pozycjami do potwierdzenia."
+    },
+    {
+      "type": "heading",
+      "text": "3. Zapis, Word, PDF i powrót do zamówienia"
+    },
+    {
+      "type": "steps",
+      "title": "Trzy różne rodzaje zapisu",
+      "items": [
+        {
+          "title": "Zapisz plik projektu JSON",
+          "text": "Naciśnij „Zapisz projekt”. Przeglądarka pobierze plik .json zawierający wartości pól. Umieść go w chronionym folderze tego klienta, np. 01_oferta/projekt-001.json. To plik do ponownego otwarcia edycji w panelu. Pobieranie Worda lub PDF nie zastępuje tego kroku.",
+          "check": "Widzisz plik JSON w folderze pobranych plików i przeniosłeś go do dokumentacji właściwego zamówienia."
+        },
+        {
+          "title": "Pobierz edytowalny dokument",
+          "text": "Naciśnij „Pobierz Word”. Otwórz plik .docx w Wordzie lub zgodnym edytorze i sprawdź podział stron oraz wszystkie pola. Zmiany zrobione w Wordzie nie wracają automatycznie do panelu lub pliku JSON. Przed wysłaniem zapisz osobną, ostateczną wersję dokumentu.",
+          "check": "Plik otwiera się jako dokument Word, ma właściwego klienta i numer wersji w nazwie, bez pozostałości danych innego zamówienia."
+        },
+        {
+          "title": "Zapisz PDF przez drukowanie",
+          "text": "Naciśnij „Drukuj / zapisz PDF”. W oknie drukowania przeglądarki wybierz drukarkę lub miejsce docelowe „Zapisz jako PDF” albo odpowiednik systemowy, format A4 i sprawdź podgląd stron. Dopiero przycisk zapisu w tym oknie tworzy plik. Samo otwarcie okna nie zapisuje dokumentu. Na telefonie zapis PDF zależy od funkcji drukowania i udostępniania systemu.",
+          "check": "Otwórz zapisany PDF ponownie. Widać wyłącznie dokument, bez bocznego panelu i przycisków edytora."
+        },
+        {
+          "title": "Wczytaj zapisany projekt później",
+          "text": "Po ponownym zalogowaniu naciśnij „Wczytaj projekt” w górnym pasku i wskaż zapisany plik JSON DAWKOZ. Wczytanie zastępuje bieżące dane; panel ostrzega o niezapisanych zmianach. Nie wczytuj tu dowolnego PDF, Worda lub pliku księgowego — ten przycisk obsługuje wyłącznie projekty panelu w JSON.",
+          "check": "Otwarty dokument ma właściwy numer projektu, klienta i uzgodnione warunki."
+        },
+        {
+          "title": "Przygotuj kolejne dokumenty tego samego zamówienia",
+          "text": "Wróć przez „Biblioteka dokumentów” i otwórz kolejny wzór. Pola stron i projektu są wspólne, co przyspiesza pracę. Po zmianie klienta wczytaj właściwy projekt i sprawdź wszystkie pola; nie używaj „Wyczyść” bez namysłu, bo resetuje także wspólne wartości danego wzoru. Przed opuszczeniem strony zapisz aktualny JSON. Po zakończeniu wybierz „Wyloguj się” albo „Wyloguj” na telefonie.",
+          "check": "Folder zamówienia zawiera osobne PDF/DOCX potrzebnych dokumentów oraz aktualny plik JSON. Wylogowanie zamyka dostęp na używanym urządzeniu."
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "file": "panel-export.png",
+      "caption": "Zapis i eksport: 1 — JSON do późniejszej edycji, 2 — dokument Word, 3 — okno drukowania i PDF, 4 — wczytanie wcześniej pobranego projektu JSON.",
+      "alt": "Górna część edytora z oznaczonymi przyciskami zapisu projektu, pobierania Worda, drukowania PDF i importu."
+    },
+    {
+      "type": "note",
+      "label": "Brak automatycznego archiwum",
+      "tone": "warning",
+      "text": "Wpisane dane pozostają w pamięci karty. Panel nie zapisuje zamówień na serwerze i nie zapewnia automatycznej kopii projektów. Odświeżenie, zamknięcie lub utrata karty może oznaczać utratę niezapisanej pracy. Pobrane JSON, Word i PDF zawierają dane klienta — przechowuj je w zabezpieczonym folderze, a nie we wspólnym publicznym dysku."
+    },
+    {
+      "type": "heading",
+      "text": "4. Który dokument przygotować i kiedy?"
+    },
+    {
+      "type": "table",
+      "headers": ["Wzór w bibliotece", "Moment i zastosowanie"],
+      "rows": [
+        ["Brief klienta", "Przed wyceną: potrzeba, obecny proces, ruch, materiały i osoba do decyzji."],
+        ["Oferta wdrożenia", "Po briefie: konkretna usługa, cena, zakres, ważność i zasady opieki."],
+        ["Umowa wdrożeniowa B2B", "Po uzgodnieniu oferty, przed zaliczką i rozpoczęciem prac."],
+        ["Załącznik: zakres i harmonogram", "Razem z umową: szczegółowe działania, wyłączenia, testy i terminy."],
+        ["Umowa utrzymania i opieki", "Gdy zamawiana jest opieka lub abonament; prawidłowy zakres i limity danego pakietu."],
+        ["Umowa powierzenia danych", "Przed dostępem do danych, jeżeli rzeczywiste role stron wymagają powierzenia."],
+        ["Umowa o poufności — NDA", "Przed przekazaniem informacji poufnych, jeśli strony uzgadniają taki obowiązek."],
+        ["Informacja dla rozmówców bota AI", "Przed uruchomieniem rozmów: informowanie o AI, danych i rzeczywistym nagrywaniu/transkrypcji."],
+        ["Protokół odbioru", "Po testach: jawne potwierdzenie odbioru albo lista konkretnych usterek."],
+        ["Instrukcja i protokół przekazania", "Przy przekazaniu: konta, instrukcje, kopie, osoby odpowiedzialne i zakończenie dostępów."],
+        ["Porozumienie o przeniesieniu praw", "Tylko przy uzgodnionym przeniesieniu praw; osobne ustalenie zakresu, łańcucha praw i formy podpisu."],
+        ["Karta współpracy DAWKOZ–Kozbud", "Wewnętrznie: ustalenie rzeczywistego modelu, reprezentacji i rozliczenia; nie zastępuje zgody właściciela."]
+      ]
+    },
+    {
+      "type": "checklist",
+      "title": "Sprawdź przed wysłaniem klientowi",
+      "items": [
+        "Właściwy sprzedawca, klient, reprezentacja, numer projektu i rzeczywisty status VAT.",
+        "Zaakceptowana cena końcowa, zaliczka, odbiór, abonament oraz koszty zewnętrzne.",
+        "Zakres i limity odpowiadają wybranej ofercie; brak pól z innego klienta lub innej usługi.",
+        "PDF został otwarty po pobraniu i sprawdzony; plik JSON jest zapisany osobno.",
+        "Sposób podpisania odpowiada rodzajowi dokumentu; zwykły PDF lub e-mail nie zastępuje wymaganej szczególnej formy."
+      ]
+    }
+  ]
+}

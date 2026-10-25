@@ -1,0 +1,149 @@
+{
+  "id": "combo",
+  "title": "Bot + centrala — wspólne sterowanie telefonem i AI",
+  "summary": "Łączysz menu IVR z jednym procesem bota. Kluczowe są przejścia między etapami, wspólny licznik i zachowanie przy błędach.",
+  "blocks": [
+    {
+      "type": "note",
+      "label": "Zakres pakietu",
+      "text": "Wdrożenie od {{combo.setup}}, abonament {{combo.monthly}} miesięcznie: {{combo.minutes}} minut, {{combo.smsParts}} części SMS i {{combo.changeMinutes}} minut drobnych zmian. Jeden polski numer, menu do trzech opcji, jeden proces AI z wariantami, do 20 uzgodnionych odpowiedzi i jedna integracja biznesowa. Cel terminu: {{combo.deliveryBusinessDays}} dni roboczych po komplecie materiałów; datę potwierdzasz w ofercie.",
+      "tone": "info"
+    },
+    {
+      "type": "note",
+      "label": "Wspólny budżet",
+      "text": "To jeden pakiet {{combo.minutes}} minut dla uzgodnionych płatnych odcinków, a nie osobny pakiet dla IVR i kolejny dla AI. Przekierowanie może naliczać dwie nogi jednocześnie. Umowa i raport muszą jasno pokazać sposób pomiaru. Sam podgląd panelu demo nie prowadzi tych liczników.",
+      "tone": "warning"
+    },
+    {
+      "type": "steps",
+      "title": "Organizacja i wykonanie zamówienia",
+      "items": [
+        {
+          "title": "Narysuj cały przebieg telefonu",
+          "text": "Z klientem rozpisz menu: przykładowo 1 — zgłoszenie usterki przez AI,2 — połączenie z biurem,3 — inna uzgodniona ścieżka. Ustal godziny, numery odbiorców oraz to, co dzieje się bez wyboru. Tylko jedna uzgodniona ścieżka ma proces AI; trzy opcje menu nie oznaczają trzech niezależnych wdrożeń bota.",
+          "check": "Klient zatwierdził diagram od połączenia do zakończenia każdej gałęzi."
+        },
+        {
+          "title": "Zdefiniuj przekazanie między etapami",
+          "text": "Wskaż moment przekazania do AI i do człowieka. Określ, czy człowiek otrzymuje zgłoszenie do oddzwonienia, czy przewidziano rzeczywiste przełączenie rozmowy. Przełączenie kosztuje i musi zmieścić się w limicie oraz zakresie. Ustal identyfikator sprawy łączący etapy i minimalne dane potrzebne odbiorcy.",
+          "check": "Nie ma niejasnego słowa „przekazanie”, które dla jednej strony znaczy e-mail, a dla drugiej żywego operatora."
+        },
+        {
+          "title": "Zweryfikuj koszty całego przebiegu",
+          "text": "W koncie dostawcy sprawdź numer, wymagane dokumenty, koszty odbierania, przekierowania, AI i SMS. Zmierz ścieżkę IVR→AI oraz IVR→biuro, uwzględniając czas obu nóg. Wynik pomnóż przez przewidywany ruch i porównaj z ofertą. Nie zakładaj kosztu tekstowego modelu jako kosztu całej rozmowy.",
+          "check": "Wiesz, które trasy są opłacalne i jakie ograniczenia trzeba uzgodnić przed umową."
+        },
+        {
+          "title": "Przygotuj komplet dokumentów",
+          "text": "W /app/documents otwórz ofertę, wybierz „Bot + centrala” i kliknij „Ustaw warunki”. Uzupełnij strony, VAT, zakres menu, proces AI, integrację, limity, datę i kryteria odbioru. Przygotuj wdrożenie, zakres, opiekę i właściwe ustalenia danych. Po podpisaniu umowy rozlicz 50% zaliczki.",
+          "check": "Klient zaakceptował cenę, jednoznaczne trasy oraz odpowiedzialność i model rozliczenia."
+        },
+        {
+          "title": "Przygotuj testowy numer i konfigurację",
+          "text": "Dawid uzyskuje prawidłowe dostępy do operatora, AI i narzędzia firmy; ustala właściciela numeru i płatnika. Włącz 2FA i osobne uprawnienia. Zachowaj kopię poprzedniego routingu oraz kontakt osoby, która może przywrócić stary telefon. Nie przenoś numeru ani nie odcinaj dotychczasowej linii przed ustaleniem procedury z operatorem.",
+          "check": "Masz środowisko testowe i realny plan wycofania zmiany."
+        },
+        {
+          "title": "Zbuduj i sprawdź moduły oddzielnie",
+          "text": "Z ChatGPT wykonaj osobno backend menu DTMF, proces AI i przekazanie sprawy. Użyj kolejności z rozdziałów IVR i bot. Każdy moduł musi działać na danych przykładowych, zanim je połączysz. Repozytorium strony DAWKOZ nie dostarcza tych modułów; istniejące /app to biblioteka dokumentów.",
+          "check": "Menu, rozmowa i integracja przechodzą własne testy, bez ruchu prawdziwych klientów."
+        },
+        {
+          "title": "Połącz moduły jednym stanem połączenia",
+          "text": "Backend nadaje wspólny identyfikator sprawy, zapisuje CallSid i identyfikatory płatnych nóg. Zmiana etapu nie tworzy nowego niezależnego limitu. Callbacki dostawcy mogą przyjść ponownie albo w innej kolejności, dlatego przejścia stanów i idempotencja muszą być jawne. Zweryfikuj podpis, czas odbioru i poprawność statusu.",
+          "check": "Po zakończeniu jednej rozmowy raport pokazuje wszystkie etapy bez podwójnego liczenia tego samego odcinka."
+        },
+        {
+          "title": "Skonfiguruj wiedzę i komunikaty",
+          "text": "Wprowadź do 20 odpowiedzi zatwierdzonych dla jednego procesu. Ustaw informację o AI, poprawianie danych, brak wiedzy, prośbę o człowieka i brak odpowiedzi biura. Nagrywanie i transkrypcja wymagają odrębnie ustalonych zasad; nie włączaj ich tylko dlatego, że operator ma taki przełącznik.",
+          "check": "Treść komunikatów i zasady danych są zatwierdzone przez klienta."
+        },
+        {
+          "title": "Ustaw czas, wspólny licznik i rezerwację",
+          "text": "Limit AI wynosi 5 minut, przekierowania IVR: 15 minut. Backend pilnuje czasu na każdym etapie oraz łącznego kosztu. Każdą płatną nogę zaokrąglaj osobno. Przy przyjęciu rozmowy rezerwuj zasoby atomowo, żeby dwa połączenia nie zużyły równocześnie tego samego pozostałego budżetu. Zaplanuj dokończenie ostatniej przyjętej rozmowy bez nieuzgodnionej dopłaty.",
+          "check": "Równoczesny ruch i przejście IVR→AI nie omijają pakietu."
+        },
+        {
+          "title": "Dodaj kontrolę SMS i wyczerpania",
+          "text": "Dla SMS przechowuj MessageSid, status i rozliczeniowe części. Po 80% i 100% wysyłaj uzgodniony alarm. Przy budżecie dopłat 0 zł wstrzymaj nowe płatne rozmowy i SMS po limicie; nie przekierowuj wtedy automatycznie do biura jako rzekomo darmowego zapasu. Płatny zapas można włączyć dopiero po zgodzie na kwotę i stawki.",
+          "check": "Blokada obejmuje wszystkie gałęzie menu i kanały, także ponowienia wysyłki."
+        },
+        {
+          "title": "Przeprowadź wspólny odbiór wszystkich tras",
+          "text": "Wykonaj minimum 20 rozmów AI oraz testy gałęzi IVR i przejść z tabeli poniżej. Sprawdź rzeczywiste rachunki, powtórzone callbacki, restart backendu, niedziałającą integrację i równoczesny ruch. Zbierz dwie rundy uwag do procesu lub menu. Błędy względem uzgodnionego zakresu poprawiaj niezależnie od rund i czasu drobnych zmian.",
+          "check": "Klient potwierdził działanie pełnego przepływu, nie tylko osobnych fragmentów."
+        },
+        {
+          "title": "Przełącz ruch i prowadź miesięczną obsługę",
+          "text": "Po wyraźnym odbiorze rozlicz pozostałe 50%, ustal aktywację abonamentu i uruchom usługę w uzgodnionym oknie. Wykonaj połączenia kontrolne każdą trasą. Przekaż instrukcję oraz procedurę awarii. Miesięcznie raportuj wspólne minuty, SMS i zmiany; zestawiaj wynik z rachunkami. Kopię konfiguracji wykonuj codziennie, z retencją 7 dni i testem odtworzenia przed startem.",
+          "check": "Klient zna działanie każdej opcji, osobę wsparcia i aktualne wykorzystanie pakietu."
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        "Sytuacja testowa",
+        "Co ma się wydarzyć"
+      ],
+      "rows": [
+        [
+          "IVR1 → AI → gotowe zgłoszenie",
+          "Jedna sprawa, właściwy odbiorca, koszt etapów w jednym pakiecie."
+        ],
+        [
+          "IVR2 → odbiór przez biuro",
+          "Właściwy numer; oba płatne odcinki ujęte w raporcie."
+        ],
+        [
+          "IVR2 → zajęte / brak odpowiedzi",
+          "Kontrolowane zakończenie lub uzgodniona ścieżka bez pętli."
+        ],
+        [
+          "AI → prośba o człowieka",
+          "Dokładnie uzgodniony sposób: zgłoszenie do oddzwonienia lub opłacone przełączenie."
+        ],
+        [
+          "Błąd AI albo narzędzia firmy",
+          "Nie pada fałszywe potwierdzenie; sprawa trafia do trwałej obsługi błędu."
+        ],
+        [
+          "Limit wyczerpany w trakcie etapu",
+          "Brak nowego nieuzgodnionego kosztu; ostatnia rozmowa obsłużona według umowy."
+        ],
+        [
+          "Zmiana dnia / miesiąca / czasu",
+          "Prawidłowy harmonogram i okres rozliczeniowy od aktywacji."
+        ],
+        [
+          "Restart i opóźniony callback",
+          "Zapisane sprawy nie giną, stan końcowy nie cofa się, koszt nie dubluje."
+        ]
+      ]
+    },
+    {
+      "type": "note",
+      "label": "Gdy działa menu, ale nie bot",
+      "text": "Sprawdź adres przejścia do AI, identyfikator połączenia, dostępność serwisu mowy i odpowiedź backendu. Gdy bot działa, lecz sprawa nie dochodzi, sprawdź kolejkę integracji i uprawnienia odbiorcy. Zawsze rozdzielaj awarię etapu od awarii całego numeru; nie restartuj wszystkiego bez sprawdzenia przyczyny.",
+      "tone": "info"
+    },
+    {
+      "type": "code",
+      "text": "Połącz sprawdzone IVR i bota w jeden system: jeden numer, do 3 opcji,1 procesAI,1 integracja i wspólny pakiet. Przygotuj diagram stanów i schemat danych CallSid/legs/MessageSid, wspólny licznik z atomową rezerwacją, kontrolę limitów 5/15 min i dopłat 0, podpisy webhooków, trwałe kolejki i bezpieczny rollback. Następnie pokaż testy przejść oraz awarii. Nie uruchamiaj numeru klienta i nie zakładaj, że panel dokumentów jest backendem telefonicznym."
+    },
+    {
+      "type": "links",
+      "items": [
+        {
+          "label": "Twilio: Dial i przekierowania",
+          "url": "https://www.twilio.com/docs/voice/twiml/dial"
+        },
+        {
+          "label": "Twilio: webhooki Voice",
+          "url": "https://www.twilio.com/docs/voice/webhooks"
+        }
+      ]
+    }
+  ]
+}

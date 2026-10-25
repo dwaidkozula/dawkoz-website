@@ -1,0 +1,76 @@
+{
+  "title": "DAWKOZ — instrukcja realizacji zamówień",
+  "version": "1.0",
+  "date": "2026-10-25",
+  "offerVersion": "1.1",
+  "chapters": [
+    {
+      "id": "start",
+      "title": "Zacznij tutaj — jak korzystać z instrukcji"
+    },
+    {
+      "id": "proces-zamowienia",
+      "title": "Jeden proces zamówienia — od kontaktu do odbioru"
+    },
+    {
+      "id": "mapa-oferty",
+      "title": "Mapa oferty — ceny, limity i właściwy rozdział"
+    },
+    {
+      "id": "documents",
+      "title": "Panel DAWKOZ: przygotowanie dokumentów krok po kroku"
+    },
+    {
+      "id": "ivr",
+      "title": "IVR Start — centrala kierująca połączeniami"
+    },
+    {
+      "id": "bot",
+      "title": "Bot telefoniczny AI — od scenariusza do gotowego zgłoszenia"
+    },
+    {
+      "id": "combo",
+      "title": "Bot + centrala — wspólne sterowanie telefonem i AI"
+    },
+    {
+      "id": "website",
+      "title": "Strona firmowa — od materiałów do publikacji"
+    },
+    {
+      "id": "automation",
+      "title": "Automatyzacja firmy — jeden proces od początku do końca"
+    },
+    {
+      "id": "inquiries",
+      "title": "Zapytania bez przepisywania — formularz do arkusza"
+    },
+    {
+      "id": "reminders",
+      "title": "Przypomnienia o terminach — jedna reguła, jeden kanał"
+    },
+    {
+      "id": "invoices",
+      "title": "Faktury do sprawdzenia — tekstowy PDF do kolejki weryfikacji"
+    },
+    {
+      "id": "client-panel",
+      "title": "Panel klienta — od demonstracji do osobnego wdrożenia"
+    },
+    {
+      "id": "opieka-i-rozliczenia",
+      "title": "Obsługa po wdrożeniu — limity, zgłoszenia i rozliczenia"
+    },
+    {
+      "id": "sciagi-i-diagnoza",
+      "title": "Ściągi, wiadomości i rozwiązywanie problemów"
+    }
+  ],
+  "images": [
+    "client-demo.png",
+    "panel-export.png",
+    "panel-fields.png",
+    "panel-library.png",
+    "panel-preset.png",
+    "public-offers.png"
+  ]
+}

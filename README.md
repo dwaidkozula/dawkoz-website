@@ -80,6 +80,25 @@ W ofercie, umowie wdrożeniowej, załączniku zakresu i umowie opieki można wyb
 
 Do odtworzenia pustych PDF/DOCX na maszynie deweloperskiej użyj `python scripts/export-documents.py` (potrzebne `reportlab`, `python-docx` i fonty DejaVu Sans). Gotowe pliki są w repozytorium; aplikacja Node.js nadal nie wymaga zależności npm ani generowania PDF podczas wdrożenia. Po zmianie wzorów odtwórz pliki i sprawdź ich zgodność. Testy obejmują logowanie, zamknięcie dostępu bez konfiguracji, ciasteczka sesji, CSRF, ograniczenie prób, wylogowanie, prywatne pobieranie, integralność katalogu i eksport OOXML.
 
+## Instrukcja realizacji zamówień
+
+Po zalogowaniu wybierz „Instrukcja realizacji” w bocznej nawigacji lub nagłówku dokumentów. `/app/guide` udostępnia pełny podręcznik w języku polskim: wspólny proces zamówienia, mapę cen, obsługę biblioteki, wszystkie osiem ofert z karuzeli, osobny panel klienta, opiekę, rozliczenia i diagnozę. Rozdziały opisują działania, oczekiwane wyniki, testy i prompty do pracy z ChatGPT. Wyszukiwanie filtruje rozdziały po słowach bez zapisywania zapytań; spis treści i cała instrukcja działają bez JavaScriptu. Drukowanie pokazuje wszystkie rozdziały także po filtrowaniu.
+
+Przycisk „Pobierz instrukcję PDF” prowadzi do `/app/guide/manual.pdf`. Pierwsze wydanie zawiera 54 strony, 15 rozdziałów, nawigacyjny spis treści i sześć rzeczywistych zrzutów panelu/oferty/demo z oznaczonymi kontrolkami. Podręcznik, PDF, skrypty oraz ilustracje wymagają sesji operatora. Trasy obrazów korzystają z jawnej listy nazw; katalogi `manual/` i `panel/` nie są publicznie serwowane. Sesja i wylogowanie są wspólne z biblioteką dokumentów.
+
+Treść źródłowa jest w `manual/chapters/*.json`. `scripts/export-guide.py` pobiera kwoty i limity z `commercial/offer.json`, odrzuca nieznane tokeny, generuje rozdziały w oznaczonych miejscach `panel/guide.html`, PDF w `manual/generated/` i kopię do `/workspace/exports/`. Przy zmianie oferty lub treści odtwórz podręcznik:
+
+```sh
+python scripts/export-guide.py
+npm test
+```
+
+Eksport wymaga deweloperskich bibliotek ReportLab i Pillow oraz fontów DejaVu Sans/Mono. Wdrożenie używa gotowych plików i nadal uruchamia wyłącznie Node.js, bez nowych zależności npm i bez nowych płatnych usług. Datę i wersję wydania zmienia się jawnie w skrypcie oraz nagłówku instrukcji.
+
+`node scripts/capture-guide.cjs` odtwarza sześć zrzutów na lokalnym serwerze z losowym hasłem testowym przechowywanym wyłącznie w pamięci. Wymaga zainstalowanego Playwright i Chromium. Oznaczenia przycisków są nakładane na rzeczywisty DOM przed zrzutem; nie są wygenerowanym interfejsem dostawcy. W obrazach występują wyłącznie fikcyjne dane „Klient DEMO”. Skrypt nie loguje się do produkcji ani nie ujawnia hasła.
+
+Podręcznik rozróżnia obecną stronę, bibliotekę i demonstrator od modułów, które trzeba dopiero zaprogramować dla zamówienia. Nie potwierdza działania silnika telefonii, automatyzacji, kont dostawców, faktycznych kosztów ani ustalenia sprzedawcy/administratora. Przycisk zastosowania pakietu uzupełnia dokumenty i nie uruchamia usługi klienta. Nie wpisuj sekretów ani prawdziwych danych klientów do źródłowego podręcznika lub jego ilustracji.
+
 ## Film demonstracyjny
 
 Sekcja „Wdrożenie” zawiera 25-sekundową animację przykładowego zgłoszenia: połączenie, rozmowa z AI, zebranie danych i przekazanie sprawy zespołowi. Film ma napisy, nie zawiera ścieżki dźwiękowej i uruchamia się po kliknięciu. Odtwarzacz początkowo pobiera tylko miniaturę.
