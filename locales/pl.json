@@ -471,5 +471,13 @@
   "automation.v1.panelDescription": "Zgłoszenia, statusy, dokumenty i zużycie w jednym miejscu. Najpierw w przeglądarce, z możliwością późniejszej rozbudowy o PWA lub aplikację.",
   "automation.v1.panelNote": "Wdrożenie panelu wyceniamy osobno. Hosting, baza danych, kopie zapasowe i integracje wymagają uzgodnionego budżetu.",
   "automation.v1.panelCta": "Zobacz panel demo",
-  "automation.v1.demoNote": "Publiczny podgląd w języku polskim. Wyłącznie przykładowe dane."
+  "automation.v1.demoNote": "Publiczny podgląd w języku polskim. Wyłącznie przykładowe dane.",
+  "carousel.more": "Zobacz więcej ofert",
+  "carousel.previous": "Poprzednie oferty",
+  "carousel.next": "Następne oferty",
+  "carousel.hint": "Przesuń karty lub wybierz więcej ofert.",
+  "carousel.label": "Przeglądaj oferty",
+  "carousel.range": "Oferty {start}–{end} z {total}",
+  "carousel.end": "Wszystkie oferty są już widoczne",
+  "carousel.first": "Wróć do pierwszych ofert"
 }

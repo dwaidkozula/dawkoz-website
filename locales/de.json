@@ -471,5 +471,13 @@
   "automation.v1.panelDescription": "Anfragen, Status, Dokumente und Verbrauch an einem Ort. Zunächst im Browser, später bei Bedarf als PWA oder App erweiterbar.",
   "automation.v1.panelNote": "Die Umsetzung des Portals wird separat angeboten. Hosting, Datenbank, Sicherungskopien und Integrationen benötigen ein vereinbartes Budget.",
   "automation.v1.panelCta": "Demo-Portal ansehen",
-  "automation.v1.demoNote": "Öffentliche Vorschau auf Polnisch. Ausschließlich Beispieldaten."
+  "automation.v1.demoNote": "Öffentliche Vorschau auf Polnisch. Ausschließlich Beispieldaten.",
+  "carousel.more": "Weitere Angebote ansehen",
+  "carousel.previous": "Vorherige Angebote",
+  "carousel.next": "Nächste Angebote",
+  "carousel.hint": "Wische durch die Karten oder sieh dir weitere Angebote an.",
+  "carousel.label": "Angebote durchsehen",
+  "carousel.range": "Angebote {start}–{end} von {total}",
+  "carousel.end": "Alle Angebote sind bereits sichtbar",
+  "carousel.first": "Zurück zu den ersten Angeboten"
 }

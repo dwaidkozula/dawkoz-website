@@ -7,10 +7,12 @@
 <meta property="og:title" content="DAWKOZ — Web, AI &amp; Automation">
 <meta property="og:description" content="Strony internetowe, boty telefoniczne i automatyzacje dopasowane do procesów Twojej firmy.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/extra.css"><link rel="stylesheet" href="/flux-inspired.css?v=20261002"><link rel="stylesheet" href="/enhancements.css?v=offer1">
-<script src="/site.js?v=offer1" defer></script>
+<link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/extra.css"><link rel="stylesheet" href="/flux-inspired.css?v=20261002"><link rel="stylesheet" href="/enhancements.css?v=carousel1">
+<script src="/site.js?v=carousel1" defer></script>
 <noscript><style>.menu-toggle,.copy-email,.motion-toggle{display:none!important}@media(max-width:900px){.site-header{display:flex!important;height:auto!important;position:relative!important;flex-wrap:wrap;padding-bottom:12px!important;gap:12px!important}.site-header nav{display:flex!important;position:static!important;flex-direction:row;flex-wrap:wrap;padding:0!important;width:100%;border:0!important;box-shadow:none!important;gap:10px 20px!important;margin:0!important}.site-header nav a{font-size:12px!important;padding:5px 0}}</style></noscript>
 <link rel="stylesheet" href="/automation.css?v=1">
+<link rel="stylesheet" href="/offer-carousel.css?v=1">
+<script src="/offer-carousel.js?v=1" defer></script>
 </head><body>
 <a class="skip-link" href="#top">Przejdź do treści</a>
 <div class="scroll-progress" aria-hidden="true"></div>
@@ -131,7 +133,13 @@
 <div class="eyebrow">04 — OFERTA I CENNIK</div>
 <h2>Wybierz punkt startu.<br><span>Resztę dopasujemy.</span></h2></div>
 <p>Każda firma ma inny proces, dlatego koszt wdrożenia ustalamy po krótkiej analizie. Poniżej pokazujemy, co możemy zbudować i jak może wyglądać dalsza opieka.</p></div>
-<div class="price-grid">
+<div class="offer-carousel" data-offer-carousel>
+<div class="offer-carousel-controls">
+<p class="offer-carousel-hint">Przesuń karty lub wybierz więcej ofert.</p>
+<div class="offer-carousel-actions"><a class="offer-more" href="#offer-website" data-offer-more><span data-offer-more-label>Zobacz więcej ofert</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14 M13 6l6 6-6 6"/></svg></a><div class="offer-arrows"><button type="button" data-offer-prev aria-controls="offer-track" aria-label="Poprzednie oferty" aria-disabled="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14 M13 6l6 6-6 6"/></svg></button><button type="button" data-offer-next aria-controls="offer-track" aria-label="Następne oferty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14 M13 6l6 6-6 6"/></svg></button></div></div>
+</div>
+<div class="price-grid offer-track" id="offer-track" tabindex="0" role="region" aria-label="Przeglądaj oferty">
+<!-- OFFER CARDS START -->
 <article class="package-card">
 <div class="package-visual ivr-visual"><span class="pv-phone"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-3 2c1 3 3 5 6 6l2-3 5 2v4c0 1-1 2-2 2C10 21 3 14 3 5c0-1 1-2 2-2z"/></svg></span><span class="pv-route">1&nbsp;&nbsp;2&nbsp;&nbsp;3</span><i></i></div>
 <div class="price-top"><span>CENTRALA IVR</span><b>01</b></div>
@@ -179,7 +187,65 @@
 <li>AI, telefonia i opieka w abonamencie</li></ul>
 <div class="dual-price">
 <div><small>JEDNORAZOWE WDROŻENIE</small><strong>od 3 990 zł</strong></div>
-<div><small>ABONAMENT</small><strong>899 zł <em>/ mies.</em></strong></div></div><a href="#contact">Zapytaj o całość <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6 M6 6h12v12"/></svg></a></article></div>
+<div><small>ABONAMENT</small><strong>899 zł <em>/ mies.</em></strong></div></div><a href="#contact">Zapytaj o całość <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6 M6 6h12v12"/></svg></a></article>
+<article class="additional-offer-card" data-offer-id="website" id="offer-website">
+<div class="package-visual additional-visual" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v14H3z M3 9h18 M7 7h.01 M10 7h.01"/></svg><span>04</span></div>
+<div class="price-top"><span>WEB</span><b>04</b></div>
+<h3>Strona firmowa</h3>
+<p>Profesjonalna obecność w internecie i czytelna prezentacja oferty.</p>
+<ul>
+<li>Projekt dopasowany do marki</li>
+<li>Wersja mobilna</li>
+<li>Sekcje usług i kontaktu</li>
+<li>Możliwość dalszej rozbudowy</li></ul>
+<div class="price"><small>WYCENA</small><strong>od 1 990 zł</strong></div><a href="#contact">Zapytaj o stronę <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6 M6 6h12v12"/></svg></a></article>
+<article class="additional-offer-card" data-offer-id="custom-automation" id="offer-custom-automation">
+<div class="package-visual additional-visual" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18 M16 2l5 5-5 5 M21 17H3 M8 12l-5 5 5 5"/></svg><span>05</span></div>
+<div class="price-top"><span>AUTOMATION</span><b>05</b></div>
+<h3>Automatyzacja firmy</h3>
+<p>Łączenie narzędzi i eliminowanie powtarzalnej pracy wykonywanej ręcznie.</p>
+<ul>
+<li>Analiza procesu</li>
+<li>Automatyczny przepływ danych</li>
+<li>Powiadomienia i integracje</li>
+<li>Testy i uruchomienie</li></ul>
+<div class="price"><small>WYCENA</small><strong>od 990 zł</strong></div><a href="#contact">Pokaż swój proces <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6 M6 6h12v12"/></svg></a></article>
+<!-- AUTOMATION CARDS START -->
+<article class="additional-offer-card automation-offer-card" id="automations" data-offer-id="inquiries"><div class="package-visual additional-visual" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v14H3z M3 5l9 7 9-7"/></svg><span>06</span></div>
+      <span class="automation-card-index" aria-hidden="true">06 / INBOX</span>
+      <h3>Zapytania bez przepisywania</h3>
+      <p>Zgłoszenia z formularza trafiają do uporządkowanej listy, w której zespół może je dalej obsługiwać.</p>
+      <div class="automation-flow">FORMULARZ → ARKUSZ</div>
+      <h4>1 źródło i 1 miejsce docelowe</h4>
+      <p class="automation-scope">Jeden uzgodniony formularz i jeden arkusz, do 2 aplikacji. Ustalone pola, sprawdzenie wymaganych danych i test przekazania zgłoszenia.</p>
+      <div class="automation-offer-price"><small>JEDNORAZOWE WDROŻENIE</small><strong>od 990 zł</strong></div>
+      <a href="#contact">Omów ten proces <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6 M6 6h12v12"/></svg></a>
+    </article>
+<article class="additional-offer-card automation-offer-card" id="offer-reminders" data-offer-id="reminders"><div class="package-visual additional-visual" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>07</span></div>
+      <span class="automation-card-index" aria-hidden="true">07 / REMIND</span>
+      <h3>Przypomnienia o terminach</h3>
+      <p>Powiadomienia wychodzą według uzgodnionej reguły, zamiast wymagać ręcznego pilnowania każdego terminu.</p>
+      <div class="automation-flow">TERMIN → POWIADOMIENIE</div>
+      <h4>1 źródło, 1 reguła i 1 kanał</h4>
+      <p class="automation-scope">Na przykład kalendarz → e-mail lub SMS 24 godziny przed terminem, z pomijaniem odwołanych wpisów. Opłaty za SMS i narzędzia rozliczamy osobno.</p>
+      <div class="automation-offer-price"><small>JEDNORAZOWE WDROŻENIE</small><strong>od 1 490 zł</strong></div>
+      <a href="#contact">Omów ten proces <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6 M6 6h12v12"/></svg></a>
+    </article>
+<article class="additional-offer-card automation-offer-card" id="offer-invoices" data-offer-id="invoices"><div class="package-visual additional-visual" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z M14 3v5h4 M9 12h6 M9 16h6"/></svg><span>08</span></div>
+      <span class="automation-card-index" aria-hidden="true">08 / DOCUMENTS</span>
+      <h3>Faktury do sprawdzenia</h3>
+      <p>Dane z faktur trafiają do arkusza, a pracownik sprawdza ich poprawność przed dalszym wykorzystaniem.</p>
+      <div class="automation-flow">PDF → WERYFIKACJA → ARKUSZ</div>
+      <h4>1 skrzynka, 1 typ PDF, do 5 pól</h4>
+      <p class="automation-scope">Jeden uzgodniony typ tekstowego PDF i kolejka do weryfikacji. Skanowanie/OCR i KSeF wymagają osobnej wyceny. Zakres nie obejmuje automatycznego księgowania.</p>
+      <div class="automation-offer-price"><small>JEDNORAZOWE WDROŻENIE</small><strong>od 1 990 zł</strong></div>
+      <a href="#contact">Omów ten proces <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6 M6 6h12v12"/></svg></a>
+    </article>
+<!-- AUTOMATION CARDS END -->
+<!-- OFFER CARDS END -->
+</div>
+<div class="offer-carousel-position"><span data-offer-range role="status" aria-live="polite" aria-atomic="true"></span><progress data-offer-progress max="8" value="3" aria-label="Przeglądaj oferty"></progress></div>
+</div>
 <!-- BOT SCOPE START -->
 <div class="bot-included" aria-labelledby="bot-included-title"><h3 id="bot-included-title">Co zawiera wdrożenie bota?</h3><div class="bot-included-grid"><article><h4>Rozmowa dopasowana do sprawy</h4><p>Jeden proces, np. przyjęcie zgłoszenia usterki, może obejmować różne warianty rozmowy, pytania pomocnicze i obsługę brakujących danych. Na materiałach klienta przygotowujemy do 20 zatwierdzonych odpowiedzi na pytania związane z tym procesem. Jeden proces nie oznacza jednego sztywnego tekstu.</p></article><article><h4>Zgłoszenie gotowe do obsługi</h4><p>Bot zbiera uzgodnione dane i przekazuje podsumowanie do jednego narzędzia: e-mail, Telegrama lub arkusza. AI, telefonia i SMS w limitach nie zużywają dodatkowych integracji. Niestandardowe API i kolejne narzędzia wyceniamy osobno.</p></article><article><h4>Testy i przekazanie systemu</h4><p>Testy z klientem, dwie rundy uwag do procesu, instrukcja obsługi i raport miesięcznego zużycia. Błędy względem uzgodnionego zakresu poprawiamy poza limitem drobnych zmian. Osobne konto w panelu klienta wyceniamy dodatkowo.</p></article></div><p class="price-note">Pakiet AI obejmuje 200 minut, a Bot + centrala 250 minut. Dobieramy go do liczby i długości rozmów; przekierowania mogą zużywać więcej niż jeden płatny odcinek. Większy ruch wyceniamy przed uruchomieniem.</p></div>
 <!-- BOT SCOPE END -->
@@ -197,89 +263,26 @@
 <p>Wsparcie: pon.–pt. 9:00–17:00 czasu polskiego, poza świętami. Rozpoczęcie obsługi awarii krytycznej: do 8 godzin roboczych; pozostałych zgłoszeń: do 2 dni roboczych. Czas reakcji nie jest terminem naprawy.</p>
 <p>Wdrożenie: 50% zaliczki i pozostała część po odbiorze. Abonament płatny z góry; termin faktury 7 dni. Okres wypowiedzenia: 30 dni, ze skutkiem na koniec miesięcznego okresu rozliczeniowego. Termin wdrożenia potwierdzamy po otrzymaniu materiałów i dostępów.</p></div></details>
 <!-- COMMERCIAL TERMS END -->
-<details class="other-services">
-<summary>Strony, automatyzacje i indywidualne rozwiązania <span aria-hidden="true">+</span></summary>
-<div class="other-services-body">
-<div class="service-grid">
-<article>
-<div class="price-top"><span>WEB</span><b>01</b></div>
-<h3>Strona firmowa</h3>
-<p>Profesjonalna obecność w internecie i czytelna prezentacja oferty.</p>
-<ul>
-<li>Projekt dopasowany do marki</li>
-<li>Wersja mobilna</li>
-<li>Sekcje usług i kontaktu</li>
-<li>Możliwość dalszej rozbudowy</li></ul>
-<div class="price"><small>WYCENA</small><strong>od 1 990 zł</strong></div><a href="#contact">Zapytaj o stronę <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6 M6 6h12v12"/></svg></a></article>
-<article class="featured">
-<div class="popular">GŁÓWNA SPECJALIZACJA</div>
-<div class="price-top"><span>VOICE AI</span><b>02</b></div>
-<h3>Sekretarka / bot AI</h3>
-<p>Telefoniczna obsługa klientów i zgłoszeń bez ręcznego odbierania każdej rozmowy.</p>
-<ul>
-<li>Scenariusz rozmowy</li>
-<li>Zbieranie potrzebnych danych</li>
-<li>Automatyczne przekazywanie spraw</li>
-<li>Integracje z narzędziami firmy</li></ul>
-<div class="price"><small>WDROŻENIE</small><strong>wycena indywidualna</strong></div><a href="#contact">Omów bota AI <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6 M6 6h12v12"/></svg></a></article>
-<article>
-<div class="price-top"><span>AUTOMATION</span><b>03</b></div>
-<h3>Automatyzacja firmy</h3>
-<p>Łączenie narzędzi i eliminowanie powtarzalnej pracy wykonywanej ręcznie.</p>
-<ul>
-<li>Analiza procesu</li>
-<li>Automatyczny przepływ danych</li>
-<li>Powiadomienia i integracje</li>
-<li>Testy i uruchomienie</li></ul>
-<div class="price"><small>WYCENA</small><strong>od 990 zł</strong></div><a href="#contact">Pokaż swój proces <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6 M6 6h12v12"/></svg></a></article></div>
+<div class="other-service-terms">
 <!-- OTHER SCOPE START --><p class="price-note">Strona od 1 990 zł: jedna strona do 6 sekcji w jednym języku, na materiałach klienta. Automatyzacja od 990 zł: jeden proces łączący do 2 aplikacji. Dodatkowe podstrony, CMS, języki, płatne licencje i rozbudowy wyceniamy osobno.</p><!-- OTHER SCOPE END -->
+<!-- OTHER CARE START -->
 <div class="subscription">
 <div><span>STAŁA OPIEKA</span>
 <h3>System może rozwijać się razem z firmą.</h3>
 <p>Opcjonalna opieka WWW od 149 zł/mies. obejmuje monitoring, kopię konfiguracji i 15 minut drobnych zmian. Opieka nad automatyzacją od 399 zł/mies. obejmuje 30 minut zmian. Domeny, hosting WWW i licencje klienta rozliczane osobno. W pakietach telefonicznych opieka jest już zawarta.</p></div>
 <div class="sub-price"><small>ABONAMENT</small><strong>od 149 zł</strong><span>/ miesiąc</span><a href="#contact">Zapytaj o zakres <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6 M6 6h12v12"/></svg></a></div></div>
-<p class="price-note">Ostateczna cena zależy od zakresu, liczby integracji, sposobu działania systemu i kosztów usług zewnętrznych.</p></div></details>
+<!-- OTHER CARE END -->
+<p class="price-note">Ostateczna cena zależy od zakresu, liczby integracji, sposobu działania systemu i kosztów usług zewnętrznych.</p>
+</div>
 </section>
 <!-- AUTOMATION OFFERS START -->
-<section class="automation-offers section" id="automations" aria-labelledby="automation-offers-title">
+<section class="automation-offers section" id="automation-details" aria-labelledby="automation-offers-title">
   <div class="section-head">
     <div>
       <div class="eyebrow">AUTOMATYZACJE DLA FIRMY</div>
       <h2 id="automation-offers-title">Mniej przepisywania.<br><span>Więcej porządku.</span></h2>
     </div>
     <p>Wybierz jedno zadanie, które powtarza się w Twojej firmie. Ustalimy prosty zakres, połączymy potrzebne narzędzia i sprawdzimy cały przepływ przed uruchomieniem.</p>
-  </div>
-  <div class="automation-offers-grid">
-    <article class="automation-offer-card">
-      <span class="automation-card-index" aria-hidden="true">01 / INBOX</span>
-      <h3>Zapytania bez przepisywania</h3>
-      <p>Zgłoszenia z formularza trafiają do uporządkowanej listy, w której zespół może je dalej obsługiwać.</p>
-      <div class="automation-flow">FORMULARZ → ARKUSZ</div>
-      <h4>1 źródło i 1 miejsce docelowe</h4>
-      <p class="automation-scope">Jeden uzgodniony formularz i jeden arkusz, do 2 aplikacji. Ustalone pola, sprawdzenie wymaganych danych i test przekazania zgłoszenia.</p>
-      <div class="automation-offer-price"><small>JEDNORAZOWE WDROŻENIE</small><strong>od 990 zł</strong></div>
-      <a href="#contact">Omów ten proces <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6 M6 6h12v12"/></svg></a>
-    </article>
-    <article class="automation-offer-card">
-      <span class="automation-card-index" aria-hidden="true">02 / REMIND</span>
-      <h3>Przypomnienia o terminach</h3>
-      <p>Powiadomienia wychodzą według uzgodnionej reguły, zamiast wymagać ręcznego pilnowania każdego terminu.</p>
-      <div class="automation-flow">TERMIN → POWIADOMIENIE</div>
-      <h4>1 źródło, 1 reguła i 1 kanał</h4>
-      <p class="automation-scope">Na przykład kalendarz → e-mail lub SMS 24 godziny przed terminem, z pomijaniem odwołanych wpisów. Opłaty za SMS i narzędzia rozliczamy osobno.</p>
-      <div class="automation-offer-price"><small>JEDNORAZOWE WDROŻENIE</small><strong>od 1 490 zł</strong></div>
-      <a href="#contact">Omów ten proces <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6 M6 6h12v12"/></svg></a>
-    </article>
-    <article class="automation-offer-card">
-      <span class="automation-card-index" aria-hidden="true">03 / DOCUMENTS</span>
-      <h3>Faktury do sprawdzenia</h3>
-      <p>Dane z faktur trafiają do arkusza, a pracownik sprawdza ich poprawność przed dalszym wykorzystaniem.</p>
-      <div class="automation-flow">PDF → WERYFIKACJA → ARKUSZ</div>
-      <h4>1 skrzynka, 1 typ PDF, do 5 pól</h4>
-      <p class="automation-scope">Jeden uzgodniony typ tekstowego PDF i kolejka do weryfikacji. Skanowanie/OCR i KSeF wymagają osobnej wyceny. Zakres nie obejmuje automatycznego księgowania.</p>
-      <div class="automation-offer-price"><small>JEDNORAZOWE WDROŻENIE</small><strong>od 1 990 zł</strong></div>
-      <a href="#contact">Omów ten proces <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6 M6 6h12v12"/></svg></a>
-    </article>
   </div>
   <p class="automation-offer-note">Ceny końcowe, z VAT w cenie, jeżeli jest należny. To zakresy startowe; integracje, dostęp do danych i zasady ich przechowywania ustalamy w indywidualnej ofercie. Licencje, hosting i bieżące zużycie usług są rozliczane osobno.</p>
   <p class="automation-offer-note">Stała opieka nad automatyzacją jest opcjonalna, od 399 zł/mies. Jej zakres i limity uzgadniamy przed podpisaniem umowy.</p>

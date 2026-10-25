@@ -9,7 +9,15 @@
     "motionReduced": "Animacje wyłączone",
     "copyDone": "Adres e-mail skopiowany.",
     "copyFallback": "Adres do skopiowania: kontakt@dawkoz.com",
-    "from": "od"
+    "from": "od",
+    "offerMore": "Zobacz więcej ofert",
+    "offerPrevious": "Poprzednie oferty",
+    "offerNext": "Następne oferty",
+    "offerHint": "Przesuń karty lub wybierz więcej ofert.",
+    "offerLabel": "Przeglądaj oferty",
+    "offerRange": "Oferty {start}–{end} z {total}",
+    "offerEnd": "Wszystkie oferty są już widoczne",
+    "offerFirst": "Wróć do pierwszych ofert"
   },
   "en": {
     "language": "Site language",
@@ -21,7 +29,15 @@
     "motionReduced": "Animations disabled",
     "copyDone": "Email address copied.",
     "copyFallback": "Address to copy: kontakt@dawkoz.com",
-    "from": "from"
+    "from": "from",
+    "offerMore": "See more offers",
+    "offerPrevious": "Previous offers",
+    "offerNext": "Next offers",
+    "offerHint": "Swipe through the cards or choose more offers.",
+    "offerLabel": "Browse offers",
+    "offerRange": "Offers {start}–{end} of {total}",
+    "offerEnd": "All offers are already visible",
+    "offerFirst": "Back to the first offers"
   },
   "fr": {
     "language": "Langue du site",
@@ -33,7 +49,15 @@
     "motionReduced": "Animations désactivées",
     "copyDone": "Adresse e-mail copiée.",
     "copyFallback": "Adresse à copier : kontakt@dawkoz.com",
-    "from": "à partir de"
+    "from": "à partir de",
+    "offerMore": "Voir plus d’offres",
+    "offerPrevious": "Offres précédentes",
+    "offerNext": "Offres suivantes",
+    "offerHint": "Faites défiler les cartes ou affichez plus d’offres.",
+    "offerLabel": "Parcourir les offres",
+    "offerRange": "Offres {start}–{end} sur {total}",
+    "offerEnd": "Toutes les offres sont déjà visibles",
+    "offerFirst": "Revenir aux premières offres"
   },
   "es": {
     "language": "Idioma del sitio",
@@ -45,7 +69,15 @@
     "motionReduced": "Animaciones desactivadas",
     "copyDone": "Dirección de correo copiada.",
     "copyFallback": "Dirección para copiar: kontakt@dawkoz.com",
-    "from": "desde"
+    "from": "desde",
+    "offerMore": "Ver más ofertas",
+    "offerPrevious": "Ofertas anteriores",
+    "offerNext": "Ofertas siguientes",
+    "offerHint": "Desliza las tarjetas o elige ver más ofertas.",
+    "offerLabel": "Explorar ofertas",
+    "offerRange": "Ofertas {start}–{end} de {total}",
+    "offerEnd": "Todas las ofertas ya están visibles",
+    "offerFirst": "Volver a las primeras ofertas"
   },
   "de": {
     "language": "Sprache der Website",
@@ -57,7 +89,15 @@
     "motionReduced": "Animationen deaktiviert",
     "copyDone": "E-Mail-Adresse kopiert.",
     "copyFallback": "Adresse zum Kopieren: kontakt@dawkoz.com",
-    "from": "ab"
+    "from": "ab",
+    "offerMore": "Weitere Angebote ansehen",
+    "offerPrevious": "Vorherige Angebote",
+    "offerNext": "Nächste Angebote",
+    "offerHint": "Wische durch die Karten oder sieh dir weitere Angebote an.",
+    "offerLabel": "Angebote durchsehen",
+    "offerRange": "Angebote {start}–{end} von {total}",
+    "offerEnd": "Alle Angebote sind bereits sichtbar",
+    "offerFirst": "Zurück zu den ersten Angeboten"
   },
   "no": {
     "language": "Nettstedets språk",
@@ -69,7 +109,15 @@
     "motionReduced": "Animasjoner er slått av",
     "copyDone": "E-postadressen er kopiert.",
     "copyFallback": "Adresse å kopiere: kontakt@dawkoz.com",
-    "from": "fra"
+    "from": "fra",
+    "offerMore": "Se flere tilbud",
+    "offerPrevious": "Forrige tilbud",
+    "offerNext": "Neste tilbud",
+    "offerHint": "Sveip gjennom kortene eller velg flere tilbud.",
+    "offerLabel": "Bla gjennom tilbud",
+    "offerRange": "Tilbud {start}–{end} av {total}",
+    "offerEnd": "Alle tilbudene er allerede synlige",
+    "offerFirst": "Tilbake til de første tilbudene"
   },
   "pt": {
     "language": "Idioma do site",
@@ -81,7 +129,15 @@
     "motionReduced": "Animações desativadas",
     "copyDone": "Endereço de e-mail copiado.",
     "copyFallback": "Endereço para copiar: kontakt@dawkoz.com",
-    "from": "a partir de"
+    "from": "a partir de",
+    "offerMore": "Ver mais ofertas",
+    "offerPrevious": "Ofertas anteriores",
+    "offerNext": "Ofertas seguintes",
+    "offerHint": "Deslize os cartões ou escolha ver mais ofertas.",
+    "offerLabel": "Explorar ofertas",
+    "offerRange": "Ofertas {start}–{end} de {total}",
+    "offerEnd": "Todas as ofertas já estão visíveis",
+    "offerFirst": "Voltar às primeiras ofertas"
   },
   "ru": {
     "language": "Язык сайта",
@@ -93,7 +149,15 @@
     "motionReduced": "Анимация отключена",
     "copyDone": "Адрес электронной почты скопирован.",
     "copyFallback": "Адрес для копирования: kontakt@dawkoz.com",
-    "from": "от"
+    "from": "от",
+    "offerMore": "Посмотреть больше предложений",
+    "offerPrevious": "Предыдущие предложения",
+    "offerNext": "Следующие предложения",
+    "offerHint": "Листайте карточки или откройте больше предложений.",
+    "offerLabel": "Просмотр предложений",
+    "offerRange": "Предложения {start}–{end} из {total}",
+    "offerEnd": "Все предложения уже показаны",
+    "offerFirst": "Вернуться к первым предложениям"
   },
   "sv": {
     "language": "Webbplatsens språk",
@@ -105,7 +169,15 @@
     "motionReduced": "Animationer avstängda",
     "copyDone": "E-postadressen har kopierats.",
     "copyFallback": "Adress att kopiera: kontakt@dawkoz.com",
-    "from": "från"
+    "from": "från",
+    "offerMore": "Se fler erbjudanden",
+    "offerPrevious": "Föregående erbjudanden",
+    "offerNext": "Nästa erbjudanden",
+    "offerHint": "Svep genom korten eller välj fler erbjudanden.",
+    "offerLabel": "Bläddra bland erbjudanden",
+    "offerRange": "Erbjudanden {start}–{end} av {total}",
+    "offerEnd": "Alla erbjudanden visas redan",
+    "offerFirst": "Tillbaka till de första erbjudandena"
   },
   "uk": {
     "language": "Мова сайту",
@@ -117,7 +189,15 @@
     "motionReduced": "Анімацію вимкнено",
     "copyDone": "Адресу електронної пошти скопійовано.",
     "copyFallback": "Адреса для копіювання: kontakt@dawkoz.com",
-    "from": "від"
+    "from": "від",
+    "offerMore": "Переглянути більше пропозицій",
+    "offerPrevious": "Попередні пропозиції",
+    "offerNext": "Наступні пропозиції",
+    "offerHint": "Гортайте картки або відкрийте більше пропозицій.",
+    "offerLabel": "Перегляд пропозицій",
+    "offerRange": "Пропозиції {start}–{end} із {total}",
+    "offerEnd": "Усі пропозиції вже показано",
+    "offerFirst": "Повернутися до перших пропозицій"
   },
   "it": {
     "language": "Lingua del sito",
@@ -129,6 +209,14 @@
     "motionReduced": "Animazioni disattivate",
     "copyDone": "Indirizzo e-mail copiato.",
     "copyFallback": "Indirizzo da copiare: kontakt@dawkoz.com",
-    "from": "da"
+    "from": "da",
+    "offerMore": "Vedi altre offerte",
+    "offerPrevious": "Offerte precedenti",
+    "offerNext": "Offerte successive",
+    "offerHint": "Scorri le schede o scegli di vedere altre offerte.",
+    "offerLabel": "Esplora le offerte",
+    "offerRange": "Offerte {start}–{end} di {total}",
+    "offerEnd": "Tutte le offerte sono già visibili",
+    "offerFirst": "Torna alle prime offerte"
   }
 }

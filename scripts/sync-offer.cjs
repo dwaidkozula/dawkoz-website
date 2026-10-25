@@ -6,6 +6,7 @@ const root = path.join(__dirname, '..');
 const offer = require('../commercial/offer.json');
 const copy = require('../commercial/copy.json');
 const credibility = require('../commercial/credibility-copy.json');
+const carousel = require('../commercial/carousel-copy.json');
 const { presets } = require('../commercial/presets');
 const languages = Object.keys(copy.finalPrices);
 const catalogs = Object.fromEntries(languages.map(code => [code, JSON.parse(fs.readFileSync(path.join(root, 'locales', `${code}.json`), 'utf8'))]));
@@ -15,6 +16,16 @@ for (const [key, versions] of Object.entries(credibility)) {
     catalogs[code][`credibility.${key}`] = versions[code];
   }
 }
+const uiPath = path.join(root, 'locales/ui.json');
+const ui = JSON.parse(fs.readFileSync(uiPath, 'utf8'));
+for (const [key, versions] of Object.entries(carousel)) {
+  for (const code of languages) {
+    if (!versions[code]) throw new Error(`Missing carousel translation ${key}/${code}`);
+    catalogs[code][`carousel.${key}`] = versions[code];
+    ui[code][`offer${key[0].toUpperCase()}${key.slice(1)}`] = versions[code];
+  }
+}
+fs.writeFileSync(uiPath, JSON.stringify(ui, null, 2) + '\n');
 const escape = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 const money = (cents, code = 'pl') => new Intl.NumberFormat(code === 'no' ? 'nb' : code, { maximumFractionDigits: 2, useGrouping: 'always' }).format(cents / 100).replace(/[\u00a0\u202f]/g, ' ') + (code === 'pl' ? ' zł' : ' PLN');
 function variables(code) {
@@ -51,7 +62,7 @@ function price(cents) {
   return money(cents);
 }
 let html = fs.readFileSync(path.join(root, 'public/index.html'), 'utf8');
-const start = html.indexOf('<div class="price-grid">'), end = html.indexOf('<div class="pricing-explainer subscription">');
+const start = html.indexOf('<!-- OFFER CARDS START -->'), end = html.indexOf('<!-- OFFER CARDS END -->');
 if (start < 0 || end < start) throw new Error('Pricing anchors missing');
 let count = 0;
 const plans = Object.entries(offer.plans);
@@ -75,19 +86,14 @@ else html = html.replace('<div class="pricing-explainer subscription">', include
 const terms = `<!-- COMMERCIAL TERMS START -->\n<p class="price-note">${escape(text('finalPrices'))}</p>\n<p class="price-note">${escape(text('launch'))}</p>\n<details class="plan-terms"><summary>${escape(text('terms'))}<span aria-hidden="true">+</span></summary><div>${['limits', 'meter', 'extras', 'support', 'payments'].map(key => `<p>${escape(text(key))}</p>`).join('\n')}</div></details>\n<!-- COMMERCIAL TERMS END -->`;
 if (html.includes('<!-- COMMERCIAL TERMS START -->')) html = html.replace(/<!-- COMMERCIAL TERMS START -->[\s\S]*?<!-- COMMERCIAL TERMS END -->/, terms);
 else html = html.replace(/<p class="price-note">Kwoty „od”[\s\S]*?<\/p>/, terms);
-const otherStart = html.indexOf('<div class="other-services-body">'), otherEnd = html.indexOf('</details>', otherStart);
-let other = html.slice(otherStart, otherEnd);
-const services = [...other.matchAll(/<article\b[\s\S]*?<\/article>/g)];
-if (services.length !== 3) throw new Error('Other services anchors missing');
-for (const [index, cents] of [[0, offer.otherServices.website.setupCents], [2, offer.otherServices.automation.setupCents]]) {
-  const old = services[index][0];
-  other = other.replace(old, old.replace(/(<div class="price"><small>WYCENA<\/small><strong>)[\s\S]*?(<\/strong>)/, `$1od ${money(cents)}$2`));
+for (const [id, cents] of [['website', offer.otherServices.website.setupCents], ['custom-automation', offer.otherServices.automation.setupCents]]) {
+  const pattern = new RegExp(`<article\\b[^>]*data-offer-id="${id}"[^>]*>[\\s\\S]*?<\\/article>`);
+  if (!pattern.test(html)) throw new Error(`Missing offer card ${id}`);
+  html = html.replace(pattern, card => card.replace(/(<div class="price"><small>WYCENA<\/small><strong>)[\s\S]*?(<\/strong>)/, `$1od ${money(cents)}$2`));
 }
-if (other.includes('<!-- OTHER SCOPE START -->')) other = other.replace(/<!-- OTHER SCOPE START -->[\s\S]*?<!-- OTHER SCOPE END -->/, `<!-- OTHER SCOPE START --><p class="price-note">${escape(text('otherScope'))}</p><!-- OTHER SCOPE END -->`);
-else other = other.replace('<div class="subscription">', `<!-- OTHER SCOPE START --><p class="price-note">${escape(text('otherScope'))}</p><!-- OTHER SCOPE END -->\n<div class="subscription">`);
-other = other.replace(/(<h3>System może rozwijać się razem z firmą\.<\/h3>\s*<p>)[\s\S]*?(<\/p>)/, `$1${escape(text('otherCare'))}$2`);
-other = other.replace(/(<small>ABONAMENT<\/small><strong>)[\s\S]*?(<\/strong>)/, `$1od ${money(offer.otherServices.website.careMonthlyCents)}$2`);
-html = html.slice(0, otherStart) + other + html.slice(otherEnd);
+html = html.replace(/<!-- OTHER SCOPE START -->[\s\S]*?<!-- OTHER SCOPE END -->/, `<!-- OTHER SCOPE START --><p class="price-note">${escape(text('otherScope'))}</p><!-- OTHER SCOPE END -->`);
+html = html.replace(/(<h3>System może rozwijać się razem z firmą\.<\/h3>\s*<p>)[\s\S]*?(<\/p>)/, `$1${escape(text('otherCare'))}$2`);
+html = html.replace(/(<!-- OTHER CARE START -->[\s\S]*?<small>ABONAMENT<\/small><strong>)[\s\S]*?(<\/strong>)/, `$1od ${money(offer.otherServices.website.careMonthlyCents)}$2`);
 html = html.replace(/(<summary>Co obejmuje abonament 899 zł miesięcznie\?[\s\S]*?<\/summary>\s*<p>)[\s\S]*?(<\/p>)/, `$1${escape(text('bundleFaq'))}$2`);
 fs.writeFileSync(path.join(root, 'public/index.html'), html);
 for (const code of languages) fs.writeFileSync(path.join(root, 'locales', `${code}.json`), JSON.stringify(catalogs[code], null, 2) + '\n');

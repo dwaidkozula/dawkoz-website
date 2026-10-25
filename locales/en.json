@@ -471,5 +471,13 @@
   "automation.v1.panelDescription": "Enquiries, statuses, documents and usage in one place. Start in the browser, with the option to develop a PWA or app later.",
   "automation.v1.panelNote": "Portal implementation is quoted separately. Hosting, a database, backups and integrations require an agreed budget.",
   "automation.v1.panelCta": "Explore the demo portal",
-  "automation.v1.demoNote": "Public preview in Polish. Sample data only."
+  "automation.v1.demoNote": "Public preview in Polish. Sample data only.",
+  "carousel.more": "See more offers",
+  "carousel.previous": "Previous offers",
+  "carousel.next": "Next offers",
+  "carousel.hint": "Swipe through the cards or choose more offers.",
+  "carousel.label": "Browse offers",
+  "carousel.range": "Offers {start}–{end} of {total}",
+  "carousel.end": "All offers are already visible",
+  "carousel.first": "Back to the first offers"
 }

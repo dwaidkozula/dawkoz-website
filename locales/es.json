@@ -471,5 +471,13 @@
   "automation.v1.panelDescription": "Solicitudes, estados, documentos y consumo en un solo lugar. Primero en el navegador, con la opción de ampliar a una PWA o una aplicación más adelante.",
   "automation.v1.panelNote": "La implementación del portal se presupuesta por separado. El alojamiento, la base de datos, las copias de seguridad y las integraciones requieren un presupuesto acordado.",
   "automation.v1.panelCta": "Ver el portal de demostración",
-  "automation.v1.demoNote": "Vista previa pública en polaco. Solo datos de ejemplo."
+  "automation.v1.demoNote": "Vista previa pública en polaco. Solo datos de ejemplo.",
+  "carousel.more": "Ver más ofertas",
+  "carousel.previous": "Ofertas anteriores",
+  "carousel.next": "Ofertas siguientes",
+  "carousel.hint": "Desliza las tarjetas o elige ver más ofertas.",
+  "carousel.label": "Explorar ofertas",
+  "carousel.range": "Ofertas {start}–{end} de {total}",
+  "carousel.end": "Todas las ofertas ya están visibles",
+  "carousel.first": "Volver a las primeras ofertas"
 }

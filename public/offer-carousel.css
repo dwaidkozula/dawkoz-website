@@ -1,0 +1,63 @@
+/* All service cards remain in the document and scroll inside this track. */
+.offer-carousel{min-width:0;margin-top:10px}
+.offer-carousel-controls{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:14px}
+.offer-carousel-hint{margin:0;max-width:460px;color:#9e9ea9;font-size:12px;line-height:1.7}
+.offer-carousel-actions{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.offer-more{display:inline-flex;align-items:center;justify-content:center;gap:20px;padding:12px 18px;border:1px solid #506486;border-radius:9px;color:#dbe8ff;font-size:12px;line-height:1.5;background:#0c1420;transition:background .2s,border-color .2s}
+.offer-more:hover{background:#14243a;border-color:#90b5ee}
+.offer-more svg,.offer-arrows svg{display:block;width:18px;height:18px;flex-shrink:0}
+.offer-arrows{display:none;gap:8px}
+.is-enhanced .offer-arrows{display:flex}
+.offer-arrows button{display:grid;place-items:center;width:43px;height:43px;padding:10px;border:1px solid #34343c;border-radius:50%;background:#101014;color:#e0e2ec;cursor:pointer}
+.offer-arrows [data-offer-prev] svg{transform:rotate(180deg)}
+.offer-arrows button:hover{border-color:#8da7d1;background:#151c28}
+.offer-arrows [aria-disabled="true"]{opacity:.35;cursor:default}
+.offer-track.price-grid{display:grid;grid-template-columns:none!important;grid-auto-flow:column;grid-auto-columns:calc((100% - 64px)/3);align-items:stretch;gap:14px!important;overflow-x:auto;overflow-y:hidden;padding:10px 3px 20px;margin:0 -3px;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#53667f #15181d;-webkit-overflow-scrolling:touch}
+.offer-track::-webkit-scrollbar{height:5px}
+.offer-track::-webkit-scrollbar-track{background:#15181d;border-radius:5px}
+.offer-track::-webkit-scrollbar-thumb{background:#53667f;border-radius:5px}
+.offer-track>article{min-width:0;scroll-snap-align:start;scroll-margin-inline:3px;overflow-wrap:anywhere}
+.offer-track>article[data-reveal]{opacity:1!important;transform:none!important}
+.offer-track:focus-visible{outline-offset:7px;border-radius:10px}
+.offer-track .additional-offer-card{display:flex;flex-direction:column;gap:0;padding:28px;min-height:0}
+.offer-track .additional-visual{position:relative;background:radial-gradient(ellipse at 50% 45%,#17253b,#0a111c);border-color:#2b3c53;color:#84b1f4}
+.additional-visual>svg{display:block;width:46px;height:46px;position:relative;z-index:1}
+.additional-visual>span{position:absolute;right:17px;bottom:12px;color:#6b88ae;font-size:10px;letter-spacing:2px}
+.offer-track .additional-offer-card h3{margin:0 0 13px;font-size:28px;line-height:1.15;letter-spacing:-1px}
+.offer-track .additional-offer-card>p{font-size:14px;line-height:1.75;color:#a0a0a8;margin:0}
+.offer-track .additional-offer-card .price{display:flex;flex-direction:column;gap:8px;margin-top:auto;min-height:84px;justify-content:center;padding:14px 13px;border:1px solid #333b47;border-radius:10px;background:#0b0d11}
+.offer-track .price>small{font-size:9px;letter-spacing:.8px;line-height:1.4;color:#939ba9}
+.offer-track .price>strong{font-size:23px;line-height:1.3;letter-spacing:-.5px;color:#f0f1f5}
+.offer-track .automation-offer-card .automation-card-index{font-size:10px;margin:0 0 16px;color:#8daada;grid-column:auto}
+.offer-track .automation-offer-card h4{margin:14px 0 8px;line-height:1.7;grid-column:auto;grid-row:auto}
+.offer-track .automation-offer-card .automation-flow{margin:18px 0 0;grid-column:auto;grid-row:auto;align-self:stretch}
+.offer-track .automation-offer-card .automation-scope{font-size:12px;line-height:1.85;margin:0 0 24px;grid-column:auto;grid-row:auto}
+.offer-track .automation-offer-price{min-height:84px;justify-content:center;padding:14px 13px;border:1px solid #333b47;border-radius:10px;background:#0b0d11;grid-column:auto;grid-row:auto}
+.offer-track .automation-offer-card>a{display:flex;justify-content:space-between;gap:12px;line-height:1.6;grid-column:auto;grid-row:auto}
+.offer-track .automation-offer-card>a svg{flex-shrink:0}
+.offer-carousel-position{display:none;align-items:center;justify-content:space-between;gap:20px;margin-top:12px}
+.is-enhanced .offer-carousel-position{display:flex}
+.offer-carousel-position>span{font-size:11px;line-height:1.6;color:#a0a7b4}
+.offer-carousel-position progress{display:block;width:min(180px,35%);height:3px;border:0;border-radius:10px;background:#252b34;accent-color:#88b4f5;appearance:none}
+.offer-carousel-position progress::-webkit-progress-bar{background:#252b34;border-radius:10px}
+.offer-carousel-position progress::-webkit-progress-value{background:#88b4f5;border-radius:10px}
+.offer-carousel-position progress::-moz-progress-bar{background:#88b4f5;border-radius:10px}
+.other-service-terms{margin-top:24px;padding-top:12px;border-top:1px solid #27272a}
+@media(max-width:1100px){.offer-track.price-grid{grid-auto-columns:calc((100% - 48px)/2)}}
+@media(max-width:680px){
+ .offer-carousel-controls{align-items:flex-start;flex-direction:column;gap:12px}
+ .offer-carousel-actions{justify-content:space-between;width:100%;gap:10px;flex-shrink:1}
+ .offer-more{font-size:11px;gap:10px;padding:12px;min-width:0;overflow-wrap:anywhere}
+ .offer-arrows{gap:6px;flex-shrink:0}
+ .offer-arrows button{width:37px;height:37px;padding:9px}
+ .offer-track.price-grid{grid-auto-columns:calc(100% - 32px)}
+ .offer-track .additional-offer-card{padding:22px}
+ .offer-track .additional-offer-card h3{font-size:26px}
+ .offer-track .additional-offer-card>p{font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){.offer-more{transition:none}}
+@media print{
+ .offer-carousel-controls,.offer-carousel-position{display:none!important}
+ .offer-track.price-grid{display:grid!important;grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:repeat(2,minmax(0,1fr))!important;overflow:visible;scroll-snap-type:none}
+ .offer-track>article{break-inside:avoid;transform:none!important}
+}

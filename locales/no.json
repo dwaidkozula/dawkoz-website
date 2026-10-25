@@ -471,5 +471,13 @@
   "automation.v1.panelDescription": "Henvendelser, statuser, dokumenter og forbruk samlet på ett sted. Først i nettleseren, med mulighet for PWA eller app senere.",
   "automation.v1.panelNote": "Implementering av portalen prises separat. Hosting, database, sikkerhetskopier og integrasjoner krever et avtalt budsjett.",
   "automation.v1.panelCta": "Se demoportalen",
-  "automation.v1.demoNote": "Offentlig forhåndsvisning på polsk. Kun eksempeldata."
+  "automation.v1.demoNote": "Offentlig forhåndsvisning på polsk. Kun eksempeldata.",
+  "carousel.more": "Se flere tilbud",
+  "carousel.previous": "Forrige tilbud",
+  "carousel.next": "Neste tilbud",
+  "carousel.hint": "Sveip gjennom kortene eller velg flere tilbud.",
+  "carousel.label": "Bla gjennom tilbud",
+  "carousel.range": "Tilbud {start}–{end} av {total}",
+  "carousel.end": "Alle tilbudene er allerede synlige",
+  "carousel.first": "Tilbake til de første tilbudene"
 }

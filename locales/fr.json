@@ -471,5 +471,13 @@
   "automation.v1.panelDescription": "Demandes, statuts, documents et consommation réunis. D’abord dans le navigateur, avec une évolution possible vers une PWA ou une application.",
   "automation.v1.panelNote": "La réalisation de l’espace client fait l’objet d’un devis séparé. Hébergement, base de données, sauvegardes et intégrations nécessitent un budget convenu.",
   "automation.v1.panelCta": "Voir la démo de l’espace client",
-  "automation.v1.demoNote": "Aperçu public en polonais. Données fictives uniquement."
+  "automation.v1.demoNote": "Aperçu public en polonais. Données fictives uniquement.",
+  "carousel.more": "Voir plus d’offres",
+  "carousel.previous": "Offres précédentes",
+  "carousel.next": "Offres suivantes",
+  "carousel.hint": "Faites défiler les cartes ou affichez plus d’offres.",
+  "carousel.label": "Parcourir les offres",
+  "carousel.range": "Offres {start}–{end} sur {total}",
+  "carousel.end": "Toutes les offres sont déjà visibles",
+  "carousel.first": "Revenir aux premières offres"
 }

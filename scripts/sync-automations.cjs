@@ -41,8 +41,17 @@ fragment = fragment.replace(/\{\{(\w+)\}\}/g, (_, key) => {
   if (!Object.hasOwn(resolved.pl, key)) throw new Error('Unknown automation template key ' + key);
   return escape(resolved.pl[key]);
 });
+const cards = [...fragment.matchAll(/<article class="automation-offer-card">[\s\S]*?<\/article>/g)].map(match => match[0]);
+if (cards.length !== 3) throw new Error('Expected three automation cards');
+const ids = ['inquiries', 'reminders', 'invoices'];
+const symbols = ['<path d="M3 5h18v14H3z M3 5l9 7 9-7"/>', '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>', '<path d="M6 3h8l4 4v14H6z M14 3v5h4 M9 12h6 M9 16h6"/>'];
+const carouselCards = cards.map((card, index) => card.replace('<article class="automation-offer-card">', `<article class="additional-offer-card automation-offer-card" id="${index === 0 ? 'automations' : 'offer-' + ids[index]}" data-offer-id="${ids[index]}"><div class="package-visual additional-visual" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">${symbols[index]}</svg><span>${String(index + 6).padStart(2, '0')}</span></div>`)).join('\n');
+fragment = fragment.replace(/  <div class="automation-offers-grid">[\s\S]*?  <\/div>\n  <p class="automation-offer-note">/, '  <p class="automation-offer-note">');
+fragment = fragment.replace('id="automations"', 'id="automation-details"');
 const file = path.join(root, 'public/index.html');
 let html = fs.readFileSync(file, 'utf8');
+if (!html.includes('<!-- AUTOMATION CARDS START -->')) throw new Error('Offer carousel insertion anchor missing');
+html = html.replace(/<!-- AUTOMATION CARDS START -->[\s\S]*?<!-- AUTOMATION CARDS END -->/, `<!-- AUTOMATION CARDS START -->\n${carouselCards}\n<!-- AUTOMATION CARDS END -->`);
 const start = '<!-- AUTOMATION OFFERS START -->';
 const end = '<!-- AUTOMATION OFFERS END -->';
 const block = `${start}\n${fragment.trim()}\n${end}`;

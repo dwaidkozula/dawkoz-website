@@ -98,7 +98,7 @@
   updateScroll();
 
   if ('IntersectionObserver' in window) {
-    const revealTargets = document.querySelectorAll('.hero-text, .automation, .proof-stat, .section-head, .intro > div, .bento article, .dash-copy, .dash-ui, .case-copy, .case-console, .price-grid article, .subscription, .steps article, .who-grid, .faq-list, .contact-grid');
+    const revealTargets = document.querySelectorAll('.hero-text, .automation, .proof-stat, .section-head, .intro > div, .bento article, .dash-copy, .dash-ui, .case-copy, .case-console, .subscription, .steps article, .who-grid, .faq-list, .contact-grid');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;

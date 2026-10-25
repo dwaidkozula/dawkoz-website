@@ -471,5 +471,13 @@
   "automation.v1.panelDescription": "Richieste, stati, documenti e consumi in un unico posto. Prima nel browser, con la possibilità di sviluppare una PWA o un’app in seguito.",
   "automation.v1.panelNote": "L’implementazione del portale viene preventivata separatamente. Hosting, database, backup e integrazioni richiedono un budget concordato.",
   "automation.v1.panelCta": "Esplora il portale demo",
-  "automation.v1.demoNote": "Anteprima pubblica in polacco. Solo dati di esempio."
+  "automation.v1.demoNote": "Anteprima pubblica in polacco. Solo dati di esempio.",
+  "carousel.more": "Vedi altre offerte",
+  "carousel.previous": "Offerte precedenti",
+  "carousel.next": "Offerte successive",
+  "carousel.hint": "Scorri le schede o scegli di vedere altre offerte.",
+  "carousel.label": "Esplora le offerte",
+  "carousel.range": "Offerte {start}–{end} di {total}",
+  "carousel.end": "Tutte le offerte sono già visibili",
+  "carousel.first": "Torna alle prime offerte"
 }

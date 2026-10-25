@@ -471,5 +471,13 @@
   "automation.v1.panelDescription": "Förfrågningar, statusar, dokument och förbrukning på ett ställe. Först i webbläsaren, med möjlighet till PWA eller app senare.",
   "automation.v1.panelNote": "Implementering av portalen offereras separat. Hosting, databas, säkerhetskopiering och integrationer kräver en överenskommen budget.",
   "automation.v1.panelCta": "Se demoportalen",
-  "automation.v1.demoNote": "Offentlig förhandsvisning på polska. Endast exempeldata."
+  "automation.v1.demoNote": "Offentlig förhandsvisning på polska. Endast exempeldata.",
+  "carousel.more": "Se fler erbjudanden",
+  "carousel.previous": "Föregående erbjudanden",
+  "carousel.next": "Nästa erbjudanden",
+  "carousel.hint": "Svep genom korten eller välj fler erbjudanden.",
+  "carousel.label": "Bläddra bland erbjudanden",
+  "carousel.range": "Erbjudanden {start}–{end} av {total}",
+  "carousel.end": "Alla erbjudanden visas redan",
+  "carousel.first": "Tillbaka till de första erbjudandena"
 }
