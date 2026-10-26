@@ -1,0 +1,5 @@
+'use strict';
+let state={};const chat=document.querySelector('#chat'),input=document.querySelector('#text'),send=document.querySelector('#send'),start=document.querySelector('#start');
+function bubble(text,user=false){const p=document.createElement('div');p.className='bubble'+(user?' user':'');p.textContent=text;chat.append(p);}
+async function request(text){send.disabled=true;start.disabled=true;try{const body=new URLSearchParams();if(state.id)body.set('id',state.id);if(state.nonce)body.set('nonce',state.nonce);if(text!==undefined){body.set('text',text);bubble(text,true);}const response=await fetch('/demo/turn',{method:'POST',body});if(!response.ok)throw new Error();state=await response.json();bubble(state.text+(state.ticketId?'\nID zgłoszenia: '+state.ticketId:''));send.disabled=state.done;input.value='';}catch{bubble('Nie udało się zakończyć próby. Sprawdź terminal i uruchom nową próbę.');}finally{start.disabled=false;input.focus();}}
+start.addEventListener('click',()=>{state={};chat.replaceChildren();request();});document.querySelector('#form').addEventListener('submit',event=>{event.preventDefault();if(state.nonce)request(input.value);});

@@ -1,7 +1,7 @@
 {
   "title": "DAWKOZ — instrukcja realizacji zamówień",
-  "version": "1.0",
-  "date": "2026-10-25",
+  "version": "1.1",
+  "date": "2026-10-26",
   "offerVersion": "1.1",
   "chapters": [
     {
@@ -63,9 +63,18 @@
     {
       "id": "sciagi-i-diagnoza",
       "title": "Ściągi, wiadomości i rozwiązywanie problemów"
+    },
+    {
+      "id": "bot-technical",
+      "title": "Technicznie: uruchom i spersonalizuj bota bazowego"
+    },
+    {
+      "id": "bot-next-client",
+      "title": "Kolejna firma — osobny bot od briefu do odbioru"
     }
   ],
   "images": [
+    "bot-demo.png",
     "client-demo.png",
     "panel-export.png",
     "panel-fields.png",

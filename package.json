@@ -2,6 +2,12 @@
   "name": "dawkoz-website",
   "version": "1.0.0",
   "private": true,
-  "scripts": {"start": "node server.js", "test": "node --test"},
-  "engines": {"node": ">=20"}
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test/client-demo.test.js test/commercial.test.js test/guide.test.js test/i18n.test.js test/panel.test.js test/server.test.js",
+    "test:bot": "npm test --prefix bot-starter"
+  },
+  "engines": {
+    "node": ">=20"
+  }
 }

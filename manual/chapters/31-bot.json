@@ -11,8 +11,8 @@
     },
     {
       "type": "note",
-      "label": "To projekt do zbudowania",
-      "text": "Panel DAWKOZ przygotuje dokumenty, ale nie podłącza sam telefonu i AI. Prawdziwy silnik rozmowy, integracja, trwała baza zdarzeń i blokada wydatków muszą powstać i przejść testy przed aktywacją. Osobne konto klienta w panelu jest dodatkowym zakresem.",
+      "label": "Kod pilota i pełna oferta",
+      "text": "Dołączony oddzielny bot-starter ma tekstowe demo i kod pilota Twilio/OpenAI/Telegram. Przejdź dwa końcowe rozdziały techniczne. Panel dokumentów nie podłącza telefonu, a starter nie zawiera całej oferty, np. SMS i alertów. Prawdziwe konta, koszty i połączenia wymagają konfiguracji i odbioru; brakujące funkcje muszą powstać przed sprzedażą pełnego zakresu.",
       "tone": "warning"
     },
     {

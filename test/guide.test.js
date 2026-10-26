@@ -71,14 +71,16 @@ test('guide keeps instructions and images private and fails closed without a pas
       assert.equal(response.status, 303, target);
       assert.equal(response.headers.location, '/app/login');
     }
-    for (const target of ['/app/guide/manual.pdf', '/app/guide/images/panel-library.png']) {
+    for (const target of ['/app/guide/manual.pdf', '/app/guide/bot-technical.pdf', '/app/guide/bot-starter.zip', '/app/guide/images/panel-library.png']) {
       assert.equal((await request(port, target)).status, 401, target);
     }
   }
-  for (const target of ['/manual/generated/dawkoz-instrukcja-realizacji-zamowien.pdf', '/manual/assets/panel-library.png', '/panel/guide.html', '/panel/guide.js', '/panel/guide.css']) {
+  for (const target of ['/manual/generated/dawkoz-instrukcja-realizacji-zamowien.pdf', '/manual/assets/panel-library.png', '/panel/guide.html', '/panel/guide.js', '/panel/guide.css', '/bot-starter/src/server.js', '/manual/generated/dawkoz-bot-starter.zip']) {
     assert.equal((await request(enabled, target)).status, 404, target);
   }
 });
+
+test('starter secrets remain blocked by the hidden-file guard', async () => { assert.equal((await request(enabled, '/bot-starter/.env.example')).status,403); });
 
 test('guide serves readable HTML and navigation only to the signed-in operator', async () => {
   const cookie = await session();
@@ -87,6 +89,9 @@ test('guide serves readable HTML and navigation only to the signed-in operator',
   assert.match(page.text, /Jak zrealizować zamówienie/);
   assert.match(page.text, /href="\/app\/guide\/manual\.pdf"/);
   assert.match(page.text, /GUIDE CONTENT START/);
+  assert.match(page.text, /href="\/app\/guide\/bot-technical\.pdf"/);
+  assert.match(page.text, /href="\/app\/guide\/bot-starter\.zip"/);
+  assert.match(page.text, /id="bot-next-client"/);
   assert.match(page.headers['cache-control'], /no-store/);
   assert.match(page.headers['x-robots-tag'], /noindex/);
   assert.match(page.headers['content-security-policy'], /script-src 'self'/);
@@ -108,12 +113,12 @@ test('guide PDF and only whitelisted screenshots are genuine protected downloads
   const expectedImage = fs.readFileSync(imagePath);
   assert.ok(expectedPdf.subarray(0, 5).equals(Buffer.from('%PDF-')));
   assert.ok(expectedImage.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])));
-  for (const [target, expected, type] of [['/app/guide/manual.pdf', expectedPdf, 'application/pdf'], ['/app/guide/images/panel-library.png', expectedImage, 'image/png']]) {
+  for (const [target, expected, type] of [['/app/guide/manual.pdf', expectedPdf, 'application/pdf'], ['/app/guide/bot-technical.pdf', fs.readFileSync(path.join(root,'manual/generated/dawkoz-instrukcja-techniczna-bota.pdf')), 'application/pdf'], ['/app/guide/bot-starter.zip', fs.readFileSync(path.join(root,'manual/generated/dawkoz-bot-starter.zip')), 'application/zip'], ['/app/guide/images/panel-library.png', expectedImage, 'image/png'], ['/app/guide/images/bot-demo.png', fs.readFileSync(path.join(root,'manual/assets/bot-demo.png')), 'image/png']]) {
     const response = await request(enabled, target, { headers: { cookie } });
     assert.equal(response.status, 200);
     assert.equal(response.headers['content-type'], type);
     assert.deepEqual(response.bytes, expected);
-    if (type === 'application/pdf') assert.match(response.headers['content-disposition'], /attachment; filename="dawkoz-instrukcja-realizacji-zamowien.pdf"/);
+    if (type === 'application/pdf' || type === 'application/zip') assert.match(response.headers['content-disposition'], /attachment; filename=/);
     assert.match(response.headers['cache-control'], /no-store/);
     assert.match(response.headers['x-robots-tag'], /noindex/);
     const head = await request(enabled, target, { method: 'HEAD', headers: { cookie } });
@@ -129,13 +134,13 @@ test('guide PDF and only whitelisted screenshots are genuine protected downloads
 
 test('guide rejects writes and access stops immediately after logout', async () => {
   const cookie = await session();
-  for (const target of ['/app/guide', '/app/guide/manual.pdf', '/app/guide/images/panel-library.png']) {
+  for (const target of ['/app/guide', '/app/guide/manual.pdf', '/app/guide/bot-technical.pdf', '/app/guide/bot-starter.zip', '/app/guide/images/panel-library.png']) {
     const response = await request(enabled, target, { method: 'POST', headers: { cookie, origin: 'https://dawkoz.com' }, body: 'customer-data' });
     assert.equal(response.status, 405, target);
   }
   const logout = await request(enabled, '/app/logout', { method: 'POST', headers: { cookie, origin: 'https://dawkoz.com' } });
   assert.equal(logout.status, 303);
   assert.equal((await request(enabled, '/app/guide', { headers: { cookie } })).status, 303);
-  assert.equal((await request(enabled, '/app/guide/manual.pdf', { headers: { cookie } })).status, 401);
+  for (const target of ['/app/guide/manual.pdf','/app/guide/bot-technical.pdf','/app/guide/bot-starter.zip']) assert.equal((await request(enabled, target, { headers: { cookie } })).status, 401);
   assert.equal((await request(enabled, '/app/guide/images/panel-library.png', { headers: { cookie } })).status, 401);
 });

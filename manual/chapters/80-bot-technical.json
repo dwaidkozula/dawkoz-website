@@ -1,0 +1,698 @@
+{
+  "id": "bot-technical",
+  "title": "Technicznie: uruchom i spersonalizuj bota bazowego",
+  "summary": "Konkretna ścieżka od komputera i kodu do testowego numeru, rozmowy AI i zgłoszenia w Telegramie. Polecenia i konfiguracja odnoszą się do dołączonego startera DAWKOZ.",
+  "blocks": [
+    {
+      "type": "note",
+      "label": "To jest instrukcja techniczna wybranego wariantu",
+      "text": "Ten rozdział dotyczy konkretnego startera DAWKOZ: jedna firma, osobna instancja, osobna baza SQLite, numer Twilio, rozpoznawanie mowy w Twilio, odpowiedzi głosowe Twilio oraz model OpenAI do uporządkowania odpowiedzi. Zgłoszenie trafia do jednego prywatnego odbiorcy w Telegramie. Rozmowa przebiega turami: bot pyta, rozmówca odpowiada, bot przetwarza odpowiedź. To nie jest swobodna rozmowa Realtime z nieograniczonym przerywaniem.",
+      "tone": "info"
+    },
+    {
+      "type": "note",
+      "label": "Nie sprzedawaj samego startera jako całego pakietu",
+      "text": "Starter jest bazą do uruchomienia i sprawdzenia wybranego procesu. Nie zawiera SMS, IVR, przekierowania rozmowy na telefon pracownika, rezerwacji terminu, KSeF ani kont klienta w panelu. W ofercie bota jest również limit SMS; przed realizacją pełnego pakietu trzeba wdrożyć i sprawdzić brakujące elementy lub pisemnie uzgodnić inny zakres. W tej sesji nie zakupiono numeru i nie wykonano prawdziwego płatnego połączenia u dostawców.",
+      "tone": "warning"
+    },
+    {
+      "type": "links",
+      "items": [
+        {
+          "label": "Pobierz projekt bota — ZIP (po zalogowaniu)",
+          "url": "https://dawkoz.com/app/guide/bot-starter.zip"
+        },
+        {
+          "label": "Pobierz osobną instrukcję techniczną PDF (po zalogowaniu)",
+          "url": "https://dawkoz.com/app/guide/bot-technical.pdf"
+        }
+      ]
+    },
+    {
+      "type": "p",
+      "text": "Pracuj najpierw na firmie demonstracyjnej i danych fikcyjnych. Dopiero po poprawnym teście lokalnym zakładaj oddzielne konto/projekt do pierwszej firmy. Kolejność jest celowa: komputer → test bez API → konfiguracja firmy → konta → hosting → połączenie testowe → odbiór → rzeczywisty numer. W panelu administracyjnym DAWKOZ przygotowujesz dokumenty i czytasz instrukcję; nie uruchamiasz tam automatycznie usługi telefonu."
+    },
+    {
+      "type": "table",
+      "headers": [
+        "Element",
+        "Po co jest potrzebny",
+        "Co robi Dawid"
+      ],
+      "rows": [
+        [
+          "Komputer z Node.js 24",
+          "Uruchomienie dostarczonego kodu i lokalnej bazy SQLite.",
+          "Instaluje oficjalny Node.js 24 LTS lub zgodną wersję 24.x i sprawdza node --version. Nie używa nieznanego instalatora."
+        ],
+        [
+          "Projekt bota",
+          "Kod, konfiguracja przykładowej firmy, polecenia testowe i Dockerfile.",
+          "Pobiera archiwum, rozpakowuje do oddzielnego folderu, wykonuje opisane testy."
+        ],
+        [
+          "Twilio",
+          "Numer, połączenie telefoniczne, rozpoznawanie mowy i synteza głosu.",
+          "Tworzy lub otrzymuje dostęp do właściwego projektu/konta, weryfikuje kraj i numer oraz ustawia adresy webhooków."
+        ],
+        [
+          "OpenAI Platform",
+          "Przetworzenie wypowiedzi do ograniczonej struktury.",
+          "Tworzy projekt API i klucz; osobno konfiguruje rozliczenia API. Abonament ChatGPT Plus nie finansuje API."
+        ],
+        [
+          "Telegram",
+          "Przekazanie gotowej sprawy do ustalonego odbiorcy.",
+          "Tworzy oddzielnego bota i prywatną grupę/czat, sprawdza odbiorcę przed użyciem prawdziwych danych."
+        ],
+        [
+          "Railway",
+          "Publiczny adres HTTPS, uruchomienie Node.js i trwały dysk bazy.",
+          "Tworzy oddzielną usługę od strony dawkoz.com, ustawia zmienne, jeden proces i volume. Hosting i volume mogą być płatne."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "A. Przygotuj komputer i folder projektu"
+    },
+    {
+      "type": "steps",
+      "title": "Pierwsze uruchomienie bez wydatków u dostawców",
+      "items": [
+        {
+          "title": "Przygotuj komputer, nie tylko telefon",
+          "text": "Na telefonie możesz czytać instrukcję i panel, ale pierwsze wdrożenie wykonuj na komputerze. Otwórz stronę nodejs.org i pobierz oficjalny instalator wersji 24.19 lub nowszej 24.x odpowiedniej dla systemu. Po instalacji zamknij i otwórz ponownie Terminal / PowerShell. Nie instaluj kilku różnych wersji przypadkowo.",
+          "check": "Polecenie node --version zwraca v24.19 lub nowsze 24.x; jeżeli system nie znajduje polecenia, najpierw napraw instalację."
+        },
+        {
+          "title": "Pobierz i rozpakuj projekt",
+          "text": "Po zalogowaniu do panelu DAWKOZ pobierz „Projekt bota — ZIP” z instrukcji technicznej. W Windows kliknij ZIP prawym przyciskiem i wybierz „Wyodrębnij wszystkie”. Rozpakuj do nowego folderu, np. Dokumenty/dawkoz-bot-demo, i otwórz zawarty w nim podfolder bot-starter. Nie uruchamiaj kodu wewnątrz archiwum. Pobierane archiwum nie zawiera Twoich kluczy ani bazy rzeczywistej firmy.",
+          "check": "W zwykłym folderze widzisz package.json, README i plik przykładowej konfiguracji; nie zagnieżdżony ZIP."
+        },
+        {
+          "title": "Otwórz terminal we właściwym folderze",
+          "text": "Otwórz rozpakowany folder w Eksploratorze, kliknij prawym przyciskiem w pustym miejscu i wybierz „Otwórz w terminalu”; w starszym Windows użyj paska adresu folderu i wpisz powershell. W macOS otwórz Terminal i przejdź poleceniem cd do rozpakowanego folderu. Polecenia z tego rozdziału wykonujesz w folderze bota, a nie w repozytorium dawkoz-website.",
+          "check": "Polecenie dir w Windows albo ls w macOS pokazuje package.json tego startera."
+        },
+        {
+          "title": "Sprawdź dołączone testy",
+          "text": "Uruchom npm test. Kod nie wymaga instalowania bibliotek npm do działania: korzysta z Node.js 24.19 lub nowszego 24.x i jego modułów wbudowanych. Testy mają podstawione odpowiedzi dostawców; nie wymagają klucza ani zakupu numeru. Ostrzeżenie Node o eksperymentalnym module SQLite samo nie oznacza nieudanego testu; sprawdź końcowy wynik. Nie pomijaj błędu walidacji lub testu.",
+          "check": "Testy kończą się poprawnie; brak testów na żywym koncie nie jest potwierdzeniem kosztu i jakości prawdziwej rozmowy."
+        },
+        {
+          "title": "Utwórz własny plik ustawień",
+          "text": "W nowym folderze uruchom npm run init. Powstaną lokalny .env oraz config/client.json z bezpiecznych przykładów, bez nadpisania istniejących plików. Otwórz je w zwykłym edytorze tekstu, np. VS Code; zachowaj nazwy i UTF-8. W .env pozostaw BOT_MODE=demo i ALLOW_LIVE_CALLS=false. Nie wpisuj jeszcze kluczy. CLIENT_CONFIG_JSON pozostaw nieustawione lokalnie, bo nadpisuje treść pliku konfiguracyjnego.",
+          "check": "Plik lokalny istnieje pod dokładną nazwą; Windows nie dopisał ukrytego rozszerzenia .txt."
+        },
+        {
+          "title": "Uruchom lokalny demonstrator",
+          "text": "Najpierw wykonaj npm run check, a następnie npm run demo — to automatyczna próba offline bez połączeń z dostawcami. Aby zobaczyć ekran, uruchom npm start i otwórz http://localhost:3001/demo. Wpisuj wyłącznie dane fikcyjne. Aplikacja demonstruje kolejne etapy tekstowo; nie jest mikrofonem ani numerem telefonu i nie potwierdza jakości mowy OpenAI/Twilio.",
+          "check": "Dane przykładowe przechodzą przez kolejne pola, a brak kluczy w trybie demo nie uruchamia zewnętrznych API."
+        },
+        {
+          "title": "Zatrzymaj demonstrator przed zmianą konfiguracji",
+          "text": "W terminalu naciśnij Ctrl+C. Konfiguracja ładuje się przy starcie. Przed zmianą firmy z przykładowej na rzeczywistą ustaw osobny DATA_DIR, np. ./data-firma-b-test, i unikalny clientId; stara baza demonstracyjna pozostaje oddzielona. Istniejąca baza wiąże się z clientId i companyName, więc zmiana właściciela lub samej nazwy wymaga nowego dysku albo świadomej migracji. Nie usuwaj bazy działającego klienta.",
+          "check": "Nowy katalog testowy należy do jednej firmy; restart nie podmienił istniejącej bazy."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Polecenia: w folderze bot-starter"
+    },
+    {
+      "type": "code",
+      "text": "node --version\nnpm run init\nnpm test\nnpm run check\nnpm run demo\nnpm start"
+    },
+    {
+      "type": "p",
+      "text": "Wykonuj kolejno. Ostatnie polecenie zostawia serwer uruchomiony; wtedy przejdź do przeglądarki. Po Ctrl+C terminal wraca do wpisywania poleceń. Przy komunikacie EADDRINUSE zatrzymaj inną lokalną usługę lub świadomie wybierz inny PORT i odpowiedni adres. Nie uruchamiaj kilku procesów z tą samą bazą. Npm run init nie nadpisuje Twoich plików: jeśli chcesz nowe demo, użyj nowego folderu, nie kasuj bazy aktywnego klienta."
+    },
+    {
+      "type": "code",
+      "text": "http://localhost:3001/demo\nhttp://localhost:3001/healthz"
+    },
+    {
+      "type": "image",
+      "file": "bot-demo.png",
+      "caption": "Rzeczywisty demonstrator startera w trybie offline. To tekstowa próba procesu na danych przykładowych, bez połączenia telefonicznego, bez mikrofonu i bez kosztów API.",
+      "alt": "Lokalny demonstrator bota DAWKOZ z fikcyjnym zgłoszeniem."
+    },
+    {
+      "type": "heading",
+      "text": "B. Spersonalizuj jedną firmę, zanim podłączysz numer"
+    },
+    {
+      "type": "steps",
+      "title": "Materiały i konfiguracja klienta",
+      "items": [
+        {
+          "title": "Opisz zadanie bota w jednym zdaniu",
+          "text": "Ustal z firmą jeden proces, np. „Przyjąć usterkę, zebrać oznaczenie obiektu, opis problemu i kontakt oraz przekazać sprawę ekipie”. Nie dodawaj do tego samodzielnie umawiania wizyt, sprawdzania zaległości i wyceny prac. Wypisz też czynności, których bot ma nie wykonywać.",
+          "check": "Klient zatwierdził jeden wynik i rozumie granice działania."
+        },
+        {
+          "title": "Przygotuj krótkie powitanie",
+          "text": "Wpisz rzeczywistą nazwę firmy, informację o AI oraz cel rozmowy. Przykład: „Dzień dobry, tu automatyczny asystent AI firmy DEMO. Przyjmę zgłoszenie usterki. Proszę podać oznaczenie obiektu”. Nie mów, że po drugiej stronie jest człowiek. Nagrywanie nie jest włączone samym powitaniem; wymaga odrębnych ustaleń.",
+          "check": "Treść jest krótka, zrozumiała i zaakceptowana przez klienta; nie obiecuje przyjazdu ani terminu naprawy."
+        },
+        {
+          "title": "Ustal trzy zbierane pola",
+          "text": "Dla pierwszego wariantu wybierz trzy pola pasujące do procesu. Każde powinno mieć prostą nazwę, pytanie, wymagany format i ograniczenie długości. Dane do kontaktu wpisuje rozmówca; numer dzwoniącego sam nie potwierdza jego tożsamości ani dostępu do danych mieszkańców.",
+          "check": "Wiesz, jakie trzy odpowiedzi mają znaleźć się w zgłoszeniu; nie zbierasz PESEL, danych zdrowotnych ani innych zbędnych informacji."
+        },
+        {
+          "title": "Dodaj zatwierdzone FAQ",
+          "text": "Poproś klienta o nie więcej niż 20 pytań i odpowiedzi związanych z tym procesem. Zapisz je zgodnie ze schematem pliku konfiguracyjnego. Podaj rzeczywiste godziny, zasady kontaktu i sposób obsługi braku odpowiedzi. Nie wstawiaj promocji, cen i terminów, których firma nie zatwierdziła.",
+          "check": "Na pytanie testowe bot używa zatwierdzonej treści, a przy nieznanym temacie nie wymyśla danych."
+        },
+        {
+          "title": "Ustal zakończenie i oddanie sprawy człowiekowi",
+          "text": "Klient zatwierdza zakończenie po potwierdzeniu danych i komunikat przy prośbie o pracownika. W tym starterze prośba o człowieka kończy rozmowę z informacją o kontakcie bezpośrednim, bez utworzenia zgłoszenia i bez przekierowania. Jeśli firma wymaga oddzwonienia lub połączenia z pracownikiem, to dodatkowa logika do wykonania i testu. Rozróżniaj „zgłoszenie zapisane do przekazania” od „wiadomość doręczona”.",
+          "check": "W scenariuszu nie ma niewdrożonej obietnicy przełączenia, rezerwacji lub potwierdzenia wykonania zlecenia."
+        },
+        {
+          "title": "Sprawdź plik i próbę lokalną",
+          "text": "Zapisz config/client.json w UTF-8. Uruchom npm run check, następnie npm run demo, a do sprawdzenia ekranu npm start. Cudzysłowy JSON muszą być zwykłe, bez końcowego przecinka. Jeśli zmiany w pliku nie działają, sprawdź, czy CLIENT_CONFIG_JSON nie jest ustawione: jeśli jest, ma pierwszeństwo. Na hostingu konfigurację tej firmy podasz właśnie przez tę zmienną. Npm run demo korzysta z przykładu dołączonego do kodu; własne zmienione pytania sprawdzaj ręcznie na ekranie /demo.",
+          "check": "Konfiguracja przechodzi kontrolę; nazwa firmy, trzy pytania, FAQ i podsumowanie odpowiadają ustaleniom."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Przykładowa zawartość config/client.json"
+    },
+    {
+      "type": "code",
+      "text": "{\n  \"clientId\": \"firma-demo\",\n  \"companyName\": \"Firma DEMO\",\n  \"greeting\": \"Dzień dobry. Jestem asystentką AI firmy DEMO. Przyjmę zgłoszenie dla zespołu. Proszę nie podawać danych wrażliwych.\",\n  \"processDescription\": \"Przyjmowanie zgłoszeń usterek. Bez obietnicy rezerwacji, ceny ani terminu naprawy.\",\n  \"language\": \"pl-PL\",\n  \"voice\": \"Polly.Ewa\",\n  \"fields\": [\n    {\n      \"key\": \"address\",\n      \"label\": \"Adres obiektu\",\n      \"question\": \"Podaj adres obiektu, którego dotyczy zgłoszenie.\",\n      \"required\": true,\n      \"maxLength\": 240\n    },\n    {\n      \"key\": \"issue\",\n      \"label\": \"Opis usterki\",\n      \"question\": \"Opisz krótko usterkę.\",\n      \"required\": true,\n      \"maxLength\": 500\n    },\n    {\n      \"key\": \"contact\",\n      \"label\": \"Kontakt do zgłaszającego\",\n      \"question\": \"Podaj numer telefonu lub inny kontakt dla pracownika.\",\n      \"required\": true,\n      \"maxLength\": 160\n    }\n  ],\n  \"faq\": [\n    {\n      \"question\": \"Czy zgłoszenie oznacza rezerwację naprawy?\",\n      \"answer\": \"Nie. Zespół sprawdzi zgłoszenie i skontaktuje się, aby ustalić dalsze działania.\"\n    },\n    {\n      \"question\": \"Czy rozmawiam ze sztuczną inteligencją?\",\n      \"answer\": \"Tak, jestem asystentką AI i zbieram informacje dla pracownika.\"\n    }\n  ],\n  \"monthlyMinutes\": 200,\n  \"maxCallSeconds\": 300,\n  \"maxTurns\": 12,\n  \"maxConcurrentCalls\": 1,\n  \"contentRetentionDays\": 7\n}"
+    },
+    {
+      "type": "p",
+      "text": "To wyłącznie firma przykładowa. Zmień nazwę, powitanie, opis procesu, etykiety, pytania i zatwierdzone FAQ; w pierwszej konfiguracji zachowaj klucze address, issue i contact. Nie dodawaj sekretów do JSON. Voice Polly.Ewa jest ustawieniem do weryfikacji na Twoim koncie Twilio, nie potwierdzoną w tej sesji dostępnością. MaxTurns=12 ogranicza liczbę tur, a maxConcurrentCalls=1 to zamierzona prostota pierwszego wariantu. Miesięczne minuty muszą odpowiadać podpisanej umowie; nie zwiększaj ich po cichu w celu obejścia odrzucenia. clientId identyfikuje firmę i wraz z companyName wiąże bazę z jej właścicielem. Zmiana właściciela wymaga nowej instancji i pustego, osobnego dysku. fields ma od 1 do 6 pól; w tym wariancie stosuj required=true. contentRetentionDays=7 określa dni przechowywania treści w SQLite."
+    },
+    {
+      "type": "heading",
+      "text": "C. Przygotuj konta dostawców"
+    },
+    {
+      "type": "note",
+      "label": "Przyciski w zewnętrznych panelach",
+      "text": "Ścieżki poniżej opisują typowe sekcje kont Twilio, OpenAI i Railway. Dostawcy mogą zmienić układ lub nazwy. Gdy nie widzisz podanej sekcji, użyj wyszukiwarki w ich panelu lub dokumentacji. Nie zaznaczaj przypadkowej opcji płatnej i nie przesyłaj do ChatGPT zrzutu z widocznym tokenem.",
+      "tone": "info"
+    },
+    {
+      "type": "steps",
+      "title": "Twilio — konto, numer i dane do integracji",
+      "items": [
+        {
+          "title": "Wejdź do właściwego projektu Twilio",
+          "text": "Otwórz console.twilio.com, zaloguj się i sprawdź wybrany projekt/konto. Włącz 2FA. Dla firmy użyj uzgodnionego właściciela i uprawnień; nie mieszaj kilku klientów w jednym folderze bazy i nie dziel ich tokenu z nieuprawnioną osobą. Przed zakupem przeczytaj wymagania i cenę numeru.",
+          "check": "Wiesz, kto jest właścicielem konta i kto opłaca numer, połączenia, mowę oraz pozostałe usługi."
+        },
+        {
+          "title": "Sprawdź numer do prób",
+          "text": "W sekcji Phone Numbers → Manage → Active numbers sprawdź istniejący numer z obsługą Voice. Jeśli nie masz numeru, odszukaj zakup numeru i sprawdź dostępność kraju, wymagania adresowe/rejestracyjne i opłaty przed potwierdzeniem zakupu. Nie zakładaj, że polski numer jest zawsze dostępny od ręki.",
+          "check": "Masz legalnie przypisany numer w formacie E.164, np. +48…, z obsługą przychodzących połączeń Voice."
+        },
+        {
+          "title": "Uwzględnij ograniczenia konta próbnego",
+          "text": "Na trial mogą obowiązywać weryfikacje numerów, ograniczenia krajów i komunikaty próbne. Przetestuj własny numer i sprawdź ograniczenia widoczne w swoim koncie. Nie kieruj ruchu rzeczywistych klientów na trial jako na odebraną usługę produkcyjną.",
+          "check": "Potrafisz wykonać dozwoloną próbę i rozumiesz, które ograniczenia znikną dopiero po weryfikacji lub zmianie konta."
+        },
+        {
+          "title": "Przenieś wymagane dane do bezpiecznej konfiguracji",
+          "text": "Na stronie informacji konta znajdź Account SID i Auth Token. Token pokaż tylko na własnym ekranie i wstaw bezpiecznie do zmiennych środowiskowych usługi. Nie myl Auth Token używanego do weryfikacji podpisów Twilio z nazwą projektu albo sekretami innego konta. Nie zapisuj tych wartości w client.json, GitHubie ani instrukcji dla klienta.",
+          "check": "SID i token pochodzą z tego samego właściwego konta; w repozytorium i wiadomościach nie ma sekretu."
+        },
+        {
+          "title": "Nie podłączaj jeszcze ruchu klienta",
+          "text": "Na tym etapie zachowaj obecny numer i obsługę firmy bez zmian. Adresy webhooków wpiszesz dopiero po uruchomieniu oddzielnej usługi HTTPS i sprawdzeniu zmiennych. Zapisz dotychczasowe ustawienia numeru, żeby dało się do nich wrócić.",
+          "check": "Masz plan cofnięcia i nie zastąpiłeś działającego telefonu pustym adresem testowym."
+        }
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "OpenAI Platform — projekt API",
+      "items": [
+        {
+          "title": "Otwórz platform.openai.com",
+          "text": "Zaloguj się do platformy deweloperskiej OpenAI i wybierz organizację oraz projekt przeznaczony do tej firmy lub izolowanego środowiska. Rozliczenie API jest odrębne od używania ChatGPT na stronie lub w aplikacji. Sam ChatGPT Plus nie daje automatycznie środków na połączenia API.",
+          "check": "Wiesz, z jakiego projektu będzie pochodził ruch i na czyim rachunku pojawi się zużycie."
+        },
+        {
+          "title": "Ustaw rozliczenia i budżet projektu",
+          "text": "W ustawieniach rozliczeń sprawdź wymagane środki i metodę płatności. Ustaw alerty i ograniczenia dostępne na Twoim koncie. Traktuj próg budżetowy jako funkcję do sprawdzenia, nie pewną twardą blokadę: część limitów kosztowych tylko powiadamia. Limity aplikacji nadal muszą działać.",
+          "check": "Masz mały, świadomie uzgodniony budżet testowy i wiesz, co nastąpi po jego przekroczeniu."
+        },
+        {
+          "title": "Utwórz właściwy klucz API",
+          "text": "W API keys utwórz nowy klucz dla danego projektu. Jeżeli są dostępne ograniczenia uprawnień, dobierz minimum potrzebne do używanego endpointu. Zapisz klucz od razu w menedżerze haseł i zmiennych środowiskowych. Nie wrzucaj go do repozytorium, pliku konfiguracji firmy, PDF ani czatu.",
+          "check": "Aplikacja zna klucz przez zmienną, a w kodzie widnieje tylko nazwa tej zmiennej."
+        },
+        {
+          "title": "Sprawdź model i sposób zapisu danych",
+          "text": "Wybierz model obsługujący używany przez starter endpoint i ograniczoną strukturę odpowiedzi. Najpierw wykonaj mały test fikcyjnym zdaniem. Program ma używać store:false; to nie jest samodzielna gwarancja zerowej retencji całej usługi. Rzeczywiste warunki konta i przetwarzania potwierdź osobno.",
+          "check": "API odpowiada na kontrolowane zapytanie; błąd uprawnień/modelu nie powoduje przejścia do niekontrolowanego innego modelu."
+        }
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "Telegram — oddzielny bot i właściwy odbiorca",
+      "items": [
+        {
+          "title": "Utwórz bota u oficjalnego BotFather",
+          "text": "W Telegramie otwórz oficjalne, zweryfikowane konto @BotFather. Wyślij /newbot, podaj nazwę widoczną oraz wolną nazwę użytkownika kończącą się bot. Zapisz otrzymany token w bezpiecznej konfiguracji. Nie używaj przypadkowego konta podszywającego się pod BotFather.",
+          "check": "Masz bota utworzonego dla ustalonej firmy i token, który nie trafił do publicznego pliku."
+        },
+        {
+          "title": "Wybierz prywatny czat z uprawnioną osobą",
+          "text": "W pierwszym wdrożeniu użyj prywatnego czatu jednej osoby wskazanej przez firmę. Z jej konta otwórz bota i naciśnij Start lub wyślij /start. Ten dołączony pomocnik odczytuje wyłącznie ID prywatnych czatów; wdrożenie grupy wymaga osobnego sprawdzenia uprawnień i ID.",
+          "check": "Firma wskazała właściwą osobę i zatwierdziła zakres przekazywanych danych."
+        },
+        {
+          "title": "Odczytaj identyfikator odbiorcy dołączonym narzędziem",
+          "text": "W lokalnym .env wpisz TELEGRAM_BOT_TOKEN i uruchom npm run telegram:chat-id. Narzędzie sprawdza getWebhookInfo i getUpdates, bez drukowania tokenu ani adresu z tokenem. Najpierw wyślij /start z konta docelowego odbiorcy. Wpisz właściwy prywatny chat ID do TELEGRAM_CHAT_ID. Jeśli narzędzie pokaże kilka ID, nie zgaduj: potwierdź odbiorcę na jego koncie i wykonaj fikcyjne zgłoszenie. W razie wątpliwości utwórz nowego bota i rozpocznij czat tylko z ustaloną osobą.",
+          "check": "Próbna wiadomość trafia do wskazanej osoby; nie zawiera danych rzeczywistego klienta."
+        },
+        {
+          "title": "Nie usuwaj obcego webhooka",
+          "text": "Jeśli odczyt aktualizacji zwraca konflikt z istniejącym webhookiem, sprawdź, czy nie używasz bota działającego już w innym systemie. Dla nowej firmy najlepiej utworzyć oddzielnego bota. Nie usuwaj istniejącej integracji tylko po to, żeby uruchomić test.",
+          "check": "Żaden dotychczasowy system nie przestał działać wskutek przygotowania nowego wdrożenia."
+        },
+        {
+          "title": "Wyślij wyłącznie fikcyjne zgłoszenie",
+          "text": "Sprawdź dostarczenie komunikatu do uzgodnionego odbiorcy. Porównaj identyfikator zgłoszenia, trzy pola i podpis firmy. Jeśli wysyłka zakończyła się timeoutem, sprawdź czat przed ponowieniem: Telegram może przyjąć wiadomość, mimo że program nie dostał odpowiedzi. Nie obiecuj dokładnie jednego doręczenia przy niejednoznacznym błędzie sieci.",
+          "check": "Zespół widzi jedną identyfikowalną sprawę, a status aplikacji rozróżnia dostarczenie, oczekiwanie i niepewność."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "D. Wdróż oddzielną usługę na Railway"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "Zmienna",
+        "Lokalne demo",
+        "Próba live / Railway"
+      ],
+      "rows": [
+        [
+          "BOT_MODE",
+          "demo",
+          "live dopiero po przygotowaniu kont."
+        ],
+        [
+          "ALLOW_LIVE_CALLS",
+          "false",
+          "true tylko dla świadomie rozpoczętego testu."
+        ],
+        [
+          "LIVE_TEST_ONLY",
+          "true",
+          "Pozostaje true w próbach. ALLOWED_CALLERS ogranicza numery dzwoniących."
+        ],
+        [
+          "ALLOWED_CALLERS",
+          "Niepotrzebne do offline",
+          "Twój zweryfikowany numer próbny w E.164; nie dowolny publiczny ruch."
+        ],
+        [
+          "CLIENT_CONFIG",
+          "config/client.json",
+          "Może pozostać przykładem; właściwa konfiguracja klienta przez CLIENT_CONFIG_JSON."
+        ],
+        [
+          "CLIENT_CONFIG_JSON",
+          "Zwykle nie ustawiaj",
+          "Cała zawartość zatwierdzonego JSON jako wartość zmiennej; ma pierwszeństwo przed plikiem."
+        ],
+        [
+          "DATA_DIR",
+          "./data",
+          "/data, zgodnie z volume. Jedna instancja i jedna baza na firmę."
+        ],
+        [
+          "PUBLIC_BASE_URL",
+          "Nie jest numerem telefonu",
+          "Dokładny publiczny adres HTTPS Railway bez końcowego / i bez ścieżki."
+        ],
+        [
+          "TWILIO_ACCOUNT_SID / TWILIO_AUTH_TOKEN",
+          "Puste",
+          "Wartości właściwego konta; token traktuj jak hasło."
+        ],
+        [
+          "TWILIO_PHONE_NUMBER",
+          "Puste",
+          "Numer Twilio z Voice, w formacie +48… lub innym rzeczywiście posiadanym."
+        ],
+        [
+          "OPENAI_API_KEY / OPENAI_MODEL",
+          "Puste / model przykładowy",
+          "Klucz projektu; model startowy gpt-4.1-mini wymaga dostępu na koncie."
+        ],
+        [
+          "TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID",
+          "Puste",
+          "Token oddzielnego bota i dokładny prywatny odbiorca."
+        ],
+        [
+          "BILLING_PERIOD_START / BILLING_PERIOD_END",
+          "Według przykładu inicjalizacji",
+          "Jawne bieżące daty ISO z Z lub offsetem; po końcu okresu aplikacja blokuje nowe rozmowy."
+        ],
+        [
+          "PORT",
+          "Domyślnie 3001",
+          "Użyj wartości przekazanej przez Railway, nie wymuszaj jej bez potrzeby."
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "text": "# Początek lokalnego .env — bez kluczy\nBOT_MODE=demo\nALLOW_LIVE_CALLS=false\nLIVE_TEST_ONLY=true\nCLIENT_CONFIG=config/client.json\nDATA_DIR=./data"
+    },
+    {
+      "type": "code",
+      "text": "# Ustawienia próby live — zamień WSZYSTKIE przykłady\nBOT_MODE=live\nALLOW_LIVE_CALLS=true\nLIVE_TEST_ONLY=true\nALLOWED_CALLERS=+48TWOJ_NUMER_PROBNY\nPUBLIC_BASE_URL=https://TWOJ_DOKLADNY_HOST.up.railway.app\nDATA_DIR=/data\nTWILIO_ACCOUNT_SID=AC_TWOJ_SID\nTWILIO_AUTH_TOKEN=TWÓJ_SEKRET_Z_KONTA\nTWILIO_PHONE_NUMBER=+48POSIADANY_NUMER_TWILIO\nOPENAI_API_KEY=TWÓJ_KLUCZ_API\nOPENAI_MODEL=gpt-4.1-mini\nTELEGRAM_BOT_TOKEN=TWÓJ_TOKEN_BOTA\nTELEGRAM_CHAT_ID=TWÓJ_PRYWATNY_CHAT_ID\nBILLING_PERIOD_START=2026-10-25T08:00:00Z\nBILLING_PERIOD_END=2026-11-25T08:00:00Z"
+    },
+    {
+      "type": "note",
+      "label": "Przykłady nie są Twoimi danymi",
+      "text": "Blok live jest ściągą nazw, nie gotowym zestawem do ślepego uruchomienia. Wszystkie wielkie opisy zastąp prawdziwymi wartościami w bezpiecznych zmiennych konta. Daty są przykładem z dnia wydania instrukcji: wpisz faktyczny bieżący okres klienta. W listopadzie 08:00Z oznacza 09:00 czasu polskiego; nie zakładaj stałej różnicy przez cały rok. Nie ustawiaj przyszłego/poprzedniego okresu, żeby ominąć naliczanie.",
+      "tone": "warning"
+    },
+    {
+      "type": "steps",
+      "title": "Hosting, sekrety i trwała baza",
+      "items": [
+        {
+          "title": "Przygotuj osobne prywatne repozytorium bota",
+          "text": "Do wysłania kodu rozpakuj jeszcze raz świeży ZIP do oddzielnego folderu, np. dawkoz-bot-kod, i w tej kopii NIE wykonuj npm run init. Na GitHubie wybierz New repository, ustaw Private i utwórz repozytorium. Przez Add file → Upload files prześlij zawartość świeżego bot-starter, nie pliki z folderu, w którym prowadziłeś testy. Sprawdź listę przed Commit changes. .gitignore nie jest blokadą ręcznego wgrywania plików w przeglądarce: .env, config/client.json i data/ nie mogą trafić do repo. W repo zostają tylko kod i bezpieczne przykłady.",
+          "check": "Repozytorium zawiera kod i bezpieczny przykład; pliki danych i sekretów są ignorowane przez Git."
+        },
+        {
+          "title": "Utwórz nowy projekt/usługę Railway",
+          "text": "W Railway wybierz New Project → Deploy from GitHub repo lub odpowiadającą temu opcję i wskaż repozytorium bota. Zezwól GitHubowi na dostęp wyłącznie do potrzebnego repo. Jeśli package.json i Dockerfile są od razu w głównym katalogu repo, zostaw domyślny Root Directory. Jeżeli przesłałeś cały nadrzędny folder i pliki są w bot-starter/, ustaw Root Directory na bot-starter. Dostarczony Dockerfile wybiera Node.js 24.19+. Nie zmieniaj katalogu wdrażania ani domen działającej strony dawkoz.com.",
+          "check": "Nowa usługa ma odrębną nazwę i wdraża właściwy kod, a dawkoz.com nadal działa."
+        },
+        {
+          "title": "Dodaj trwały dysk bazy danych",
+          "text": "W projekcie Railway dodaj Volume i ustaw mount path /data. W Variables ustaw DATA_DIR=/data. Baza SQLite musi znajdować się na tym volume, nie na tymczasowym dysku kontenera. Sprawdź koszty volume i kopii. Uruchom tylko jedną replikę tej instancji; ten wariant nie jest klastrem kilku procesów piszących do wspólnej bazy. Własną kopię bazy wykonuj spójnym sposobem zgodnym ze starterem/SQLite, a nie przypadkowym kopiowaniem jednego pliku podczas zapisu WAL.",
+          "check": "Plik SQLite znajduje się na volume, a próba kontrolowanego restartu zachowuje fikcyjne zgłoszenie i licznik."
+        },
+        {
+          "title": "Wpisz zmienne w zakładce Variables",
+          "text": "W Variables dodawaj wartości według tabeli poniżej. W New Variable utwórz CLIENT_CONFIG_JSON i do pola wartości wklej całą treść zatwierdzonego config/client.json. To zawartość JSON, nie nazwa pliku i nie ścieżka z Twojego komputera. Nie dokładaj samodzielnie dodatkowych cudzysłowów wokół całego dokumentu. Korzystając z edytora wszystkich zmiennych naraz, pamiętaj, że wtedy JSON musi być wartością tekstową właściwie zakodowaną; dla początkującego prostsze jest oddzielne New Variable. Początkowo ALLOW_LIVE_CALLS pozostaje false. Uwaga: BOT_MODE=live przy ALLOW_LIVE_CALLS=false celowo zatrzymuje proces; to stan przygotowania, nie działająca usługa. Po uzupełnieniu wszystkich zmiennych i adresu ustaw true wyłącznie do kontrolowanego testu z LIVE_TEST_ONLY=true. Demo wiąże serwer z localhost, więc nie wykorzystuj go do publicznego hostingu.",
+          "check": "Usługa uruchamia się bez drukowania sekretów; nie przyjmuje jeszcze przypadkowego ruchu firmy."
+        },
+        {
+          "title": "Wygeneruj adres HTTPS",
+          "text": "W Settings → Networking / Public Networking użyj Generate Domain lub odpowiednika w Twoim panelu. Skopiuj dokładny adres https://…up.railway.app. Wpisz go do PUBLIC_BASE_URL bez końcowego ukośnika, ścieżki, parametrów i #. Ponownie zastosuj wdrożenie. Do podpisu Twilio potrzebny jest ten sam zewnętrzny adres; adres localhost i adres prywatny Railway nie działają jako publiczny webhook. Nie twórz DNS metodą kopiowania losowego hosta z instrukcji.",
+          "check": "Publiczny adres działa po HTTPS, certyfikat jest poprawny, a konfiguracja używa dokładnie tego samego adresu."
+        },
+        {
+          "title": "Sprawdź start, zdrowie i trwałość",
+          "text": "Sprawdź log wdrożenia i otwórz https://TWÓJ-HOST/healthz. Nie dodawaj własnego PORT do Railway, jeśli platforma już go przekazuje; lokalnie domyślnie używany jest 3001. Sprawdź konfigurację poleceniem npm run check na tym samym zestawie ustawień. Npm run status pokazuje zbiorczy stan limitu i kolejki, bez odczytywania danych klienta w publicznym /healthz. Następnie kontrolowany restart na fikcyjnych danych ma zachować bazę. Sam status zdrowia nie sprawdza wszystkich dostawców.",
+          "check": "Proces działa w jednej replice, baza pozostała po restarcie, a test konfiguracji nie zgłasza braków."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "E. Połącz Twilio z tym botem"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "Adres / metoda",
+        "Gdzie go używasz"
+      ],
+      "rows": [
+        [
+          "GET /healthz",
+          "Przeglądarka i healthcheck hostingu. Tylko stan zdrowia, nie dane klientów."
+        ],
+        [
+          "GET /demo",
+          "Lokalny tryb demo. To nie jest adres dla połączeń i nie powinien być demonstratorem produkcji z danymi klienta."
+        ],
+        [
+          "POST /voice/incoming",
+          "Twilio → A call comes in → Webhook → HTTP POST."
+        ],
+        [
+          "POST /voice/turn?nonce=…",
+          "Program tworzy go sam. Nie wpisuj ręcznie w konfiguracji numeru i nie usuwaj nonce."
+        ],
+        [
+          "POST /voice/status",
+          "Twilio → status callback rozmowy. Potrzebny do uzgodnionego rozliczenia i zakończenia stanu połączenia."
+        ]
+      ]
+    },
+    {
+      "type": "p",
+      "text": "Przykład składania adresu: jeśli PUBLIC_BASE_URL to https://firma-demo.up.railway.app, początek rozmowy ma adres https://firma-demo.up.railway.app/voice/incoming. Host firma-demo jest tylko ilustracją; przepisz host przydzielony Twojej usłudze. Nigdy nie wpisuj w tych polach domeny strony dawkoz.com tylko dlatego, że tam jest instrukcja."
+    },
+    {
+      "type": "steps",
+      "title": "Adresy webhooków i pierwsza próba telefoniczna",
+      "items": [
+        {
+          "title": "Wybierz dokładnie właściwy numer w Twilio",
+          "text": "W Console → Phone Numbers → Manage → Active numbers otwórz numer testowy tej firmy. Sprawdź numer i konto jeszcze raz. Zapisz poprzednie ustawienia Voice przed zmianą. Nie edytuj numeru innej firmy ani głównego numeru działającej strony.",
+          "check": "SID konta i numer zgadzają się z konfiguracją instancji bota."
+        },
+        {
+          "title": "Ustaw przychodzące połączenie jako webhook POST",
+          "text": "W Voice Configuration numeru odszukaj A call comes in. Wybierz Webhook, wklej https://TWÓJ-HOST/voice/incoming i ustaw HTTP POST. TWÓJ-HOST zamień na rzeczywisty host z PUBLIC_BASE_URL. Zapisz zmianę. Nie wklejaj /demo, localhost ani /voice/turn. Adres turn z bezpiecznym nonce generuje sam program i nie jest ręcznie konfigurowanym początkiem połączenia.",
+          "check": "Pole zawiera publiczny HTTPS oraz prawidłową ścieżkę przychodzącego połączenia; metoda to POST."
+        },
+        {
+          "title": "Ustaw callback statusu połączenia",
+          "text": "W części statusów rozmowy, np. Call status changes lub ustawieniach zaawansowanych, wpisz https://TWÓJ-HOST/voice/status i POST. Jeśli obecny panel numeru nie pokazuje tego pola, użyj dokumentacji konfiguracji IncomingPhoneNumber i jego statusCallback albo poproś ChatGPT o ustawienie dokładnie tej właściwości przez API przy użyciu sekretów z konta, bez wklejania ich do czatu. Nie podstawiaj callbacku SMS. Test zakończonej rozmowy musi potwierdzić, że ten endpoint dostaje prawdziwy status z właściwego konta.",
+          "check": "Testowa zakończona rozmowa wywołuje prawdziwy callback i pozwala rozliczyć czas; nie jest liczona wyłącznie z zegara przeglądarki."
+        },
+        {
+          "title": "Sprawdź ochronę webhooków",
+          "text": "Adres webhooka jest publiczny, ale żądanie musi mieć poprawny podpis Twilio i pasujące konto oraz numer docelowy. Ręczne otwarcie endpointu w przeglądarce nie jest prawidłowym testem połączenia. Nie wyłączaj weryfikacji podpisów, żeby usunąć błąd 403.",
+          "check": "Niepodpisane żądanie jest odrzucane, a rzeczywista próba z właściwego konta przechodzi."
+        },
+        {
+          "title": "Włącz wyłącznie uzgodniony tryb próbny live",
+          "text": "Po sprawdzeniu zmiennych ustaw BOT_MODE=live, ALLOW_LIVE_CALLS=true i pozostaw LIVE_TEST_ONLY=true. W ALLOWED_CALLERS wpisz wyłącznie własny dozwolony numer próbny w formacie +48…; przy kilku numerach zachowaj format opisany w README. Nie wpisuj tam numeru bota zamiast dzwoniącego. Ustaw bieżący jawny okres BILLING_PERIOD_START / BILLING_PERIOD_END i zrób małą płatną próbę. Ta zmiana nie jest zgodą na przełączenie całego ruchu klienta.",
+          "check": "Tryb live jest świadomym ustawieniem, a nie skutkiem wpisania pierwszego klucza API."
+        },
+        {
+          "title": "Zadzwoń i przejdź jedną całą sprawę",
+          "text": "Z dozwolonego własnego numeru zadzwoń na numer Twilio. Posłuchaj powitania, odpowiedz na trzy pytania, popraw jedną informację i potwierdź podsumowanie. Poczekaj na zakończenie rozmowy i dostarczenie sprawy. Zapisz CallSid oraz koszt w panelach dostawców bez przesyłania do czatu danych rozmówcy.",
+          "check": "Zgłoszenie pojawia się u właściwego odbiorcy, a rozliczenie obejmuje rzeczywisty czas po zaokrągleniu i ewentualne płatne odcinki."
+        },
+        {
+          "title": "Sprawdź głos i język na prawdziwej rozmowie",
+          "text": "Polski język w konfiguracji nie gwarantuje identycznej dostępności każdego głosu i modelu rozpoznawania mowy na koncie. Jeśli provider odrzuca głos, wybierz jawnie obsługiwany polski głos według jego dokumentacji i ponów próbę. Nie zmieniaj automatycznie na obcy język ani droższy wariant bez sprawdzenia.",
+          "check": "Słowa, numery i typowy adres są zrozumiałe; przerwy między turami odpowiadają temu, co klient zaakceptował."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "F. Sprawdź ograniczenia, zanim nazwiesz usługę gotową"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "Próba",
+        "Co robisz",
+        "Wynik wymagany"
+      ],
+      "rows": [
+        [
+          "Brak danych",
+          "Milcz lub powiedz „nie wiem” zamiast wymaganego pola.",
+          "Bot dopytuje w granicach prób; nie wymyśla danych i kończy kontrolowanie."
+        ],
+        [
+          "FAQ",
+          "Zadaj zatwierdzone pytanie w środku zbierania danych.",
+          "Pada zatwierdzona odpowiedź i powrót do właściwego pytania."
+        ],
+        [
+          "Nieznany temat",
+          "Zapytaj o nieuzgodnioną cenę lub termin.",
+          "Bot nie obiecuje wyniku i oddaje sprawę do ustalonej weryfikacji."
+        ],
+        [
+          "Potwierdzenie",
+          "Po odczytaniu podsumowania powiedz „nie”, a potem popraw dane.",
+          "Nieprzyjęta wersja nie trafia jako potwierdzona sprawa."
+        ],
+        [
+          "Błąd OpenAI",
+          "Użyj niewłaściwego klucza w środowisku testowym.",
+          "Brak niekontrolowanej rozmowy, wycieku sekretu i automatycznego przejścia na inny rachunek."
+        ],
+        [
+          "Błąd Telegram",
+          "Tymczasowo wskaż niepoprawny identyfikator testowego czatu.",
+          "Sprawa pozostaje w bazie, a status nie twierdzi, że została doręczona."
+        ],
+        [
+          "Ponowione zdarzenie",
+          "Odtwórz ten sam callback w lokalnych testach.",
+          "Jedno logiczne zdarzenie i brak wielokrotnego naliczenia."
+        ],
+        [
+          "Limit",
+          "Zmniejsz limit testowy i rozpocznij kolejną rozmowę.",
+          "Nowe płatne działanie jest wstrzymane; nie włącza się płatny fallback."
+        ],
+        [
+          "Dwie rozmowy",
+          "W dozwolonym teście spróbuj dwóch równoczesnych połączeń.",
+          "Jednoreplikowy wariant kontroluje równoczesność i nie przekracza rezerwacji limitu."
+        ],
+        [
+          "Maksymalny czas",
+          "Przeprowadź kontrolowaną dłuższą próbę.",
+          "Działa ustalone kończenie i limit; dopiero realny test potwierdza zachowanie u dostawcy."
+        ],
+        [
+          "Restart",
+          "Zrestartuj usługę z fikcyjną sprawą w bazie.",
+          "Sprawa i naliczenie nie znikają; nie jest wysyłany ponownie komplet dawnych wiadomości."
+        ],
+        [
+          "Inna firma",
+          "W teście użyj innego konta lub numeru docelowego.",
+          "Żądanie nie trafia do konfiguracji i odbiorcy tej firmy."
+        ]
+      ]
+    },
+    {
+      "type": "note",
+      "label": "Dlaczego przy pozostałych 1–4 minutach nowa rozmowa może być odrzucona",
+      "text": "Pilotażowy starter rezerwuje pełne pięć minut na każdą przyjmowaną rozmowę, przy jednej równoczesnej rozmowie. Gdy wolnych jest mniej niż pięć, nie przyjmie następnej. To konserwatywna reguła testowego wariantu, a nie pełne odwzorowanie każdej zasady końcówki pakietu z oferty. Po zakończeniu rzeczywistej rozmowy rozliczenie wymaga wiarygodnego callbacku. Brak callbacku nie może automatycznie uwolnić rezerwacji na podstawie domysłu.",
+      "tone": "info"
+    },
+    {
+      "type": "note",
+      "label": "Maksymalny czas i odrzucenie też trzeba sprawdzić u operatora",
+      "text": "Starter próbuje ustawić limit połączenia Twilio i kończy proces zgodnie z czasem aplikacji. Samo wysłanie timeLimit=300 lub odpowiedź HTTP 200 nie dowodzi jeszcze, jak rzeczywiście rozliczy się konkretne przychodzące połączenie na koncie. Przeprowadź kontrolowaną próbę. Odrzucenie połączenia w Twilio nie musi oznaczać zerowego kosztu u operatora, który przekierował do niego rozmowę.",
+      "tone": "warning"
+    },
+    {
+      "type": "note",
+      "label": "Ograniczenie budżetu wymaga pomiaru",
+      "text": "Rezerwacja minut, limit czasu i alert dostawcy nie są matematyczną gwarancją pełnego kosztu faktury: dochodzą stawki głosu/rozpoznawania mowy, modelu, numeru, infrastruktury i opóźnienia callbacków. Próg kosztowy z oferty nie jest znalezioną taryfą dostawcy. Nie przyjmuj klienta w danej cenie, dopóki nie zmierzysz rachunku dla docelowego stosu i nie potwierdzisz zatrzymania przy limicie.",
+      "tone": "warning"
+    },
+    {
+      "type": "checklist",
+      "title": "Gotowość do przeniesienia rzeczywistego ruchu",
+      "items": [
+        "Przeprowadzono co najmniej 20 zróżnicowanych rozmów i zapisano wyniki, czas oraz koszty.",
+        "Klient zatwierdził powitanie, pytania, FAQ, podsumowanie i zachowanie przy braku danych.",
+        "Przetestowano stan bazy po restarcie, poprawne naliczenie, limit, brak nieuzgodnionego fallbacku i awarię dostawcy.",
+        "Ustalono sprzedawcę, administratora, dostawców, informowanie o AI i ewentualne przetwarzanie danych; brakujące kwestie nie zostały zastąpione deklaracją „RODO jest”.",
+        "Istnieje kopia konfiguracji i bazy oraz sprawdzony sposób powrotu do poprzedniej obsługi telefonu.",
+        "Zapisano datę odbioru i uruchomienia, osobę akceptującą, numer oraz pierwszy okres rozliczeniowy.",
+        "Brakujące elementy pełnej oferty — w szczególności SMS — zostały wdrożone lub wyraźnie wyłączone w indywidualnie uzgodnionym zakresie."
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "G. Pierwsze dni po uruchomieniu"
+    },
+    {
+      "type": "code",
+      "text": "npm run check\nnpm run status\nnpm run jobs"
+    },
+    {
+      "type": "p",
+      "text": "Uruchamiaj narzędzia w tej samej instancji i z tą samą konfiguracją/dyskiem, której stan chcesz sprawdzić. Lokalny npm run status nie odczytuje automatycznie bazy Railway. Nie pobieraj bazy klienta do dowolnego katalogu tylko po to, żeby zobaczyć licznik. Narzędzie jobs nie stanowi zgody na ponowne wysłanie wiadomości z niepewnym doręczeniem."
+    },
+    {
+      "type": "steps",
+      "title": "Codzienna kontrola operatora",
+      "items": [
+        {
+          "title": "Sprawdź, czy nowa sprawa została przyjęta i doręczona",
+          "text": "Npm run status pokazuje zużycie i zbiorcze stany. Npm run jobs wypisuje identyfikatory i statusy, bez treści zgłoszeń; nie uruchamia wysyłki. Serwer sam obsługuje pending/retry. Delivered oznacza potwierdzony identyfikator Telegram, failed wymaga naprawy konfiguracji, unknown oznacza niepewność po timeout/błędzie. Najpierw ręcznie sprawdź prywatny czat po ID. Jeżeli wiadomość tam jest, użyj npm run jobs -- --delivered ID. Dopiero gdy potwierdzisz jej brak i poprawisz przyczynę, użyj npm run jobs -- --retry ID. Ręczne ponowienie może stworzyć duplikat przy błędnej ocenie. Wykonuj to w tej samej instancji i na jej dysku, nie w lokalnej kopii demonstracyjnej.",
+          "check": "Każde przyjęte zgłoszenie ma widoczny stan; sprawy niedoręczone nie zniknęły."
+        },
+        {
+          "title": "Porównaj lokalny licznik z dostawcą",
+          "text": "Sprawdź ostatnie zakończone połączenia w Twilio i zużycie projektu OpenAI. Zwróć uwagę na zaokrąglenia i opóźnienie statusów. Przy dużej rozbieżności zatrzymaj nowe próby oraz zdiagnozuj przyczynę, zanim uznasz pakiet za bezpieczny.",
+          "check": "Wiesz, skąd bierze się rachunek i czy założenia ceny nadal są prawdziwe."
+        },
+        {
+          "title": "Wprowadzaj małe, wersjonowane zmiany",
+          "text": "Najpierw zmień konfigurację na teście, wykonaj próbę na danych fikcyjnych i zachowaj poprzednią wersję. Aktualizacja FAQ nie może przy okazji podmienić odbiorcy innej firmy. Zapisz datę i zakres zmiany oraz czas opieki.",
+          "check": "Po zmianie nadal działa cały przebieg, a klient wie, co zostało zmienione."
+        },
+        {
+          "title": "Kończ współpracę świadomie",
+          "text": "Przed wyłączeniem usługi ustal numer, eksport danych, retencję i płatności zgodnie z umową. Wyłącz źródło ruchu i zaplanowane procesy, cofnij niepotrzebne uprawnienia, a potem usuń dane w uzgodnionym trybie. Nie kasuj projektu i bazy na prośbę nieuprawnionej osoby.",
+          "check": "Nie działa osierocony płatny bot; firma ma potwierdzenie przekazania i wie, co nadal opłaca."
+        }
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "Brak callbacku, retencja i wznowienie okresu",
+      "items": [
+        {
+          "title": "Wyjaśnij brak końcowego statusu",
+          "text": "Jeśli activeOrAwaitingCallback pozostaje dodatnie po zakończeniu rozmowy, nie zeruj bazy ani nie zwalniaj limitu według zegara. W Twilio sprawdź CallSid i końcowy status. W terminalu tej samej usługi uruchom npm run reconcile -- CA... z rzeczywistym CallSid. Narzędzie odczytuje rekord przez uwierzytelnione API Twilio, sprawdza konto, numer, status i czas, a dopiero potem rozlicza rezerwację. Gdy rekord nie jest zakończony lub niepasujący, pozostawia blokadę. Odczyt statusu wymaga sieci; nie jest częścią offline.",
+          "check": "Rezerwacja jest rozliczona jeden raz według rekordu dostawcy; żaden trwający telefon nie zniknął z limitu."
+        },
+        {
+          "title": "Ustal i wykonuj retencję",
+          "text": "Starter czyści treść zgłoszenia, odpowiedzi i zapisane XML po contentRetentionDays, domyślnie7 dniach, przy starcie i co godzinę. Ręcznie: npm run cleanup. Minimalne metadane zakończonych rozmów, ID i statusy pozostają do400 dni; to domyślna granica prototypu do uzasadnienia i ewentualnego skrócenia z administratorem przed produkcją. Nierozliczone połączenia pozostają do wyjaśnienia. Osobno ustal usuwanie z Telegram, kopii, Twilio i OpenAI — ta komenda ich nie usuwa.",
+          "check": "Klient zaakceptował konkretne okresy i wie, gdzie dane pozostają; w teście po czyszczeniu nie ma treści w SQLite."
+        },
+        {
+          "title": "Odnów okres rozliczeniowy świadomie",
+          "text": "Przed końcem okresu sprawdź umowę, płatność i nierozliczone połączenia. Ustaw następny uzgodniony BILLING_PERIOD_START oraz BILLING_PERIOD_END z pełną strefą, zachowując bazę i historię. Nie zeruj licznika przez usuwanie danych. Okres po zakończeniu blokuje nowe rozmowy; prototyp nie ma automatycznego rozliczania ani alertów80/100%. Wymaga kontroli operatora i uzupełnienia tych funkcji dla pełnej oferty.",
+          "check": "Nowy okres odpowiada aktywacji i podpisanym warunkom; stare zużycie pozostało w historii."
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "items": [
+        {
+          "label": "Node.js — oficjalne pobranie",
+          "url": "https://nodejs.org/en/download"
+        },
+        {
+          "label": "Twilio — Voice i TwiML Gather",
+          "url": "https://www.twilio.com/docs/voice/twiml/gather"
+        },
+        {
+          "label": "Twilio — podpisy żądań",
+          "url": "https://www.twilio.com/docs/usage/security"
+        },
+        {
+          "label": "OpenAI — Responses API",
+          "url": "https://platform.openai.com/docs/api-reference/responses"
+        },
+        {
+          "label": "Telegram — Bot API",
+          "url": "https://core.telegram.org/bots/api"
+        },
+        {
+          "label": "Railway — volumes",
+          "url": "https://docs.railway.com/guides/volumes"
+        }
+      ]
+    }
+  ]
+}

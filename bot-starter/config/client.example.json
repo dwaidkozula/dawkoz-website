@@ -1,0 +1,22 @@
+{
+  "clientId": "firma-demo",
+  "companyName": "Firma DEMO",
+  "greeting": "Dzień dobry. Jestem asystentką AI firmy DEMO. Przyjmę zgłoszenie dla zespołu. Proszę nie podawać danych wrażliwych.",
+  "processDescription": "Przyjmowanie zgłoszeń usterek. Bez obietnicy rezerwacji, ceny ani terminu naprawy.",
+  "language": "pl-PL",
+  "voice": "Polly.Ewa",
+  "fields": [
+    { "key": "address", "label": "Adres obiektu", "question": "Podaj adres obiektu, którego dotyczy zgłoszenie.", "required": true, "maxLength": 240 },
+    { "key": "issue", "label": "Opis usterki", "question": "Opisz krótko usterkę.", "required": true, "maxLength": 500 },
+    { "key": "contact", "label": "Kontakt do zgłaszającego", "question": "Podaj numer telefonu lub inny kontakt dla pracownika.", "required": true, "maxLength": 160 }
+  ],
+  "faq": [
+    { "question": "Czy zgłoszenie oznacza rezerwację naprawy?", "answer": "Nie. Zespół sprawdzi zgłoszenie i skontaktuje się, aby ustalić dalsze działania." },
+    { "question": "Czy rozmawiam ze sztuczną inteligencją?", "answer": "Tak, jestem asystentką AI i zbieram informacje dla pracownika." }
+  ],
+  "monthlyMinutes": 200,
+  "maxCallSeconds": 300,
+  "maxTurns": 12,
+  "maxConcurrentCalls": 1,
+  "contentRetentionDays": 7
+}

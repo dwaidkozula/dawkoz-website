@@ -1,0 +1,1 @@
+try{const {settings,client}=require('../src/config').loadSettings();const {Store}=require('../src/store');const store=new Store(settings,client);store.cleanup();store.close();console.log('Zastosowano retencję treści i metadanych. Kopie zapasowe i Telegram wymagają osobnej retencji.');}catch{console.error('Błąd czyszczenia.');process.exitCode=1;}

@@ -1,0 +1,5 @@
+.env
+config/client.json
+data/
+node_modules/
+*.sqlite*

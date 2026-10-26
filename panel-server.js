@@ -138,9 +138,11 @@ module.exports = function createPanelHandler({ production }) {
       };
       if (assets[urlPath]) return await file(path.join(root, assets[urlPath][0]), assets[urlPath][1]);
       if (urlPath === '/app/guide/manual.pdf') return await file(path.join(root, 'manual/generated/dawkoz-instrukcja-realizacji-zamowien.pdf'), 'application/pdf', 'dawkoz-instrukcja-realizacji-zamowien.pdf');
+      if (urlPath === '/app/guide/bot-technical.pdf') return await file(path.join(root, 'manual/generated/dawkoz-instrukcja-techniczna-bota.pdf'), 'application/pdf', 'dawkoz-instrukcja-techniczna-bota.pdf');
+      if (urlPath === '/app/guide/bot-starter.zip') return await file(path.join(root, 'manual/generated/dawkoz-bot-starter.zip'), 'application/zip', 'dawkoz-bot-starter.zip');
       const guideImage = /^\/app\/guide\/images\/([a-z0-9-]+\.(png|webp))$/.exec(urlPath);
       if (guideImage) {
-        const images = new Set(['panel-library.png', 'panel-preset.png', 'panel-fields.png', 'panel-export.png', 'public-offers.png', 'client-demo.png', 'guide-navigation.png']);
+        const images = new Set(['panel-library.png', 'panel-preset.png', 'panel-fields.png', 'panel-export.png', 'public-offers.png', 'client-demo.png', 'guide-navigation.png', 'bot-demo.png']);
         if (!images.has(guideImage[1])) return send(404, '404');
         return await file(path.join(root, 'manual/assets', guideImage[1]), guideImage[2] === 'png' ? 'image/png' : 'image/webp');
       }

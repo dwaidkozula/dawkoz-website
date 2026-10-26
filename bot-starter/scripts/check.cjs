@@ -1,0 +1,1 @@
+try{const {settings,client}=require('../src/config').loadSettings();console.log(JSON.stringify({configuration:'OK',mode:settings.mode,fields:client.fields.length,faq:client.faq.length,paidCallsEnabled:settings.mode==='live'},null,2));}catch(e){console.error(e.message);process.exitCode=1;}

@@ -29,10 +29,12 @@ from reportlab.platypus.tableofcontents import TableOfContents
 ROOT = Path(__file__).resolve().parents[1]
 MANUAL = ROOT / 'manual'
 OFFER = json.loads((ROOT / 'commercial/offer.json').read_text())
-EDITION = '1.0'
-DATE = '25.10.2026'
+EDITION = '1.1'
+DATE = '26.10.2026'
 PDF_NAME = 'dawkoz-instrukcja-realizacji-zamowien.pdf'
 TITLE = 'DAWKOZ — instrukcja realizacji zamówień'
+TECH_PDF_NAME = 'dawkoz-instrukcja-techniczna-bota.pdf'
+TECH_TITLE = 'DAWKOZ — instrukcja techniczna bota telefonicznego'
 TYPES = {'p', 'heading', 'note', 'steps', 'checklist', 'table', 'code', 'links', 'image'}
 
 
@@ -182,11 +184,12 @@ class Cover(Flowable):
     width = W
     height = 690
 
-    def __init__(self, chapters):
+    def __init__(self, chapters, technical=False):
         super().__init__()
         self.width = W
         self.height = 690
         self.chapters = chapters
+        self.technical = technical
 
     def draw(self):
         c = self.canv
@@ -199,13 +202,15 @@ class Cover(Flowable):
         c.drawImage(str(logo), 0, 630, width=194, height=65, mask='auto', preserveAspectRatio=True)
         c.setFillColor(INK)
         c.setFont('GuideBold', 31)
-        for i, line in enumerate(['Od zapytania', 'do działającej usługi.']):
+        title = ['Bot telefoniczny AI.', 'Uruchom i podłącz firmę.'] if self.technical else ['Od zapytania', 'do działającej usługi.']
+        for i, line in enumerate(title):
             c.drawString(0, 528 - i * 43, line)
-        subtitle = p('Instrukcja realizacji zamówień DAWKOZ.\nKrok po kroku dla każdej oferty, z obsługą panelu,\ntestami, dokumentami i miesięczną opieką.', 'summary')
+        subtitle = p('Twilio + OpenAI + Telegram.\nProjekt bazowy, komendy, konfiguracja i testy.\nPierwsza firma i kolejne wdrożenie.' if self.technical else 'Instrukcja realizacji zamówień DAWKOZ.\nKrok po kroku dla każdej oferty, z obsługą panelu,\ntestami, dokumentami i miesięczną opieką.', 'summary')
         _, sh = subtitle.wrap(W - 8, 100)
         subtitle.drawOn(c, 0, 402 - sh)
         box_width = (W - 32) / 5
-        for i, label in enumerate(['Zapytanie', 'Wycena', 'Realizacja', 'Testy', 'Odbiór']):
+        stages = ['Telefon', 'Twilio', 'Bot + AI', 'Zgłoszenie', 'Telegram'] if self.technical else ['Zapytanie', 'Wycena', 'Realizacja', 'Testy', 'Odbiór']
+        for i, label in enumerate(stages):
             x = i * (box_width + 8)
             c.setFillColor(colors.HexColor('#eef3f9'))
             c.setStrokeColor(LINE)
@@ -216,17 +221,19 @@ class Cover(Flowable):
             c.setFillColor(INK)
             c.setFont('Guide', 8)
             c.drawString(x + 10, 264, label)
-        details = p(f'{len(self.chapters)} rozdziałów • rzeczywiste zrzuty panelu • gotowe listy testów\nWersja {EDITION} | {DATE} | Oferta DAWKOZ {OFFER["version"]}', 'summary')
+        detail = 'Projekt kodu w panelu DAWKOZ • lokalne demo bez płatnych API' if self.technical else 'rzeczywiste zrzuty panelu • gotowe listy testów'
+        details = p(f'{len(self.chapters)} rozdziałów • {detail}\nWersja {EDITION} | {DATE} | Oferta DAWKOZ {OFFER["version"]}', 'summary')
         _, dh = details.wrap(W, 90)
         details.drawOn(c, 0, 194 - dh)
-        note = p('Materiał wewnętrzny. Rozdziały pokazują, co należy wykonać i sprawdzić. Nie potwierdzają uruchomienia integracji, kont dostawców ani kompletności danych prawnych konkretnego zlecenia.', 'note')
+        note = p('Instrukcja do projektu bazowego. Próby lokalne nie potwierdzają rozmowy z operatorem ani naliczenia kosztów. Etap live wymaga własnych kont, środków, numeru, ustawień i testów. Starter nie zawiera SMS ani centrali IVR.' if self.technical else 'Materiał wewnętrzny. Rozdziały pokazują, co należy wykonać i sprawdzić. Nie potwierdzają uruchomienia integracji, kont dostawców ani kompletności danych prawnych konkretnego zlecenia.', 'note')
         _, nh = note.wrap(W - 20, 100)
         note.drawOn(c, 0, 75 - nh)
 
 
 class HandbookDoc(BaseDocTemplate):
-    def __init__(self, file):
-        super().__init__(str(file), pagesize=A4, leftMargin=46, rightMargin=46, topMargin=47, bottomMargin=49, title=TITLE, author='DAWKOZ', subject='Instrukcja organizacji, realizacji i obsługi zamówień', pageCompression=1)
+    def __init__(self, file, technical=False):
+        self.technical = technical
+        super().__init__(str(file), pagesize=A4, leftMargin=46, rightMargin=46, topMargin=47, bottomMargin=49, title=TECH_TITLE if technical else TITLE, author='DAWKOZ', subject='Instrukcja techniczna bota' if technical else 'Instrukcja organizacji, realizacji i obsługi zamówień', pageCompression=1)
         frame = Frame(46, 49, W, A4[1] - 96, leftPadding=0, rightPadding=0, topPadding=0, bottomPadding=0, id='main')
         self.addPageTemplates(PageTemplate(id='handbook', frames=[frame], onPage=self.page_frame))
 
@@ -238,7 +245,7 @@ class HandbookDoc(BaseDocTemplate):
             c.line(46, A4[1] - 30, A4[0] - 46, A4[1] - 30)
             c.setFont('Guide', 7)
             c.setFillColor(MUTED)
-            c.drawString(46, A4[1] - 23, 'DAWKOZ / INSTRUKCJA REALIZACJI ZAMÓWIEŃ')
+            c.drawString(46, A4[1] - 23, 'DAWKOZ / INSTRUKCJA TECHNICZNA BOTA' if self.technical else 'DAWKOZ / INSTRUKCJA REALIZACJI ZAMÓWIEŃ')
         c.setFont('Guide', 7)
         c.setFillColor(MUTED)
         c.drawString(46, 27, f'Wersja {EDITION} • {DATE} • materiał wewnętrzny')
@@ -299,9 +306,9 @@ def pdf_block(block):
     raise ValueError(kind)
 
 
-def write_pdf(chapters, file):
-    story = [Cover(chapters), PageBreak(), p('Spis treści', 'chapter')]
-    story.append(p('Kliknij tytuł rozdziału lub skorzystaj z zakładek PDF. Najpierw przeczytaj wspólny proces, następnie wybierz usługę zamawianą przez klienta.', 'summary'))
+def write_pdf(chapters, file, technical=False):
+    story = [Cover(chapters, technical), PageBreak(), p('Spis treści', 'chapter')]
+    story.append(p('Kliknij tytuł rozdziału lub skorzystaj z zakładek PDF. Zacznij od lokalnego demo projektu, następnie ustaw konta i przejdź testy telefonu.' if technical else 'Kliknij tytuł rozdziału lub skorzystaj z zakładek PDF. Najpierw przeczytaj wspólny proces, następnie wybierz usługę zamawianą przez klienta.', 'summary'))
     toc = TableOfContents()
     toc.levelStyles = [ParagraphStyle('guide-toc', fontName='Guide', fontSize=9.4, leading=16, leftIndent=0, firstLineIndent=0, spaceBefore=6, textColor=INK)]
     story.append(toc)
@@ -312,7 +319,7 @@ def write_pdf(chapters, file):
         story.extend([heading, p(chapter['summary'], 'summary')])
         for block in chapter['blocks']:
             story.extend(pdf_block(block))
-    HandbookDoc(file).multiBuild(story)
+    HandbookDoc(file, technical).multiBuild(story)
 
 
 def main():
@@ -327,10 +334,19 @@ def main():
     write_pdf(chapters, file)
     args.exports.mkdir(parents=True, exist_ok=True)
     shutil.copy2(file, args.exports / PDF_NAME)
-    manifest = {'title': TITLE, 'version': EDITION, 'date': '2026-10-25', 'offerVersion': OFFER['version'], 'chapters': [{'id': c['id'], 'title': c['title']} for c in chapters], 'images': sorted({b['file'] for c in chapters for b in c['blocks'] if b['type'] == 'image'})}
+    technical = [c for c in chapters if c['id'] in {'bot-technical', 'bot-next-client'}]
+    if technical:
+        if len(technical) != 2:
+            raise ValueError('Both technical bot chapters must be present')
+        technical_file = generated / TECH_PDF_NAME
+        write_pdf(technical, technical_file, technical=True)
+        shutil.copy2(technical_file, args.exports / TECH_PDF_NAME)
+    manifest = {'title': TITLE, 'version': EDITION, 'date': '2026-10-26', 'offerVersion': OFFER['version'], 'chapters': [{'id': c['id'], 'title': c['title']} for c in chapters], 'images': sorted({b['file'] for c in chapters for b in c['blocks'] if b['type'] == 'image'})}
     (generated / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
     print(f'{len(chapters)} chapters; {len(manifest["images"])} real screenshots; PDF {file.stat().st_size} bytes')
     print(args.exports / PDF_NAME)
+    if technical:
+        print(args.exports / TECH_PDF_NAME)
 
 
 if __name__ == '__main__':

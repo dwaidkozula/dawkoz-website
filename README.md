@@ -24,7 +24,7 @@ Zwiększenie bota do 200 minut nie jest oparte na taryfie dostawcy: przy progu 1
 
 Zużycie ponad pakiet wymaga akceptacji: domyślny dodatkowy budżet 0 zł, IVR 1,49 zł/min, AI 2,49 zł/min, SMS 0,69 zł/część. Prace dodatkowe 160 zł/godz. po akceptacji wyceny. Minuty liczone osobno i zaokrąglane w górę na każdym płatnym odcinku; dłuższe SMS i kodowanie mogą zwiększać liczbę części. Maksymalny czas rozmowy: 5 min AI, 15 min przekierowania IVR. Ostatnia przyjęta rozmowa kończy się w tym limicie bez nieuzgodnionej dopłaty. Limity i czas zmian nie przechodzą na kolejny miesiąc. Wsparcie pon.–pt. 9–17 czasu polskiego poza świętami; reakcja krytyczna do 8 godzin roboczych, pozostała do 2 dni roboczych. Nie jest to gwarantowany termin naprawy.
 
-**Ważny zakres implementacji:** ta zmiana publikuje ofertę i przygotowuje dokumenty. Repozytorium nie zawiera silnika bota, integracji Twilio/OpenAI/SMSAPI, liczników rozmów, alertów ani blokady wydatków dostawcy. Ich konfiguracja i test są warunkiem aktywacji klienta. Uzgodnienie w dokumencie nie jest zabezpieczeniem technicznym.
+**Ważny zakres implementacji:** ta zmiana publikuje ofertę i przygotowuje dokumenty. Oddzielny `bot-starter/` zawiera testowany offline pilot Twilio/OpenAI/Telegram, licznik rezerwacji i lokalną bazę; nie uruchamia się razem ze stroną. Nie zawiera pełnej oferty (m.in. SMS, IVR i alertów), a połączenia i koszty dostawców nie zostały zweryfikowane na prawdziwym koncie. Ich konfiguracja i test są warunkiem aktywacji klienta. Uzgodnienie w dokumencie nie jest zabezpieczeniem technicznym.
 
 `commercial/costs.js` liczy scenariusze w groszach. Założenia kosztu 0,60 zł/min IVR, 1,20 zł/min AI z telefonią, 0,30 zł/część SMS, koszt pracy 100 zł/godz. i budżet infrastruktury są **niezweryfikowanymi progami planowania**, nie taryfami dostawców. Model uwzględnia VAT 23%, pracę i rezerwę; nadwyżka jest przed PIT/CIT, ZUS i innymi kosztami ogólnymi. Faktyczne koszty, dostępność numeru i mechanizmy limitów należy potwierdzić przed podpisaniem oferty. Przy przekroczeniu progu zmienić technologię lub ofertę przed zawarciem umowy.
 
@@ -84,7 +84,7 @@ Do odtworzenia pustych PDF/DOCX na maszynie deweloperskiej użyj `python scripts
 
 Po zalogowaniu wybierz „Instrukcja realizacji” w bocznej nawigacji lub nagłówku dokumentów. `/app/guide` udostępnia pełny podręcznik w języku polskim: wspólny proces zamówienia, mapę cen, obsługę biblioteki, wszystkie osiem ofert z karuzeli, osobny panel klienta, opiekę, rozliczenia i diagnozę. Rozdziały opisują działania, oczekiwane wyniki, testy i prompty do pracy z ChatGPT. Wyszukiwanie filtruje rozdziały po słowach bez zapisywania zapytań; spis treści i cała instrukcja działają bez JavaScriptu. Drukowanie pokazuje wszystkie rozdziały także po filtrowaniu.
 
-Przycisk „Pobierz instrukcję PDF” prowadzi do `/app/guide/manual.pdf`. Pierwsze wydanie zawiera 54 strony, 15 rozdziałów, nawigacyjny spis treści i sześć rzeczywistych zrzutów panelu/oferty/demo z oznaczonymi kontrolkami. Podręcznik, PDF, skrypty oraz ilustracje wymagają sesji operatora. Trasy obrazów korzystają z jawnej listy nazw; katalogi `manual/` i `panel/` nie są publicznie serwowane. Sesja i wylogowanie są wspólne z biblioteką dokumentów.
+Przycisk „Pobierz instrukcję PDF” prowadzi do `/app/guide/manual.pdf`. Wydanie 1.1 zawiera 73 strony, 17 rozdziałów, nawigacyjny spis treści i siedem rzeczywistych zrzutów. Osobny 21-stronicowy PDF techniczny prowadzi przez starter bota, personalizację i kolejną firmę. Chronione pobrania: `/app/guide/bot-technical.pdf` oraz `/app/guide/bot-starter.zip`; ZIP zawiera wyłącznie kod i przykłady, bez .env, konfiguracji klienta i bazy. Podręcznik, PDF, skrypty oraz ilustracje wymagają sesji operatora. Trasy obrazów korzystają z jawnej listy nazw; katalogi `manual/` i `panel/` nie są publicznie serwowane. Sesja i wylogowanie są wspólne z biblioteką dokumentów.
 
 Treść źródłowa jest w `manual/chapters/*.json`. `scripts/export-guide.py` pobiera kwoty i limity z `commercial/offer.json`, odrzuca nieznane tokeny, generuje rozdziały w oznaczonych miejscach `panel/guide.html`, PDF w `manual/generated/` i kopię do `/workspace/exports/`. Przy zmianie oferty lub treści odtwórz podręcznik:
 
@@ -140,3 +140,9 @@ Nagłówki aplikacji nie zastępują poprawnego certyfikatu. Ustawianie własneg
 | `ERR_SSL_PROTOCOL_ERROR` | Czy domena trafia do punktu wejścia HTTPS Railway i czy jej konfiguracja jest zakończona. |
 
 Do diagnozy potrzebne są dokładny adres i treść ostrzeżenia. Projekty dokumentów prawnych w stopce wymagają jeszcze potwierdzenia oznaczonych danych biznesowych i ustawień dostawców.
+
+### Osobny pilot bota
+
+`bot-starter/` wymaga Node24.19+ i nie zmienia procesu uruchamiania strony. Instrukcja źródłowa: `manual/chapters/80-bot-technical.json` i `81-bot-next-client.json`. `python scripts/export-bot-starter.py` tworzy ZIP kodu, a `python scripts/export-guide.py` oba PDF i HTML panelu. W folderze startera: `npm run init`, `npm test`, `npm run check`, `npm run demo`, `npm start`; demo na localhost:3001. Nie podłączono kont, numeru ani prawdziwego klienta. Lokalny test nie potwierdza rzeczywistych kosztów, głosu, rozpoznawania ani działania TimeLimit u operatora. Szczegółowe ograniczenia, retencja, izolacja firm i ręczne wyjaśnianie niedoręczeń znajdują się w jego README oraz PDF.
+
+Testy strony pozostają zgodne z jej Node20+: `npm test`. Oddzielne testy pilota wymagają Node24.19+: `npm run test:bot`.

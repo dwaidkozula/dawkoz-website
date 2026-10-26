@@ -11,7 +11,7 @@
       "type": "note",
       "label": "Co jest już dostępne",
       "tone": "info",
-      "text": "Działa strona z cennikiem, prywatna biblioteka 12 dokumentów, trzy zestawy warunków pakietów telefonicznych, ta instrukcja i publiczny pokaz panelu klienta. Repozytorium strony nie zawiera gotowego silnika rozmów AI, obsługi połączeń ani automatyzacji faktur i przypomnień. W rozdziałach technicznych wskazano prace do wykonania i sprawdzenia przed uruchomieniem klienta."
+      "text": "Działa strona z cennikiem, prywatna biblioteka dokumentów, instrukcja i pokaz panelu klienta. Dołączono oddzielny bot-starter: lokalne demo oraz kod pilota Twilio/OpenAI/Telegram z testami symulowanymi. Nie jest podłączony do kont dostawców ani pełnej oferty. Szczegółowe uruchomienie i kolejną firmę opisują dwa ostatnie rozdziały. Automatyzacje faktur, SMS, IVR i produkcyjny portal wymagają odrębnej realizacji."
     },
     {
       "type": "steps",

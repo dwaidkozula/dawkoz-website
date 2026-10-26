@@ -1,0 +1,141 @@
+{
+  "id": "bot-next-client",
+  "title": "Kolejna firma — osobny bot od briefu do odbioru",
+  "summary": "Nie dopisuj nowego klienta do działającej bazy pierwszej firmy. Przygotuj odrębną instancję i przejdź poniższą listę.",
+  "blocks": [
+    {
+      "type": "note",
+      "label": "Osobna konfiguracja to podstawa izolacji",
+      "text": "Starter obsługuje jedną firmę. Kolejna firma oznacza odrębną usługę, dysk, numer i konto/projekt dostawców lub wyraźnie odizolowany zasób, klucze oraz odbiorcę. Panel dokumentów DAWKOZ nie jest systemem wielu kont klientów. Nie udostępniaj klientowi swojego hasła administracyjnego.",
+      "tone": "warning"
+    },
+    {
+      "type": "steps",
+      "title": "1. Ustal co firma zamawia",
+      "items": [
+        {
+          "title": "Wybierz jeden proces",
+          "text": "W rozmowie z klientem zapisz cel, np. przyjęcie usterek i przekazanie ich jednej osobie. Wypisz pytania wymagane, zatwierdzone FAQ, godziny pracy, sposób kontaktu z człowiekiem oraz sytuacje awaryjne. Ten starter nie przekierowuje do pracownika, nie rezerwuje terminu, nie potwierdza ceny i nie wysyła SMS. Jeśli firma tego oczekuje, zapisz dodatkowe prace przed aktywacją.",
+          "check": "Klient potwierdził cel i ograniczenia. Nie obiecujesz funkcji, których program nie realizuje."
+        },
+        {
+          "title": "Przygotuj dokumenty",
+          "text": "W panelu DAWKOZ wybierz ofertę i warunki pakietu. Sprawdź tożsamość sprzedawcy, cenę, VAT, integrację, limit, materiały, odbiór, opiekę i role danych. Starter nie spełnia sam całego zakresu Bot AI, np. SMS i alertów — uzupełnij kod lub uzgodnij osobny zakres pilotażu. Umowę, wymagane powierzenie i zaliczkę załatw zgodnie ze wspólnym procesem podręcznika.",
+          "check": "Zakres podpisany odpowiada rzeczywiście zaplanowanej realizacji i kosztom."
+        },
+        {
+          "title": "Zbierz zatwierdzone materiały",
+          "text": "Poproś o poprawną nazwę firmy, powitanie z informacją o AI, od1 do6 pytań formularza, do20 FAQ oraz docelowego odbiorcę. Dla każdego pola określ dozwoloną długość i sposób sprawdzenia. Uzgodnij minimalny zakres danych, informację dla dzwoniącego i retencję. Nie używaj kontaktów ani scenariusza innego klienta jako danych nowej firmy.",
+          "check": "Masz wersję materiałów z datą i potwierdzeniem klienta."
+        }
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "2. Przygotuj nową instancję",
+      "items": [
+        {
+          "title": "Rozpakuj świeży ZIP",
+          "text": "Pobierz kod z panelu i rozpakuj do nowego folderu, np. bot-firma-b-test. Nie kopiuj całego katalogu działającej firmy, bo zawiera jej .env i bazę. Uruchom npm run init oraz npm test. Nie przenoś plików SQLite, kluczy ani prawdziwych zgłoszeń.",
+          "check": "Nowy folder nie zawiera danych, tokenów i odbiorcy poprzedniej firmy."
+        },
+        {
+          "title": "Ustaw nową tożsamość w JSON",
+          "text": "W config/client.json ustaw nowy unikalny clientId, np. firma-b, oraz zatwierdzone companyName. Zmień powitanie, processDescription, pola i FAQ. Zachowaj ograniczenia zgodne z umową. Pierwszy start wiąże bazę z clientId i companyName; przy komunikacie o innej firmie sprawdź DATA_DIR i volume zamiast usuwać zabezpieczenie. Zmiana samej nazwy w istniejącej bazie też wymaga świadomej migracji, której starter nie automatyzuje.",
+          "check": "Npm run check przechodzi, a offline demo mówi wyłącznie o nowej firmie."
+        },
+        {
+          "title": "Przećwicz proces bez API",
+          "text": "Uruchom npm start, otwórz localhost:3001/demo i przejdź pytania na danych fikcyjnych, potwierdź i odrzuć podsumowanie. Automatyczne npm run demo sprawdza dołączony przykładowy scenariusz, więc nie zastępuje ręcznego testu zmienionych pytań klienta. Nie traktuj tekstowej próby jako testu jakości głosu.",
+          "check": "Kolejność i treść pytań są poprawne, a brak potwierdzenia nie tworzy sprawy."
+        },
+        {
+          "title": "Utwórz osobną usługę Railway i volume",
+          "text": "Wykonaj sekcję D poprzedniego rozdziału na odrębnej usłudze, z jedną repliką i pustym trwałym /data. Zatwierdzony JSON wklej do CLIENT_CONFIG_JSON. Ustaw nowe klucze, odbiorcę i numer; PUBLIC_BASE_URL musi wskazywać dokładnie nowy host. Obejrzyj nazwy projektu i zmiennych przed zapisaniem. Nie zmieniaj volume ani numeru poprzedniego klienta.",
+          "check": "Dwie firmy mają różne usługi, numery i bazy; restart nowej nie wpływa na starą."
+        },
+        {
+          "title": "Podłącz konta i numer",
+          "text": "Wykonaj sekcje C i E poprzedniego rozdziału. Potwierdź uprawnienia klienta i koszty u dostawców. Włącz live wyłącznie z listą własnych numerów próbnych. W konfiguracji nowego numeru ustaw /voice/incoming oraz /voice/status z nowego hosta. Sekretów nie wklejaj do czatu, PDF, zdjęcia ani repozytorium.",
+          "check": "Testowy telefon trafia wyłącznie do nowej instancji, a zgłoszenie do właściwego odbiorcy."
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        "Test izolacji",
+        "Jak sprawdzić",
+        "Oczekiwany wynik"
+      ],
+      "rows": [
+        [
+          "Nazwa i pytania",
+          "Zadzwoń na oba numery testowe.",
+          "Każdy bot przedstawia właściwą firmę i jej pytania."
+        ],
+        [
+          "Odbiorca",
+          "Przyjmij fikcyjną sprawę dla firmyB.",
+          "Wiadomość trafia do odbiorcyB, bez kopii doA."
+        ],
+        [
+          "Konto i numer",
+          "Uruchom test podpisów i konfiguracji.",
+          "Niewłaściwe konto lub To jest odrzucone."
+        ],
+        [
+          "Zużycie",
+          "Porównaj npm run status w każdej instancji przed i po próbie.",
+          "Zmienia się tylko właściwy licznik; callback rozlicza właściwe CallSid."
+        ],
+        [
+          "Restart",
+          "Kontrolowanie zrestartuj nową usługę.",
+          "Zgłoszenie i licznik pozostają, druga usługa działa dalej."
+        ],
+        [
+          "Brak callbacku",
+          "Sprawdź procedurę reconcile na zakończonym rekordzie testowym.",
+          "Rezerwacja nie znika na sam timeout i rozlicza się jeden raz."
+        ]
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "3. Odbierz usługę i przekaż obsługę",
+      "items": [
+        {
+          "title": "Wykonaj próby i policz koszt",
+          "text": "Zapisz co najmniej20 rozmów według tabeli testów. Sprawdź krótkie i długie odpowiedzi, ciszę, hałas, odmowę podsumowania, nieznane pytania, awarie dostawców, limit minut, maksymalny czas i właściwe naliczenie. Porównaj rachunki i opóźnienie z ofertą. Nie uruchamiaj abonamentu tylko dlatego, że /healthz zwraca200.",
+          "check": "Wyniki i koszty zapisano, klient sprawdził pełny przebieg."
+        },
+        {
+          "title": "Zamknij braki zakresu",
+          "text": "Jeżeli podpisana usługa obejmuje SMS, alerty, przekierowanie, inne narzędzie albo panel, wykonaj i przetestuj te elementy przed odbiorem. Nie zastępuj brakujących zabezpieczeń samym zapisem w umowie. Dla pilotażu nazwij ograniczenia wprost i ustal termin oraz kryteria rozszerzenia.",
+          "check": "Każda pozycja zamówienia ma wynik testu lub uzgodnione wyłączenie w nowym zakresie."
+        },
+        {
+          "title": "Zatwierdź start i plan awaryjny",
+          "text": "Zbierz uwagi oraz wyraźny protokół odbioru, rozlicz drugie50% i ustal datę aktywacji zgodnie z umową. Zapisz stare ustawienia numeru oraz sposób cofnięcia przekierowania. Dopiero w uzgodnionym oknie zdejmij LIVE_TEST_ONLY. Przekaż firmie miejsce odbioru spraw, granice procesu i kontakt wsparcia.",
+          "check": "Firma wie, jak znaleźć zgłoszenie i jak obsłużyć klienta przy awarii bota."
+        },
+        {
+          "title": "Przez pierwsze dni kontroluj codziennie",
+          "text": "Porównuj zgłoszenia z kolejką, statusy końcowe rozmów, zużycie minut, koszt i jakość. Niepewne doręczenia sprawdzaj ręcznie przed ponowieniem. Kontroluj retencję i kopię/odtworzenie. Przed końcem okresu odnowienie dat i płatność wymagają kontroli; starter nie wykonuje ich automatycznie.",
+          "check": "Nie ma niewyjaśnionych spraw, osieroconych rezerwacji ani nieuzgodnionych kosztów."
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "text": "KARTA WDROŻENIA (bez sekretów)\nProjekt i clientId: [...]\nNazwa firmy / osoba uprawniona: [...]\nCel i wyłączenia: [...]\nWersja pytań i FAQ / akceptacja: [...]\nUsługa Railway / host / volume: [...]\nNumer i konto dostawcy (bez tokenu): [...]\nOdbiorca Telegram / test potwierdzony: [...]\nDaty okresu i limit: [...]\nRetencja / backup / test odtworzenia: [...]\nWyniki20 prób / pomiar kosztu: [...]\nBraki względem oferty i ich zamknięcie: [...]\nProtokół odbioru / data startu: [...]\nPowrót do poprzedniej obsługi / kontakt: [...]"
+    },
+    {
+      "type": "note",
+      "label": "Telefon a aplikacja klienta",
+      "text": "Bot działa jako osobna usługa serwerowa. Przyszły portal/aplikacja wymaga osobnego uwierzytelniania, autoryzacji do konkretnej firmy i zakresu danych. Nie publikuj pliku SQLite, /demo z danymi rzeczywistymi ani sekretów jako sposobu udostępnienia zgłoszeń. Obecny panel DAWKOZ służy operatorowi.",
+      "tone": "info"
+    }
+  ]
+}

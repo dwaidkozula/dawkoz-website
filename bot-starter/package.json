@@ -1,0 +1,21 @@
+{
+  "name": "dawkoz-bot-starter",
+  "version": "0.1.0",
+  "private": true,
+  "description": "One-client, turn-based voice-bot pilot. Offline by default.",
+  "engines": {
+    "node": ">=24.19.0"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env src/server.js",
+    "init": "node scripts/init.cjs",
+    "check": "node --env-file-if-exists=.env scripts/check.cjs",
+    "demo": "node scripts/demo.cjs",
+    "test": "node --test",
+    "telegram:chat-id": "node --env-file-if-exists=.env scripts/telegram-chat-id.cjs",
+    "status": "node --env-file-if-exists=.env scripts/status.cjs",
+    "jobs": "node --env-file-if-exists=.env scripts/jobs.cjs",
+    "cleanup": "node --env-file-if-exists=.env scripts/cleanup.cjs",
+    "reconcile": "node --env-file-if-exists=.env scripts/reconcile.cjs"
+  }
+}

@@ -1,0 +1,1 @@
+try{const {settings,client}=require('../src/config').loadSettings();const {Store}=require('../src/store');const store=new Store(settings,client);console.log(JSON.stringify(store.status(),null,2));store.close();}catch{console.error('Nie można odczytać stanu. Sprawdź konfigurację i dysk.');process.exitCode=1;}
