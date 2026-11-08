@@ -146,3 +146,9 @@ Do diagnozy potrzebne są dokładny adres i treść ostrzeżenia. Projekty dokum
 `bot-starter/` wymaga Node24.19+ i nie zmienia procesu uruchamiania strony. Instrukcja źródłowa: `manual/chapters/80-bot-technical.json` i `81-bot-next-client.json`. `python scripts/export-bot-starter.py` tworzy ZIP kodu, a `python scripts/export-guide.py` oba PDF i HTML panelu. W folderze startera: `npm run init`, `npm test`, `npm run check`, `npm run demo`, `npm start`; demo na localhost:3001. Nie podłączono kont, numeru ani prawdziwego klienta. Lokalny test nie potwierdza rzeczywistych kosztów, głosu, rozpoznawania ani działania TimeLimit u operatora. Szczegółowe ograniczenia, retencja, izolacja firm i ręczne wyjaśnianie niedoręczeń znajdują się w jego README oraz PDF.
 
 Testy strony pozostają zgodne z jej Node20+: `npm test`. Oddzielne testy pilota wymagają Node24.19+: `npm run test:bot`.
+
+### Waluty cennika publicznego
+
+Cennik na stronie obsługuje PLN, EUR i USD przez `?currency=EUR` / `?currency=USD`, niezależnie od `lang`. Domyślnie PLN. Przełącznik działa jako zwykłe linki również bez JavaScript; wybór jest zachowany w linkach językowych i publicznej nawigacji. `currency.js` formatuje kwoty po tłumaczeniu, w tym abonamenty, opiekę, dopłaty i pytanie FAQ.
+
+`commercial/currency-prices.json` definiuje stałe ceny w eurocentach i centach USD dla bazowych kwot PLN; nie jest tabelą kursów ani automatycznym przeliczeniem. Dokumenty, panel, podpisane umowy i `commercial/offer.json` pozostają w PLN. Waluta rozliczenia i cena końcowa wymagają potwierdzenia w indywidualnej ofercie. Przy zmianie ceny PLN trzeba uzupełnić odpowiadające jej stawki EUR/USD i uruchomić testy pokrycia we wszystkich11 językach. Brak zależności od zewnętrznego API kursowego przy otwieraniu strony.

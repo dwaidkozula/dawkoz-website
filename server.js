@@ -135,8 +135,9 @@ const server = http.createServer(async (req, res) => {
     }
     const data = await fs.promises.readFile(realFile);
     if (path.extname(realFile) === '.html') {
-      const locale = resolveLocale(new URLSearchParams(req.url.split('?')[1] || '').get('lang'));
-      send(200, renderPage(data.toString('utf8'), locale, path.basename(realFile)), type);
+      const query = new URLSearchParams(req.url.split('?')[1] || '');
+      const locale = resolveLocale(query.get('lang'));
+      send(200, renderPage(data.toString('utf8'), locale, path.basename(realFile), query.get('currency')), type);
     } else send(200, data, type);
   } catch {
     send(404, '404');

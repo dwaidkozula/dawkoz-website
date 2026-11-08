@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "effectiveDate": "2026-11-08",
+  "policy": "Fixed public list prices in minor units, not live exchange rates. PLN remains the source for existing documents and agreements. Final scope and settlement currency require an individual offer.",
+  "prices": {
+    "0": { "EUR": 0, "USD": 0 },
+    "69": { "EUR": 17, "USD": 19 },
+    "149": { "EUR": 35, "USD": 39 },
+    "249": { "EUR": 59, "USD": 65 },
+    "14900": { "EUR": 3500, "USD": 3900 },
+    "16000": { "EUR": 3900, "USD": 4500 },
+    "24900": { "EUR": 5900, "USD": 6500 },
+    "39900": { "EUR": 9500, "USD": 10500 },
+    "69900": { "EUR": 16500, "USD": 17900 },
+    "89900": { "EUR": 20900, "USD": 22900 },
+    "99000": { "EUR": 23900, "USD": 25900 },
+    "149000": { "EUR": 34900, "USD": 37900 },
+    "199000": { "EUR": 46900, "USD": 50900 },
+    "299000": { "EUR": 69900, "USD": 75900 },
+    "399000": { "EUR": 93900, "USD": 99900 }
+  }
+}

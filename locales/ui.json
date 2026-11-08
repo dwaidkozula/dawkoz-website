@@ -17,7 +17,9 @@
     "offerLabel": "Przeglądaj oferty",
     "offerRange": "Oferty {start}–{end} z {total}",
     "offerEnd": "Wszystkie oferty są już widoczne",
-    "offerFirst": "Wróć do pierwszych ofert"
+    "offerFirst": "Wróć do pierwszych ofert",
+    "currency": "Waluta cennika",
+    "currencyNote": "Walutę rozliczenia i cenę końcową potwierdzamy w indywidualnej ofercie."
   },
   "en": {
     "language": "Site language",
@@ -37,7 +39,9 @@
     "offerLabel": "Browse offers",
     "offerRange": "Offers {start}–{end} of {total}",
     "offerEnd": "All offers are already visible",
-    "offerFirst": "Back to the first offers"
+    "offerFirst": "Back to the first offers",
+    "currency": "Pricing currency",
+    "currencyNote": "The settlement currency and final price are confirmed in your individual offer."
   },
   "fr": {
     "language": "Langue du site",
@@ -57,7 +61,9 @@
     "offerLabel": "Parcourir les offres",
     "offerRange": "Offres {start}–{end} sur {total}",
     "offerEnd": "Toutes les offres sont déjà visibles",
-    "offerFirst": "Revenir aux premières offres"
+    "offerFirst": "Revenir aux premières offres",
+    "currency": "Devise des tarifs",
+    "currencyNote": "La devise de règlement et le prix final sont confirmés dans votre offre personnalisée."
   },
   "es": {
     "language": "Idioma del sitio",
@@ -77,7 +83,9 @@
     "offerLabel": "Explorar ofertas",
     "offerRange": "Ofertas {start}–{end} de {total}",
     "offerEnd": "Todas las ofertas ya están visibles",
-    "offerFirst": "Volver a las primeras ofertas"
+    "offerFirst": "Volver a las primeras ofertas",
+    "currency": "Moneda de los precios",
+    "currencyNote": "La moneda de pago y el precio final se confirman en la oferta individual."
   },
   "de": {
     "language": "Sprache der Website",
@@ -97,7 +105,9 @@
     "offerLabel": "Angebote durchsehen",
     "offerRange": "Angebote {start}–{end} von {total}",
     "offerEnd": "Alle Angebote sind bereits sichtbar",
-    "offerFirst": "Zurück zu den ersten Angeboten"
+    "offerFirst": "Zurück zu den ersten Angeboten",
+    "currency": "Preiswährung",
+    "currencyNote": "Abrechnungswährung und Endpreis werden im individuellen Angebot bestätigt."
   },
   "no": {
     "language": "Nettstedets språk",
@@ -117,7 +127,9 @@
     "offerLabel": "Bla gjennom tilbud",
     "offerRange": "Tilbud {start}–{end} av {total}",
     "offerEnd": "Alle tilbudene er allerede synlige",
-    "offerFirst": "Tilbake til de første tilbudene"
+    "offerFirst": "Tilbake til de første tilbudene",
+    "currency": "Prisvaluta",
+    "currencyNote": "Oppgjørsvaluta og endelig pris bekreftes i det individuelle tilbudet."
   },
   "pt": {
     "language": "Idioma do site",
@@ -137,7 +149,9 @@
     "offerLabel": "Explorar ofertas",
     "offerRange": "Ofertas {start}–{end} de {total}",
     "offerEnd": "Todas as ofertas já estão visíveis",
-    "offerFirst": "Voltar às primeiras ofertas"
+    "offerFirst": "Voltar às primeiras ofertas",
+    "currency": "Moeda dos preços",
+    "currencyNote": "A moeda de pagamento e o preço final são confirmados na proposta individual."
   },
   "ru": {
     "language": "Язык сайта",
@@ -157,7 +171,9 @@
     "offerLabel": "Просмотр предложений",
     "offerRange": "Предложения {start}–{end} из {total}",
     "offerEnd": "Все предложения уже показаны",
-    "offerFirst": "Вернуться к первым предложениям"
+    "offerFirst": "Вернуться к первым предложениям",
+    "currency": "Валюта цен",
+    "currencyNote": "Валюта расчёта и окончательная цена подтверждаются в индивидуальном предложении."
   },
   "sv": {
     "language": "Webbplatsens språk",
@@ -177,7 +193,9 @@
     "offerLabel": "Bläddra bland erbjudanden",
     "offerRange": "Erbjudanden {start}–{end} av {total}",
     "offerEnd": "Alla erbjudanden visas redan",
-    "offerFirst": "Tillbaka till de första erbjudandena"
+    "offerFirst": "Tillbaka till de första erbjudandena",
+    "currency": "Prisernas valuta",
+    "currencyNote": "Betalningsvaluta och slutpris bekräftas i den individuella offerten."
   },
   "uk": {
     "language": "Мова сайту",
@@ -197,7 +215,9 @@
     "offerLabel": "Перегляд пропозицій",
     "offerRange": "Пропозиції {start}–{end} із {total}",
     "offerEnd": "Усі пропозиції вже показано",
-    "offerFirst": "Повернутися до перших пропозицій"
+    "offerFirst": "Повернутися до перших пропозицій",
+    "currency": "Валюта цін",
+    "currencyNote": "Валюта розрахунку й остаточна ціна підтверджуються в індивідуальній пропозиції."
   },
   "it": {
     "language": "Lingua del sito",
@@ -217,6 +237,8 @@
     "offerLabel": "Esplora le offerte",
     "offerRange": "Offerte {start}–{end} di {total}",
     "offerEnd": "Tutte le offerte sono già visibili",
-    "offerFirst": "Torna alle prime offerte"
+    "offerFirst": "Torna alle prime offerte",
+    "currency": "Valuta dei prezzi",
+    "currencyNote": "La valuta di pagamento e il prezzo finale sono confermati nel preventivo individuale."
   }
 }

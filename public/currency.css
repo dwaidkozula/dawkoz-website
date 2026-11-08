@@ -1,0 +1,10 @@
+/* Currency is independent of language; links work without JavaScript. */
+.currency-picker{display:flex;align-items:center;gap:14px 20px;flex-wrap:wrap;margin:0 0 24px;padding:18px 20px;border:1px solid #303540;border-radius:12px;background:#0b1018;scroll-margin-top:100px}
+.currency-picker>span{font-size:12px;font-weight:600;color:#dfe7f5}
+.currency-picker>div{display:inline-flex;padding:4px;gap:3px;border:1px solid #3a4354;border-radius:9px;background:#060a10}
+.currency-picker a{display:inline-flex;align-items:center;justify-content:center;min-width:65px;min-height:40px;padding:9px 14px;border-radius:6px;color:#b5bed0;font-size:12px;font-weight:600;letter-spacing:.04em;transition:background .15s,color .15s}
+.currency-picker a:hover{color:#fff;background:#182335}
+.currency-picker a[aria-current="true"]{background:#d6e6ff;color:#101a29}
+.currency-picker a:focus-visible{outline:2px solid #94bdff;outline-offset:3px}
+.currency-picker>p{flex:1 1 280px;margin:0;font-size:11px;line-height:1.8;color:#9eaac0}
+@media(max-width:600px){.currency-picker{padding:16px;gap:12px}.currency-picker>p{flex-basis:100%}.currency-picker a{min-width:59px}}
