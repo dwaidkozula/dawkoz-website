@@ -44,3 +44,16 @@ test('invalid currency input falls back to unchanged PLN without reflection',()=
   assert.equal(renderPage(home,'pl','index.html',value),renderPage(home,'pl','index.html','PLN'));
  }
 });
+
+
+test('static previews contain the currency selector and self-hosted assets before Node rendering',()=>{
+ assert.equal((home.match(/data-currency=/g)||[]).length,3);
+ assert.match(home,/href="\/currency\.css\?v=/);
+ assert.match(home,/src="\/currency-client\.js\?v=[^"]+" defer/);
+ assert.equal((renderPage(home,'de','index.html','USD').match(/class="currency-picker"/g)||[]).length,1);
+});
+
+test('static currency bundle and picker remain synchronized with the fixed-price source',()=>{
+ const {execFileSync}=require('node:child_process');
+ execFileSync(process.execPath,[require('node:path').join(__dirname,'../scripts/sync-currency.cjs'),'--check'],{stdio:'pipe'});
+});

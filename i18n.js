@@ -65,7 +65,7 @@ function renderPage(html, locale, page, selectedCurrency) {
     const translated = localized(decode(trimmed));
     return translated === decode(trimmed) ? token : token.replace(trimmed, () => escape(translated));
   });
-  html = html.replace('<html lang="pl"', `<html lang="${locale}" data-ui="${escape(JSON.stringify(ui[locale]))}"`);
+  html = html.replace('<html lang="pl"', `<html lang="${locale}" data-pricing-currency="${currency}" data-ui="${escape(JSON.stringify(ui[locale]))}"`);
   const base = `https://dawkoz.com${page === 'index.html' ? '/' : `/${page}`}`;
   const canonical = locale === 'pl' ? base : `${base}?lang=${locale}`;
   const extras = `<link rel="stylesheet" href="/language.css?v=20261020"><script src="/language.js?v=20261016" defer></script><link rel="canonical" href="${canonical}">${languages.map(language => `<link rel="alternate" hreflang="${language.code}" href="${language.code === 'pl' ? base : `${base}?lang=${language.code}`}">`).join('')}<link rel="alternate" hreflang="x-default" href="${base}">`;
@@ -77,8 +77,9 @@ function renderPage(html, locale, page, selectedCurrency) {
     html = html.replace(/href="(\/(?:[a-z-]+\.html)?)(?:\?lang=([a-z]{2}))?(#[^"]*)?"/g, (_, target, linkLocale, hash = '') => `href="${escape(currencyHref(target.slice(1) || 'index.html', linkLocale || locale, currency, hash))}"`);
   }
   if (page === 'index.html') {
-    html = html.replace('</head>', '<link rel="stylesheet" href="/currency.css?v=20261108"></head>');
-    html = html.replace('<div class="offer-carousel"', currencyPicker(locale, currency, ui[locale], escape) + '<div class="offer-carousel"');
+    const priceControl = currencyPicker(locale, currency, ui[locale], escape);
+    if (html.includes('<!-- CURRENCY PICKER START -->')) html = html.replace(/<!-- CURRENCY PICKER START -->[\s\S]*?<!-- CURRENCY PICKER END -->/, () => priceControl);
+    else html = html.replace('<div class="offer-carousel"', priceControl + '<div class="offer-carousel"');
     const tracks = languages.map(language => `<track kind="subtitles" src="/media/subtitles/${language.code}.vtt" srclang="${language.code}" label="${language.native}"${language.code === locale && locale !== 'pl' ? ' default' : ''}>`).join('');
     html = html.replace('<source src="/media/dawkoz-bot-demo.mp4" type="video/mp4">', `<source src="/media/dawkoz-bot-demo.mp4" type="video/mp4">${tracks}`);
   }
